@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>404 - Page Not Found | MODORA</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- COPY VARIABLES FROM MAIN SITE --- */
+        :root {
+            --header-h: 70px;
+            --bg-body: #f8fafc;
+            --bg-glass: rgba(255, 255, 255, 0.95);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #2563eb;
+            --secondary: #4f46e5;
+            --border: #e2e8f0;
+            --radius: 16px;
+        }
+
+        /* RESET */
+        * { 
+            margin: 0; padding: 0; box-sizing: border-box; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            outline: none !important; 
+            -webkit-tap-highlight-color: transparent !important; 
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER NAVIGATION --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
+            padding: 0 24px; background: var(--bg-glass); backdrop-filter: blur(12px);
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--border); z-index: 1000;
+        }
+        .logo { 
+            font-size: 24px; font-weight: 800; 
+            background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
+            letter-spacing: -0.5px; text-decoration: none;
+        }
+        
+        .search-wrap { 
+            flex: 1; margin: 0 15px; position: relative; max-width: 400px; display: none; 
+        }
+        @media (min-width: 500px) { .search-wrap { display: block; } }
+
+        .search-input { 
+            width: 100%; padding: 10px 40px 10px 15px; border-radius: 50px; 
+            border: 1px solid var(--border); background: #fff; font-size: 14px; 
+        }
+        .search-icon { 
+            position: absolute; right: 15px; top: 50%; transform: translateY(-50%); 
+            color: var(--text-muted); font-size: 14px; 
+        }
+        .btn-tele { 
+            width: 40px; height: 40px; background: #29b6f6; color: white; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 18px; text-decoration: none; 
+        }
+
+        /* --- MAIN CONTENT CENTERED --- */
+        .main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* DECORATION BLOBS */
+        .blob {
+            position: absolute; width: 300px; height: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            filter: blur(90px); opacity: 0.15; border-radius: 50%;
+            z-index: -1; animation: moveBlob 8s infinite alternate;
+        }
+        .blob-1 { top: 20%; left: -50px; }
+        .blob-2 { bottom: 20%; right: -50px; animation-delay: -4s; }
+
+        @keyframes moveBlob {
+            from { transform: translate(0, 0); }
+            to { transform: translate(30px, 40px); }
+        }
+
+        /* ERROR CARD */
+        .error-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid #fff;
+            padding: 40px 30px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+            animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @keyframes popUp {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .icon-box { font-size: 60px; margin-bottom: 10px; animation: floatIcon 3s ease-in-out infinite; }
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .code-text {
+            font-size: 80px; font-weight: 900; line-height: 1;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .error-title { font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; }
+        .error-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; }
+
+        /* BUTTONS GROUP */
+        .btn-group { display: flex; flex-direction: column; gap: 10px; }
+        
+        .btn {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; padding: 15px; border-radius: 14px;
+            font-weight: 700; font-size: 14px; cursor: pointer; text-decoration: none;
+            transition: 0.2s; border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+        }
+        .btn-primary:active { transform: scale(0.98); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15); }
+
+        .btn-secondary {
+            background: #fff; color: var(--text-main);
+            border: 1px solid var(--border);
+        }
+        .btn-secondary:active { background: #f1f5f9; transform: scale(0.98); }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center; padding: 25px; 
+            font-size: 12px; color: var(--text-muted); font-weight: 600;
+            background: var(--bg-glass); border-top: 1px solid var(--border);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo">MODORA</a>
+        
+        <div class="search-wrap">
+            <input type="text" class="search-input" placeholder="Search apps...">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </div>
+
+        <a href="https://t.me/modora_official" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div class="main-content">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+
+        <div class="error-card">
+            <div class="icon-box">🛸</div>
+            <div class="code-text">404</div>
+            <div class="error-title">Page Not Found</div>
+            <div class="error-desc">
+                Oops! The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+            </div>
+
+            <div class="btn-group">
+                <a href="/" class="btn btn-primary">
+                    <i class="fa-solid fa-house"></i> Back to Home
+                </a>
+                <button onclick="location.reload()" class="btn btn-secondary">
+                    <i class="fa-solid fa-rotate-right"></i> Refresh Page
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; <span id="year"></span> MODORA Store. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('year').innerText = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

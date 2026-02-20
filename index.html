@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>MODORA - Download apps and games mod apk</title>
+    <meta name="description" content="Download apps and game mod apk pro premium free for android.">
+    <meta name="author" content="MODORA Inc.">
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/nixy-pro/1@main/random/2026-02-07T14-36-29-180Z-IMG_20260207_212929_010.jpg" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        /* --- CONFIG & VARIABLES (DARK MODE BASE) --- */
+        :root {
+            --header-h: 70px;
+            --nav-h: 65px;
+            
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155;
+            
+            --glass-blur: blur(20px);
+            --primary: #2563eb; 
+            --secondary: #4f46e5;
+            --accent: #ef4444; 
+            --radius: 20px;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+            --skeleton-grad: linear-gradient(90deg, var(--search-bg) 25%, var(--border) 50%, var(--search-bg) 75%);
+        }
+
+        /* LIGHT MODE OVERRIDES */
+        html.light-mode {
+            --bg-body: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --card-border: var(--border);
+            --search-bg: #e2e8f0;
+            --skeleton-grad: linear-gradient(90deg, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%);
+        }
+
+        html.eco-mode {
+            --bg-glass: var(--bg-card);
+            --glass-blur: none;
+        }
+
+        /* --- VIEW TRANSITION SMOOTHING (Khusus Layout) --- */
+        ::view-transition-old(root),
+        ::view-transition-new(root) {
+            animation-duration: 0.35s;
+        }
+
+        /* --- RESET & LAYOUT --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); }
+        
+        body { 
+            color: var(--text-main); 
+            padding-top: calc(var(--header-h) + 15px); 
+            padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 20px) + 30px);
+        }
+
+        /* Transisi warna CSS yang super ringan */
+        body.app-ready { transition: background-color 0.25s ease, color 0.25s ease; }
+
+        .btn-unduh, .btn-loadmore, .nav-item, .logo, .trend-card, .clean-card, .btn-tele, .rocket-btn, .seg-btn, .color-item, .toggle-switch, img {
+            -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
+        }
+
+        #mainView { 
+            width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; 
+            transition: max-width 0.3s ease; min-height: 80vh; 
+            animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
+            padding: 0 24px; background: var(--bg-glass); 
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--border); z-index: 1000;
+            transform: translateZ(0);
+        }
+        header { transition: background-color 0.25s ease, border-color 0.25s ease; }
+
+        .logo { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; cursor: pointer; }
+        
+        .search-wrap { flex: 1; margin: 0 15px; position: relative; max-width: 400px; }
+        .search-input { width: 100%; padding: 10px 40px 10px 15px; border-radius: 12px; border: none; background: var(--search-bg); color: var(--text-main); font-size: 14px; transition: background-color 0.25s ease, box-shadow 0.25s ease; font-weight: 500; }
+        .search-input:focus { box-shadow: 0 0 0 2px var(--primary); background: var(--bg-card); }
+        .search-input::placeholder { color: var(--text-muted); font-weight: 400; }
+        .search-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 14px; pointer-events: none; }
+        
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+        .btn-tele:active { transform: scale(0.9); }
+
+        /* --- SKELETON LOADERS --- */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .skeleton {
+            background: var(--skeleton-grad);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite linear;
+            border-radius: 8px;
+        }
+        .skel-trend { width: 300px; height: 165px; border-radius: 24px; flex-shrink: 0; }
+        .skel-card { background: var(--bg-card); padding: 16px; border-radius: 22px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 16px; }
+        .skel-icon { width: 60px; height: 60px; border-radius: 16px; flex-shrink: 0; }
+        .skel-info { flex: 1; display: flex; flex-direction: column; gap: 8px; }
+        .skel-line { height: 14px; width: 80%; border-radius: 4px; }
+        .skel-line.short { width: 50%; }
+        .skel-btn { width: 70px; height: 34px; border-radius: 50px; flex-shrink: 0; }
+
+        .view-grid .skel-card { flex-direction: column; height: auto; padding: 20px 16px; align-items: center; }
+        .view-grid .skel-card .skel-icon { width: 70px; height: 70px; margin-bottom: 8px; }
+        .view-grid .skel-card .skel-info { width: 100%; align-items: center; }
+        .view-grid .skel-card .skel-line { width: 90%; }
+        .view-grid .skel-card .skel-btn { width: 100%; margin-top: 12px; }
+
+        /* --- RECOMMENDATION --- */
+        .section-head { font-size: 19px; font-weight: 800; margin-bottom: 16px; margin-top: 25px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { font-size: 22px; }
+        .section-head ion-icon.recom-icon { color: #f59e0b; }
+        .section-head ion-icon.apps-icon { color: #10b981; }
+        .section-head ion-icon.games-icon { color: #8b5cf6; }
+        
+        .recom-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
+        .recom-wrap::-webkit-scrollbar { display: none; }
+        .recom-scroll { display: flex; gap: 15px; width: max-content; }
+
+        .trend-card {
+            width: 300px; height: 165px; border-radius: 24px; background: var(--bg-card);
+            border: 1px solid var(--card-border); position: relative; overflow: hidden;
+            padding: 22px; display: flex; flex-direction: column; justify-content: center;
+            box-shadow: var(--shadow); cursor: pointer; 
+            transition: transform 0.2s, background-color 0.25s ease, border-color 0.25s ease;
+        }
+        .trend-card:active { transform: scale(0.96); }
+        .trend-bg { position: absolute; right: -25px; bottom: -25px; width: 150px; opacity: 0.5; filter: blur(5px); transform: rotate(-15deg); pointer-events: none; }
+        .trend-badge { position: absolute; top: 16px; right: 16px; background: var(--primary); color: white; font-size: 10px; padding: 5px 12px; border-radius: 20px; font-weight: 800; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.2); text-transform: uppercase; letter-spacing: 0.5px; }
+        .trend-name { font-size: 20px; font-weight: 800; width: 85%; line-height: 1.3; margin-bottom: 6px; z-index: 2; position: relative; letter-spacing: -0.5px; }
+        .trend-act { font-size: 13px; color: var(--text-muted); font-weight: 600; z-index: 2; position: relative; }
+
+        /* --- LIST & GRID CARDS --- */
+        .list-container { width: 100%; display: grid; gap: 14px; min-height: 100px; }
+        .list-container.view-list { grid-template-columns: 1fr; }
+        .list-container.view-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+
+        .clean-card {
+            background: var(--bg-card); padding: 16px; border-radius: 22px;
+            border: 1px solid var(--card-border); display: flex; align-items: center; gap: 16px;
+            cursor: pointer; box-shadow: var(--shadow); position: relative; overflow: hidden;
+            transition: transform 0.2s, background-color 0.25s ease, border-color 0.25s ease;
+        }
+        .clean-card:active { transform: scale(0.96); }
+
+        .view-grid .clean-card { flex-direction: column; text-align: center; height: auto; padding: 20px 16px; }
+        .view-grid .clean-card .icon-wrap { width: 70px; height: 70px; margin-bottom: 8px; }
+        .view-grid .clean-card .clean-info { width: 100%; justify-content: center; }
+        .view-grid .clean-card .clean-name { -webkit-line-clamp: 2; height: 2.6em; }
+        .view-grid .clean-card .btn-unduh { width: 100%; margin-top: 12px; padding: 10px; }
+
+        .icon-wrap { position: relative; width: 60px; height: 60px; flex-shrink: 0; }
+        .clean-icon { width: 100%; height: 100%; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.08); background-color: var(--border); pointer-events: none; transition: background-color 0.25s ease; }
+        .mod-label {
+            position: absolute; bottom: -5px; right: -5px; background: var(--accent); color: white;
+            font-size: 9px; font-weight: 800; padding: 3px 6px; border-radius: 8px; 
+            border: 2px solid var(--bg-card); box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 5;
+            transition: border-color 0.25s ease;
+        }
+        
+        .clean-info { flex: 1; min-width: 0; display: flex; align-items: center; }
+        .clean-name { 
+            font-size: 15px; font-weight: 700; color: var(--text-main);
+            display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+            overflow: hidden; text-overflow: ellipsis; line-height: 1.35; letter-spacing: -0.2px;
+            transition: color 0.25s ease;
+        }
+
+        .btn-unduh {
+            background: color-mix(in srgb, var(--primary) 12%, transparent);
+            color: var(--primary); padding: 8px 18px; height: auto; min-height: 34px;
+            border-radius: 50px; font-size: 12px; font-weight: 800; border: none;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.2s;
+        }
+        
+        .btn-loadmore {
+            width: 100%; padding: 16px; margin-top: 20px; background: var(--bg-card); 
+            border: 2px dashed var(--border); color: var(--primary); font-weight: 800; font-size: 14px;
+            border-radius: 18px; cursor: pointer; text-align: center; transition: transform 0.2s, background-color 0.25s ease, border-color 0.25s ease; letter-spacing: -0.3px;
+        }
+        .btn-loadmore.hidden { display: none; }
+        
+        .status-msg { text-align: center; width: 100%; color: var(--text-muted); font-size: 14px; padding: 30px 20px; font-weight: 500; }
+
+        @media (min-width: 900px) {
+            #mainView { max-width: 1200px; padding: 0 40px; }
+            .list-container.view-list { grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); }
+            .list-container.view-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+            header { padding: 0 5%; }
+            .search-wrap { max-width: 600px; }
+        }
+
+        /* --- ROCKET --- */
+        .rocket-wrap { 
+            position: fixed; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 20px) + 20px); right: 24px; 
+            opacity: 0; visibility: hidden; transition: opacity 0.4s; z-index: 1800;
+        }
+        .rocket-wrap.show { opacity: 1; visibility: visible; }
+        .rocket-btn {
+            width: 50px; height: 50px; background: linear-gradient(to top, var(--secondary), var(--primary));
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            color: white; font-size: 20px; cursor: pointer; box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+            position: relative; transition: transform 0.2s;
+        }
+        .rocket-btn i { transform: rotate(-45deg); transition: transform 0.3s; }
+        .smoke-particle {
+            position: absolute; width: 10px; height: 10px; background: rgba(200,200,200,0.8);
+            border-radius: 50%; bottom: -10px; left: 50%; transform: translateX(-50%);
+            animation: puff 1s ease-out forwards; z-index: -1; pointer-events: none;
+        }
+        @keyframes puff { 0% { transform: translate(-50%, 0) scale(1); opacity: 0.8; } 100% { transform: translate(var(--tx), 50px) scale(3); opacity: 0; } }
+        .launching { animation: rocketFly 1.5s cubic-bezier(0.45, 0, 0.55, 1) forwards; }
+        .vibrating { animation: vibrate 0.3s linear infinite; }
+        @keyframes vibrate { 0% { transform: translate(0, 0) rotate(0deg); } 25% { transform: translate(-2px, 2px) rotate(-2deg); } 50% { transform: translate(2px, -2px) rotate(2deg); } 75% { transform: translate(-2px, -2px) rotate(-2deg); } 100% { transform: translate(0, 0) rotate(0deg); } }
+        @keyframes rocketFly { 0% { transform: translateY(0) scale(1); } 20% { transform: translateY(20px) scale(0.9); } 100% { transform: translateY(-120vh) scale(1.2); opacity: 0; } }
+
+        /* --- BOTTOM NAV --- */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; width: 100%; 
+            height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            background: var(--bg-glass); 
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            border-top: 1px solid var(--border); display: flex; 
+            justify-content: space-evenly; align-items: center; z-index: 1900;
+            transform: translateZ(0);
+        }
+        .bottom-nav { transition: background-color 0.25s ease, border-color 0.25s ease; }
+
+        .nav-item { 
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 4px; color: var(--text-muted); cursor: pointer; flex: 1; height: 100%; transition: color 0.2s;
+        }
+        .nav-item ion-icon { font-size: 24px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .nav-item span { font-size: 10px; font-weight: 600; }
+        .nav-item.active { color: var(--primary); }
+        .nav-item.active ion-icon { transform: scale(1.15) translateY(-2px); }
+
+        /* --- MODAL SETTINGS --- */
+        .modal { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0,0,0,0); z-index: 2100; display: flex; align-items: flex-end; 
+            opacity: 0; visibility: hidden; transition: background-color 0.4s ease, opacity 0.4s, visibility 0.4s; 
+        }
+        .modal.active { background: rgba(0,0,0,0.6); opacity: 1; visibility: visible; }
+        
+        .modal-box { 
+            background: var(--bg-card); width: 100%; 
+            padding: 30px 24px calc(30px + env(safe-area-inset-bottom, 0px)); 
+            border-radius: 35px 35px 0 0; border-top: 1px solid var(--border); 
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.1); max-height: 85vh; overflow-y: auto; 
+            transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease; 
+        }
+        .modal.active .modal-box { transform: translateY(0); }
+        .modal-handle { width: 50px; height: 5px; background: var(--text-muted); opacity: 0.3; border-radius: 10px; margin: 0 auto 20px auto; }
+
+        .set-group { margin-bottom: 25px; }
+        .set-title { font-weight: 800; font-size: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; letter-spacing: -0.2px; }
+        
+        .segmented-control { display: flex; background: var(--search-bg); border-radius: 12px; padding: 3px; transition: background-color 0.25s ease; }
+        .seg-btn {
+            flex: 1; text-align: center; padding: 10px; border-radius: 10px;
+            font-size: 13px; font-weight: 700; color: var(--text-main);
+            background: transparent; border: none; cursor: pointer; transition: background-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+        }
+        .seg-btn.active { background: var(--bg-card); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        
+        .color-grid { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
+        .color-item { width: 42px; height: 42px; border-radius: 50%; border: 3px solid var(--border); cursor: pointer; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.25s ease; position: relative; }
+        .color-item.active { transform: scale(1.15); border-color: var(--text-main); }
+        .color-item::after { content:'\f00c'; font-family:'Font Awesome 6 Free'; font-weight:900; color:white; font-size:14px; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%) scale(0); transition: transform 0.2s; }
+        .color-item.active::after { transform:translate(-50%, -50%) scale(1); }
+
+        .toggle-switch { width: 51px; height: 31px; background: var(--search-bg); border-radius: 31px; position: relative; cursor: pointer; transition: background-color 0.25s ease; }
+        .toggle-switch::after { content:''; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; background: white; border-radius: 50%; transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .toggle-switch.active { background: #34c759; }
+        .toggle-switch.active::after { left: 22px; }
+
+        .modal-actions { display: flex; gap: 12px; margin-top: 35px; }
+        .modal-actions button { flex: 1; padding: 16px; border-radius: 16px; font-weight: 800; font-size: 14px; cursor: pointer; transition: transform 0.2s, background-color 0.25s ease, color 0.25s ease; border: none; letter-spacing: -0.3px; }
+        .btn-reset { background: var(--search-bg); color: var(--text-main); }
+        .btn-close { background: var(--text-main); color: var(--bg-body); flex: 2; }
+        .modal-actions button:active { transform: scale(0.96); }
+
+        .footer { text-align: center; font-size: 12px; font-weight: 500; color: var(--text-muted); margin-top: 40px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="window.location.reload()">MODORA</div>
+        <div class="search-wrap">
+            <input type="text" id="search" class="search-input" placeholder="Search apps, games..." onkeyup="doSearch()">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </div>
+        <a href="https://t.me/+xTtKEZ3KXAc5NTY9" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div id="section-recom">
+            <div class="section-head"><ion-icon name="sparkles" class="recom-icon"></ion-icon> Recomended</div>
+            <div class="recom-wrap"><div class="recom-scroll" id="recomContainer">
+                <div class="skeleton skel-trend"></div>
+                <div class="skeleton skel-trend"></div>
+            </div></div>
+        </div>
+        
+        <div id="section-apps">
+            <div class="section-head"><ion-icon name="grid" class="apps-icon"></ion-icon> Apps</div>
+            <div class="list-container view-list" id="appsContainer">
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+            </div>
+            <div class="btn-loadmore hidden" id="btnMoreApps" onclick="loadMoreApps()">Show More <i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+        
+        <div id="section-games">
+            <div class="section-head"><ion-icon name="game-controller" class="games-icon"></ion-icon> Games</div>
+            <div class="list-container view-list" id="gamesContainer">
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+            </div>
+            <div class="btn-loadmore hidden" id="btnMoreGames" onclick="loadMoreGames()">Show More <i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+        
+        <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
+    </div>
+
+    <div class="rocket-wrap" id="rocket">
+        <div class="rocket-btn" id="rocketBtn" onclick="launchSequence()"><i class="fa-solid fa-rocket"></i></div>
+    </div>
+
+    <div class="modal" id="modalSet" onclick="if(event.target === this) toggleSet()">
+        <div class="modal-box">
+            <div style="text-align:center; margin-bottom:25px;">
+                <div class="modal-handle"></div>
+                <h3 style="font-size:18px; font-weight: 800; letter-spacing: -0.3px;">Settings</h3>
+            </div>
+            
+            <div class="set-group">
+                <div class="set-title">Color Theme</div>
+                <div class="color-grid">
+                    <div class="color-item" style="background:#2563eb;" onclick="setThemeColor('#2563eb', '#4f46e5', this)" data-color="#2563eb"></div>
+                    <div class="color-item" style="background:#ef4444;" onclick="setThemeColor('#ef4444', '#b91c1c', this)" data-color="#ef4444"></div>
+                    <div class="color-item" style="background:#10b981;" onclick="setThemeColor('#10b981', '#059669', this)" data-color="#10b981"></div>
+                    <div class="color-item" style="background:#8b5cf6;" onclick="setThemeColor('#8b5cf6', '#7c3aed', this)" data-color="#8b5cf6"></div>
+                    <div class="color-item" style="background:#f59e0b;" onclick="setThemeColor('#f59e0b', '#d97706', this)" data-color="#f59e0b"></div>
+                </div>
+            </div>
+
+            <div class="set-group">
+                <div class="set-title">
+                    <span>Dark Mode</span>
+                    <div class="toggle-switch" id="themeToggle" onclick="switchTheme()"></div>
+                </div>
+            </div>
+
+            <div class="set-group">
+                <div class="set-title">
+                    <span>Battery Saver (No Blur)</span>
+                    <div class="toggle-switch" id="ecoToggle" onclick="toggleEco()"></div>
+                </div>
+            </div>
+
+            <div class="set-group">
+                <div class="set-title">View Mode</div>
+                <div class="segmented-control">
+                    <button onclick="setViewMode('list')" id="btnViewList" class="seg-btn active"><i class="fa-solid fa-list"></i> List</button>
+                    <button onclick="setViewMode('grid')" id="btnViewGrid" class="seg-btn"><i class="fa-solid fa-border-all"></i> Grid</button>
+                </div>
+            </div>
+
+            <div class="set-group">
+                <div class="set-title">Font Style</div>
+                <div class="segmented-control">
+                    <button onclick="chFont('Plus Jakarta Sans')" id="btnFontModern" class="seg-btn active">Modern</button>
+                    <button onclick="chFont('Merriweather')" id="btnFontClassic" class="seg-btn" style="font-family:serif;">Classic</button>
+                    <button onclick="chFont('JetBrains Mono')" id="btnFontTech" class="seg-btn" style="font-family:monospace;">Tech</button>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-reset" onclick="resetSettings()">Reset</button>
+                <button class="btn-close" onclick="toggleSet()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-nav">
+        <div class="nav-item active" onclick="nav('all', this)"><ion-icon name="home"></ion-icon><span>Home</span></div>
+        <div class="nav-item" onclick="nav('app', this)"><ion-icon name="grid"></ion-icon><span>Apps</span></div>
+        <div class="nav-item" onclick="nav('game', this)"><ion-icon name="game-controller"></ion-icon><span>Games</span></div>
+        <div class="nav-item" onclick="toggleSet()"><ion-icon name="settings"></ion-icon><span>Setting</span></div>
+    </div>
+
+    <script>
+        const GITHUB_CONFIG = {
+            owner: 'modora-official',   
+            repo: 'modora1',    
+            branch: 'main'       
+        };
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => { document.body.classList.add('app-ready'); }, 50);
+        });
+
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        let dbApps = [];
+        let dbGames = [];
+        let showAppsCount = 10;
+        let showGamesCount = 10;
+        let isDataLoaded = false;
+
+        function getBaseName(name) {
+            let n = name.toLowerCase();
+            n = n.replace(/v\d+(\.\d+)*/g, '');
+            n = n.replace(/\(.*\)/g, ''); 
+            n = n.replace(/\[.*\]/g, ''); 
+            n = n.replace(/mod|apk|premium|pro|unlocked|full/g, '');
+            n = n.replace(/[\.\-\_]/g, ' '); 
+            return n.trim();
+        }
+
+        async function scanDirectory(folderPath, type) {
+            try {
+                const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${folderPath}?ref=${GITHUB_CONFIG.branch}`;
+                const response = await fetch(apiUrl);
+                
+                if (!response.ok) {
+                    if(response.status === 404) return []; 
+                    if(response.status === 403) console.warn("GitHub API Rate Limit Exceeded!");
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                let items = [];
+
+                data.forEach((item, index) => {
+                    if (item.type === 'dir') {
+                        const rawName = item.name;
+                        const pageLink = `/${folderPath}/${rawName}/`; 
+                        const imgUrl = `https://cdn.jsdelivr.net/gh/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}@${GITHUB_CONFIG.branch}/${folderPath}/${rawName}/MODORA-Images.jpg`;
+                        
+                        items.push({
+                            name: rawName.replace(/[-_]/g, ' '),
+                            baseName: getBaseName(rawName), 
+                            link: pageLink, 
+                            img: imgUrl,
+                            type: type,
+                            time: Date.now() - (index * 1000) 
+                        });
+                    }
+                });
+                return items;
+            } catch (error) {
+                console.error(`Failed to scan ${folderPath} via GitHub API:`, error);
+                return []; 
+            }
+        }
+
+        function filterLatest(items) {
+            let map = {};
+            items.forEach(item => {
+                const key = item.baseName; 
+                if (!map[key]) {
+                    map[key] = item;
+                } else {
+                    if (item.time > map[key].time) {
+                        map[key] = item;
+                    }
+                }
+            });
+            return Object.values(map).sort((a, b) => b.time - a.time);
+        }
+
+        async function initData() {
+            const [appsRaw, gamesRaw] = await Promise.all([
+                scanDirectory('apps', 'app'),
+                scanDirectory('games', 'game')
+            ]);
+            
+            dbApps = filterLatest(appsRaw); 
+            dbGames = filterLatest(gamesRaw);
+            isDataLoaded = true;
+            
+            renderRecom();
+            renderLists();
+        }
+
+        function renderRecom() {
+            const container = document.getElementById('recomContainer');
+            if(!isDataLoaded) return; 
+            
+            const allReal = [...dbApps, ...dbGames];
+            if(allReal.length === 0) {
+                container.innerHTML = '<div class="status-msg">No recommendations yet.</div>';
+                return;
+            }
+
+            const shuffled = allReal.sort(() => 0.5 - Math.random()).slice(0, 5);
+            let html = '';
+            shuffled.forEach(item => {
+                html += `
+                <div class="trend-card" onclick="openLink('${item.link}')">
+                    <span class="trend-badge">RECOMMENDED</span>
+                    <div class="trend-name">${item.name}</div>
+                    <div class="trend-act">Install Now <i class="fa-solid fa-arrow-right"></i></div>
+                    <img src="${item.img}" class="trend-bg" loading="lazy" onerror="this.style.opacity=0">
+                </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        function createCardHtml(item) {
+            return `
+            <div class="clean-card" onclick="openLink('${item.link}')">
+                <div class="icon-wrap">
+                    <img src="${item.img}" class="clean-icon" loading="lazy" onerror="this.src='https://via.placeholder.com/70?text=IMG'">
+                    <div class="mod-label">MOD</div>
+                </div>
+                <div class="clean-info">
+                    <div class="clean-name">${item.name}</div>
+                </div>
+                <button class="btn-unduh">GET</button>
+            </div>`;
+        }
+
+        function renderLists() {
+            const cApps = document.getElementById('appsContainer');
+            const cGames = document.getElementById('gamesContainer');
+            
+            if(!isDataLoaded) return; 
+
+            if(dbApps.length === 0) {
+                cApps.innerHTML = '<div class="status-msg">No apps found in this repository.</div>';
+                document.getElementById('btnMoreApps').classList.add('hidden');
+            } else {
+                let hApps = ''; 
+                dbApps.slice(0, showAppsCount).forEach(item => hApps += createCardHtml(item));
+                cApps.innerHTML = hApps;
+                document.getElementById('btnMoreApps').classList.toggle('hidden', showAppsCount >= dbApps.length);
+            }
+            
+            if(dbGames.length === 0) {
+                cGames.innerHTML = '<div class="status-msg">No games found in this repository.</div>';
+                document.getElementById('btnMoreGames').classList.add('hidden');
+            } else {
+                let hGames = ''; 
+                dbGames.slice(0, showGamesCount).forEach(item => hGames += createCardHtml(item));
+                cGames.innerHTML = hGames;
+                document.getElementById('btnMoreGames').classList.toggle('hidden', showGamesCount >= dbGames.length);
+            }
+        }
+
+        function loadMoreApps() { showAppsCount += 10; renderLists(); }
+        function loadMoreGames() { showGamesCount += 10; renderLists(); }
+        
+        function openLink(url) { 
+            if(url && url !== '#') window.location.href = url; 
+            else alert('Link is broken or still processing!'); 
+        }
+
+        function doSearch() {
+            const val = document.getElementById('search').value.toLowerCase();
+            const secRecom = document.getElementById('section-recom');
+            const secApps = document.getElementById('section-apps');
+            const secGames = document.getElementById('section-games');
+
+            if(val === '') { restoreView(); return; }
+            secRecom.style.display = 'none'; secApps.style.display = 'block'; secGames.style.display = 'block';
+            
+            const fApps = dbApps.filter(i => i.name.toLowerCase().includes(val));
+            let hApp = ''; 
+            fApps.forEach(item => hApp += createCardHtml(item));
+            document.getElementById('appsContainer').innerHTML = hApp || '<div class="status-msg">No apps matched your search</div>';
+            document.getElementById('btnMoreApps').classList.add('hidden');
+
+            const fGames = dbGames.filter(i => i.name.toLowerCase().includes(val));
+            let hGame = ''; 
+            fGames.forEach(item => hGame += createCardHtml(item));
+            document.getElementById('gamesContainer').innerHTML = hGame || '<div class="status-msg">No games matched your search</div>';
+            document.getElementById('btnMoreGames').classList.add('hidden');
+        }
+
+        function restoreView() {
+            const navItems = document.querySelectorAll('.nav-item');
+            let activeType = 'all';
+            if(navItems[1].classList.contains('active')) activeType = 'app';
+            else if(navItems[2].classList.contains('active')) activeType = 'game';
+            
+            document.getElementById('section-recom').style.display = (activeType === 'all') ? 'block' : 'none';
+            document.getElementById('section-apps').style.display = (activeType === 'game') ? 'none' : 'block';
+            document.getElementById('section-games').style.display = (activeType === 'app') ? 'none' : 'block';
+            showAppsCount=10; showGamesCount=10; renderLists();
+        }
+
+        function nav(type, el) {
+            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
+            el.classList.add('active');
+            document.getElementById('search').value = '';
+            restoreView(); window.scrollTo(0,0);
+        }
+
+        function toggleSet() { document.getElementById('modalSet').classList.toggle('active'); }
+
+        function loadSettings() {
+            if(!document.documentElement.classList.contains('light-mode')) {
+                document.getElementById('themeToggle').classList.add('active');
+            }
+
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+                document.getElementById('ecoToggle').classList.add('active');
+            }
+
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+                updateColorActive(savedColor);
+            } else {
+                updateColorActive('#2563eb');
+            }
+
+            applyViewModeClass(localStorage.getItem('modora_view') || 'list');
+            
+            const currFont = localStorage.getItem('modora_font') || 'Plus Jakarta Sans';
+            document.querySelectorAll('.seg-btn[onclick*="chFont"]').forEach(b => b.classList.remove('active'));
+            if(currFont.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active');
+            else if(currFont.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active');
+            else document.getElementById('btnFontTech').classList.add('active');
+        }
+
+        // --- FUNGSI TEMA YANG SUDAH DIPERBAIKI (TIDAK LAG) ---
+        function switchTheme() {
+            // Langsung eksekusi tanpa document.startViewTransition()
+            const isLight = document.documentElement.classList.toggle('light-mode');
+            const toggleBtn = document.getElementById('themeToggle');
+            const metaTheme = document.getElementById('metaThemeColor');
+            
+            if (isLight) {
+                localStorage.setItem('modora_theme', 'light');
+                toggleBtn.classList.remove('active');
+                metaTheme.setAttribute('content', '#f1f5f9');
+            } else {
+                localStorage.setItem('modora_theme', 'dark');
+                toggleBtn.classList.add('active');
+                metaTheme.setAttribute('content', '#0f172a');
+            }
+        }
+
+        function toggleEco() {
+            const isEco = document.documentElement.classList.toggle('eco-mode');
+            document.getElementById('ecoToggle').classList.toggle('active');
+            localStorage.setItem('modora_eco', isEco ? 'true' : 'false');
+        }
+
+        function setThemeColor(prim, sec, el) {
+            document.documentElement.style.setProperty('--primary', prim);
+            document.documentElement.style.setProperty('--secondary', sec);
+            localStorage.setItem('modora_color', prim);
+            localStorage.setItem('modora_color_sec', sec);
+            updateColorActive(prim);
+        }
+
+        function updateColorActive(color) {
+            document.querySelectorAll('.color-item').forEach(c => {
+                c.classList.remove('active');
+                if(c.getAttribute('data-color') === color) c.classList.add('active');
+            });
+        }
+
+        // View Transition HANYA dibiarkan di ViewMode (List/Grid)
+        function setViewMode(mode) {
+            if (!document.startViewTransition) {
+                applyViewModeClass(mode);
+                return;
+            }
+            document.startViewTransition(() => {
+                applyViewModeClass(mode);
+            });
+        }
+
+        function applyViewModeClass(mode) {
+            const cApps = document.getElementById('appsContainer');
+            const cGames = document.getElementById('gamesContainer');
+            cApps.className = `list-container view-${mode}`;
+            cGames.className = `list-container view-${mode}`;
+            document.getElementById('btnViewList').classList.toggle('active', mode === 'list');
+            document.getElementById('btnViewGrid').classList.toggle('active', mode === 'grid');
+            localStorage.setItem('modora_view', mode);
+        }
+
+        function chFont(fontName) {
+            document.documentElement.style.setProperty('--font-main', fontName);
+            localStorage.setItem('modora_font', fontName);
+            document.querySelectorAll('.seg-btn[onclick*="chFont"]').forEach(b => b.classList.remove('active'));
+            if(fontName.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active');
+            else if(fontName.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active');
+            else document.getElementById('btnFontTech').classList.add('active');
+        }
+
+        function resetSettings() {
+            localStorage.clear();
+            window.location.reload();
+        }
+
+        const rocketWrap = document.getElementById('rocket');
+        const rocketBtn = document.getElementById('rocketBtn');
+        let isLaunching = false;
+
+        window.onscroll = () => { if(!isLaunching) window.scrollY > 200 ? rocketWrap.classList.add('show') : rocketWrap.classList.remove('show'); }
+
+        function launchSequence() {
+            if(isLaunching) return; isLaunching = true;
+            rocketBtn.classList.add('vibrating');
+            setTimeout(() => {
+                rocketBtn.classList.remove('vibrating'); rocketBtn.classList.add('launching');
+                for(let i=0; i<20; i++) {
+                    const s = document.createElement('div'); s.classList.add('smoke-particle');
+                    s.style.setProperty('--tx', `${(Math.random()-0.5)*60}px`); s.style.animationDelay = `${Math.random()*0.2}s`;
+                    rocketBtn.appendChild(s); setTimeout(() => s.remove(), 1000);
+                }
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                setTimeout(() => { rocketBtn.classList.remove('launching'); rocketWrap.classList.remove('show'); isLaunching = false; }, 1500);
+            }, 300);
+        }
+
+        loadSettings(); 
+        initData();
+
+    </script>
+</body>
+</html>
