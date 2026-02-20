@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>MODORA - Request Mod</title>
+    <meta name="description" content="Request aplikasi atau game modifikasi di MODORA.">
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/nixy-pro/1@main/random/2026-02-07T14-36-29-180Z-IMG_20260207_212929_010.jpg" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        /* --- CONFIG & VARIABLES --- */
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --radius: 20px; --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border);
+            --search-bg: #e2e8f0;
+        }
+
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); }
+        body { color: var(--text-main); padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        body.app-ready { transition: background-color 0.4s, color 0.4s; }
+
+        .btn-tele, img, .btn-back, .btn-submit { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
+
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        /* --- HEADER --- */
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; transform: translateZ(0); }
+        body.app-ready header { transition: background 0.4s, border 0.4s; }
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .btn-back { width: 40px; height: 40px; border-radius: 12px; background: var(--search-bg); color: var(--text-main); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; transition: 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .logo { font-size: 22px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
+
+        /* --- FORM STYLES --- */
+        .section-head { font-size: 22px; font-weight: 800; margin-bottom: 20px; margin-top: 15px; display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
+        .section-head i { color: var(--primary); }
+
+        .form-card { background: var(--bg-card); border-radius: 24px; border: 1px solid var(--card-border); padding: 24px; box-shadow: var(--shadow); transition: background 0.4s; margin-bottom: 30px; }
+        
+        .form-group { margin-bottom: 20px; }
+        .form-label { display: block; font-size: 14px; font-weight: 700; margin-bottom: 10px; color: var(--text-main); }
+        .form-input, .form-textarea { width: 100%; padding: 15px 18px; border-radius: 16px; border: 2px solid transparent; background: var(--search-bg); color: var(--text-main); font-size: 14px; font-weight: 500; transition: 0.3s; }
+        .form-input::placeholder, .form-textarea::placeholder { color: var(--text-muted); font-weight: 400; }
+        .form-input:focus, .form-textarea:focus { border-color: var(--primary); background: var(--bg-body); box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .form-textarea { resize: vertical; min-height: 120px; }
+        
+        .btn-submit { width: 100%; padding: 16px; border-radius: 16px; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; font-weight: 800; font-size: 15px; border: none; cursor: pointer; transition: 0.2s; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); display: flex; align-items: center; justify-content: center; gap: 10px; letter-spacing: -0.3px; }
+        .btn-submit:active { transform: scale(0.96); }
+        .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
+
+        .toast { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 14px 24px; border-radius: 50px; font-weight: 700; font-size: 13px; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4); transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 3000; display: flex; align-items: center; gap: 8px; width: max-content;}
+        .toast.show { bottom: 40px; }
+        .toast.error { background: var(--accent); box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4); }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; padding: 0 40px; } header { padding: 0 5%; } }
+        .footer { text-align: center; font-size: 12px; font-weight: 500; color: var(--text-muted); margin-top: 40px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <a href="../../" class="btn-back"><i class="fa-solid fa-chevron-left"></i></a>
+            <div class="logo">REQUEST</div>
+        </div>
+    </header>
+
+    <div id="mainView">
+        <div class="section-head"><i class="fa-solid fa-code-pull-request"></i> Form Request Mod</div>
+        
+        <div class="form-card">
+            <form id="modRequestForm" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <label class="form-label">Nama Apps / Games</label>
+                    <input type="text" id="appName" class="form-input" placeholder="Contoh: Spotify / Subway Surfers" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Versi Berapa?</label>
+                    <input type="text" id="appVersion" class="form-input" placeholder="Contoh: v8.9.10 atau Terbaru" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Fitur-fitur yang diinginkan</label>
+                    <textarea id="appFeatures" class="form-textarea" placeholder="Contoh: Premium Unlocked, No Ads, Unlimited Money..." required></textarea>
+                </div>
+                
+                <button type="submit" id="submitBtn" class="btn-submit">
+                    Kirim Request <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+
+        <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
+    </div>
+
+    <div id="toastNotif" class="toast"><i class="fa-solid fa-circle-check"></i> <span>Request berhasil dikirim!</span></div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { document.body.classList.add('app-ready'); }, 50); });
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Load pengaturan tampilan dari halaman utama
+        function loadSettings() {
+            if(localStorage.getItem('modora_eco') === 'true') document.documentElement.classList.add('eco-mode');
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+        }
+        loadSettings();
+
+        // Notifikasi Popup OS
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toastNotif');
+            toast.querySelector('span').innerText = message;
+            toast.className = `toast ${isError ? 'error' : ''} show`;
+            if(isError) toast.querySelector('i').className = 'fa-solid fa-circle-xmark';
+            else toast.querySelector('i').className = 'fa-solid fa-circle-check';
+            setTimeout(() => { toast.classList.remove('show'); }, 3500);
+        }
+
+        // ==========================================
+        // KONFIGURASI TELEGRAM BOT 
+        // ==========================================
+        const TELEGRAM_BOT_TOKEN = '8413530580:AAFyCiZfSXOPNllxOmzlLKOVeiopC7wDbSg';
+        const TELEGRAM_CHAT_ID = '5289385265';
+
+        // Proses pengiriman ke Telegram
+        async function submitForm(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('submitBtn');
+            const name = document.getElementById('appName').value;
+            const version = document.getElementById('appVersion').value;
+            const features = document.getElementById('appFeatures').value;
+            
+            // Ubah tombol jadi loading spinner
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Mengirim...';
+
+            try {
+                // Susun pesan yang akan masuk ke chat Telegram
+                const textMsg = `📌 *NEW MOD REQUEST*\n\n📱 *Nama:* ${name}\n🏷 *Versi:* ${version}\n✨ *Fitur:* ${features}`;
+                const teleUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+                
+                // Tembak langsung ke API Telegram
+                const response = await fetch(teleUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        chat_id: TELEGRAM_CHAT_ID, 
+                        text: textMsg, 
+                        parse_mode: 'Markdown' 
+                    })
+                });
+
+                if (response.ok) {
+                    showToast('Request berhasil dikirim ke Telegram!');
+                    document.getElementById('modRequestForm').reset(); // Kosongkan form
+                } else {
+                    showToast('Gagal mengirim ke Telegram. Coba lagi!', true);
+                }
+
+            } catch (error) {
+                console.error(error);
+                showToast('Gagal terhubung. Pastikan Anda online!', true);
+            } finally {
+                // Kembalikan tombol ke semula
+                btn.disabled = false;
+                btn.innerHTML = 'Kirim Request <i class="fa-solid fa-paper-plane"></i>';
+            }
+        }
+    </script>
+</body>
+</html>

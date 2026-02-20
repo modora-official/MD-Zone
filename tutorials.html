@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>MODORA - Tutorial Download</title>
+    <meta name="description" content="Tutorial cara mudah download aplikasi dan game di MODORA.">
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/nixy-pro/1@main/random/2026-02-07T14-36-29-180Z-IMG_20260207_212929_010.jpg" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        /* --- CONFIG & VARIABLES --- */
+        :root {
+            --header-h: 70px;
+            
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155;
+            
+            --glass-blur: blur(20px);
+            --primary: #2563eb; 
+            --secondary: #4f46e5;
+            --accent: #ef4444; 
+            --radius: 20px;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --card-border: var(--border);
+            --search-bg: #e2e8f0;
+        }
+
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); }
+        
+        body { 
+            color: var(--text-main); 
+            padding-top: calc(var(--header-h) + 15px); 
+            /* Jarak bawah disesuaikan karena tidak ada lagi tab bottom nav */
+            padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); 
+        }
+        body.app-ready { transition: background-color 0.4s, color 0.4s; }
+
+        .btn-tele, img, .btn-back {
+            -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
+        }
+
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
+            padding: 0 24px; background: var(--bg-glass); 
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--border); z-index: 1000; transform: translateZ(0);
+        }
+        body.app-ready header { transition: background 0.4s, border 0.4s; }
+        
+        .header-left { display: flex; align-items: center; gap: 15px; }
+        .btn-back { width: 40px; height: 40px; border-radius: 12px; background: var(--search-bg); color: var(--text-main); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; transition: 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        
+        .logo { font-size: 22px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+        .btn-tele:active { transform: scale(0.9); }
+
+        /* --- TUTORIAL SECTION --- */
+        .section-head { font-size: 22px; font-weight: 800; margin-bottom: 20px; margin-top: 15px; display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
+        .section-head i { color: var(--primary); }
+
+        .tutorial-card {
+            background: var(--bg-card); border-radius: 24px; border: 1px solid var(--card-border);
+            padding: 20px; box-shadow: var(--shadow); transition: background 0.4s; margin-bottom: 20px;
+        }
+        
+        .video-wrapper {
+            width: 100%; border-radius: 16px; overflow: hidden; background: #000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; margin-bottom: 20px;
+        }
+        /* Video Player Styling */
+        video { width: 100%; display: block; outline: none; border-radius: 16px; }
+
+        .tutorial-text { font-size: 15px; line-height: 1.6; color: var(--text-main); }
+        .tutorial-text h4 { font-size: 16px; font-weight: 800; margin-bottom: 12px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .tutorial-text p { margin-bottom: 10px; color: var(--text-muted); font-weight: 500; }
+        .tutorial-text ul { padding-left: 20px; color: var(--text-muted); font-weight: 500; margin-bottom: 20px; }
+        .tutorial-text li { margin-bottom: 8px; }
+        
+        .lang-divider { width: 100%; height: 1px; background: var(--border); margin: 25px 0; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; padding: 0 40px; } header { padding: 0 5%; } }
+
+        .footer { text-align: center; font-size: 12px; font-weight: 500; color: var(--text-muted); margin-top: 40px; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <a href="../../" class="btn-back"><i class="fa-solid fa-chevron-left"></i></a>
+            <div class="logo">TUTORIAL</div>
+        </div>
+        <a href="https://t.me/+xTtKEZ3KXAc5NTY9" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="section-head"><i class="fa-solid fa-circle-play"></i> Cara Download</div>
+        
+        <div class="tutorial-card">
+            <div class="video-wrapper">
+                <video controls playsinline poster="https://cdn.jsdelivr.net/gh/nixy-pro/1@main/random/2026-02-07T14-36-29-180Z-IMG_20260207_212929_010.jpg">
+                    <source src="https://cdn.jsdelivr.net/gh/nixy-pro/1@main/random/2025-10-07T17-18-57-085Z-InShot_20251007_235200046.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung pemutar video HTML5.
+                </video>
+            </div>
+            
+            <div class="tutorial-text">
+                <h4><b>EN</b>Quick Guide:</h4>
+                <p>Please watch the video above to see the download steps.</p>
+                <ul>
+                    <li>Press the Play button to start the video.</li>
+                    <li>To enlarge the video and <b>enable Landscape mode</b>, press the <i class="fa-solid fa-expand"></i> (Fullscreen) button in the bottom right corner of the video.</li>
+                    <li>Follow the steps shown in the video carefully.</li>
+                </ul>
+
+                <div class="lang-divider"></div>
+
+                <h4><b>ID</b>Panduan Singkat:</h4>
+                <p>Silakan tonton video di atas untuk melihat langkah-langkah pengunduhan.</p>
+                <ul>
+                    <li>Tekan tombol Play untuk memulai video.</li>
+                    <li>Untuk memperbesar video dan <b>mengaktifkan mode Landscape</b>, tekan tombol <i class="fa-solid fa-expand"></i> (Fullscreen) di pojok kanan bawah video.</li>
+                    <li>Ikuti langkah-langkah yang ditunjukkan dalam video dengan saksama.</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
+    </div>
+
+    <script>
+        // Transisi halus setelah halaman siap
+        window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { document.body.classList.add('app-ready'); }, 50); });
+        
+        // Tahun otomatis untuk footer
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Load pengaturan dari localStorage yang disinkronkan dengan halaman index.html
+        function loadSettings() {
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+        }
+
+        loadSettings();
+    </script>
+</body>
+</html>
