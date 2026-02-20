@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>Grand Theft Auto San Andreas MOD APK V2.11.311</title>
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/games/Grand Theft Auto San Andreas/MODORA-Images.jpg" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border); --search-bg: #e2e8f0;
+        }
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+
+        .app-hero { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px; }
+        .app-icon-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .app-icon { width: 100%; height: 100%; border-radius: 25px; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); }
+        .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
+        
+        .app-titles { flex: 1; }
+        .app-name { font-size: 24px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        .action-top-wrap { margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px; }
+        .btn-download-huge { 
+            width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+        .section-head { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { color: var(--primary); font-size: 20px; }
+        
+        .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
+        .ss-wrap::-webkit-scrollbar { display: none; }
+        .ss-scroll { display: flex; gap: 15px; width: max-content; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; }
+
+        .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
+        .content-box strong { color: var(--text-main); }
+        .content-box p { margin-bottom: 10px; }
+        .content-box p:last-child { margin-bottom: 0; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-title">Detail App</div>
+        <a href="https://t.me/+xTtKEZ3KXAc5NTY9" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="app-hero">
+            <div class="app-icon-wrap">
+                <img src="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/games/Grand Theft Auto San Andreas/MODORA-Images.jpg" class="app-icon" alt="Grand Theft Auto San Andreas MOD APK V2.11.311">
+                <div class="mod-badge">MOD APK</div>
+            </div>
+            <div class="app-titles">
+                <h1 class="app-name">Grand Theft Auto San Andreas MOD APK V2.11.311</h1>
+                <div class="app-dev">Rockstar Games</div>
+            </div>
+        </div>
+
+        <div class="action-top-wrap">
+            <a href="https://safefileku.com/download/eSUFuAnuFq6sLYC1" class="btn-download-huge">
+                <div><span>UNDUH APK (2.5 GB)</span></div>
+                <div class="btn-date">Update: 20 Februari 2026</div>
+            </a>
+            <div class="mini-actions">
+                <a href="../../tutorials" class="btn-mini">
+                    <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
+                </a>
+                <a href="../../requests" class="btn-mini">
+                    <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
+                </a>
+                <a href="../../" class="btn-mini">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>God Mode</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>One Hit Kill</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Character</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Ads</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Anti-Ban</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Menu Mod</span></div>
+        </div>
+
+        <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
+        <div class="ss-wrap">
+            <div class="ss-scroll">
+                <img src="https://play-lh.googleusercontent.com/XJIXWvMtYKOfdE8k_353XZwKEHE63JigwjZnsSyhUH6VzOeUHhxouqGHpy7f1nQGyQ=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/gLb0inRrKnSPB2vR4yTDcxJVYNfnCmLs0n2fp0L5EEF28aBUarvwrxVzUw8xnOlarA=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/CQiBcsfvjd0nv3--yjinA6YAZuWoj58WiymNQ3JGLhYWaH4zXgb8NbIlCSrjJRmtMvl2=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/UMbELQfIJCw7HMl3xT9ypYNczwH_njQJM1Z0B7EuTURnG0pbVq6sxy6NBAxL-NVMg8o=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/pzhLMpZID8gd-1bcOJgpWdXA4ukXGXGRwKnNE42I9u7ZkT5a6vwQLqbkdWCmD713-4U=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/8ZUdV9WZUDgmR57IAnZ8UrJWll0TJcovweFNQjXUzjNCIkR4C7XV-jaLz4K1e0-8uS08=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/SYyS63I8tUmMCljawaDwPyNA5zH4aOxpFF7R3JMFk2YvpTsRn-JGXYOdVNj9m0Su5cRm=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/5ztoNn5hG3iEegbSznA2ehmWRPlfIaL29VTN9JyJAms6DtoVjp41Rdqh_79j6WpCcrqw=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ryUZTZkIwXI1ULhlZTykmDvRIK_58xI4IvDUMRh7OHpmp4i9XjIs9D1j9K1mKYvx6Q=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/tHs44iwaopndAlmj6zXfe_g22GDlVDHat1zrX8txx9xuD2V4NrPcDE71hybwH-y0dMM=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                
+            </div>
+        </div>
+
+        <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
+        <div class="content-box">
+            <p>Five years ago, Carl Johnson escaped from the pressures of life in Los Santos, San Andreas, a city tearing itself apart with gang trouble, drugs and corruption. Where filmstars and millionaires do their best to avoid the dealers and gangbangers.</p>
+            
+            <p>Now, it’s the early 90’s. Carl’s got to go home. His mother has been murdered, his family has fallen apart and his childhood friends are all heading towards disaster.</p>
+            
+            <p>On his return to the neighborhood, a couple of corrupt cops frame him for homicide. CJ is forced on a journey that takes him across the entire state of San Andreas, to save his family and to take control of the streets.</p>
+            
+            <p>Rockstar Games brings its biggest release to mobile yet with a vast open-world covering the state of San Andreas and its three major cities – Los Santos, San Fierro and Las Venturas – with enhanced visual fidelity and over 70 hours of gameplay.</p>
+            
+            <p>Grand Theft Auto: San Andreas features:  </p>
+            <p>• Remastered, high-resolution graphics built specifically for mobile including lighting enhancements, an enriched color palette and improved character models. </p>
+            <p>• Cloud save support for playing across all your mobile devices for Rockstar Social Club Members.</p>
+            <p>• Dual analog stick controls for full camera and movement control.</p>
+            <p>• Three different control schemes and customizable controls with contextual options to display buttons only when you need them.</p>
+            <p>• Compatible with the MoGa Wireless Game Controllers and select Bluetooth and USB gamepads.</p>
+            <p>• Integrated with Immersion tactile effects.&nbsp; </p>
+            <p>• Tailor your visual experience with adjustable graphic settings. </p>
+            
+            <p>Languages Supported: English, French, Italian, German, Spanish, Russian and Japanese. </p>
+            
+            <p>For optimal performance, we recommend re-booting your device after downloading and closing other applications when playing Grand Theft Auto: San Andreas. </p>
+            
+            <p>For information about supported devices and compatibility, please see:</p>
+            <p>http://support.rockstargames.com/hc/en-us/sections/200251868-San-Andreas-Mobile-Support</p>
+            
+            <p>Mobile Version developed by War Drum Studios</p>
+            <p>www.wardrumstudios.com</p>
+            
+            <p>Find out more:</p>
+            <p>www.rockstargames.com</p>
+            
+            <p>See videos:</p>
+            <p>www.youtube.com/rockstargames</p>
+            
+            <p>Follow us:</p>
+            <p>www.facebook.com/rockstargames</p>
+            <p>www.twitter.com/rockstargames</p>
+        </div>
+    </div>
+
+    <script>
+        function loadSettingsForDetail() {
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettingsForDetail();
+        });
+    </script>
+    <script type="text/javascript">
+        var go_url = 'https://sfl.gl/'; var api = 'c6860d49e9dc09f506140805a1cd075cdc10f23b'; var shorten_includ = ["safefileku.com"];
+    </script>
+    <script src="//safelinku.com/js/web-script.js"></script>
+</body>
+</html>
