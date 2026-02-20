@@ -103,22 +103,21 @@
         <div class="form-card">
             <form id="modRequestForm" onsubmit="submitForm(event)">
                 <div class="form-group">
-                    <label class="form-label">Nama Apps / Games</label>
-                    <input type="text" id="appName" class="form-input" placeholder="Contoh: Spotify / Subway Surfers" required>
+                    <label class="form-label">Name Apps / Games</label>
+                    <input type="text" id="appName" class="form-input" placeholder="Capcut / Free Fire" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">Versi Berapa?</label>
-                    <input type="text" id="appVersion" class="form-input" placeholder="Contoh: v8.9.10 atau Terbaru" required>
+                    <label class="form-label">Version?</label>
+                    <input type="text" id="appVersion" class="form-input" placeholder="Example: v8.9.10" required>
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">Fitur-fitur yang diinginkan</label>
-                    <textarea id="appFeatures" class="form-textarea" placeholder="Contoh: Premium Unlocked, No Ads, Unlimited Money..." required></textarea>
+                    <label class="form-label"> Desired features or other additions.</label>
+                    <textarea id="appFeatures" class="form-textarea" placeholder="Example: Premium Unlocked, No Ads, Unlimited Money..." required></textarea>
                 </div>
                 
-                <button type="submit" id="submitBtn" class="btn-submit">
-                    Kirim Request <i class="fa-solid fa-paper-plane"></i>
+                <button type="submit" id="submitBtn" class="btn-submit">Send <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
         </div>
@@ -190,7 +189,7 @@
                 });
 
                 if (response.ok) {
-                    showToast('Request berhasil dikirim ke Telegram!');
+                    showToast('Done send!');
                     document.getElementById('modRequestForm').reset(); // Kosongkan form
                 } else {
                     showToast('Gagal mengirim ke Telegram. Coba lagi!', true);
