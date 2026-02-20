@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>Talking Tom Gold Run MOD APK V26.1.1.14841</title>
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/games/Talking Tom Gold Run/MODORA-Images.jpg" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border); --search-bg: #e2e8f0;
+        }
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+
+        .app-hero { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px; }
+        .app-icon-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .app-icon { width: 100%; height: 100%; border-radius: 25px; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); }
+        .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
+        
+        .app-titles { flex: 1; }
+        .app-name { font-size: 24px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        .action-top-wrap { margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px; }
+        .btn-download-huge { 
+            width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+        .section-head { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { color: var(--primary); font-size: 20px; }
+        
+        .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
+        .ss-wrap::-webkit-scrollbar { display: none; }
+        .ss-scroll { display: flex; gap: 15px; width: max-content; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; }
+
+        .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
+        .content-box strong { color: var(--text-main); }
+        .content-box p { margin-bottom: 10px; }
+        .content-box p:last-child { margin-bottom: 0; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-title">Detail App</div>
+        <a href="https://t.me/+xTtKEZ3KXAc5NTY9" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="app-hero">
+            <div class="app-icon-wrap">
+                <img src="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/games/Talking Tom Gold Run/MODORA-Images.jpg" class="app-icon" alt="Talking Tom Gold Run MOD APK V26.1.1.14841">
+                <div class="mod-badge">MOD APK</div>
+            </div>
+            <div class="app-titles">
+                <h1 class="app-name">Talking Tom Gold Run MOD APK V26.1.1.14841</h1>
+                <div class="app-dev">Outfit7 Limited</div>
+            </div>
+        </div>
+
+        <div class="action-top-wrap">
+            <a href="https://safefileku.com/download/6UcL0N49LgSmos9B" class="btn-download-huge">
+                <div><span>UNDUH APK (191 MB)</span></div>
+                <div class="btn-date">Update: 21 Februari 2026</div>
+            </a>
+            <div class="mini-actions">
+                <a href="../../tutorials" class="btn-mini">
+                    <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
+                </a>
+                <a href="../../requests" class="btn-mini">
+                    <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
+                </a>
+                <a href="../../" class="btn-mini">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Gems/Coins</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Character</span></div>
+        </div>
+
+        <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
+        <div class="ss-wrap">
+            <div class="ss-scroll">
+                <img src="https://play-lh.googleusercontent.com/cMzGzZaQw1bzCuHC--GMnLfsozKHVD82zGXQoyefx8XlSgPd0LZA1_JzpeP2Iixo5w=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/jJvLTY4n7zMUUuAl5FGdszulimSfTNgrMekV-erB3WatF3SoJ3f6JR3ixai2D2HsBw=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/VKYfa381-y1hhZOgFghXW7igat4F8uD8GiBQ3vJ-qgCp46TcI6DKE_PguDLAIfwaCQ=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/qza6fzinZ7ONyvmbeTSAntoBxGef3JE4JGWoYeoTxlltk3xDtzl1n06tgf6wWSyO3bVW=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/jvNZxbOzgee16Qaz3onetYoT__gU9ttjU5rbxiVEof9egzkDM9WK3SULb0ibiIt3tkhi=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ymdg6inQjz5ye9Y0dNcFFqKv-zHPNI90dsY5RAslEv3bELpAy-BNulpyec_uPZbBFA=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ine42TniSYM2or0Fg5ij3ySMoDToInIXrpfVblimsmrgwz8RqAIZVw1mAjsWXG_Q2tIr=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/CT6EN7gQ-RSU0p5sLWVb5dLtdYZpG_kt4HQI_-AFC7JK5P4Xo795d9nTIkaruSA1-Ow=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/eKORn_aTohTSd49hleHMnIoE-QhTIZ42RWW1q7sHD6MaY6fZQKV3UkVnV7qxic6C=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/v0Ey4Qzuh1fm_ANnpjOOijO_KTS8dShjSHOOoLJdeMgoLCfHd6Nc9WxY1UmOtcPrIJW2=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/-0jCM5fZWmKj0Gfr_zIBF733jSzRBsbwPbzJQNvWL10-MELRa3CJaKtUodpzeuQK1Ig=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/cY6ZAn6QMFdt8c1C1vmj05mL8E6AtlDFA3xQhoM9CCESF-o0pjcZUUbuifZTHtQyiR1G=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/MwThklF7IdF_chwgJkIIJpwYFtDRht7KncM23HvQhAWm3vcTFXPrRQZLnHkKCNjWbNY=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/dpbuELb3w_HCsJufzUtIt8i_vA0O5aFmWqibQinUTA7vcOSlf1l3DaHHQBJ11DkX-Ms=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/8Ki8n3jQxTAnZBMGNeDnmCO4lf6vT4N957CvXpFTAR_i8DYKgmf6VJ5qmwFj80VRQg=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/931ASMRVMXCF8YbdFdqQWxqWfZbSMieumvMOuHxgmQ4MN8b1rVpRk39iYB2Td-xJGU4=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/mKr3iEDxZR7Mr6-XUm9tljeHsJy9AYvRaFl-IW1g6UH_58KsBREfuT89Na-BvUZD3q4J=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/M0EfBnhoP13Muuu8kxL5gJcPPXSaedpYX_bBb8FvTKwGpi-ZOeRO1TXoFZXvA8se1g=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/IhZvz7OcojEoVkxatSEvQiHUZ0C_6iLMoc3g_fxWmsOgRBhAalMF3breXjtpTLeypqA=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/PZb2s1xWBsbkiMsXRIe3kgXkSu8GBnXVgdS4peJujQOE9_CccmrNzGnjERwsE8QNIv5N=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/nIPjOIASRRj9baXuuxZoz8o5dEb1X2yZmnQMPwZvmRcpYnsCORqYQ_PUIuzH21CdQQ=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Bi8u3sbCUPRrNxcF7iUcEe--5Z_6amCUry0IZHysJESMAD5QD22Qd2-GD6TWG72S_gY=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/TMYjUujBWLiriXcd55BlxlYl-h16C8Y0FnMMofoge0m7Bvgh1I9Cj7ppqWQgjRePVqA2=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/CK9MCbrsY1fsp9b8-nBOnnOFNlQqO50TG_bMaTROvbe1q7E-y8Tz_Cqz0duyKnkFhwSu=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                
+            </div>
+        </div>
+
+        <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
+        <div class="content-box">
+            <p>Run, dash, and chase Rakoonz with Talking Tom and friends in the ultimate endless runner adventure!</p>
+            <p>Help Talking Tom speed through vibrant worlds, dodge exciting obstacles, and collect stolen gold. Unlock Talking Angela, Ginger, Ben, Hank, and Becca, and customize them with amazing outfits!</p>
+            
+            <p>Exciting Endless Runner Action</p>
+            <p>Dash through vibrant worlds, including Venice Canals, Winter Wonderland, and China Dragon World. Every run is a new adventure full of surprises!</p>
+            
+            <p>Epic Skateboarding Challenges</p>
+            <p>Hop on your skateboard and enter exciting side worlds! Show off your moves, perform awesome stunts, and complete action-packed time trials to win amazing rewards.</p>
+            
+            <p>Powerful Boosts and Power-Ups</p>
+            <p>Use jetpacks, magnets, and speed boosts to fly, dash, and sprint your way to new records. Accelerate your runs and experience unbeatable chasing thrills!</p>
+            <p>Unlock and Customize Characters</p>
+            <p>Unlock your favorite friends, including Talking Angela, Ginger, Hank, Ben, and Becca. Collect gold and tokens to build and upgrade their dream homes and personalize their style with amazing outfits! </p>
+            
+            <p>Competitive Race Mode</p>
+            <p>Challenge players to exciting races! Set new records, climb leaderboards, and prove you’re the fastest runner around.</p>
+            
+            <p>Ready, Set, RUN! Perfect for kids and families who love arcade running games! Experience endless excitement, nonstop action, and hours of fun with Talking Tom Gold Run, the ultimate cat runner game!</p>
+            
+            <p>From Outfit7, creators of My Talking Tom, My Talking Angela, My Talking Tom Friends and Talking Tom Hero Dash.</p>
+            <p>This app is certified by PRIVO, an FTC Children’s Online Privacy Protection Act (COPPA) Safe Harbor.</p>
+            
+            <p>This app contains:</p>
+            <p>- Promotion of Outfit7's products and advertising;</p>
+            <p>- Links that direct customers to Outfit7’s websites and other apps;</p>
+            <p>- Personalization of content to encourage users to play the app again;</p>
+            <p>- The option to make in-app purchases;</p>
+            <p>- Items to purchase (available in different prices) using virtual currency, depending on the player’s progress; and</p>
+            <p>- Alternative options to access all functionalities of the app without making any in-app purchases using real money.</p>
+            
+            
+            <p>Terms of use: https://talkingtomandfriends.com/eula/en/</p>
+            <p>Privacy policy for games: https://talkingtomandfriends.com/privacy-policy-games/en</p>
+            <p>Customer support: support@outfit7.com</p>
+        </div>
+    </div>
+
+    <script>
+        function loadSettingsForDetail() {
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettingsForDetail();
+        });
+    </script>
+    <script type="text/javascript">
+        var go_url = 'https://sfl.gl/'; var api = 'c6860d49e9dc09f506140805a1cd075cdc10f23b'; var shorten_includ = ["safefileku.com"];
+    </script>
+    <script src="//safelinku.com/js/web-script.js"></script>
+</body>
+</html>
