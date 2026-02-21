@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>Dramabox Stream Drama Shorts MOD APK V5.0.2</title>
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/apps/Dramabox Stream Drama Shorts/MODORA-Images.jpg" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border); --search-bg: #e2e8f0;
+        }
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+
+        .app-hero { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px; }
+        .app-icon-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .app-icon { width: 100%; height: 100%; border-radius: 25px; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); }
+        .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
+        
+        .app-titles { flex: 1; }
+        .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        .action-top-wrap { margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px; }
+        .btn-download-huge { 
+            width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+        .section-head { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { color: var(--primary); font-size: 20px; }
+        
+        .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
+        .ss-wrap::-webkit-scrollbar { display: none; }
+        .ss-scroll { display: flex; gap: 15px; width: max-content; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; }
+
+        .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
+        .content-box strong { color: var(--text-main); }
+        .content-box p { margin-bottom: 10px; }
+        .content-box p:last-child { margin-bottom: 0; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-title">Detail App</div>
+        <a href="https://t.me/+xTtKEZ3KXAc5NTY9" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="app-hero">
+            <div class="app-icon-wrap">
+                <img src="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/apps/Dramabox Stream Drama Shorts/MODORA-Images.jpg" class="app-icon" alt="Dramabox Stream Drama Shorts MOD APK V5.0.2">
+                <div class="mod-badge">MOD APK</div>
+            </div>
+            <div class="app-titles">
+                <h1 class="app-name">Dramabox Stream Drama Shorts MOD APK V5.0.2</h1>
+                <div class="app-dev">STORYMATRIX</div>
+            </div>
+        </div>
+
+        <div class="action-top-wrap">
+            <a href="https://safefileku.com/download/4igmrf1VM6bjOAlK" class="btn-download-huge">
+                <div><span>UNDUH APK (92 MB)</span></div>
+                <div class="btn-date">Update: 21 Februari 2026</div>
+            </a>
+            <div class="mini-actions">
+                <a href="../../tutorials" class="btn-mini">
+                    <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
+                </a>
+                <a href="../../requests" class="btn-mini">
+                    <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
+                </a>
+                <a href="../../" class="btn-mini">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Premium Unlocked</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Ads</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Pro Features</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>VIP Unlocked</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Features</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Login</span></div>
+        </div>
+
+        <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
+        <div class="ss-wrap">
+            <div class="ss-scroll">
+                <img src="https://play-lh.googleusercontent.com/rhQXtEX8LruWZEl59zXRshdOAsHwSFfQgaMwKliQ4xre1fgZVPXfC16_QEHv2H8wqhzb=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/slcC_brXz0-QV-YvKzRmcgHZYtXuBvO2pnrPmC_kpxhSJ5ePr338zIInJFCGj2rS34c=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/wRM6bNjcdGHIVwhbtSKE5d_tJteMx4wrq7Rot2GLUngmJWN7YD4GTNbTGnUGVb3DepM=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/y4UPMY9gXNqcEP4QpZwCJmvH2_SRXj8v98Itw_fW5qAeSyRa5FjwWPKAW7j2ZX_O0Mg=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/0w5r7MSvhhR3OhYfVmq6rqvqD7LM2M8BLeDxUpGRnukTfipJsuc9DkdDQ86J6GjCFw8=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/edfCvsgHOoI6E0oMfb5d5CrN09BH8gQhkU5CGGZuLBIuJbpS1If0rxs5oeSfVG-lOHI=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/1dsC3Wr_RdL-Rooi8E6qjRuuW_kLxy6AunYEFP3z4DlFTYAPj80WEdQiw8yCkACO9tk=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ECqFKkq29QKzVm22IYLgwcALZB2hm1BynSUfrjfbLeu1_8OBndh-llh_uEFPnksJj3w=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/03UVOP8O03bcU8UOaXXklHnW-46USMSs--9XaVECOh53BN2tvxKa-i7Wz6l4xxLCc54=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/G0bN2TTfqnCT5ylKOOe1R2BwaBNWCzlib6hfP7K6aDj-QJb4txxGRiXSxKFArA3vlcg=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/6-pgTvwWICteQvo0O0kE-bNCFZ2vh5TT9m-zs7QB24-zu_876SRDwgyass3U5A4qnmgU=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/0I4-9IFFH2D5IzAuZrSGsjp85ccA34QK6yiPrZXFJwCFZQTjLtr18nR4WXWZoW9VRw=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/_ZbUfwm6Qm4EQRpom0cayg3qA89DkyDwQb5BzJ1ggc-R9vOeChnfzLW-rfy76K_TyQ=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/feaHiuuPzM9z2FwPXYDX96dCs7Kk9nsUhNkH3Pb1kxiUIZM9scPF9zRP4oTyLESi-mY=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/JLBaVk0Repq4LmSHKH-Ve08CvTMPMKZz-40RZYFUZ1iHXokgB5u3pppEdB7kXFVaNpQ=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/POVifHcI9ftIQMeFnMWAGfLOCiSrEZATbdrFyBM8rupE9Qn-zzNzXCSHIJ_z_uPYYIE=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/apGoAnEM01Dutjll06wkJhs_ZNqM46oD_yg31HQVpV4mUOL0BNLV72UJNewPP3qg7lID=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/6ylIPJN9i1QMyjSzVy4vauVW4-go4C1OkZL990sW6tXNrRjCdlRztDzfML2c9vlEWI4=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/u4NP6dmIsVmxW_Z2JjQtRHpXEvPC0wEVGmzJJdUODeFPFkizrZS7e63Wz3D0otLgwIM=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/NXlCuAPvCo3QYeRJnR7bmm2HQlAf2lnVUIZtMWONIoj3JCBeIZrHxBd_DuwDFOzRrw=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/wXy8P7cvPZhZMiw9COSx6xYRzZHpMyU2sq3PrB14TuR6RpEu-mHhggDgeyNoNzOXkVY=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                
+            </div>
+        </div>
+
+        <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
+        <div class="content-box">
+            <p>Welcome to DramaBox - Stream Drama Shorts, a short reels universe, your ultimate destination for an enthralling world of bite-sized entertainment, now available on the Google Play Store! Immerse yourself in a kaleidoscope of emotions, stories, and creativity with DramaBox, your passport to thousands of hours of exclusive original short videos spanning a myriad of genres.</p>
+            
+            
+            <p>Highlights</p>
+            <p>- Diverse Genres, Limitless Stories</p>
+            <p>Dive into a treasure trove of exclusive short videos, meticulously crafted to cater to every taste. From romantic to gut-wrenching shorts, DramaBox brings you an extensive collection that ensures there's something for everyone. Get ready to embark on a journey through genres that transcend boundaries and captivate your senses.</p>
+            
+            <p>- Unleash Your Emotions</p>
+            <p>Whether you're in the mood for laughter, tears, or suspense, DramaBox has it all. Our curated selection of short videos is designed to evoke a spectrum of emotions, offering a rollercoaster ride through storytelling that leaves a lasting impact. Get ready for a whirlwind of feelings with every tap and swipe.</p>
+            
+            <p>- Exclusive Originals</p>
+            <p>Discover a world of content you won't find anywhere else. DramaBox is proud to present a lineup of exclusive original short videos that promise fresh perspectives, unique narratives, and unparalleled creativity. Immerse yourself in stories that are as diverse as they are captivating, each one a testament to the art of storytelling in its most concise and powerful form.</p>
+            
+            <p>- Customize Your Experience</p>
+            <p>Tailor your viewing experience with DramaBox's customizable features. Adjust video playback settings, explore different genres, and curate your watchlist to create a personalized journey through the vast landscape of good short videos. Your entertainment, your way.</p>
+            
+            <p>- Watch Anywhere, Anytime</p>
+            <p>No matter where life takes you, DramaBox is your companion. Enjoy the flexibility of watching short videos anytime, anywhere. Whether you're commuting, relaxing at home, or taking a break, DramaBox is just a tap away, ready to whisk you into a world of captivating moments.</p>
+            
+            <p>- Frequent Updates</p>
+            <p>Experience the thrill of discovering something new with DramaBox's regular content updates. Our library is constantly expanding, ensuring that every visit to the app brings fresh and exciting short videos for your viewing pleasure. Say goodbye to monotony and hello to a constant stream of entertainment.</p>
+            
+            
+            <p>DramaBox is not just an app; it's an experience.</p>
+            <p>Embark on a journey through the world of short videos that will leave you craving for more. DramaBox -  Stream Drama Shorts is free to use, and for those seeking an even more immersive experience, consider subscribing for exclusive perks.</p>
+            
+            <p>Download DramaBox now and open the door to a universe of short video magic!</p>
+            
+            <p>🌐 Follow us on Facebook: https://www.facebook.com/DramaBoxMoviesDrama</p>
+            <p>🎬Follow us on YouTube:  https://www.youtube.com/@dramaboxapp</p>
+        </div>
+    </div>
+
+    <script>
+        function loadSettingsForDetail() {
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettingsForDetail();
+        });
+    </script>
+    <script type="text/javascript">
+        var go_url = 'https://sfl.gl/'; var api = 'c6860d49e9dc09f506140805a1cd075cdc10f23b'; var shorten_includ = ["safefileku.com"];
+    </script>
+    <script src="//safelinku.com/js/web-script.js"></script>
+</body>
+</html>
