@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>Video Editor Maker Inshot MOD APK V2.196.1529</title>
+    <link rel="icon" href="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/apps/Video Editor Maker Inshot/MODORA-Images.jpg" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border); --search-bg: #e2e8f0;
+        }
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+
+        .app-hero { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px; }
+        .app-icon-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .app-icon { width: 100%; height: 100%; border-radius: 25px; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); }
+        .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
+        
+        .app-titles { flex: 1; }
+        .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        .action-top-wrap { margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px; }
+        .btn-download-huge { 
+            width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+        .section-head { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { color: var(--primary); font-size: 20px; }
+        
+        .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
+        .ss-wrap::-webkit-scrollbar { display: none; }
+        .ss-scroll { display: flex; gap: 15px; width: max-content; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; }
+
+        .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
+        .content-box strong { color: var(--text-main); }
+        .content-box p { margin-bottom: 10px; }
+        .content-box p:last-child { margin-bottom: 0; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-title">Detail App</div>
+        <a href="https://t.me/+xTtKEZ3KXAc5NTY9" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="app-hero">
+            <div class="app-icon-wrap">
+                <img src="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/apps/Video Editor Maker Inshot/MODORA-Images.jpg" class="app-icon" alt="Video Editor Maker Inshot MOD APK V2.196.1529">
+                <div class="mod-badge">MOD APK</div>
+            </div>
+            <div class="app-titles">
+                <h1 class="app-name">Video Editor Maker Inshot MOD APK V2.196.1529</h1>
+                <div class="app-dev">InShot Video Editor</div>
+            </div>
+        </div>
+
+        <div class="action-top-wrap">
+            <a href="https://safefileku.com/download/r5VIZ7WuBSLUCBHl" class="btn-download-huge">
+                <div><span>UNDUH APK (81.64 MB)</span></div>
+                <div class="btn-date">Update: 23 Februari 2026</div>
+            </a>
+            <div class="mini-actions">
+                <a href="../../tutorials" class="btn-mini">
+                    <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
+                </a>
+                <a href="../../requests" class="btn-mini">
+                    <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
+                </a>
+                <a href="../../" class="btn-mini">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Premium Unlocked</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Ads</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Pro Features</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Watermark Removed</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>High Quality Export</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>VIP Unlocked</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Features</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Login</span></div>
+        </div>
+
+        <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
+        <div class="ss-wrap">
+            <div class="ss-scroll">
+                <img src="https://play-lh.googleusercontent.com/HsCTl_tHDFlVvni35KFFosL8BMuV2HPgRwplPZTR6iLJxy9ymmuJOZKCIVT9J3k2Mj26=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/nzGFLKoj-RmRdiIHK9EEkKZfYrmBKvQMJ4LwAkaKsezRLEGGba-fWC6bJJJGLCr0Nmlq=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ktJ2TmJyRg9GJfDAJnIrS88W8tTdgBpUXJw84Q4O3HLrXBgGoU7jklG9tFR3xcaFVg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/I7n91zuvTxVjxfbPt87kjB2q5yrC4Mkew3Q27SAEenC0dTXorF1a0VWApO_ZYgk65D8=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ZW911w-PSbCLwVxOUq0Y95_81Ct97YTCFcCzT_MrC2aevjPLeq60SfU0xVWExZ9V-Ww=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/fNVec3ge_HvLoayh0fyulOz1wsn84Khw0aQFRPl_A7TKR30Sf7LZ3aMDNlU2pyDi_B4=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/4VOuBQblMYnrZTHNWuk_YXnAKBn-0gYUvzJUMniCz3MhuOZMWAFYC-w7UiMubhW9kg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/K2TgBWHSyCYj9CVKsKU3vY97QNzSNiaVwFApD2c3BX8TPO-gbA51gUSD6P4rd9ZfirRh=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/k0J8J8BLA4vLxj3UEUs8sdeZGbxyvv1A44mRSdC3RrGR4GYsVTzV1FLCE2PTyP2U0A=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/YRGXSurnojCy8lVeaxhUcyZkfzVw2sdoUHycPqw25S7Ml5TtejMi5Uj74NChb_6hUb8=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/JXvYHj4mfQ7NNu2MqFykqE2nN6sQRjvHtubsVg4UvXOUOROJE5KqCgZfvqW93RFFXEw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/2RFmBNIS6IJCcwRphxlM6ktaPRwpX8Ugz11SqVbBi5XiKqOHq3MM4Q6J7AB3NuBsLA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/cm4cjoFv9Kg39TfCvxs3g7g1fNoHdIwg4i9BGGJv1ePpQffkHyTx2q69tdEpzQOdOSs=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ttQVXp-ykC6BtafD9S-i_4fB6vU5dv3gbLUvj-YMHNyMVOIjuON4K3u4A2ICL1HSDA4=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/3zJgE5jwbabgLadAQ0HbJ87qI19XyAxjahJra8OUBg2uGay6PnMHEM__4aBcIBCNrw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/eeUg_-i8IrSHQv-xa4oe0sZx1amSeNTnEraJoBEoDjALFHCn8kmcVHECd8NxtJDaMjo=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                
+            </div>
+        </div>
+
+        <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
+        <div class="content-box">
+            <p>InShot - Powerful all-in-one Video Editor and Video Maker with professional features. Add music, text, transition effects for videos, make smooth slow motion, make video collage, blur background and etc! As an easy-to-use editing app, InShot makes creating vlogs a breeze and helps you to become an influencer on YouTube, Instagram, TikTok, WhatsApp, Facebook, etc.</p>
+            
+            <p>InShot is also a photo editor and collage maker. Edit pictures and selfie, remove bg, add filters, adjust HSL, etc. Make stylish Instagram story covers and posts.</p>
+            
+            <p>Features:</p>
+            
+            <p>AI Tool</p>
+            <p>- AI Body Effects. Experience the magic of AI with instant presets that elevate your images and videos in just one tap.</p>
+            <p>- Auto Captions. AI-powered speech-to-text tool helps you say goodbye to manual text typing and makes video editing effortless.</p>
+            <p>- Auto Remove Background. Remove background of videos/photos at the touch of a button.</p>
+            <p>- Smart tracking. Make stickers/text move seamlessly in sync with your tracking object motion, adding dynamic flair to your videos.</p>
+            <p>- Smooth slow-mo. Experience seamless slow-motion effects for buttery smooth videos.</p>
+            
+            <p>Full-featured Video Editing</p>
+            <p>- Trim/Merge clips. Combine and compress video without losing quality.</p>
+            <p>- Reverse videos.</p>
+            <p>- Add text, emoji and InShot exclusive stickers.</p>
+            <p>- Add music, sound effects &amp; voice-overs.</p>
+            <p>- Add various-styles voice effects.</p>
+            <p>- Adjust ratio. Fit your video and photo in any aspect ratio.</p>
+            <p>- Speed control. Speed up/slow down video. Add speed ramping.</p>
+            <p>- Keyframes editing. Add custome keyframe animations.</p>
+            <p>- Chromakey. Easily edit green screen video.</p>
+            <p>- Picture-in-Picture. Create multi-layered videos.</p>
+            <p>- Mixtures. Blend your video with blend mode.</p>
+            <p>- Color picker. Pick any color on the screen and apply it to the background/text.</p>
+            
+            <p>Filters, Effects &amp; Transitions</p>
+            <p>- Lots of cinematic filters.</p>
+            <p>- Adjust video brightness, contrast, saturation, etc. Customized video filters and video effects.</p>
+            <p>- Unique effects such as Glitch, Fade, Noise, Beats, Weather, Retro DV, celebrate, etc.</p>
+            <p>- AI effects. Clone, stroke, auto-blur, etc.</p>
+            <p>- Pro editing app with super transitions. Combine two clips with transition effects.</p>
+            
+            <p>Photo Editor &amp; Collage Maker</p>
+            <p>* Blur the background easily.</p>
+            <p>* 1000+ stickers, funny memes, texts &amp; backgrounds.</p>
+            <p>* Turn blurry photos into HD with AI Photo Enhancer. </p>
+            <p>* Remove unwanted objects effortlessly—choose between advanced AI or quick manual tools.</p>
+            <p>* Easy-to-use photo grid collage maker. 100+ highly editable collage layouts available.</p>
+            <p>* Pic Stitch. Horizontal, vertical, or automatically recognize subtitles.</p>
+            
+            <p>Canvas &amp; Background</p>
+            <p>- Choose from various background patterns or upload your own pictures.</p>
+            <p>- Adjust video ratios for Instagram/TikTok/Youtube post.</p>
+            
+            <p>Easy to Share</p>
+            <p>- Custom video export resolution, HD pro video editor support 4K 60fps export.</p>
+            <p>- Share your daily life on social media: Instagram Reels, TikTok, Whatsapp Status, YouTube Shorts, etc.</p>
+            
+            <p>InShot is an editing app for videos and photos. With InShot - video maker with music, you can easily make basic video and even advanced assets like video collage, smooth slow motion, stop motion, reverse video and more. Share your vlogs to social media to get more likes, or edit video with music and pic for TikTok.</p>
+            
+            <p>Any questions for InShot (FREE slow motion video editor with music &amp; photo slideshow maker)? Please contact us at inshot.android@inshot.com</p>
+            
+            <p>For more new feature tutorials and advanced video editing tips, please subscribe to our YouTube channel: https://www.youtube.com/@InShotApp</p>
+            
+            <p>Disclaimer:</p>
+            <p>InShot is not affiliated, associated, sponsored, endorsed by, or in any way officially connected with YouTube, Instagram, TikTok, WhatsApp, Facebook, Twitter.</p>
+        </div>
+    </div>
+
+    <script>
+        function loadSettingsForDetail() {
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettingsForDetail();
+        });
+    </script>
+    <script type="text/javascript">
+        var go_url = 'https://sfl.gl/'; var api = 'c6860d49e9dc09f506140805a1cd075cdc10f23b'; var shorten_includ = ["safefileku.com"];
+    </script>
+    <script src="//safelinku.com/js/web-script.js"></script>
+</body>
+</html>
