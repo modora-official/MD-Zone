@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+
+# Blok folder sistem
+Disallow: /.git/
+Disallow: /.github/
+Disallow: /node_modules/
+Disallow: /private/
+Disallow: /backup/
+Disallow: /tmp/
+
+# Blok file sensitif
+Disallow: /.env
+Disallow: /.htaccess
+Disallow: /error_log
+
+# Blok URL parameter aneh
+Disallow: /*?*
+
+# Sitemap
+Sitemap: https://modorazone.com/sitemap.xml
