@@ -72,13 +72,11 @@
             --glass-blur: none;
         }
 
-        /* --- VIEW TRANSITION SMOOTHING (Khusus Layout) --- */
         ::view-transition-old(root),
         ::view-transition-new(root) {
             animation-duration: 0.35s;
         }
 
-        /* --- RESET & LAYOUT --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
         
         html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); }
@@ -89,7 +87,6 @@
             padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 20px) + 30px);
         }
 
-        /* Transisi warna CSS yang super ringan */
         body.app-ready { transition: background-color 0.25s ease, color 0.25s ease; }
 
         .btn-unduh, .btn-loadmore, .nav-item, .logo, .trend-card, .clean-card, .btn-tele, .rocket-btn, .seg-btn, .color-item, .toggle-switch, img {
@@ -112,8 +109,8 @@
             display: flex; align-items: center; justify-content: space-between;
             border-bottom: 1px solid var(--border); z-index: 1000;
             transform: translateZ(0);
+            transition: background-color 0.25s ease, border-color 0.25s ease;
         }
-        header { transition: background-color 0.25s ease, border-color 0.25s ease; }
 
         .logo { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; cursor: pointer; }
         
@@ -127,16 +124,8 @@
         .btn-tele:active { transform: scale(0.9); }
 
         /* --- SKELETON LOADERS --- */
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        .skeleton {
-            background: var(--skeleton-grad);
-            background-size: 200% 100%;
-            animation: shimmer 1.5s infinite linear;
-            border-radius: 8px;
-        }
+        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+        .skeleton { background: var(--skeleton-grad); background-size: 200% 100%; animation: shimmer 1.5s infinite linear; border-radius: 8px; }
         .skel-trend { width: 300px; height: 165px; border-radius: 24px; flex-shrink: 0; }
         .skel-card { background: var(--bg-card); padding: 16px; border-radius: 22px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 16px; }
         .skel-icon { width: 60px; height: 60px; border-radius: 16px; flex-shrink: 0; }
@@ -152,11 +141,12 @@
         .view-grid .skel-card .skel-btn { width: 100%; margin-top: 12px; }
 
         /* --- RECOMMENDATION --- */
-        .section-head { font-size: 19px; font-weight: 800; margin-bottom: 16px; margin-top: 25px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head { font-size: 19px; font-weight: 800; margin-bottom: 16px; margin-top: 45px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
         .section-head ion-icon { font-size: 22px; }
         .section-head ion-icon.recom-icon { color: #f59e0b; }
         .section-head ion-icon.apps-icon { color: #10b981; }
         .section-head ion-icon.games-icon { color: #8b5cf6; }
+        .section-head ion-icon.scripts-icon { color: #ec4899; } /* Pink untuk Script */
         
         .recom-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
         .recom-wrap::-webkit-scrollbar { display: none; }
@@ -269,8 +259,8 @@
             border-top: 1px solid var(--border); display: flex; 
             justify-content: space-evenly; align-items: center; z-index: 1900;
             transform: translateZ(0);
+            transition: background-color 0.25s ease, border-color 0.25s ease;
         }
-        .bottom-nav { transition: background-color 0.25s ease, border-color 0.25s ease; }
 
         .nav-item { 
             display: flex; flex-direction: column; align-items: center; justify-content: center;
@@ -335,7 +325,7 @@
     <header>
         <div class="logo" onclick="window.location.reload()">MODORA</div>
         <div class="search-wrap">
-            <input type="text" id="search" class="search-input" placeholder="Search apps, games..." onkeyup="doSearch()">
+            <input type="text" id="search" class="search-input" placeholder="Search apps, games, scripts..." onkeyup="doSearch()">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
         <a href="https://t.me/+xTtKEZ3KXAc5NTY9" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
@@ -368,6 +358,16 @@
                 <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
             </div>
             <div class="btn-loadmore hidden" id="btnMoreGames" onclick="loadMoreGames()">Show More <i class="fa-solid fa-chevron-down"></i></div>
+        </div>
+
+        <div id="section-scripts">
+            <div class="section-head"><ion-icon name="code-slash" class="scripts-icon"></ion-icon> Scripts</div>
+            <div class="list-container view-list" id="scriptsContainer">
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+            </div>
+            <div class="btn-loadmore hidden" id="btnMoreScripts" onclick="loadMoreScripts()">Show More <i class="fa-solid fa-chevron-down"></i></div>
         </div>
         
         <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
@@ -437,6 +437,7 @@
         <div class="nav-item active" onclick="nav('all', this)"><ion-icon name="home"></ion-icon><span>Home</span></div>
         <div class="nav-item" onclick="nav('app', this)"><ion-icon name="grid"></ion-icon><span>Apps</span></div>
         <div class="nav-item" onclick="nav('game', this)"><ion-icon name="game-controller"></ion-icon><span>Games</span></div>
+        <div class="nav-item" onclick="nav('script', this)"><ion-icon name="code-slash"></ion-icon><span>Scripts</span></div>
         <div class="nav-item" onclick="toggleSet()"><ion-icon name="settings"></ion-icon><span>Setting</span></div>
     </div>
 
@@ -455,8 +456,10 @@
 
         let dbApps = [];
         let dbGames = [];
+        let dbScripts = [];
         let showAppsCount = 10;
         let showGamesCount = 10;
+        let showScriptsCount = 10;
         let isDataLoaded = false;
 
         function getBaseName(name) {
@@ -522,13 +525,16 @@
         }
 
         async function initData() {
-            const [appsRaw, gamesRaw] = await Promise.all([
+            // NEW: Tambahan pengambilan data untuk folder "script"
+            const [appsRaw, gamesRaw, scriptsRaw] = await Promise.all([
                 scanDirectory('apps', 'app'),
-                scanDirectory('games', 'game')
+                scanDirectory('games', 'game'),
+                scanDirectory('script', 'script') 
             ]);
             
             dbApps = filterLatest(appsRaw); 
             dbGames = filterLatest(gamesRaw);
+            dbScripts = filterLatest(scriptsRaw);
             isDataLoaded = true;
             
             renderRecom();
@@ -539,7 +545,7 @@
             const container = document.getElementById('recomContainer');
             if(!isDataLoaded) return; 
             
-            const allReal = [...dbApps, ...dbGames];
+            const allReal = [...dbApps, ...dbGames, ...dbScripts];
             if(allReal.length === 0) {
                 container.innerHTML = '<div class="status-msg">No recommendations yet.</div>';
                 return;
@@ -552,19 +558,32 @@
                 <div class="trend-card" onclick="openLink('${item.link}')">
                     <span class="trend-badge">RECOMMENDED</span>
                     <div class="trend-name">${item.name}</div>
-                    <div class="trend-act">Install Now <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="trend-act">Get Now <i class="fa-solid fa-arrow-right"></i></div>
                     <img src="${item.img}" class="trend-bg" loading="lazy" onerror="this.style.opacity=0">
                 </div>`;
             });
             container.innerHTML = html;
         }
 
+        // NEW: Modifikasi pemanggilan icon agar script merender icon font default bukan image
         function createCardHtml(item) {
+            let iconHtml = '';
+            let badgeText = 'MOD';
+
+            if(item.type === 'script') {
+                // Untuk script render Ikon default font awesome "file-code"
+                iconHtml = `<div class="clean-icon" style="display:flex; align-items:center; justify-content:center; background: var(--search-bg);"><i class="fa-solid fa-file-code" style="font-size:32px; color:var(--primary);"></i></div>`;
+                badgeText = 'SCRIPT';
+            } else {
+                // Untuk apps dan games tetap menggunakan image cover
+                iconHtml = `<img src="${item.img}" class="clean-icon" loading="lazy" onerror="this.src='https://via.placeholder.com/70?text=IMG'">`;
+            }
+
             return `
             <div class="clean-card" onclick="openLink('${item.link}')">
                 <div class="icon-wrap">
-                    <img src="${item.img}" class="clean-icon" loading="lazy" onerror="this.src='https://via.placeholder.com/70?text=IMG'">
-                    <div class="mod-label">MOD</div>
+                    ${iconHtml}
+                    <div class="mod-label" ${item.type === 'script' ? 'style="background: var(--primary);"' : ''}>${badgeText}</div>
                 </div>
                 <div class="clean-info">
                     <div class="clean-name">${item.name}</div>
@@ -576,9 +595,11 @@
         function renderLists() {
             const cApps = document.getElementById('appsContainer');
             const cGames = document.getElementById('gamesContainer');
+            const cScripts = document.getElementById('scriptsContainer'); // Container Script
             
             if(!isDataLoaded) return; 
 
+            // Render Apps
             if(dbApps.length === 0) {
                 cApps.innerHTML = '<div class="status-msg">No apps found in this repository.</div>';
                 document.getElementById('btnMoreApps').classList.add('hidden');
@@ -589,6 +610,7 @@
                 document.getElementById('btnMoreApps').classList.toggle('hidden', showAppsCount >= dbApps.length);
             }
             
+            // Render Games
             if(dbGames.length === 0) {
                 cGames.innerHTML = '<div class="status-msg">No games found in this repository.</div>';
                 document.getElementById('btnMoreGames').classList.add('hidden');
@@ -598,10 +620,22 @@
                 cGames.innerHTML = hGames;
                 document.getElementById('btnMoreGames').classList.toggle('hidden', showGamesCount >= dbGames.length);
             }
+
+            // Render Scripts
+            if(dbScripts.length === 0) {
+                cScripts.innerHTML = '<div class="status-msg">No scripts found in this repository.</div>';
+                document.getElementById('btnMoreScripts').classList.add('hidden');
+            } else {
+                let hScripts = ''; 
+                dbScripts.slice(0, showScriptsCount).forEach(item => hScripts += createCardHtml(item));
+                cScripts.innerHTML = hScripts;
+                document.getElementById('btnMoreScripts').classList.toggle('hidden', showScriptsCount >= dbScripts.length);
+            }
         }
 
         function loadMoreApps() { showAppsCount += 10; renderLists(); }
         function loadMoreGames() { showGamesCount += 10; renderLists(); }
+        function loadMoreScripts() { showScriptsCount += 10; renderLists(); }
         
         function openLink(url) { 
             if(url && url !== '#') window.location.href = url; 
@@ -613,9 +647,14 @@
             const secRecom = document.getElementById('section-recom');
             const secApps = document.getElementById('section-apps');
             const secGames = document.getElementById('section-games');
+            const secScripts = document.getElementById('section-scripts');
 
             if(val === '') { restoreView(); return; }
-            secRecom.style.display = 'none'; secApps.style.display = 'block'; secGames.style.display = 'block';
+            
+            secRecom.style.display = 'none'; 
+            secApps.style.display = 'block'; 
+            secGames.style.display = 'block';
+            secScripts.style.display = 'block';
             
             const fApps = dbApps.filter(i => i.name.toLowerCase().includes(val));
             let hApp = ''; 
@@ -628,6 +667,12 @@
             fGames.forEach(item => hGame += createCardHtml(item));
             document.getElementById('gamesContainer').innerHTML = hGame || '<div class="status-msg">No games matched your search</div>';
             document.getElementById('btnMoreGames').classList.add('hidden');
+
+            const fScripts = dbScripts.filter(i => i.name.toLowerCase().includes(val));
+            let hScript = ''; 
+            fScripts.forEach(item => hScript += createCardHtml(item));
+            document.getElementById('scriptsContainer').innerHTML = hScript || '<div class="status-msg">No scripts matched your search</div>';
+            document.getElementById('btnMoreScripts').classList.add('hidden');
         }
 
         function restoreView() {
@@ -635,11 +680,16 @@
             let activeType = 'all';
             if(navItems[1].classList.contains('active')) activeType = 'app';
             else if(navItems[2].classList.contains('active')) activeType = 'game';
+            else if(navItems[3].classList.contains('active')) activeType = 'script';
             
+            // Logika menampilkan container berdasarkan tab
             document.getElementById('section-recom').style.display = (activeType === 'all') ? 'block' : 'none';
-            document.getElementById('section-apps').style.display = (activeType === 'game') ? 'none' : 'block';
-            document.getElementById('section-games').style.display = (activeType === 'app') ? 'none' : 'block';
-            showAppsCount=10; showGamesCount=10; renderLists();
+            document.getElementById('section-apps').style.display = (activeType === 'all' || activeType === 'app') ? 'block' : 'none';
+            document.getElementById('section-games').style.display = (activeType === 'all' || activeType === 'game') ? 'block' : 'none';
+            document.getElementById('section-scripts').style.display = (activeType === 'all' || activeType === 'script') ? 'block' : 'none';
+            
+            showAppsCount=10; showGamesCount=10; showScriptsCount=10; 
+            renderLists();
         }
 
         function nav(type, el) {
@@ -680,9 +730,7 @@
             else document.getElementById('btnFontTech').classList.add('active');
         }
 
-        // --- FUNGSI TEMA YANG SUDAH DIPERBAIKI (TIDAK LAG) ---
         function switchTheme() {
-            // Langsung eksekusi tanpa document.startViewTransition()
             const isLight = document.documentElement.classList.toggle('light-mode');
             const toggleBtn = document.getElementById('themeToggle');
             const metaTheme = document.getElementById('metaThemeColor');
@@ -719,7 +767,6 @@
             });
         }
 
-        // View Transition HANYA dibiarkan di ViewMode (List/Grid)
         function setViewMode(mode) {
             if (!document.startViewTransition) {
                 applyViewModeClass(mode);
@@ -733,8 +780,12 @@
         function applyViewModeClass(mode) {
             const cApps = document.getElementById('appsContainer');
             const cGames = document.getElementById('gamesContainer');
+            const cScripts = document.getElementById('scriptsContainer'); // Menerapkan view mode ke container script
+
             cApps.className = `list-container view-${mode}`;
             cGames.className = `list-container view-${mode}`;
+            cScripts.className = `list-container view-${mode}`;
+
             document.getElementById('btnViewList').classList.toggle('active', mode === 'list');
             document.getElementById('btnViewGrid').classList.toggle('active', mode === 'grid');
             localStorage.setItem('modora_view', mode);
@@ -781,4 +832,3 @@
     </script>
 </body>
 </html>
-
