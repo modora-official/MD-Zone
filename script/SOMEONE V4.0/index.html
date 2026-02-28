@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0f172a">
+    
+    <title>Unduh - 
+ | RIVIEW & SHARE SCRIPT BOT WHATSAPP OCHOBOT MD</title>
+    <meta name="description" content="Download script bot WhatsApp Ochobot MD terbaru.">
+    <meta name="author" content="MODORA Official Inc.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <style>
+        /* --- CONFIG & VARIABLES (DARK MODE DEFAULT) --- */
+        :root {
+            --header-h: 60px;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-glass: rgba(15, 23, 42, 0.75);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glass-blur: blur(20px);
+            
+            --primary: #2563eb; 
+            --secondary: #4f46e5;
+            --accent: #10b981; 
+            
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* --- RESET & LAYOUT --- */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: var(--font-main); 
+            outline: none; 
+            -webkit-tap-highlight-color: transparent; 
+        }
+        
+        html, body { 
+            width: 100%; 
+            /* Memastikan scrolling lancar dan tidak terpotong */
+            overflow-x: hidden; 
+            overflow-y: auto; 
+            scroll-behavior: smooth; 
+            background-color: var(--bg-body); 
+            color: var(--text-main);
+        }
+        
+        body { 
+            padding-top: calc(var(--header-h) + 20px); 
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+            transition: background-color 0.25s ease, color 0.25s ease;
+        }
+
+        .no-select { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
+
+        #mainView { 
+            width: 100%; 
+            padding: 0 24px 40px 24px; 
+            margin: 0 auto; 
+            max-width: 600px; 
+            animation: appEntry 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        @keyframes appEntry { 
+            0% { opacity: 0; transform: translateY(20px); } 
+            100% { opacity: 1; transform: translateY(0); } 
+        }
+
+        /* --- HEADER (IOS GLASSMORPHISM) --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
+            padding: 0 20px; background: var(--bg-glass); 
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid var(--card-border); z-index: 1000;
+        }
+        
+        .btn-back {
+            color: var(--primary); font-size: 20px; cursor: pointer; 
+            display: flex; align-items: center; gap: 5px; text-decoration: none;
+            font-weight: 600; font-size: 16px; transition: opacity 0.2s;
+        }
+        .btn-back:active { opacity: 0.6; }
+        .header-title { font-weight: 700; font-size: 16px; color: var(--text-main); position: absolute; left: 50%; transform: translateX(-50%); }
+
+        /* --- CONTENT COMPONENTS --- */
+        .app-header { display: flex; flex-direction: column; align-items: center; text-align: center; margin-bottom: 25px; }
+        
+        .app-icon {
+            width: 100px; height: 100px; border-radius: 24px; margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--bg-card), var(--border));
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 45px; color: #fff; border: 1px solid var(--card-border);
+        }
+
+        .app-title { font-size: 22px; font-weight: 800; line-height: 1.3; margin-bottom: 8px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+            background: var(--bg-card); padding: 15px; border-radius: 20px;
+            border: 1px solid var(--card-border); margin-bottom: 25px;
+        }
+        .stat-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border-right: 1px solid var(--border); }
+        .stat-item:last-child { border-right: none; }
+        .stat-val { font-size: 16px; font-weight: 800; color: var(--text-main); }
+        .stat-lbl { font-size: 11px; font-weight: 500; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;}
+
+        /* Deskripsi Box */
+        .desc-box {
+            background: var(--bg-card); padding: 20px; border-radius: 20px;
+            border: 1px solid var(--card-border); margin-bottom: 30px;
+            font-size: 14px; line-height: 1.6; color: var(--text-muted);
+        }
+        .desc-box strong { color: var(--text-main); font-weight: 700; }
+        .desc-title { font-size: 16px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+
+        /* --- ACTION BUTTONS --- */
+        .action-group { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+        
+        .btn-action {
+            width: 100%; padding: 16px; border-radius: 18px; font-size: 16px; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            cursor: pointer; transition: transform 0.2s, opacity 0.2s; border: none; text-decoration: none;
+        }
+        .btn-action:active { transform: scale(0.97); }
+        
+        .btn-primary { background: var(--primary); color: #fff; box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3); }
+        .btn-secondary { background: transparent; color: var(--text-main); border: 2px solid var(--border); }
+
+        @media (min-width: 768px) {
+            #mainView { max-width: 800px; padding-top: calc(var(--header-h) + 40px); }
+            .action-group { flex-direction: row; }
+            .btn-action { flex: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="no-select">
+        <a href="../../../" class="btn-back"><i class="fa-solid fa-chevron-left"></i> Kembali</a>
+        <div class="header-title">MODORA</div>
+        <div style="width: 75px;"></div> 
+    </header>
+
+    <div id="mainView">
+        
+        <div class="app-header">
+            <div class="app-icon no-select">
+                <i class="fa-brands fa-whatsapp" style="color: #25D366;"></i>
+            </div>
+            <h1 class="app-title">SOMEONE V4.0</h1>
+            <div class="app-dev">MODORA Official</div>
+        </div>
+
+        <div class="stats-grid no-select">
+            <div class="stat-item">
+                <span class="stat-val">8.17 MB</span>
+                <span class="stat-lbl">Ukuran</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val">V4.0</span>
+                <span class="stat-lbl">Versi</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-val"><i class="fa-solid fa-code"></i></span>
+                <span class="stat-lbl">Script</span>
+            </div>
+        </div>
+
+        <div class="action-group no-select">
+            <a href="https://sfl.gl/BbXV" target="_blank" rel="noopener noreferrer" class="btn-action btn-primary">
+                <i class="fa-solid fa-cloud-arrow-down"></i> Unduh
+            </a>
+            <a href="/tutorials" class="btn-action btn-secondary">
+                <i class="fa-solid fa-circle-play"></i> Tutorials Unduh
+            </a>
+        </div>
+
+        <div class="desc-box">
+            <div class="desc-title"><ion-icon name="information-circle"></ion-icon> Tentang Script Ini</div>
+            Script Bot WhatsApp <strong>SOMEONE</strong> versi terbaru. Dikembangkan untuk base Multi-Device dengan fitur lengkap untuk kebutuhan grup maupun personal. <br><br>
+            <strong>Fitur Unggulan:</strong>
+            <ul style="margin-left: 20px; margin-top: 8px;">
+                <li>Support Multi-Device & Anti Lag</li>
+                <li>Fitur Download (Tiktok, IG, YouTube)</li>
+                <li>Menu interaktif & responsif</li>
+                <li>Mudah di-deploy ke hosting / panel</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <script>
+        // Terapkan pengaturan font jika ada di localStorage (Sinkronisasi dengan index.html)
+        // Fungsi animasi loading sudah dihapus agar unduhan langsung berjalan
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedFont = localStorage.getItem('modora_font');
+            if(savedFont) { 
+                document.documentElement.style.setProperty('--font-main', savedFont); 
+            }
+        });
+    </script>
+
+</body>
+</html>
