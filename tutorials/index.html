@@ -7,7 +7,7 @@
     <meta name="color-scheme" content="dark light">
     <meta name="theme-color" content="#0f172a" id="metaThemeColor">
     
-    <title>MODORA - Tutorial Download</title>
+    <title>MODORA - Download Tutorial</title>
     <meta name="description" content="Tutorial cara mudah download aplikasi dan game di MODORA.">
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/nixy-pro/1@main/random/2026-02-07T14-36-29-180Z-IMG_20260207_212929_010.jpg" type="image/png">
 
@@ -68,12 +68,11 @@
         body { 
             color: var(--text-main); 
             padding-top: calc(var(--header-h) + 15px); 
-            /* Jarak bawah disesuaikan karena tidak ada lagi tab bottom nav */
             padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); 
         }
         body.app-ready { transition: background-color 0.4s, color 0.4s; }
 
-        .btn-tele, img, .btn-back {
+        .btn-tele, img, .btn-back, .watch-btn {
             -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
         }
 
@@ -91,11 +90,13 @@
         body.app-ready header { transition: background 0.4s, border 0.4s; }
         
         .header-left { display: flex; align-items: center; gap: 15px; }
-        .btn-back { width: 40px; height: 40px; border-radius: 12px; background: var(--search-bg); color: var(--text-main); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; transition: 0.2s; cursor: pointer; }
+        .btn-back { width: 40px; height: 40px; border-radius: 12px; background: var(--search-bg); color: var(--text-main); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; transition: all 0.2s ease; cursor: pointer; }
+        .btn-back:hover { filter: brightness(1.2); }
         .btn-back:active { transform: scale(0.9); }
         
         .logo { font-size: 22px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
-        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: all 0.2s ease; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+        .btn-tele:hover { filter: brightness(1.1); box-shadow: 0 6px 14px rgba(41, 182, 246, 0.4); }
         .btn-tele:active { transform: scale(0.9); }
 
         /* --- TUTORIAL SECTION --- */
@@ -104,23 +105,69 @@
 
         .tutorial-card {
             background: var(--bg-card); border-radius: 24px; border: 1px solid var(--card-border);
-            padding: 20px; box-shadow: var(--shadow); transition: background 0.4s; margin-bottom: 20px;
+            padding: 20px; box-shadow: var(--shadow); transition: background 0.4s, transform 0.2s ease; margin-bottom: 20px;
         }
+
+        /* --- WATCH OPTIONS --- */
+        .watch-options {
+            display: flex; gap: 10px; margin-bottom: 20px; width: 100%;
+        }
+        .watch-btn {
+            flex: 1; 
+            padding: 12px 8px; 
+            border-radius: 12px; 
+            font-size: 13px; 
+            font-weight: 700;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+            text-decoration: none; transition: all 0.2s ease; cursor: pointer;
+            border: 1px solid var(--card-border);
+            white-space: nowrap; 
+            overflow: hidden; 
+            text-overflow: ellipsis; 
+        }
+        .btn-web {
+            background: rgba(37, 99, 235, 0.1); color: var(--primary); border-color: var(--primary);
+        }
+        .btn-web:hover { background: rgba(37, 99, 235, 0.2); }
         
-        .video-wrapper {
-            width: 100%; border-radius: 16px; overflow: hidden; background: #000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); position: relative; margin-bottom: 20px;
+        .btn-app {
+            background: rgba(239, 68, 68, 0.1); color: var(--accent);
         }
-        /* Video Player Styling */
-        video { width: 100%; display: block; outline: none; border-radius: 16px; }
+        .btn-app:hover { background: rgba(239, 68, 68, 0.2); border-color: var(--accent); }
+        .watch-btn:active { transform: scale(0.96); }
+
+        /* YouTube Responsive Iframe Wrapper */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Rasio 16:9 */
+            border-radius: 16px; 
+            overflow: hidden; 
+            background: #000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); 
+            margin-bottom: 20px;
+        }
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
 
         .tutorial-text { font-size: 15px; line-height: 1.6; color: var(--text-main); }
-        .tutorial-text h4 { font-size: 16px; font-weight: 800; margin-bottom: 12px; color: var(--primary); display: flex; align-items: center; gap: 8px; }
+        .tutorial-text h4 { font-size: 16px; font-weight: 800; margin-bottom: 12px; color: var(--text-main); display: flex; align-items: center; gap: 8px; }
+        
+        .lang-badge { display: inline-flex; align-items: center; justify-content: center; padding: 4px 10px; border-radius: 8px; font-size: 12px; font-weight: 800; letter-spacing: 0.5px; color: white; }
+        .lang-badge.en { background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+        .lang-badge.id { background: linear-gradient(135deg, var(--accent), #b91c1c); }
+
         .tutorial-text p { margin-bottom: 10px; color: var(--text-muted); font-weight: 500; }
         .tutorial-text ul { padding-left: 20px; color: var(--text-muted); font-weight: 500; margin-bottom: 20px; }
         .tutorial-text li { margin-bottom: 8px; }
         
-        .lang-divider { width: 100%; height: 1px; background: var(--border); margin: 25px 0; }
+        .lang-divider { width: 100%; height: 1px; background: var(--border); margin: 25px 0; opacity: 0.6; }
 
         @media (min-width: 900px) { #mainView { max-width: 800px; padding: 0 40px; } header { padding: 0 5%; } }
 
@@ -138,18 +185,25 @@
     </header>
 
     <div id="mainView">
-        <div class="section-head"><i class="fa-solid fa-circle-play"></i> Cara Download</div>
+        <div class="section-head"><i class="fa-solid fa-circle-play"></i> How to Download</div>
         
         <div class="tutorial-card">
-            <div class="video-wrapper">
-                <video controls playsinline poster="https://cdn.jsdelivr.net/gh/nixy-pro/1@main/random/2026-02-07T14-36-29-180Z-IMG_20260207_212929_010.jpg">
-                    <source src="modora.mp4" type="video/mp4">
-                    Browser Anda tidak mendukung pemutar video HTML5.
-                </video>
+
+            <div class="watch-options">
+                <a href="#video-player" class="watch-btn btn-web">
+                    <i class="fa-solid fa-globe"></i> Watch on Web
+                </a>
+                <a href="https://youtu.be/mRL_Oe-sgUo" target="_blank" class="watch-btn btn-app">
+                    <i class="fa-brands fa-youtube"></i> Watch in App
+                </a>
+            </div>
+
+            <div class="video-wrapper" id="video-player">
+                <iframe id="yt-iframe" src="https://www.youtube.com/embed/mRL_Oe-sgUo" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
             </div>
             
             <div class="tutorial-text">
-                <h4><b>EN</b>Quick Guide:</h4>
+                <h4><span class="lang-badge en">EN</span> Quick Guide:</h4>
                 <p>Please watch the video above to see the download steps.</p>
                 <ul>
                     <li>Press the Play button to start the video.</li>
@@ -159,7 +213,7 @@
 
                 <div class="lang-divider"></div>
 
-                <h4><b>ID</b>Panduan Singkat:</h4>
+                <h4><span class="lang-badge id">ID</span> Quick Guide:</h4>
                 <p>Silakan tonton video di atas untuk melihat langkah-langkah pengunduhan.</p>
                 <ul>
                     <li>Tekan tombol Play untuk memulai video.</li>
@@ -169,17 +223,14 @@
             </div>
         </div>
         
-        <div class="footer">� <span id="year"></span> MODORA | All Rights Reserved</div>
+        <div class="footer">&copy; <span id="year"></span> MODORA | All Rights Reserved</div>
     </div>
 
     <script>
-        // Transisi halus setelah halaman siap
         window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { document.body.classList.add('app-ready'); }, 50); });
         
-        // Tahun otomatis untuk footer
         document.getElementById('year').innerText = new Date().getFullYear();
 
-        // Load pengaturan dari localStorage yang disinkronkan dengan halaman index.html
         function loadSettings() {
             if(localStorage.getItem('modora_eco') === 'true') {
                 document.documentElement.classList.add('eco-mode');
@@ -192,8 +243,29 @@
                 document.documentElement.style.setProperty('--secondary', savedSec);
             }
         }
-
         loadSettings();
+
+        // LOGIKA AUTO LANDSCAPE SAAT FULLSCREEN
+        function handleFullscreenChange() {
+            const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+            
+            if (isFullscreen) {
+                if (screen.orientation && screen.orientation.lock) {
+                    screen.orientation.lock('landscape').catch(function(error) {
+                        console.log('Rotasi otomatis landscape tidak didukung di perangkat/browser ini:', error);
+                    });
+                }
+            } else {
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            }
+        }
+
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+        document.addEventListener('webkitfullscreenchange', handleFullscreenChange);
+        document.addEventListener('mozfullscreenchange', handleFullscreenChange);
+        document.addEventListener('MSFullscreenChange', handleFullscreenChange);
     </script>
 </body>
 </html>
