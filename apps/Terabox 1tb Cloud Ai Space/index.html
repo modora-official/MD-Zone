@@ -7,8 +7,8 @@
     <meta name="color-scheme" content="dark light">
     <meta name="theme-color" content="#0f172a" id="metaThemeColor">
     
-    <title>Terabox 1tb Cloud Ai Space MOD APK V4.12.0</title>
-    <link rel="icon" href="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/apps/Terabox 1tb Cloud Ai Space/MODORA-Images.jpg" type="image/png">
+    <title>Terabox 1tb Cloud Ai Space MOD APK V4.13.0</title>
+    <link rel="icon" href="https://play-lh.googleusercontent.com/b9KKZIvnQ_X3eIqHXeR4e0Ftd3lrDgAIkJ8N1fAvgl6zpTLuX8m74aVlRnoeLQCcAnLMbSMRJGLvsmghheZe=s512" type="image/png">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -66,7 +66,7 @@
         .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
         .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
 
-        .action-top-wrap { margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px; }
+        .action-top-wrap { margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px; }
         .btn-download-huge { 
             width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
             color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
@@ -75,6 +75,15 @@
         }
         .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
         .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Social Notification */
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; }
+        .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
 
         .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
         .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
@@ -91,12 +100,27 @@
         .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
         .ss-wrap::-webkit-scrollbar { display: none; }
         .ss-scroll { display: flex; gap: 15px; width: max-content; }
-        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
+        .ss-img:active { opacity: 0.7; }
 
         .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
         .content-box strong { color: var(--text-main); }
         .content-box p { margin-bottom: 10px; }
         .content-box p:last-child { margin-bottom: 0; }
+
+        /* Lightbox CSS Diperbaiki */
+        .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; transition: 0.3s; user-select: none; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); z-index: 10001; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.4); }
+        .prev-lb { left: 10px; } 
+        .next-lb { right: 10px; }
 
         @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
     </style>
@@ -106,25 +130,25 @@
     <header>
         <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
         <div class="header-title">Detail App</div>
-        <a href="https://t.me/+xTtKEZ3KXAc5NTY9" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
     </header>
 
     <div id="mainView">
         <div class="app-hero">
             <div class="app-icon-wrap">
-                <img src="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/apps/Terabox 1tb Cloud Ai Space/MODORA-Images.jpg" class="app-icon" alt="Terabox 1tb Cloud Ai Space MOD APK V4.12.0">
+                <img src="https://play-lh.googleusercontent.com/b9KKZIvnQ_X3eIqHXeR4e0Ftd3lrDgAIkJ8N1fAvgl6zpTLuX8m74aVlRnoeLQCcAnLMbSMRJGLvsmghheZe=s512" class="app-icon" alt="Terabox 1tb Cloud Ai Space MOD APK V4.13.0">
                 <div class="mod-badge">MOD APK</div>
             </div>
             <div class="app-titles">
-                <h1 class="app-name">Terabox 1tb Cloud Ai Space MOD APK V4.12.0</h1>
+                <h1 class="app-name">Terabox 1tb Cloud Ai Space MOD APK V4.13.0</h1>
                 <div class="app-dev">Flextech Inc.</div>
             </div>
         </div>
 
         <div class="action-top-wrap">
-            <a href="https://safefileku.com/download/7aiAxErPtpQCrtNe" class="btn-download-huge">
-                <div><span>UNDUH APK (178.78 MB)</span></div>
-                <div class="btn-date">Update: 26 Februari 2026</div>
+            <a href="https://safefileku.com/download/dUiH4LZRBF1Y0Hem" class="btn-download-huge">
+                <div><span>UNDUH APK (116.56 MB)</span></div>
+                <div class="btn-date">Update: 6 Maret 2026</div>
             </a>
             <div class="mini-actions">
                 <a href="../../tutorials" class="btn-mini">
@@ -136,6 +160,14 @@
                 <a href="../../" class="btn-mini">
                     <i class="fa-solid fa-house"></i><span>Home</span>
                 </a>
+            </div>
+        </div>
+
+        <div class="social-notice">
+            <p>JOIN COMMUNITY FOR NEW UPDATES</p>
+            <div class="social-links">
+                <a href="../../../../../whatsapp" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="../../../../../telegram" target="_blank" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
             </div>
         </div>
 
@@ -215,6 +247,13 @@
         </div>
     </div>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-lb"><i class="fa-solid fa-xmark"></i></span>
+        <span class="prev-lb"><i class="fa-solid fa-chevron-left"></i></span>
+        <img class="lightbox-content" id="img-lb">
+        <span class="next-lb"><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+
     <script>
         function loadSettingsForDetail() {
             const savedColor = localStorage.getItem('modora_color');
@@ -230,9 +269,41 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             loadSettingsForDetail();
+            
+            // Inisialisasi Lightbox
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            // Tutup jika klik diluar area gambar
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
         });
     </script>
-    <script src="../../../../modora.js"></script>
     <script type="text/javascript">
         var go_url = 'https://sfl.gl/'; var api = 'c6860d49e9dc09f506140805a1cd075cdc10f23b'; var shorten_includ = ["safefileku.com"];
     </script>
