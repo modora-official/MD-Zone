@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>88 Fortunes Casino Slot Games MOD APK V4.26.00</title>
+    <link rel="icon" href="https://play-lh.googleusercontent.com/UZJmDpN4lWVXuLyicCnjJE56D-6w56AfDrBPBo1ZtvtB5kaQD74nV2HJTUNgyGkQ690RSwPS1SEgfA6LaKDFhg=s512" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border); --search-bg: #e2e8f0;
+        }
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+
+        .app-hero { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px; }
+        .app-icon-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .app-icon { width: 100%; height: 100%; border-radius: 25px; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); }
+        .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
+        
+        .app-titles { flex: 1; }
+        .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        .action-top-wrap { margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .btn-download-huge { 
+            width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Social Notification */
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; }
+        .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+        .section-head { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { color: var(--primary); font-size: 20px; }
+        
+        .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
+        .ss-wrap::-webkit-scrollbar { display: none; }
+        .ss-scroll { display: flex; gap: 15px; width: max-content; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
+        .ss-img:active { opacity: 0.7; }
+
+        .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
+        .content-box strong { color: var(--text-main); }
+        .content-box p { margin-bottom: 10px; }
+        .content-box p:last-child { margin-bottom: 0; }
+
+        /* Lightbox CSS Diperbaiki */
+        .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; transition: 0.3s; user-select: none; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); z-index: 10001; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.4); }
+        .prev-lb { left: 10px; } 
+        .next-lb { right: 10px; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-title">Detail App</div>
+        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="app-hero">
+            <div class="app-icon-wrap">
+                <img src="https://play-lh.googleusercontent.com/UZJmDpN4lWVXuLyicCnjJE56D-6w56AfDrBPBo1ZtvtB5kaQD74nV2HJTUNgyGkQ690RSwPS1SEgfA6LaKDFhg=s512" class="app-icon" alt="88 Fortunes Casino Slot Games MOD APK V4.26.00">
+                <div class="mod-badge">MOD APK</div>
+            </div>
+            <div class="app-titles">
+                <h1 class="app-name">88 Fortunes Casino Slot Games MOD APK V4.26.00</h1>
+                <div class="app-dev">SciPlay</div>
+            </div>
+        </div>
+
+        <div class="action-top-wrap">
+            <a href="https://safefileku.com/download/fbvxViP9VFs4oJE9" class="btn-download-huge">
+                <div><span>UNDUH APK (157.90 MB)</span></div>
+                <div class="btn-date">Update: 13 Maret 2026</div>
+            </a>
+            <div class="mini-actions">
+                <a href="../../tutorials" class="btn-mini">
+                    <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
+                </a>
+                <a href="../../requests" class="btn-mini">
+                    <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
+                </a>
+                <a href="../../" class="btn-mini">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="social-notice">
+            <p>JOIN COMMUNITY FOR NEW UPDATES</p>
+            <div class="social-links">
+                <a href="../../../../../whatsapp" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="../../../../../telegram" target="_blank" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Menu Mod</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Big Win</span></div>
+        </div>
+
+        <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
+        <div class="ss-wrap">
+            <div class="ss-scroll">
+                <img src="https://play-lh.googleusercontent.com/y51QEk9IylpMW8nM8jPocOIl2OnCruc7Z3MmTi1nRJfgQ1TS9Z0QXXpIoStbSx5rG2WIyX0MEw1ksVI76Dyar6Y=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/KhJcXzXhMxitIS2UiMd2ZF_2PlTYDJAeKH-OSxFVi2DccgEdD1bSsPjNgpSRM0t2woLV3SeKnpv8DoU1fwg3fA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/GmphiLEIC6Dq--R_MQW-RAQr3MF14OZgQMuMJK4DWHwJY2znbKbuEGrFil3oVcMjRvpgPyU9kQOeZQS_w_pZ3Ss=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/18YeP3ivOnSrxqf7xEF1N6YhLSP2l0K5WW1Ywo5hVluRf-K6FfSHHGtXv7AOFN0DN-eya_bfm7d_DPqXwCGlTw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/aab21g4BMLSw1gPB4YJqxIbBT0lJWZWQxfBtgO8T-GbeGwzALm2EK-fzzfACBLeom_r9qz5QB2_lIOmytgKG=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/TbEWJQjOQHM2GdbaGHe97u2ErMIWMdIJEyCJ4HXZyo4uD4XHD3UPQqEt7PhOAXchmwWe5-VfRzgbaLzWogVQWC8=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/2ALew7GrvaiA1woC5D31lWTw0H2istzjb1aZysHYpr7txB7dGpF2jceSVWczoFyXAJ9_eGlzHZSixc90r2W6=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/KMZpcBCPr9LemyQjNqivnIHDgIumj_MABreG1JLq8NTIcSwLvJKPLYcASqHu8LZ9fbsPiDeNZ5QEYz3Z2KBbeA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                
+            </div>
+        </div>
+
+        <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
+        <div class="content-box">
+            <p>It’s your lucky day! The Far East is no longer far away, and it is full of free slot machine games! 88 Fortunes brings you all the slot machine hits that are the heart of Vegas and Macau, straight to your phone. Enter the mystical adventure and discover what the magic slots machines offer. You’ll get the best casino games for free in a free slots game based on luck, so spin your favorite Light &amp; Wonder virtual slots from your home! The ways to play are limitless! Play the best free casino games on your tablet or phone whenever and wherever you are.</p>
+            
+            <p>88 Fortunes slots is not just one of the best slots casino game, but also a fortune symbol in Chinese culture. Here, you’ll play mystic slots and get the best casino games in one slot casino app. These casino slot machines feel like a first class trip to Vegas! Imagine glorious casino slots filled with every brand and slot machine you love to play. The games are packed with Jackpots and bonuses that create an authentic casino slots experience, just like the slots of Vegas.</p>
+            
+            <p>You’ll find famous Bally slots and a wide range of titles and brands of new casino slot machine games like 88 Fortunes, Dancing Drums, Ruler of Luck, Dragon Rising, 5 Treasures, Good Fortune Babies in Fu Dao Le, dragon slots and many other golden slots. Your favorite free casino games are waiting for you to start spinning free slot games.  New casino games slot-machines are added, so stay tuned for new slots games!</p>
+            <p>Casino slot machines, including new Vegas slots and classic slots games are one of the top free casino slot games. These awesome scatter slots have been winning millions of players' hearts, right here at the 88 gold slots casino.</p>
+            
+            <p>Get ready for a bonus bonanza! The lucky casino slots in this golden casino will guide you to your lucky win, and our slot games will help you discover a fortune of thrills and huge casino bonuses! The 88 Fortunes casino is packed with all kinds of free Vegas slots, rewards and prizes! This oriental-themed slots casino game is free to download and play. Spin all the free slots and enjoy the fun and wealth that free Vegas slots games offer.</p>
+            
+            <p>We gather the best slot games in one slots app to form a golden casino slots app and the biggest slot casino ever. We have Hot Shot Slots, Quick Hit, Gold Fish, Monopoly Slots and many more! </p>
+            
+            <p>Play slots online and enjoy a huge win with every lucky free spin of the slot machines with bonus games. Get ready to see 777 a lot on the free casino games’ screen, because the famous Bally slot machines feature a free bonus spin and a special golden Jackpot! Take our free slots casino games for a spin and you’ll see what this frenzy is all about.</p>
+            
+            <p>Whether it’s familiar Vegas casino slots or brand-new casino games, the thrill of free casino slot games is always there, especially when playing free Vegas slots with bonus rewards! Spin these slot games for free and win every slot reward on the classic and new casino slots!</p>
+            
+            <p>Let the slots mania begin! Spin casino games free of charge and get all the Vegas casino games on the 88 Fortunes slots at lightning speed! Play the free Vegas games and go from bored to riches! Enjoy slot machines with bonus games and online slots that prove why slots mania is justified! Our Las Vegas casino games let you spin slots for free and win coins for more free casino slot games. </p>
+            
+            <p>Please note: The games are intended for an adult audience (Aged 21 or older) and are strictly for amusement purposes only.</p>
+            <p>The games do not offer real money gambling or an opportunity to win real money or prizes.</p>
+            <p>Practice or success at social casino gaming does not imply future success at real money gambling.</p>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lb"><i class="fa-solid fa-xmark"></i></span>
+        <span class="prev-lb"><i class="fa-solid fa-chevron-left"></i></span>
+        <img class="lightbox-content" id="img-lb">
+        <span class="next-lb"><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+
+    <script>
+        function loadSettingsForDetail() {
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettingsForDetail();
+            
+            // Inisialisasi Lightbox
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            // Tutup jika klik diluar area gambar
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
+        });
+    </script>
+    <script type="text/javascript">
+        var go_url = 'https://sfl.gl/'; var api = 'c6860d49e9dc09f506140805a1cd075cdc10f23b'; var shorten_includ = ["safefileku.com"];
+    </script>
+    <script src="//safelinku.com/js/web-script.js"></script>
+</body>
+</html>
