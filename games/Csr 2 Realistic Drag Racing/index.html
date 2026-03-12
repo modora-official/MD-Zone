@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>Csr 2 Realistic Drag Racing MOD APK V6.3.0</title>
+    <link rel="icon" href="https://play-lh.googleusercontent.com/wzLXlU18FvfmxY04mzVznGljF_Lzr7ifC1IBo_ZUyP9p60Go0_hA7ydLHCglJcC5SwGTZodOpbhtVBqaJwhGrg=s512" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border); --search-bg: #e2e8f0;
+        }
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+
+        .app-hero { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px; }
+        .app-icon-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .app-icon { width: 100%; height: 100%; border-radius: 25px; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); }
+        .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
+        
+        .app-titles { flex: 1; }
+        .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        .action-top-wrap { margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .btn-download-huge { 
+            width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Social Notification */
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; }
+        .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+        .section-head { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { color: var(--primary); font-size: 20px; }
+        
+        .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
+        .ss-wrap::-webkit-scrollbar { display: none; }
+        .ss-scroll { display: flex; gap: 15px; width: max-content; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
+        .ss-img:active { opacity: 0.7; }
+
+        .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
+        .content-box strong { color: var(--text-main); }
+        .content-box p { margin-bottom: 10px; }
+        .content-box p:last-child { margin-bottom: 0; }
+
+        /* Lightbox CSS Diperbaiki */
+        .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; transition: 0.3s; user-select: none; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); z-index: 10001; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.4); }
+        .prev-lb { left: 10px; } 
+        .next-lb { right: 10px; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-title">Detail App</div>
+        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="app-hero">
+            <div class="app-icon-wrap">
+                <img src="https://play-lh.googleusercontent.com/wzLXlU18FvfmxY04mzVznGljF_Lzr7ifC1IBo_ZUyP9p60Go0_hA7ydLHCglJcC5SwGTZodOpbhtVBqaJwhGrg=s512" class="app-icon" alt="Csr 2 Realistic Drag Racing MOD APK V6.3.0">
+                <div class="mod-badge">MOD APK</div>
+            </div>
+            <div class="app-titles">
+                <h1 class="app-name">Csr 2 Realistic Drag Racing MOD APK V6.3.0</h1>
+                <div class="app-dev">Zynga</div>
+            </div>
+        </div>
+
+        <div class="action-top-wrap">
+            <a href="https://safefileku.com/download/aepgilaRxRKhaeEJ" class="btn-download-huge">
+                <div><span>UNDUH APK (86.15 MB)</span></div>
+                <div class="btn-date">Update: 13 Maret 2026</div>
+            </a>
+            <div class="mini-actions">
+                <a href="../../tutorials" class="btn-mini">
+                    <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
+                </a>
+                <a href="../../requests" class="btn-mini">
+                    <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
+                </a>
+                <a href="../../" class="btn-mini">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="social-notice">
+            <p>JOIN COMMUNITY FOR NEW UPDATES</p>
+            <div class="social-links">
+                <a href="../../../../../whatsapp" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="../../../../../telegram" target="_blank" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Menu Mod</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimted Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Keys</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Fuel</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Anti-Ban</span></div>
+        </div>
+
+        <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
+        <div class="ss-wrap">
+            <div class="ss-scroll">
+                <img src="https://play-lh.googleusercontent.com/XyPehAvvZatU_oxKjbSpDvCL5aOnpxZP2KdLfCshP80zsZa3kWlza00QbDB2GuRmKm_k=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/14vesKta6ve0C9Tv5d-IpkEe6AHZvURMjeftIv_IXlvIBBschpfKGKihiSWDXak9jQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/OifPeYaIWxHPj9lG_38VvbPgS4o-5NTRcC7oQHnCyAlaGzF6wuA5_xOC14CjDmE0CSc=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Qyxucc_oWRmtQLiOu1KOR4chjphmKbcA8RUA8w1ixB3gY6SllegfcU_M0KWQhk1zuFwn=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/z0JEPR8JM1fSdFdFsuWwdg-361zGSD-zkrU_LSQp501T_VJyJ4CBX_S7eiRRT3cu8i8=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Ek0SW6eM2-HT7skfE1MA6R56Q5PR4mTNunT0XxpTb38HDsfiY0f-F0pzn6OmN72qYMQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/-a5tWfQHktLxhKtmlt-lui9ZWiKlg-cfna2N7oLUQHBvDkfNwEk7S-R5cHm7fsAifjA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/9lVmR-PEDSIQ4zXV69mdx6rOKNbiKLbH6sP0cuEJV_pkrSNz49_LfvNVoTDk5Uwbqeo=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/qJ8ihBfE9BUklOAvXMblzMZI6as58qx09vopnW0_dMMD55fWMSQGTJv32jOT3ppmBjo=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/-MN6Yg65uGLssNOy7Ng_2KBxb05QlvlZMdVFdWuksc7VsArCDFfFUoROm1PXA8fmEgJA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/-tM2cR1KMB26S6ODq8EMnpQlJcJQai0ZtnNNYHh2qWG4QSF_-ccNYYfFES8mgnyope8=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/nmdz0y6wnoDpQpw8n33hrfuhH3k9y77iuPy0lYGpNDTL-X10b7lLxXKLFLT4GYZM9Q=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/BASlR3P-5MPZATQlyuy-WxlIejzo534uvxHZH4B9a7yanortzNcUA2XS6YXUFaa8uqm4=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/TdeG27cyMW8MUkXwbXXzPO6_YgwacbGmgAfUChAEdO0cWhIILjgz-DOQ2qDbbPPXAQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/XIRTjKT3MleRu01n43iVD3SM9-dIvXtHCwwn1O_50RIXzEa8z_bBYYITBIQoT70gUg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                
+            </div>
+        </div>
+
+        <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
+        <div class="content-box">
+            <p>CSR2 is a real driving simulator that delivers hyper-real drag racing to the palm of your hand. In its 3rd iteration after CSR Racing and CSR Classics; CSR Racing 2 is a great mobile drag race game experience. With millions of players to date and extensive partnerships with the world’s leading car manufacturers, this real car racing game is a fantastic driving simulator for motorized vehicles fans.</p>
+            
+            <p>Compete with players across the world in your custom built cars including Ferrari SF90 Stradale, McLaren Senna, Bugatti La Voiture Noire and more. Race opponents in real-time driving games challenges. Team up with friends to form a crew and tune your rides for maximum speed!  Free car games don’t get more real than this! Join the club and download an awesome free cars game and get racing now</p>
+            
+            <p>Show off car racing games and car play automobiles in your huge warehouse garage – CSR 2 features officially licensed vehicles, including Porsche, Aston Martin, Lamborghini, Pagani Koenigsegg, Toyota Supra Aerotop, Nissan Skyline GT-R (R34 NISMO S-tune), Chevrolet Camaro ZL1 1LE NASCAR or Mercedes-AMG F1 W11 EQ Performance #44</p>
+            
+            <p>CAMPAIGN MODES - ELITE TUNERS AND LEGENDS</p>
+            <p>Cross the finish line in a single-player drag race across stunning race courses. Go cruising and work your way from Junior Dragster to Top Fuel by beating top street racing crews in the city</p>
+            
+            <p>Take racing car games to the next level with “Elite Tuners”. Thousands of car driving simulator and car customization options available: from engine, tires, rims, traction, clutch, full-body wraps, and more. Add underground cars and motorcycles games favorites such as the Toyota GR Supra or Nissan GT-R (R35) or the McLaren F1 in “Legends”</p>
+            <p>Hit the asphalt in a speed race against opponents, or rally to the road in a drag race against your friends. Feel the real racing experience as you burst from your staging beams, and burnout down the lane in courses from North America or Europe in drag racing games! Beat traffic in these fuel dragsters across short distances in motor sport racing games</p>
+            
+            <p>• Car Customize: In CSR2, Collect some of the most iconic autos from the 60s, 70s, 80s and yes, the 90s! Customize your ride to find the car you need to climb the hill for your best racing experience. Go racing post midnight in this free driving game </p>
+            <p>• BEST CAR GAMES: Upgrade this free car game by restoring your rides to their former glory in the Legends workshop as you go for speed</p>
+            <p>• Use classic cars to take down an intense single player campaign</p>
+            <p>• CITY CAR DRIVING: Tear up the road, mile after km, with fast, contemporary cars in free racing games for boys or girls</p>
+            <p>• Get the real car drift games experience with AR mode. In these free games, experience what it's like to sit in one of these motor racing cars</p>
+            <p>•Furious Drifting: Master oversteering, opposite lock, oversteers and countersteering to become a drifting games, parking games, and car parking expert</p>
+            <p>•Tune Cars: Customize your hot wheels, bring them to the track in a contestants race and prove who is the best sports car driver around in free car games</p>
+            <p>•There is no limit to your 3d tuning of these epic cars; with a wide range of paint, nitro, wheels, brake calipers and turbo options; you can make a fearsome rebel drift racing car, or a funny car</p>
+            <p>•Get in the road driving  race faster than other online car games</p>
+            <p>•No Wifi Games: Play these offline car games to master 9 second cars wherever you go</p>
+            
+            <p>Must be 13+ to play this car game. </p>
+            <p>CSR2 game is FREE to download and includes optional in-game purchases (including random items). Information about drop rates for random item purchases can be found in-game. If you wish to disable in-game purchases, please turn off the in-app purchases in your phone or tablet’s Settings.</p>
+            
+            <p>Terms of Service: https://www.take2games.com/legal</p>
+            <p>Privacy Policy: https://www.take2games.com/privacy</p>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lb"><i class="fa-solid fa-xmark"></i></span>
+        <span class="prev-lb"><i class="fa-solid fa-chevron-left"></i></span>
+        <img class="lightbox-content" id="img-lb">
+        <span class="next-lb"><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+
+    <script>
+        function loadSettingsForDetail() {
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettingsForDetail();
+            
+            // Inisialisasi Lightbox
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            // Tutup jika klik diluar area gambar
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
+        });
+    </script>
+    <script type="text/javascript">
+        var go_url = 'https://sfl.gl/'; var api = 'c6860d49e9dc09f506140805a1cd075cdc10f23b'; var shorten_includ = ["safefileku.com"];
+    </script>
+    <script src="//safelinku.com/js/web-script.js"></script>
+</body>
+</html>
