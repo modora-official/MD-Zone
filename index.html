@@ -146,7 +146,7 @@
         .section-head ion-icon.recom-icon { color: #f59e0b; }
         .section-head ion-icon.apps-icon { color: #10b981; }
         .section-head ion-icon.games-icon { color: #8b5cf6; }
-        .section-head ion-icon.scripts-icon { color: #ec4899; } /* Pink untuk Script */
+        .section-head ion-icon.scripts-icon { color: #ec4899; } 
         
         .recom-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
         .recom-wrap::-webkit-scrollbar { display: none; }
@@ -249,7 +249,7 @@
         @keyframes vibrate { 0% { transform: translate(0, 0) rotate(0deg); } 25% { transform: translate(-2px, 2px) rotate(-2deg); } 50% { transform: translate(2px, -2px) rotate(2deg); } 75% { transform: translate(-2px, -2px) rotate(-2deg); } 100% { transform: translate(0, 0) rotate(0deg); } }
         @keyframes rocketFly { 0% { transform: translateY(0) scale(1); } 20% { transform: translateY(20px) scale(0.9); } 100% { transform: translateY(-120vh) scale(1.2); opacity: 0; } }
 
-        /* --- BOTTOM NAV --- */
+        /* --- BOTTOM NAV & BADGE --- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%; 
             height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
@@ -266,10 +266,19 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             gap: 4px; color: var(--text-muted); cursor: pointer; flex: 1; height: 100%; transition: color 0.2s;
         }
+        
+        .icon-wrapper { position: relative; display: flex; align-items: center; justify-content: center; }
         .nav-item ion-icon { font-size: 24px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .nav-item span { font-size: 10px; font-weight: 600; }
         .nav-item.active { color: var(--primary); }
         .nav-item.active ion-icon { transform: scale(1.15) translateY(-2px); }
+
+        .nav-badge {
+            position: absolute; top: -6px; right: -12px; background: var(--accent); color: white;
+            font-size: 9px; font-weight: 800; padding: 2px 5px; border-radius: 12px; min-width: 18px; text-align: center;
+            border: 2px solid var(--bg-glass); box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;
+            transition: border-color 0.25s ease, background-color 0.25s ease;
+        }
 
         /* --- MODAL SETTINGS --- */
         .modal { 
@@ -325,7 +334,7 @@
     <header>
         <div class="logo" onclick="window.location.reload()">MODORA</div>
         <div class="search-wrap">
-            <input type="text" id="search" class="search-input" placeholder="Search apps, games, scripts..." onkeyup="doSearch()">
+            <input type="text" id="search" class="search-input" placeholder="Search..." onkeyup="doSearch()">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
         <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
@@ -434,11 +443,33 @@
     </div>
 
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="nav('all', this)"><ion-icon name="home"></ion-icon><span>Home</span></div>
-        <div class="nav-item" onclick="nav('app', this)"><ion-icon name="grid"></ion-icon><span>Apps</span></div>
-        <div class="nav-item" onclick="nav('game', this)"><ion-icon name="game-controller"></ion-icon><span>Games</span></div>
-        <div class="nav-item" onclick="nav('script', this)"><ion-icon name="code-slash"></ion-icon><span>Scripts</span></div>
-        <div class="nav-item" onclick="toggleSet()"><ion-icon name="settings"></ion-icon><span>Setting</span></div>
+        <div class="nav-item active" onclick="nav('all', this)">
+            <div class="icon-wrapper"><ion-icon name="home"></ion-icon></div><span>Home</span>
+        </div>
+        <div class="nav-item" onclick="nav('app', this)">
+            <div class="icon-wrapper">
+                <ion-icon name="grid"></ion-icon>
+                <div class="nav-badge" id="badge-app" style="display:none;">0</div>
+            </div>
+            <span>Apps</span>
+        </div>
+        <div class="nav-item" onclick="nav('game', this)">
+            <div class="icon-wrapper">
+                <ion-icon name="game-controller"></ion-icon>
+                <div class="nav-badge" id="badge-game" style="display:none;">0</div>
+            </div>
+            <span>Games</span>
+        </div>
+        <div class="nav-item" onclick="nav('script', this)">
+            <div class="icon-wrapper">
+                <ion-icon name="code-slash"></ion-icon>
+                <div class="nav-badge" id="badge-script" style="display:none;">0</div>
+            </div>
+            <span>Scripts</span>
+        </div>
+        <div class="nav-item" onclick="toggleSet()">
+            <div class="icon-wrapper"><ion-icon name="settings"></ion-icon></div><span>Setting</span>
+        </div>
     </div>
 
     <script>
@@ -525,7 +556,6 @@
         }
 
         async function initData() {
-            // NEW: Tambahan pengambilan data untuk folder "script"
             const [appsRaw, gamesRaw, scriptsRaw] = await Promise.all([
                 scanDirectory('apps', 'app'),
                 scanDirectory('games', 'game'),
@@ -539,6 +569,27 @@
             
             renderRecom();
             renderLists();
+            updateNavBadges(); // Eksekusi update badge setelah data sukses dimuat
+        }
+
+        // UPDATE: Fungsi baru untuk mendeteksi folder/item secara otomatis pada badge
+        function updateNavBadges() {
+            const badgeApp = document.getElementById('badge-app');
+            const badgeGame = document.getElementById('badge-game');
+            const badgeScript = document.getElementById('badge-script');
+
+            if (dbApps.length > 0) {
+                badgeApp.innerText = dbApps.length;
+                badgeApp.style.display = 'block';
+            }
+            if (dbGames.length > 0) {
+                badgeGame.innerText = dbGames.length;
+                badgeGame.style.display = 'block';
+            }
+            if (dbScripts.length > 0) {
+                badgeScript.innerText = dbScripts.length;
+                badgeScript.style.display = 'block';
+            }
         }
 
         function renderRecom() {
@@ -565,17 +616,14 @@
             container.innerHTML = html;
         }
 
-        // NEW: Modifikasi pemanggilan icon agar script merender icon font default bukan image
         function createCardHtml(item) {
             let iconHtml = '';
             let badgeText = 'MOD';
 
             if(item.type === 'script') {
-                // Untuk script render Ikon default font awesome "file-code"
                 iconHtml = `<div class="clean-icon" style="display:flex; align-items:center; justify-content:center; background: var(--search-bg);"><i class="fa-solid fa-file-code" style="font-size:32px; color:var(--primary);"></i></div>`;
                 badgeText = 'SCRIPT';
             } else {
-                // Untuk apps dan games tetap menggunakan image cover
                 iconHtml = `<img src="${item.img}" class="clean-icon" loading="lazy" onerror="this.src='https://via.placeholder.com/70?text=IMG'">`;
             }
 
@@ -595,7 +643,7 @@
         function renderLists() {
             const cApps = document.getElementById('appsContainer');
             const cGames = document.getElementById('gamesContainer');
-            const cScripts = document.getElementById('scriptsContainer'); // Container Script
+            const cScripts = document.getElementById('scriptsContainer'); 
             
             if(!isDataLoaded) return; 
 
@@ -682,7 +730,6 @@
             else if(navItems[2].classList.contains('active')) activeType = 'game';
             else if(navItems[3].classList.contains('active')) activeType = 'script';
             
-            // Logika menampilkan container berdasarkan tab
             document.getElementById('section-recom').style.display = (activeType === 'all') ? 'block' : 'none';
             document.getElementById('section-apps').style.display = (activeType === 'all' || activeType === 'app') ? 'block' : 'none';
             document.getElementById('section-games').style.display = (activeType === 'all' || activeType === 'game') ? 'block' : 'none';
@@ -780,7 +827,7 @@
         function applyViewModeClass(mode) {
             const cApps = document.getElementById('appsContainer');
             const cGames = document.getElementById('gamesContainer');
-            const cScripts = document.getElementById('scriptsContainer'); // Menerapkan view mode ke container script
+            const cScripts = document.getElementById('scriptsContainer');
 
             cApps.className = `list-container view-${mode}`;
             cGames.className = `list-container view-${mode}`;
