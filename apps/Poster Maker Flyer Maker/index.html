@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>Poster Maker Flyer Maker MOD APK V169.0</title>
+    <link rel="icon" href="https://play-lh.googleusercontent.com/Hde-O6MKVtcwDchj2yM_kq637LFxYVAN7taWUF5CB_irI1wIKYmVi2QQUcpOL_JIog=s512" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border); --search-bg: #e2e8f0;
+        }
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+
+        .app-hero { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px; }
+        .app-icon-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .app-icon { width: 100%; height: 100%; border-radius: 25px; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); }
+        .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
+        
+        .app-titles { flex: 1; }
+        .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        .action-top-wrap { margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .btn-download-huge { 
+            width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Social Notification */
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; }
+        .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+        .section-head { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { color: var(--primary); font-size: 20px; }
+        
+        .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
+        .ss-wrap::-webkit-scrollbar { display: none; }
+        .ss-scroll { display: flex; gap: 15px; width: max-content; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
+        .ss-img:active { opacity: 0.7; }
+
+        .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
+        .content-box strong { color: var(--text-main); }
+        .content-box p { margin-bottom: 10px; }
+        .content-box p:last-child { margin-bottom: 0; }
+
+        /* Lightbox CSS Diperbaiki */
+        .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; transition: 0.3s; user-select: none; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); z-index: 10001; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.4); }
+        .prev-lb { left: 10px; } 
+        .next-lb { right: 10px; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-title">Detail App</div>
+        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="app-hero">
+            <div class="app-icon-wrap">
+                <img src="https://play-lh.googleusercontent.com/Hde-O6MKVtcwDchj2yM_kq637LFxYVAN7taWUF5CB_irI1wIKYmVi2QQUcpOL_JIog=s512" class="app-icon" alt="Poster Maker Flyer Maker MOD APK V169.0">
+                <div class="mod-badge">MOD APK</div>
+            </div>
+            <div class="app-titles">
+                <h1 class="app-name">Poster Maker Flyer Maker MOD APK V169.0</h1>
+                <div class="app-dev">Photo Studio & Picture Editor Lab</div>
+            </div>
+        </div>
+
+        <div class="action-top-wrap">
+            <a href="https://safefileku.com/download/CdZn4Z4xwMvfJpun" class="btn-download-huge">
+                <div><span>UNDUH APK (64.16 MB)</span></div>
+                <div class="btn-date">Update: 14 Maret 2026</div>
+            </a>
+            <div class="mini-actions">
+                <a href="../../tutorials" class="btn-mini">
+                    <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
+                </a>
+                <a href="../../requests" class="btn-mini">
+                    <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
+                </a>
+                <a href="../../" class="btn-mini">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="social-notice">
+            <p>JOIN COMMUNITY FOR NEW UPDATES</p>
+            <div class="social-links">
+                <a href="../../../../../whatsapp" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="../../../../../telegram" target="_blank" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Premium Unlocked</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Ads</span></div>
+        </div>
+
+        <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
+        <div class="ss-wrap">
+            <div class="ss-scroll">
+                <img src="https://play-lh.googleusercontent.com/53xJPoJEbMZ4jWjffxNpWy-xN8QxeIfMySVQhh5hYHpOAj-0UYtQeSCvXiC0VVy8wA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/XVof_MDcR_Kk3XEWHC3ERjaiJVcMTqZM1nl8wZz2dwvl60JjL0j-iuUSD60VQmJj2AI=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/KMPs3SU9ZTb9xxQFFcQnfLGaHkYFx-gnEE_75jtkBSv_G1gxbJHnICBDQ_wgsjCOgw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/mMjpTfL1EmjyLywf-10I2aqC1cJsdOggfO3Ulm8c7kx7F4it-ItLA_7GjWyg6T3a2ss=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/348L9s2DgYa6npi2oQ7B1h9NFbG3UodCqo5eJ9GegP5myQlfyCgXXUJc-mfVhfyigQh0=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/mg3zUGuD4ZSKDIyRomtVnRqsdxPurpbaZHxBJPAsa95FL_t1ZTv-SnWnCgAI3ZfMkrQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/dGjBBxgn-DuWzKmdMv5peZaK4Mn0a4OuTmnBJ7wu52F0kF4injUIvWDQQJB2weKNZNI=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/0Q5niec3EjCIqLUIqm0H2Pinq6x8krgCi_6Z9wOOBDrXvITLHNBjw-rWlFmaFpr46Po=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/fC145shXE5-nFgfl3taPvkIG0B5LlPlel9wdJ74sNueYsSzLh1s1En8-EjW1rYn8fw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/GzNWIq-WisnPp_Xtuxy08JEXsfuvqAawWiihWRU3OxhESISuG_Ix_Kjx3E0XzyEupSE=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/dg-dlMj_gXS4avLeQEG4hcqY_wOp_-_fLotJZypy8KTqZbuADLIittJCRRlCqMiXNI4=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/eZgdKEmc7x8x_NdNYkq63TEREond42BZ2g3qdNkK5ieJxooirCKKxjJuROTX3gElJ_y2=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/iO-7LTYSlZViZlY0k1YTWj2hWxt95goKGoIPZN8DpFjfRhgXwUQxiJI-4c98rGtpz99S=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/UTyutmRWV3jCRjZNv8ocqG3GFiK_nyfKFi2tJMFA_3g6XsclDxMeRlnANrl21dEm0rrm=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/bsIemLDFFW7_b3FGUQqggeMwEBCw7rY4wWmWcIrpWXmmsZfLbIGzgFZTNsMKuAi3Qms=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/G9fOWOCni3tLaq1ZuT-iRTQzzPIu3EoImKKuhM5pAIRrzHVvbakKZMByunRrCF5m0sPP=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/CAUHd4_dIdSyGHxHAm8sLq0Td5nEf0DikmcgUYMjjaISbA4CMUtv3wGBgkG0E27fWsD2=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/rtKO9TKVcX1epWAbBREuCJmM6Dy9a83lf456uDHZpLkKT90yFfNXgvR1GpOwGWnr_bQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/FmprKsnMv0lyHKMiXpbXGHZHm_zdiVqbXSSZK9mYHb_Czpwt0sCeqriFYGKxX-c5cTRX=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/9_MsYwtR5neYj5HCWA6XBKEAcdZo_ewL-_Q7vVVbv7cV7BwXPKtw_X3YvcuPqZAdmZHj=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Shpb8cMVj-XVj9mka6SA58jghuAUYI-Wadoshh1DbC8KpOfm_Csklw6iv8HJNZcZaOw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/tFeChmz27xl_ir24VUmnImkhiKTkmxO0guPksWaKW1SXCJ8xyK_INQF_kJE9yyi4RYA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/sffVO5gUoOz9ifElIBx56lGixAf4lmwiSTQyhmSbTnG-GILqaCVTP9JrBH9TSdiCTSA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/qeF_NT-g07kvAqTHQ-de10QIMBkfNN1EnSyujlXB7JhmU66M-ZVAfJdakqpwBq3gYoY=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/jQd0ymzXD5Tl92dxKvaEt8WZvIL6sI0Fv9vE-oeRf9ji_Hb2taBX4gJw7C0n_3a99iM=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Gqod9kChzA2FCXhi8npwA2KzQlhibqeBeMKPVo1okaPRF3tvvq7uVTm58ognQmQWMOI=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/I1KYHPbR1iBHRZm-QLxMuFCX68JW_Wj4FJjnT-EIvrLZzqwRGI2Rjus2LdAItJ-qMXo=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/eyQOL5ruwLhR_Ld9P7YEf_vDUQ4vIMQdcGA7ZWAgZFWU-14yPfprOjvMSjAgNpRlmg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/RDoIUIGJjVCaUSmgk1VDw8o4kpg2T7Xg7hI170JFocWq-qV6TlFSb3utjpt-usshwE6X=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/q6GS4HdOTjSo9Z9TmEOBIg7dmX2LTbCJPz87tJMCmHZnNsZsfGh4fM142zCeicxBcBw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/8xGrF5dLMg0hVFCOf2aW1BxbIRryRbXgdOoeL9WVYCHrlwJGTNqi8VkoBQh-TqGqaPe-=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Nsk-zZi5FN4yERNJTDaHgu-6p8Ht-74Bb_aev2KVxtwfXb9A3-NY0phJLEozahEhoZY=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                
+            </div>
+        </div>
+
+        <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
+        <div class="content-box">
+            <p>1. Want stunning posters but not a design expert? Let the poster maker app handle it for you—no design skills needed.</p>
+            <p>2. Tired of spending a time on creating posters? Our poster making tools give you pro results for a fraction of the cost.</p>
+            <p>3. Bored with the same old generic poster templates? Our AI poster maker can generate fresh, eye-catching poster designs in seconds.</p>
+            <p>4. Can’t afford a graphic designer? With this app, you don’t need one—get polished designs instantly, anytime.</p>
+            
+            <p>Save Time &amp; Easy-to-Use</p>
+            <p>AI Poster Maker provides quick and easy-to-use graphic design tools. You don't need graphic design skills to make your own poster and flyer.</p>
+            
+            <p>Advertisement Maker </p>
+            <p>Promote events, businesses, products, and more with our versatile AI graphic design app. Craft compelling business flyers, real estate flyers, restaurant menus, and more.</p>
+            
+            <p>Banner Maker</p>
+            <p>Need to make a banner for your business advertising?</p>
+            <p>Our graphic design app offers various customizable banner templates to help you create effective banner design for web pages, YouTube, Facebook, Instagram, LinkedIn, and other social media platforms in just a few minutes. </p>
+            
+            <p>Announcement Maker </p>
+            <p>You can create versatile announcement templates, suitable for various purposes, whether it's announcing a new office location or job vacancies, sharing joyful news like births or weddings, or communicating somber messages such as the passing of a loved one. It's easy to customize, making it quick and simple to create announcements tailored to your specific occasion.</p>
+            
+            <p>Social Media Post Maker</p>
+            <p>Creating stunning Instagram posts is easy. Our user-friendly poster maker app offers a wide range of customizable design templates for every occasion and style. From birthdays to promotions, we have you covered. Whether it's personal or sponsored content, find the perfect template to elevate your IG game.</p>
+            
+            <p>Festival Poster Maker</p>
+            <p>Spread the word and bring out the crowd to celebrate your festival in style. Whether it's Christmas, Thanksgiving, Diwali, or any other festive occasion, make your event unforgettable with creative promotions showcased through eye-catching, high-quality posters. </p>
+            
+            <p>AI Graphic Design App</p>
+            <p>Easily create high-quality designs that are fully customizable with photos and text for all your needs. Our AI graphic design app can generate graphic design templates for various events, including birthdays, music events, festivals like Christmas, New Year, Diwali, and more. </p>
+            
+            <p>Design carnival posters, brochures, promotional posters, advertisements, offer announcements, pamphlets, leaflets, and canvas cover photos for your shop, restaurant, office, or social media profiles effortlessly. </p>
+            
+            <p>Premium Subscription: Unlock all features with a monthly, 6-month, or annual premium subscription in our app:</p>
+            
+            <p>Remove Ads</p>
+            <p>Access to all premium designs and graphics</p>
+            <p>Subscription Details:</p>
+            
+            <p>Payment for Poster Maker &amp; Flyer Maker App will be charged to your Google Play Account upon purchase.</p>
+            <p>Subscription will automatically renew unless auto-renew is turned off at least 24 hours before the end of the current billing period.</p>
+            
+            <p>Help us improve by rating the poster maker app and sharing your valuable feedback.</p>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lb"><i class="fa-solid fa-xmark"></i></span>
+        <span class="prev-lb"><i class="fa-solid fa-chevron-left"></i></span>
+        <img class="lightbox-content" id="img-lb">
+        <span class="next-lb"><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+
+    <script>
+        function loadSettingsForDetail() {
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettingsForDetail();
+            
+            // Inisialisasi Lightbox
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            // Tutup jika klik diluar area gambar
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
+        });
+    </script>
+    <script type="text/javascript">
+        var go_url = 'https://sfl.gl/'; var api = 'c6860d49e9dc09f506140805a1cd075cdc10f23b'; var shorten_includ = ["safefileku.com"];
+    </script>
+    <script src="//safelinku.com/js/web-script.js"></script>
+</body>
+</html>
