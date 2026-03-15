@@ -8,7 +8,7 @@
     <meta name="theme-color" content="#0f172a" id="metaThemeColor">
     
     <title>Beach Buggy Racing 2 MOD APK V2026.01.15</title>
-    <link rel="icon" href="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/games/Beach Buggy Racing 2/MODORA-Images.jpg" type="image/png">
+    <link rel="icon" href="https://play-lh.googleusercontent.com/aAcv6ZjWYfH3QgzD5q6tWQmeh_DDT4AQcnds-9dRMZnAaG7jesS_MX0Tue95L0P_EVqE=s512" type="image/png">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -66,7 +66,7 @@
         .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
         .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
 
-        .action-top-wrap { margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px; }
+        .action-top-wrap { margin-bottom: 20px; display: flex; flex-direction: column; gap: 15px; }
         .btn-download-huge { 
             width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
             color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
@@ -75,6 +75,15 @@
         }
         .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
         .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Social Notification */
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; }
+        .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
 
         .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
         .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
@@ -91,12 +100,27 @@
         .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
         .ss-wrap::-webkit-scrollbar { display: none; }
         .ss-scroll { display: flex; gap: 15px; width: max-content; }
-        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
+        .ss-img:active { opacity: 0.7; }
 
         .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
         .content-box strong { color: var(--text-main); }
         .content-box p { margin-bottom: 10px; }
         .content-box p:last-child { margin-bottom: 0; }
+
+        /* Lightbox CSS Diperbaiki */
+        .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; transition: 0.3s; user-select: none; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); z-index: 10001; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.4); }
+        .prev-lb { left: 10px; } 
+        .next-lb { right: 10px; }
 
         @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
     </style>
@@ -112,7 +136,7 @@
     <div id="mainView">
         <div class="app-hero">
             <div class="app-icon-wrap">
-                <img src="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/games/Beach Buggy Racing 2/MODORA-Images.jpg" class="app-icon" alt="Beach Buggy Racing 2 MOD APK V2026.01.15">
+                <img src="https://play-lh.googleusercontent.com/aAcv6ZjWYfH3QgzD5q6tWQmeh_DDT4AQcnds-9dRMZnAaG7jesS_MX0Tue95L0P_EVqE=s512" class="app-icon" alt="Beach Buggy Racing 2 MOD APK V2026.01.15">
                 <div class="mod-badge">MOD APK</div>
             </div>
             <div class="app-titles">
@@ -122,9 +146,9 @@
         </div>
 
         <div class="action-top-wrap">
-            <a href="https://safefileku.com/download/0I9gcpzTgI3dWD6y" class="btn-download-huge">
-                <div><span>UNDUH APK (286.28 MB)</span></div>
-                <div class="btn-date">Update: 2 Maret 2026</div>
+            <a href="https://sfl.gl/pyp85XI" class="btn-download-huge">
+                <div><span>UNDUH APK (286 MB)</span></div>
+                <div class="btn-date">Update: 15 Maret 2026</div>
             </a>
             <div class="mini-actions">
                 <a href="../../tutorials" class="btn-mini">
@@ -139,40 +163,53 @@
             </div>
         </div>
 
+        <div class="social-notice">
+            <p>JOIN COMMUNITY FOR NEW UPDATES</p>
+            <div class="social-links">
+                <a href="../../../../../whatsapp" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="../../../../../telegram" target="_blank" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+
         <div class="mod-feature-grid">
-            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Gems/Coins</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Character</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Cars</span></div>
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Gems/Coins</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Cars</span></div>
         </div>
 
         <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
         <div class="ss-wrap">
             <div class="ss-scroll">
-                <img src="https://play-lh.googleusercontent.com/gMBOghx8NLC43n33PmOM-mmg-4njiuxykYlKj36hzpkqSWT5WMv3vyDAA4PVv7p6zPM=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/ADF-0mHU0mGNlsqC0lxXIuf687euXnv8ItjAfryOwW0uqjgZnAbPe0f3euwpMKu3iA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/TcKxqXlMWvgctPJadNDG2zRT-td6bQQbqZ3e1eHIPXXXMt5k30oNGtRTo_rmdjtDpKs=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/Bax_9N16tbJTXafXi1LhXpnvo83CWjpenvmKLWOW9FLEuVpF7vZWtGQ7ouO7EsaZqSQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/WKTjb-YXnFFziAVgHiAuOK5DKqhWrAQYilS63Vfc10RbSrlq-bTRg6lgeGQN2KK5Emw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/9Arg8-Z5IK_3sy6YNBFyw_bIFSi2Xw3sTCxc6H98e6yjIYEow8tQRT3xZpXc-NuZYJem=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/TH16SYq3xv0WuPQGX6nL2UAfJB2q0mkZRMQU_xfve0QUfA_PFG6i2Hv9upGUwsXIB_Q=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/8l4rhlS5vup38HOK5WtwHHOzrBxDkrrBf0ed3D7aWRzK6rpjdpb1dP4vRqIMsFPL0A=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/9zAEqb4tDI7gIWo34IRcfGpVEtXSF_EEVkTuCyNbXPno6o2CKc1972A5itxqavok2U4=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/0KvJLB8KjhKJVu4mI2GkggWPMhzmnmmR_-Guf7xGbUoJy7x9yaH45kpoemKr-oz-tc0=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/fLAtNeeiecKDTMgR6p3hwdMW5BB2hyCGyrcIPCWZH-aiLMAJ21YeiSYp5-vPyPTF0Og=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/ENtCPoLUfOtw1fTrHKcC95vaLtKMs28X7hpDtVK9c7_pCDNnnjzOpfm1vTQ4Zc_h6bKi=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/NL3KRUZSizTRPdE2HGDzPjhS8vWdoEV_lAg7jWvSWVEZxN70t4P6V2-Av1TtxQYTkzc=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/vPAl6i1qYs0i7sFVtSKxBD0Js9iHhXOww4iFooupUYa1pbsMkzXA_g3PAsbYrhyy-RM=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/TDjQjKeZQOcpmq7O66eiD2QLkY18G0gv_ujF_YaTaZps46sr83-rvTKofgShQqmAC3Zm=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/g0RbVRBe_H54vt0UQKgYWG1ejNcB6XC0x4uv9nUO3QkjC1Le7CCFgaWxqGc4t_uwAA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/ngIwCwHzkHOG5GL2zeRH3AnVSi0s9Sp5UEdEcRdwPLOlbR_ojHSbGGx4VgbFwTl486M=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/YR2qH9gSf0VFJAl9FCAqBWnoiVidfx4J1jaEiUXNnQpEIlN60ESqfuhj38HsSu03c8MB=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/v4ix7cLzxDDh_2lLfBfb-CDpfuAZ0G5QFasQFqtkwN-24-fzCS5mDbcbP1WE2lvlCVY=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/8jp0mRpt25mpDoBTEFilk_aHCX_3b_FVtrLHUE8PJjZTQdTj-x2F_qz3YF8Nc_mV6bQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/iKwt9fhRXMuR5n0uc6i9d2HUTJBNUZx4Z7Trmad9JstTJVLIQ7QdQcHxJD0TO5lXCwU=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/kDeIUEBEgmrNPNG66rEagZ5Zjvc7KPe94gbOb_CSNRqZFL37nvUqCd09Lx3u6e8XInhY=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/2jERsurGuqWh3q8mHgkc9cwqaoUxqZxz-r-Z0mDP3tHjU2MnPOYHiWemhIVL2VfNd-I4=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Q1Jf6tsVq8l7svqXuG-s6TWvNmg1cP5mclwx7UgYGWB9qu9qh1BCfu_4GD5HgESX1Cs=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/4xsgWIYD5lOfxK-CJUTinmFxomlIzwhF-HMHMcQbm8sIbQF5DKD4lAz9MNuuroMn6tQ7=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ZmSuG0q9RHceAUR4qIG7MORq7Y-2UqCnQbvp1FeBnS53zXdBuz0eOCd2e1V1r2-2mhA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/IGP95lxOoh2QsPghHSe_bMnuvMJQSuKL0xuCzr2ynk8AE8Xg5aaTy4XaLhF6Phs2pJ8=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/jyA8X6rV7Ywkf8RX5GeCylNPS0rMmT6NnPzcRlq4uEAVgKOCGmLIpgJZDrZLlRWODg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/q468ag2H-CK7UNzgMzYpSyMYcCk_Q5Ev9daxQeLd2P3TeVckZUFBsdWKgvFQwNnMI24=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/tqfyXmIme3lBE31mEz7R7DeM0dXFkNwNLXFR8lbZmD06d6U_O5UTUxXa8Os_7Uo4Gw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/fAz0VW7uoXv6mJBWEe0IJ2PXCKCnhc6cVmy4prO0UD81XBUV_ysPHHzHMnHkf92qKVY7=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/mM_JF0v_bBMYyq1PDONa6qymAxCxKjRvM7SaiQrWrT-CIrJqbjpxXa9HUzuviKmiRr2p=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/JWr3d2Td_EPNG5v959ZVsS1jgRoLyRW35cmd4KyVJnvRmS4oAJIrGRmO5dqw7fd6kLez=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/BG5yYLs-DjxfgJZ_EBtFGQqHV8bZzy5Ej6bkz6e1imHsPCX-AvKrFN8q7ihhJ3mhfw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/m3dqgXPFSlTtg17jJ4UGas1PK71ZoHgYHCvXFuibDRsp0s-3g3UrFV1AOuk6RHnuucc=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Hon272g0-ox5GMUUT9GkuR0JTumMRD3nuebM5drIMMSQe6dnHj5Yunq1UggYMUPWONQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ZjcR74FnSNiHXbdtG2e6Lz5gKWxdJuvQSdBD9iD-0G-UpWr-6Zw0a8iymXTv1HbexQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/eeRJpvXl00rUpms9ppCnXZdpYaVNDBMID1VyKdgzPEXeOJ5DLQ8ACW1blHk-LDwV_Xo=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/vI0XCVaEioXwET8dOYaksA1s5oBSlYsERrbIS-Hh_TVYUMGbksLX66YvcZeGNlzKgNg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Afsik0AwqP_JEDR9NfD4R1xndkZr6OVDZkRVvBTAdN4uV40MNzaqabMJY9CR0lcqv95E=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/N-ZvOoyr_6X6ouFVR1dGphj1CMKnYJgdIo_R8PcA5eRL_CoGEY5QtoNTNmoEooqgSxQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ddWl7dqzJ8z22GdtM52j-H6ZgX0Gqv2fvNNtbjY9XSjlraOhZckaEP_lPpPDEKR9Xc0=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/1iIVJH5CXBN7UefmEZ0YwPckLpT8Z340wABoMYBBWFNq9GJpiaT9jgtaGYO75miGX_w=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/7iKeJ2_pVKJE67T-phQ_gVxgkXEgycx7qvjMSe3HHPiWJeq2EYsiSRLiYDnBVZmdVSrc=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/4QI1cAsRSbQMeB7E0_17I-871nKvjXKQhBm6BTcAJ7KX0nNVed1qxEUxBZ_pWjafvw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
                 
             </div>
         </div>
 
         <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
         <div class="content-box">
+            <p>The Hot Wheels™ special event is on in Beach Buggy Racing 2! Race legendary Hot Wheels cars on epic twisting tracks. New cars. Rare skins. Limited-time challenges. Now through August 10.</p>
+            
             <p>Join the Beach Buggy Racing League and compete against drivers and cars from around the world. Race through Egyptian pyramids, dragon-infested castles, pirate ship wrecks, and experimental alien bio-labs. Collect and upgrade an arsenal of fun and wacky Powerups. Recruit new drivers, assemble a garage full of cars and race your way to the top of the League.</p>
             
             <p>The first Beach Buggy Racing introduced over 300 million international mobile players to console-style kart-racing with a playful offroad twist.  With BBR2, we've upped the ante with a ton of new content, upgradeable Powerups, new game modes...and for the first time you can compete against other players in online competitions and tournaments!</p>
@@ -236,6 +273,13 @@
         </div>
     </div>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-lb"><i class="fa-solid fa-xmark"></i></span>
+        <span class="prev-lb"><i class="fa-solid fa-chevron-left"></i></span>
+        <img class="lightbox-content" id="img-lb">
+        <span class="next-lb"><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+
     <script>
         function loadSettingsForDetail() {
             const savedColor = localStorage.getItem('modora_color');
@@ -251,6 +295,39 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             loadSettingsForDetail();
+            
+            // Inisialisasi Lightbox
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            // Tutup jika klik diluar area gambar
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
         });
     </script>
     <script type="text/javascript">
