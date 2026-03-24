@@ -7,8 +7,8 @@
     <meta name="color-scheme" content="dark light">
     <meta name="theme-color" content="#0f172a" id="metaThemeColor">
     
-    <title>Capcut Video Editor MOD APK V16.9.0</title>
-    <link rel="icon" href="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/apps/Capcut Video Editor/MODORA-Images.jpg" type="image/png">
+    <title>Capcut Video Editor MOD APK V17.4.0</title>
+    <link rel="icon" href="https://play-lh.googleusercontent.com/M78HyakHaxKrjoeqYx41E9DXfVYYtx67nvc7Ks4G4zFQeaAJdGCi8gzzGSrHIwlrmnJS6zD9S4fAXqdEwfuHQAQ=s512" type="image/png">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -63,10 +63,10 @@
         .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
         
         .app-titles { flex: 1; }
-        .app-name { font-size: 24px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
         .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
 
-        .action-top-wrap { margin-bottom: 30px; display: flex; flex-direction: column; gap: 15px; }
+        .action-top-wrap { margin-bottom: 20px; display: flex; flex-direction: column; gap: 5px; }
         .btn-download-huge { 
             width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
             color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
@@ -76,7 +76,16 @@
         .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
         .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+        /* Social Notification */
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; }
+        .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
         .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
         .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
         .btn-mini i { font-size: 18px; color: var(--primary); }
@@ -91,12 +100,27 @@
         .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
         .ss-wrap::-webkit-scrollbar { display: none; }
         .ss-scroll { display: flex; gap: 15px; width: max-content; }
-        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
+        .ss-img:active { opacity: 0.7; }
 
         .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
         .content-box strong { color: var(--text-main); }
         .content-box p { margin-bottom: 10px; }
         .content-box p:last-child { margin-bottom: 0; }
+
+        /* Lightbox CSS */
+        .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; transition: 0.3s; user-select: none; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); z-index: 10001; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.4); }
+        .prev-lb { left: 10px; } 
+        .next-lb { right: 10px; }
 
         @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
     </style>
@@ -106,31 +130,32 @@
     <header>
         <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
         <div class="header-title">Detail App</div>
-        <a href="https://t.me/+xTtKEZ3KXAc5NTY9" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
     </header>
 
     <div id="mainView">
         <div class="app-hero">
             <div class="app-icon-wrap">
-                <img src="https://cdn.jsdelivr.net/gh/modora-official/MD-Zone@main/apps/Capcut Video Editor/MODORA-Images.jpg" class="app-icon" alt="Capcut Video Editor MOD APK V16.9.0">
+                <img src="https://play-lh.googleusercontent.com/M78HyakHaxKrjoeqYx41E9DXfVYYtx67nvc7Ks4G4zFQeaAJdGCi8gzzGSrHIwlrmnJS6zD9S4fAXqdEwfuHQAQ=s512" class="app-icon" alt="Capcut Video Editor MOD APK V17.4.0">
                 <div class="mod-badge">MOD APK</div>
             </div>
             <div class="app-titles">
-                <h1 class="app-name">Capcut Video Editor MOD APK V16.9.0</h1>
-                <div class="app-dev">Bytedance Pte. Ltd.</div>
+                <h1 class="app-name">Capcut Video Editor MOD APK V17.4.0</h1>
+                <div class="app-dev"><a href="https://play.google.com/store/apps/details?id=com.lemon.lvoverseas" target="_blank" style="color: inherit; text-decoration: none;">Bytedance Pte. Ltd.</a></div>
             </div>
         </div>
 
         <div class="action-top-wrap">
-            <a href="https://safefileku.com/download/movxy3WwmEYllwi5" class="btn-download-huge">
-                <div><span>UNDUH (302 MB)</span></div>
-                <div class="btn-date">Update: 20 Februari 2026</div>
+            
+            <a href="https://safefileku.com/download/ExI1NG1c6gFOUOp0" class="btn-download-huge" style="margin-bottom: 12px;">
+                <div><span>DOWNLOAD (284.35 MB)</span></div>
+                <div class="btn-date">Update: 24 Maret 2026</div>
             </a>
             <div class="mini-actions">
                 <a href="../../tutorials" class="btn-mini">
                     <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
                 </a>
-                <a href="../../request" class="btn-mini">
+                <a href="../../requests" class="btn-mini">
                     <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
                 </a>
                 <a href="../../" class="btn-mini">
@@ -139,26 +164,36 @@
             </div>
         </div>
 
+        <div class="social-notice">
+            <p>JOIN COMMUNITY FOR NEW UPDATES</p>
+            <div class="social-links">
+                <a href="../../../../../whatsapp" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="../../../../../telegram" target="_blank" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+
         <div class="mod-feature-grid">
             <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Premium Unlocked</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Ads</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Pro Features</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Watermark Removed</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>High Quality Export</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>VIP Unlocked</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Features</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Login</span></div>
         </div>
 
+        
+
         <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
         <div class="ss-wrap">
             <div class="ss-scroll">
-                <img src="https://play-lh.googleusercontent.com/pgPmNXo7BmVBcjZIIHjZmu3PCZ8Ph9Tq1JHgPXhgksKCgZQysBOrEEbXBUmFuFuNlRU=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/V14aFGQw0xuV975eZBiCJfumTJTGEjsOQQx8Gt3LM_cOXh8Pam0UV8lfJiyN5wYJu8cV=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/V8hd0zQ3-gvG09fe_SijjDuOvhh4UIVox58CfVB-lwkc0RwvpAFLA3yvxTdOD5e3Nw=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/D6F2g22GL-4mRjwAtHLrPmDr64O-4-L_EMsxVxy_K7uZFtTGaEeQKysd3Sx7Y4hxDoM=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/x4jrQP9_Ev18Cv06R3jGe6pwzRQbL71dN59qnY9M6QYTX6DyEeFQ4LTE7ho6KuA-92L-=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/1iL8DEs-fViIMwtJ98yru4PNVgbhK6ndVUe-KwBaC5WVosmk6U_WXYq2Mup0q9K4ZvE=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/kvAqso_fnZQyheK31RGHZvPhy9UwirOrToD6dYsKiGJo41gQ6OcpxanqB4dG3G2tAQ=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/lPWAbB_jZycmQg67n7QXxZ2zJRKCZ2lEs7uTwRlRBZIjTuBhJ_9IVsvS85U2BTG3Mhs=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/iv2O5J96YhJdfKNPZzafkGkrUqphn20Ivbjo0-sJzp6l-HJvrgJjmsknAHNft4DPjA=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/6BR---l84afm3uDl0Is1feusM2KO2C_UKek4QNEd70rTRvIa7EgGtBPvl_HVdFyLXg=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/WfwbtHi4g3vglzS6VgUxeRts_g_wgQ1tSa5DLQl91M4kOoTg8BQFsXi16J4FwIdIKTL_=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/tc7WpgpN90ij7FFkefwBwntXqPdS5TBCk0895Lf5-jB7rPIyz0FdH6OefiWNGlfpDTs=s720" class="ss-img" alt="Screenshot" loading="lazy">
-                <img src="https://play-lh.googleusercontent.com/bVcUMymeJZIxp5p01Ttmc1FHp9Jy501K4lQHB3-OXXSVfNLE6tUa76PY1goZ-O_VBg=s720" class="ss-img" alt="Screenshot" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/pgPmNXo7BmVBcjZIIHjZmu3PCZ8Ph9Tq1JHgPXhgksKCgZQysBOrEEbXBUmFuFuNlRU=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/V14aFGQw0xuV975eZBiCJfumTJTGEjsOQQx8Gt3LM_cOXh8Pam0UV8lfJiyN5wYJu8cV=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/V8hd0zQ3-gvG09fe_SijjDuOvhh4UIVox58CfVB-lwkc0RwvpAFLA3yvxTdOD5e3Nw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/D6F2g22GL-4mRjwAtHLrPmDr64O-4-L_EMsxVxy_K7uZFtTGaEeQKysd3Sx7Y4hxDoM=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/x4jrQP9_Ev18Cv06R3jGe6pwzRQbL71dN59qnY9M6QYTX6DyEeFQ4LTE7ho6KuA-92L-=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/1iL8DEs-fViIMwtJ98yru4PNVgbhK6ndVUe-KwBaC5WVosmk6U_WXYq2Mup0q9K4ZvE=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/kvAqso_fnZQyheK31RGHZvPhy9UwirOrToD6dYsKiGJo41gQ6OcpxanqB4dG3G2tAQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/lPWAbB_jZycmQg67n7QXxZ2zJRKCZ2lEs7uTwRlRBZIjTuBhJ_9IVsvS85U2BTG3Mhs=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/iv2O5J96YhJdfKNPZzafkGkrUqphn20Ivbjo0-sJzp6l-HJvrgJjmsknAHNft4DPjA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/6BR---l84afm3uDl0Is1feusM2KO2C_UKek4QNEd70rTRvIa7EgGtBPvl_HVdFyLXg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/WfwbtHi4g3vglzS6VgUxeRts_g_wgQ1tSa5DLQl91M4kOoTg8BQFsXi16J4FwIdIKTL_=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/tc7WpgpN90ij7FFkefwBwntXqPdS5TBCk0895Lf5-jB7rPIyz0FdH6OefiWNGlfpDTs=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/bVcUMymeJZIxp5p01Ttmc1FHp9Jy501K4lQHB3-OXXSVfNLE6tUa76PY1goZ-O_VBg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
                 
             </div>
         </div>
@@ -223,6 +258,13 @@
         </div>
     </div>
 
+    <div id="lightbox" class="lightbox">
+        <span class="close-lb"><i class="fa-solid fa-xmark"></i></span>
+        <span class="prev-lb"><i class="fa-solid fa-chevron-left"></i></span>
+        <img class="lightbox-content" id="img-lb">
+        <span class="next-lb"><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+
     <script>
         function loadSettingsForDetail() {
             const savedColor = localStorage.getItem('modora_color');
@@ -238,6 +280,39 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             loadSettingsForDetail();
+            
+            // Inisialisasi Lightbox
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            // Tutup jika klik diluar area gambar
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
         });
     </script>
     <script type="text/javascript">
