@@ -1,3 +1,4 @@
+// <script src="../../../iklan.js"></script>
 // Iklan Klik
 (function(s){
     s.dataset.zone='10765319';
