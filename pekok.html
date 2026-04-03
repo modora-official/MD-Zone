@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Sederhana UI/UX</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Reset Dasar */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #000000; /* Tema gelap tetap dipertahankan */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigasi */
+        nav {
+            width: 100%;
+            padding: 20px 0;
+            text-align: center;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #1f1f1f;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-brand {
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+
+        /* Wrapper Utama untuk mendorong footer ke bawah */
+        .content-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 0;
+        }
+
+        /* Kontainer Utama */
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+            max-width: 500px;
+            gap: 24px;
+        }
+
+        /* Kontainer Screenshot */
+        .screenshot-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+            border: 1px solid #222;
+        }
+
+        .screenshot-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Grup Tombol (2 baris) */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            width: 100%;
+        }
+
+        /* Gaya Tombol Dasar (Sekarang mendukung tag <a>) */
+        .btn {
+            font-family: inherit;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+            font-weight: 600;
+            text-align: center;
+            text-decoration: none; /* Menghilangkan garis bawah pada link */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%; /* Memastikan kedua tombol sejajar / sama panjang */
+            box-sizing: border-box;
+        }
+
+        /* Menghilangkan outline dan kotak putih saat diklik */
+        .btn:focus,
+        .btn:active,
+        .btn:visited {
+            outline: none !important;
+            box-shadow: none !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Tombol 'Tonton' (Di Atas - Lebih Besar) */
+        .btn-watch {
+            background-color: #3b82f6;
+            color: white;
+            font-size: 16px;
+            padding: 16px;
+        }
+
+        .btn-watch:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Tombol 'Tutorial' (Di Bawah - Lebih Kecil) */
+        .btn-tutorial {
+            background-color: #1a1a1a;
+            color: #9ca3af;
+            font-size: 12px;
+            padding: 10px;
+            border: 1px solid #333;
+        }
+
+        .btn-tutorial:hover {
+            background-color: #262626;
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            width: 100%;
+            padding: 24px 0;
+            text-align: center;
+            font-size: 13px;
+            color: #6b7280;
+            border-top: 1px solid #1f1f1f;
+            background-color: #050505;
+        }
+
+        footer span {
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-brand">NIXY MEDIA</div>
+    </nav>
+
+    <div class="content-wrapper">
+        <main class="main-container">
+            <div class="screenshot-container">
+                <img src="(URL_GAMBAR)" alt="Screenshot Website">
+            </div>
+
+            <div class="button-group">
+                <a href="https://limewire.com/d/ZIQRF#8h9WNMKULO" target="_blank" class="btn btn-watch">Tonton</a>
+                <a href="(LINK_TUTORIAL_DISINI)" target="_blank" class="btn btn-tutorial">Tutorial Lewati Link</a>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        &copy; <span id="currentYear"></span> NIXY MEDIA. All rights reserved.
+    </footer>
+
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+</html>
