@@ -7,7 +7,7 @@
     <meta name="color-scheme" content="dark light">
     <meta name="theme-color" content="#0f172a" id="metaThemeColor">
     
-    <title>MODORA - Request Mod</title>
+    <title>MODORA - Request Mod & Live Feed</title>
     <meta name="description" content="Submit a request for modified applications or games on MODORA.">
     <link rel="icon" href="https://cdn.jsdelivr.net/gh/nixy-pro/1@main/random/2026-02-07T14-36-29-180Z-IMG_20260207_212929_010.jpg" type="image/png">
 
@@ -34,6 +34,7 @@
             --search-bg: #334155; --glass-blur: blur(20px);
             --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
             --radius: 20px; --font-main: 'Plus Jakarta Sans', sans-serif;
+            --live-color: #10b981;
         }
 
         html.light-mode {
@@ -59,12 +60,18 @@
         header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; transform: translateZ(0); }
         body.app-ready header { transition: background 0.4s, border 0.4s; }
         .header-left { display: flex; align-items: center; gap: 15px; }
-        .btn-back { width: 40px; height: 40px; border-radius: 12px; background: var(--search-bg); color: var(--text-main); display: flex; align-items: center; justify-content: center; text-decoration: none; font-size: 16px; transition: 0.2s; cursor: pointer; }
-        .btn-back:active { transform: scale(0.9); }
+        
+        /* Style untuk tombol di header */
+        .btn-back, .btn-tele { width: 40px; height: 40px; border-radius: 12px; background: var(--search-bg); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; cursor: pointer; }
+        .btn-back { color: var(--text-main); font-size: 16px; }
+        .btn-tele { color: #3390ec; font-size: 20px; } /* Warna biru khas Telegram */
+        .btn-back:active, .btn-tele:active { transform: scale(0.9); }
+        
         .logo { font-size: 22px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
 
         /* --- FORM STYLES --- */
-        .section-head { font-size: 22px; font-weight: 800; margin-bottom: 20px; margin-top: 15px; display: flex; align-items: center; gap: 10px; letter-spacing: -0.5px; }
+        .section-head { font-size: 20px; font-weight: 800; margin-bottom: 20px; margin-top: 15px; display: flex; align-items: center; justify-content: space-between; letter-spacing: -0.5px; scroll-margin-top: 90px; }
+        .section-head .title-left { display: flex; align-items: center; gap: 10px; }
         .section-head i { color: var(--primary); }
 
         .form-card { background: var(--bg-card); border-radius: 24px; border: 1px solid var(--card-border); padding: 24px; box-shadow: var(--shadow); transition: background 0.4s; margin-bottom: 30px; }
@@ -80,6 +87,46 @@
         .btn-submit:active { transform: scale(0.96); }
         .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 
+        /* --- LIVE CHAT STYLES --- */
+        #chat-history { display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; }
+        
+        .msg-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            border: 1px solid var(--card-border);
+            padding: 18px 20px;
+            box-shadow: var(--shadow);
+            transition: background 0.4s, border 0.4s;
+            position: relative;
+            animation: slideDownMsg 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            line-height: 1.6;
+            font-size: 14px;
+            word-wrap: break-word;
+            transform-origin: top;
+        }
+        
+        .msg-card.new-live-msg { border-left: 4px solid var(--live-color); }
+        .msg-card b { color: var(--primary); font-weight: 700; }
+        .msg-card a { color: var(--secondary); text-decoration: none; }
+        
+        .msg-time {
+            display: block;
+            text-align: right;
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .loading-text { text-align: center; color: var(--text-muted); font-size: 14px; font-weight: 500; padding: 20px; order: 9999; }
+        
+        .live-indicator-wrapper { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 700; color: var(--live-color); background: rgba(16, 185, 129, 0.1); padding: 6px 12px; border-radius: 50px; }
+        .live-dot { width: 8px; height: 8px; background-color: var(--live-color); border-radius: 50%; animation: pulse 1.5s infinite; }
+
+        @keyframes slideDownMsg { from { opacity: 0; transform: translateY(-15px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
+
+        /* --- TOAST & FOOTER --- */
         .toast { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: #10b981; color: white; padding: 14px 24px; border-radius: 50px; font-weight: 700; font-size: 13px; box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4); transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); z-index: 3000; display: flex; align-items: center; gap: 8px; width: max-content;}
         .toast.show { bottom: 40px; }
         .toast.error { background: var(--accent); box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4); }
@@ -93,12 +140,17 @@
     <header>
         <div class="header-left">
             <a href="../../" class="btn-back"><i class="fa-solid fa-chevron-left"></i></a>
-            <div class="logo">REQUEST</div>
+            <div class="logo">MODORA</div>
         </div>
+        <a href="https://t.me/+-Qk8fHCOPVRlNGE9" target="_blank" class="btn-tele" title="Join Our Telegram">
+            <i class="fa-brands fa-telegram"></i>
+        </a>
     </header>
 
     <div id="mainView">
-        <div class="section-head"><i class="fa-solid fa-code-pull-request"></i> Mod Request Form</div>
+        <div class="section-head">
+            <div class="title-left"><i class="fa-solid fa-code-pull-request"></i> Mod Request</div>
+        </div>
         
         <div class="form-card">
             <form id="modRequestForm" onsubmit="submitForm(event)">
@@ -113,25 +165,37 @@
                 </div>
                 
                 <div class="form-group">
-                    <label class="form-label">Requested Features & Modifications</label>
-                    <textarea id="appFeatures" class="form-textarea" placeholder="e.g., Premium Unlocked, Ad-Free, Unlimited Currency..." required></textarea>
+                    <label class="form-label">Requested Features</label>
+                    <textarea id="appFeatures" class="form-textarea" placeholder="e.g., Premium Unlocked, Ad-Free..." required></textarea>
                 </div>
                 
-                <button type="submit" id="submitBtn" class="btn-submit">Submit Request <i class="fa-solid fa-paper-plane"></i>
-                </button>
+                <button type="submit" id="submitBtn" class="btn-submit">Submit Request <i class="fa-solid fa-paper-plane"></i></button>
             </form>
         </div>
+
+        <div class="section-head" id="live-feed-header">
+            <div class="title-left"><i class="fa-solid fa-satellite-dish"></i> Live Feed</div>
+            <div class="live-indicator-wrapper">
+                <div class="live-dot"></div> LIVE
+            </div>
+        </div>
+
+        <div id="chat-history">
+            <div class="loading-text" id="loader"><i class="fa-solid fa-circle-notch fa-spin"></i> Syncing live requests...</div>
+            </div>
 
         <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
     </div>
 
-    <div id="toastNotif" class="toast"><i class="fa-solid fa-circle-check"></i> <span>Request submitted successfully!</span></div>
+    <div id="toastNotif" class="toast"><i class="fa-solid fa-circle-check"></i> <span>Request submitted!</span></div>
 
     <script>
+        // ==========================================
+        // INITIALIZATION & UI SETTINGS
+        // ==========================================
         window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { document.body.classList.add('app-ready'); }, 50); });
         document.getElementById('year').innerText = new Date().getFullYear();
 
-        // Load display settings from main page
         function loadSettings() {
             if(localStorage.getItem('modora_eco') === 'true') document.documentElement.classList.add('eco-mode');
             const savedColor = localStorage.getItem('modora_color');
@@ -143,7 +207,6 @@
         }
         loadSettings();
 
-        // OS-style Popup Notification
         function showToast(message, isError = false) {
             const toast = document.getElementById('toastNotif');
             toast.querySelector('span').innerText = message;
@@ -154,61 +217,173 @@
         }
 
         // ==========================================
-        // OBFUSCATED TELEGRAM BOT CONFIGURATION
+        // TELEGRAM BOT & CHANNEL CONFIGURATION
         // ==========================================
-        // Token is Base64 encoded to bypass GitHub security scanners.
         const _0xkey1 = "ODQxMzUzMDU4MDpBQUZ5Q2laZlNYT1BObGx4T216bExLT1ZlaW9wQzd3RGJTZw==";
-        const _0xkey2 = "NTI4OTM4NTI2NQ==";
+        const _0xkey2 = "LTEwMDM4MzA4MDE2MTY="; // ID: -1003830801616
+        const CHANNEL_NAME = "mdzone_requests";
+        
+        let lastUpdateId = null;
+        const historyContainer = document.getElementById('chat-history');
 
-        // Process submission to Telegram
+        // ==========================================
+        // FUNCTION 1: FORM SUBMISSION & INSTANT REFRESH
+        // ==========================================
         async function submitForm(e) {
             e.preventDefault();
-            
             const btn = document.getElementById('submitBtn');
             const name = document.getElementById('appName').value;
             const version = document.getElementById('appVersion').value;
             const features = document.getElementById('appFeatures').value;
             
-            // Change button to loading spinner
             btn.disabled = true;
-            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending Request...';
+            btn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Sending...';
 
             try {
-                // Decode tokens at runtime
                 const TELEGRAM_BOT_TOKEN = atob(_0xkey1);
                 const TELEGRAM_CHAT_ID = atob(_0xkey2);
 
-                // Format the message for Telegram chat
                 const textMsg = `🤖 *NEW MOD REQUEST*\n\n📌 *Name:* ${name}\n🏷️ *Version:* ${version}\n✨ *Features:* ${features}`;
                 const teleUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
                 
-                // Send directly to Telegram API
                 const response = await fetch(teleUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        chat_id: TELEGRAM_CHAT_ID, 
-                        text: textMsg, 
-                        parse_mode: 'Markdown' 
-                    })
+                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: textMsg, parse_mode: 'Markdown' })
                 });
 
                 if (response.ok) {
                     showToast('Request submitted successfully!');
-                    document.getElementById('modRequestForm').reset(); // Clear form
+                    
+                    // --- FITUR REFRESH LIVE CHAT OTOMATIS TANPA RELOAD PAGE ---
+                    const htmlContent = `🤖 <b>NEW MOD REQUEST</b><br><br>📌 <b>Name:</b> ${name}<br>🏷️ <b>Version:</b> ${version}<br>✨ <b>Features:</b> ${features}`;
+                    const timeText = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+                    
+                    renderMsgCard(htmlContent, timeText, true);
+                    
+                    document.getElementById('modRequestForm').reset();
                 } else {
-                    showToast('Failed to submit request. Please try again.', true);
+                    showToast('Failed to submit request.', true);
                 }
-
             } catch (error) {
-                console.error(error);
-                showToast('Connection error. Please check your network.', true);
+                showToast('Connection error.', true);
             } finally {
-                // Revert button to original state
                 btn.disabled = false;
                 btn.innerHTML = 'Submit Request <i class="fa-solid fa-paper-plane"></i>';
             }
         }
+
+        // ==========================================
+        // FUNCTION 2: LOAD PAST HISTORY (Scraper)
+        // ==========================================
+        async function loadHistory() {
+            const loader = document.getElementById('loader');
+            const targetUrl = `https://t.me/s/${CHANNEL_NAME}`;
+            
+            const proxies = [
+                `https://api.codetabs.com/v1/proxy?quest=${targetUrl}`,
+                `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`
+            ];
+
+            let htmlText = "";
+
+            for (let proxy of proxies) {
+                try {
+                    const response = await fetch(proxy);
+                    if (response.ok) { htmlText = await response.text(); break; }
+                } catch (e) { console.warn("Mencoba proxy cadangan..."); }
+            }
+
+            try {
+                if (htmlText) {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(htmlText, 'text/html');
+                    const messages = doc.querySelectorAll('.tgme_widget_message_wrap');
+
+                    if (messages.length > 0) loader.style.display = 'none';
+
+                    messages.forEach(msg => {
+                        const textContent = msg.querySelector('.tgme_widget_message_text');
+                        const timeContent = msg.querySelector('.tgme_widget_message_date time');
+                        if (textContent) {
+                            renderMsgCard(textContent.innerHTML, timeContent ? timeContent.textContent : "", false);
+                        }
+                    });
+                }
+            } catch (error) { console.error("History error"); } 
+            finally {
+                loader.style.display = 'none';
+                initLiveUpdates();
+            }
+        }
+
+        // ==========================================
+        // FUNCTION 3: LIVE REAL-TIME CHAT
+        // ==========================================
+        async function initLiveUpdates() {
+            const TELEGRAM_BOT_TOKEN = atob(_0xkey1);
+            try {
+                const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?offset=-1&timeout=0&_=${Date.now()}`);
+                const data = await res.json();
+                if (data.ok && data.result.length > 0) { lastUpdateId = data.result[0].update_id; } 
+                else { lastUpdateId = 0; }
+            } catch (e) { lastUpdateId = 0; }
+            
+            setInterval(pollLiveChat, 1500);
+        }
+
+        async function pollLiveChat() {
+            if (lastUpdateId === null) return;
+            const TELEGRAM_BOT_TOKEN = atob(_0xkey1);
+
+            try {
+                const offsetParam = lastUpdateId ? `&offset=${lastUpdateId + 1}` : '';
+                const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?timeout=0${offsetParam}&_=${Date.now()}`);
+                const data = await res.json();
+
+                if (data.ok && data.result.length > 0) {
+                    data.result.forEach(update => {
+                        lastUpdateId = update.update_id;
+                        const msg = update.channel_post || update.message;
+                        
+                        if (msg && msg.text) {
+                            let formattedText = msg.text.replace(/\n/g, '<br>');
+                            formattedText = formattedText.replace(/(Name:|Version:|Features:)/gi, '<b>$1</b>');
+                            
+                            const date = new Date(msg.date * 1000);
+                            const timeText = date.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
+                            
+                            renderMsgCard(formattedText, timeText, true);
+                        }
+                    });
+                }
+            } catch (error) { console.warn("Polling tertunda"); }
+        }
+
+        // ==========================================
+        // UI RENDERER FOR CHAT
+        // ==========================================
+        function renderMsgCard(htmlContent, timeText, isLive) {
+            const card = document.createElement('div');
+            card.className = `msg-card ${isLive ? 'new-live-msg' : ''}`;
+            
+            card.innerHTML = `
+                <div>${htmlContent}</div>
+                <span class="msg-time">${timeText}</span>
+            `;
+            
+            // PREPEND digunakan agar pesan selalu muncul di paling atas list chat
+            historyContainer.prepend(card);
+            
+            if(isLive) {
+                // Auto scroll halus ke arah judul "Live Feed" agar user fokus ke pesan baru
+                document.getElementById('live-feed-header').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Jalankan fetch history saat halaman dimuat
+        loadHistory();
+
     </script>
 </body>
 </html>
