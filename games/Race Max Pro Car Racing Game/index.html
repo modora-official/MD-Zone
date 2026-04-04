@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../../../ads.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>Race Max Pro Car Racing Game MOD APK V2.11.7</title>
+    <link rel="icon" href="https://play-lh.googleusercontent.com/MRBqr4DVQRW2vV7omkkPvF5MEdLJtpZh3w8QUXL9BF2l5OvffsibDdXeLQQIPmFWV5M=s512" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border); --search-bg: #e2e8f0;
+        }
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+
+        .app-hero { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px; }
+        .app-icon-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .app-icon { width: 100%; height: 100%; border-radius: 25px; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); }
+        .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
+        
+        .app-titles { flex: 1; }
+        .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        .action-top-wrap { margin-bottom: 20px; display: flex; flex-direction: column; gap: 5px; }
+        .btn-download-huge { 
+            width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Social Notification */
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; }
+        .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+        .section-head { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { color: var(--primary); font-size: 20px; }
+        
+        .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
+        .ss-wrap::-webkit-scrollbar { display: none; }
+        .ss-scroll { display: flex; gap: 15px; width: max-content; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
+        .ss-img:active { opacity: 0.7; }
+
+        .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
+        .content-box strong { color: var(--text-main); }
+        .content-box p { margin-bottom: 10px; }
+        .content-box p:last-child { margin-bottom: 0; }
+
+        /* Lightbox CSS */
+        .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; transition: 0.3s; user-select: none; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); z-index: 10001; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.4); }
+        .prev-lb { left: 10px; } 
+        .next-lb { right: 10px; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-title">Detail App</div>
+        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="app-hero">
+            <div class="app-icon-wrap">
+                <img src="https://play-lh.googleusercontent.com/MRBqr4DVQRW2vV7omkkPvF5MEdLJtpZh3w8QUXL9BF2l5OvffsibDdXeLQQIPmFWV5M=s512" class="app-icon" alt="Race Max Pro Car Racing Game MOD APK V2.11.7">
+                <div class="mod-badge">MOD APK</div>
+            </div>
+            <div class="app-titles">
+                <h1 class="app-name">Race Max Pro Car Racing Game MOD APK V2.11.7</h1>
+                <div class="app-dev"><a href="https://play.google.com/store/apps/details?id=game.revani.racemaxpro" target="_blank" style="color: inherit; text-decoration: none;">Revani</a></div>
+            </div>
+        </div>
+
+        <div class="action-top-wrap">
+            
+            <a href="https://safefileku.com/download/djoJwGIVOG7ALlay" class="btn-download-huge" style="margin-bottom: 12px;">
+                <div><span>DOWNLOAD (893.00 MB)</span></div>
+                <div class="btn-date">Update: 4 April 2026</div>
+            </a>
+            <div class="mini-actions">
+                <a href="../../tutorials" class="btn-mini">
+                    <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
+                </a>
+                <a href="../../requests" class="btn-mini">
+                    <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
+                </a>
+                <a href="../../" class="btn-mini">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="social-notice">
+            <p>JOIN COMMUNITY FOR NEW UPDATES</p>
+            <div class="social-links">
+                <a href="../../../../../whatsapp" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="../../../../../telegram" target="_blank" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Cars</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Gold</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Free Shipping</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Free Gacha Cars</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Work All Android</span></div>
+        </div>
+
+        
+
+        <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
+        <div class="ss-wrap">
+            <div class="ss-scroll">
+                <img src="https://play-lh.googleusercontent.com/TQT8LbEtEq35a1aQukQTuetj1L2nlLuiZdWMmVAC-Bnh3TTi8PxmYJrGSXKHo803SqY=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/ge_1C_poD9K_7-w4dASFOdpadjRFw2JRXFm1o6CYTtbLVcCEUJrDQG8cGU4lTlphifk=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/hH2Ft4K_L0CsT6WLAue1DGkvKPW0P7tUlkUihG7QeX7ZAp_4FqrtMdm17L6swbYHHQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/dXmiQkg05umMekmcMUWNv2l4gnZDlPJmPT8oWLkbVuao1OtkppF4S2p9cR7IlVU_y9g=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/7icbbWYt-X_KswbKIgc-7fUWsQ_OaSnGSadwXGe459kNOddxNK9T9Z5rwSXWKbkgKnTO=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Lad8Td-9VzIiG8b2SOKnJpOXWRXr3TiIfDpL2idXHVzrRJf7M6cMrNOGaqlBwhmxVFI=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/qUDhIk00LfmFXy-XfmS9JTC1IU9J8hNW8zLRuCYvISEdvgRYBv9JosCuxsK0ihv4hzWY=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/yzLxl9GCfxHbQOmBqbjyaAD-PdvBOQk9SeN6AGpZhrTpaEC0DwA0nfMACZwHTrF-wg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/TeaOyyD3zk-U0iKmTAzv4yFEa6cCkgwSe-g90eEGXIXrO7H6sqKuorfYegpXBSv-xC8=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/dOQJEEhGzTzTUfpgK9IaYUrSYKRoCkCMmQ7mwlINa3IF5cEkbj8m7GZa7j-_XzzZ_Bw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/_CuYd2-NNhwtw54xlJqPqDmAsh39IkKb6V57Mwn4h-WD1GGM3LjWsrfUPTwU-4BgSQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Tnk3mqTtft0Pi0xQpyhVwfo6zLwf0I-Ej9BwVnYj2Rn9nzrpgKgsumhddPGgw85DNKc=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/m-T9RIxjDjmDaMZXaqjH_T87avsNQTDzmywoAHpndOh7y_m33w-B_u_vg38oxvN3fTI1=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/CDZSbozYiLdFszLV6JfzggotUM9OiwIoPJ-RjEXzpo1opTDDmIX_J8V6b0Ty6jHRrkY=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/_A2LToHOUk1bCg9CTjS7YaQSdVWdM3dGx-wZTYsalDiVr-ACrtJb-72Sza98mn6h27s=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/3Vbt3KUiNmvNzCKcYd-oyyguHiNpYy48GzBkEKNEnTx0RSaTF3xlkM1176ecjJJZ_-s=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/4hzvvuJhGNMntgzCjvX4u3OSfa5GMFS6KWnRaa_GYHdJLSAofePN4g9s-G8F0U-RcwDg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/shi4ivUSAWfLOHguVb-FSFPe0zDOmbVwbpVWTbGUDHbkO-kiePN1njPTNYOwcugbPA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/nIK18q1fttb1BYVWdsj1N0LahEosEr9zGOwYW-8ZgesRyuh1YbPCHqJMzdWTbMAbqiljRRJQcMtBjW7I_Qa2=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/rhAYMlJxc7nka0E5ZXd0j46RAhmDmiafm35FCEm2W-ajBdpmWNbQWGHt51ndCTDp0Kh-R85kkBJQNuyyVKd5Ew=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/dWWEwdjpDFZfaJWe9lGjfE8uuygT6-8amNkiaxqlxU1LbFQPlKlNg0eFMYovpgCZguKNdj_mqoYlNQalp6Pg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/oOIs_OgHFA7ErWfCZzaIBk2NefZXOrY5Twvog0CLkGzTRDZ-j4occGUn4Dz7jq4h9v-TUjInRX2FrDqhlUXaOQw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/rh1K_6oI7NswbDfCoFw9fWOD-uKPoYOX3liRNYeuKVjE2l9ZL_AF_NFyN5lsxZN0er8zz7wk3KSXUR8CZYW0ug=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                
+            </div>
+        </div>
+
+        <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
+        <div class="content-box">
+            <p>Feel the rush. Own the streets. Become a legend.</p>
+            
+            <p>Race Max Pro is the most thrilling mobile racing simulator you'll ever experience — an incredible world where street racing, drifting, and drag racing come alive with breathtaking speed, stunning supercars, and pure adrenaline.</p>
+            
+            <p>🚗 LEGENDARY SUPERCARS &amp; HYPERCARS</p>
+            <p>Get behind the wheel of the world's most iconic, awe-inspiring machines. Race extraordinary legends from Aston Martin, Pagani, BMW, Audi, Ford, Nissan, Jaguar, Lotus, Chevrolet, Subaru, Mazda, Renault, Peugeot, Volkswagen, AC Cars, Rezvani, RUF, and Naran.</p>
+            
+            <p>Experience the sheer power of icons like the Nissan GT-R R34 Skyline, Audi RS7, BMW M3 GTR, Chevrolet Camaro, Ford Mustang, Aston Martin Valhalla, and Pagani Zonda R. Every car is a masterpiece — and it's waiting for you.</p>
+            
+            <p>Fans are already dreaming of Lamborghini, Ferrari, Porsche, Mercedes-Benz, and Rolls-Royce joining the lineup — and we hear you. The garage is growing with every update. More legendary machines are joining the race — and the best is yet to come.</p>
+            
+            <p>🏁 THREE INCREDIBLE RACING DISCIPLINES. ENDLESS THRILLS.</p>
+            <p>• Street Racing: Blast through stunning urban circuits, dominate every rival, and taste sweet victory.</p>
+            <p>• Drift Racing: Master the perfect slide, chain breathtaking drifts, and earn your title as drift king.</p>
+            <p>• Drag Racing: Experience the explosive launch, the perfect shift, the glorious finish — nothing beats the thrill of pure speed.</p>
+            <p>• Events &amp; Challenges: Exciting brand showcases, intense time trials, and thrilling seasonal tournaments keep the action fresh every day.</p>
+            
+            <p>🔧 YOUR DREAM CAR. YOUR MASTERPIECE.</p>
+            <p>Race Max Pro isn't just a car game — it's your ultimate automotive fantasy. Upgrade engine, turbo, gearbox, nitro, tires, and reduce weight to unleash your car's true potential.</p>
+            
+            <p>Fine-tune your perfect setup for breathtaking drift precision or unstoppable drag dominance. Personalize every gorgeous detail — custom paint, stunning rims, bold decals, aerodynamic spoilers, and sleek window tints. Build the car you've always dreamed of.</p>
+            
+            <p>🌍 BEAUTIFUL TRACKS. EPIC RACING.</p>
+            <p>Race across spectacular circuits inspired by the stunning Amalfi Coast, breathtaking Nordic roads, vibrant Far East city streets, and iconic U.S. highways. Every location is a visual masterpiece designed for unforgettable racing.</p>
+            
+            <p>🏆 COMPETE. CELEBRATE. RISE TO GLORY.</p>
+            <p>Challenge the world in exhilarating real-time multiplayer racing leagues and ranked seasons. Rise through the leaderboards, earn incredible rewards, and prove you're the ultimate racing champion.</p>
+            
+            <p>Love the freedom of solo play? Race Max Pro offers a complete, deeply satisfying offline career with 215+ thrilling races — no Wi-Fi needed, just pure racing joy.</p>
+            
+            <p>⚡ EVERYTHING YOU'VE EVER WANTED IN A RACING GAME</p>
+            <p>✔ Awe-inspiring licensed supercars &amp; hypercars</p>
+            <p>✔ Street Racing, Drifting &amp; Drag Racing — three incredible worlds in one</p>
+            <p>✔ 215+ exhilarating career races across gorgeous global tracks</p>
+            <p>✔ Deep, rewarding car customization, tuning &amp; building</p>
+            <p>✔ Heart-pounding multiplayer racing &amp; competitive ranked leagues</p>
+            <p>✔ Full offline racing — enjoy anytime, anywhere</p>
+            <p>✔ Exciting updates — spectacular new cars, seasons &amp; events</p>
+            
+            <p>Download Race Max Pro today. The ultimate street racing simulator is here — and it's absolutely glorious.</p>
+            <p>Feel the speed. Own every drift. Win every drag race. Your legend starts now.</p>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lb"><i class="fa-solid fa-xmark"></i></span>
+        <span class="prev-lb"><i class="fa-solid fa-chevron-left"></i></span>
+        <img class="lightbox-content" id="img-lb">
+        <span class="next-lb"><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+
+    <script>
+        function loadSettingsForDetail() {
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettingsForDetail();
+            
+            // Inisialisasi Lightbox
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            // Tutup jika klik diluar area gambar
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
+        });
+    </script>
+    <script src="../../../short.js"></script>
+</body>
+</html>
