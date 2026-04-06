@@ -1,10 +1,18 @@
 // <script src="../../../ada.js"></script>
-// Iklan Klik
-// ads.js
 
-(function() {
-    var script = document.createElement('script');
-    script.src = "https://pl29049211.profitablecpmratenetwork.com/67/b1/9b/67b19bcda13dcfd3eea3c1a2a8f3920a.js";
-    script.async = true;
-    document.head.appendChild(script);
-})();
+
+
+(function(pyuhdti){
+var d = document,
+    s = d.createElement('script'),
+    l = d.scripts[d.scripts.length - 1];
+s.settings = pyuhdti || {};
+s.src = "\/\/limited-teacher.com\/cBDU9.6\/bB2\/5TloSYWYQ\/9\/NGjMk\/z-MyjvIe4oObSR0\/2dOMTtMjyoMYjGk\/zf";
+s.async = true;
+s.referrerPolicy = 'no-referrer-when-downgrade';
+if (l && l.parentNode) {
+    l.parentNode.insertBefore(s, l);
+} else {
+    d.head.appendChild(s);
+}
+})({});
