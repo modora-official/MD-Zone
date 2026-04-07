@@ -1,5 +1,5 @@
-// <script src="../../../ada.js"></script>
-// File: ada.js
+// <script src="../../../ads.js"></script>
+// File: ads.js
 
 document.addEventListener("DOMContentLoaded", function() {
     // 1. Menyisipkan CSS untuk pop-up modal (Dark Mode & Clean UI)
