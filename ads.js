@@ -40,7 +40,7 @@
             #modoraNotifOverlay {
                 position: fixed; top: 0; left: 0; right: 0; bottom: 0;
                 background: rgba(15, 23, 42, 0.75); 
-                backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+                backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
                 display: flex; align-items: center; justify-content: center;
                 padding: 20px; z-index: 999999; opacity: 1;
                 transition: opacity 0.5s ease, visibility 0.5s;
