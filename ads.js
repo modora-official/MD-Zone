@@ -1,4 +1,3 @@
-// <script src="../../../ads.js"></script>
 (function() {
     // Pastikan script hanya berjalan sekali
     if (window.ModoraAdsInitialized) return;
@@ -40,7 +39,7 @@
             #modoraNotifOverlay {
                 position: fixed; top: 0; left: 0; right: 0; bottom: 0;
                 background: rgba(15, 23, 42, 0.75); 
-                backdrop-filter: blur(5px); -webkit-backdrop-filter: blur(5px);
+                backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px);
                 display: flex; align-items: center; justify-content: center;
                 padding: 20px; z-index: 999999; opacity: 1;
                 transition: opacity 0.5s ease, visibility 0.5s;
@@ -286,11 +285,15 @@
         checkAdBlock();
     }
 
-    // Pastikan DOM sudah siap sebelum menginjeksi elemen
+        // Pastikan DOM sudah siap sebelum menginjeksi elemen
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initModoraAds);
+        document.addEventListener('DOMContentLoaded', function() {
+            // Memberikan jeda 3 detik (3000 milidetik) sebelum memanggil notifikasi
+            setTimeout(initModoraAds, 3000); 
+        });
     } else {
-        initModoraAds();
+        // Jika DOM sudah selesai diload, tetap beri jeda 3 detik
+        setTimeout(initModoraAds, 3000); 
     }
 
 })();
