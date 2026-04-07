@@ -2,34 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
     <title>404 - Page Not Found | MODORA</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+
+        const savedColor = localStorage.getItem('modora_color');
+        const savedSec = localStorage.getItem('modora_color_sec');
+        if(savedColor) {
+            document.documentElement.style.setProperty('--primary', savedColor);
+            document.documentElement.style.setProperty('--secondary', savedSec);
+        }
+    </script>
+
     <style>
-        /* --- COPY VARIABLES FROM MAIN SITE --- */
+        /* --- CONFIG & VARIABLES (SAMA DENGAN INDEX.HTML) --- */
         :root {
             --header-h: 70px;
-            --bg-body: #f8fafc;
-            --bg-glass: rgba(255, 255, 255, 0.95);
+            --nav-h: 65px;
+            
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155;
+            
+            --glass-blur: blur(20px);
+            --primary: #2563eb; 
+            --secondary: #4f46e5;
+            --accent: #ef4444; 
+            --radius: 20px;
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* LIGHT MODE OVERRIDES */
+        html.light-mode {
+            --bg-body: #f1f5f9;
+            --bg-card: #ffffff;
+            --bg-glass: rgba(255, 255, 255, 0.85);
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --primary: #2563eb;
-            --secondary: #4f46e5;
             --border: #e2e8f0;
-            --radius: 16px;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            --card-border: var(--border);
+            --search-bg: #e2e8f0;
         }
 
-        /* RESET */
-        * { 
-            margin: 0; padding: 0; box-sizing: border-box; 
-            font-family: 'Plus Jakarta Sans', sans-serif; 
-            outline: none !important; 
-            -webkit-tap-highlight-color: transparent !important; 
+        html.eco-mode {
+            --bg-glass: var(--bg-card);
+            --glass-blur: none;
         }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        
         body {
             background-color: var(--bg-body);
             color: var(--text-main);
@@ -38,39 +84,36 @@
             flex-direction: column;
             position: relative;
             overflow-x: hidden;
+            padding-top: calc(var(--header-h));
+            transition: background-color 0.25s ease, color 0.25s ease;
         }
 
-        /* --- HEADER NAVIGATION --- */
+        /* --- HEADER (SAMA DENGAN INDEX.HTML) --- */
         header {
             position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
-            padding: 0 24px; background: var(--bg-glass); backdrop-filter: blur(12px);
+            padding: 0 24px; background: var(--bg-glass); 
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
             display: flex; align-items: center; justify-content: space-between;
             border-bottom: 1px solid var(--border); z-index: 1000;
+            transition: background-color 0.25s ease, border-color 0.25s ease;
         }
-        .logo { 
-            font-size: 24px; font-weight: 800; 
-            background: linear-gradient(90deg, var(--primary), var(--secondary)); 
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; 
-            letter-spacing: -0.5px; text-decoration: none;
-        }
-        
-        .search-wrap { 
-            flex: 1; margin: 0 15px; position: relative; max-width: 400px; display: none; 
-        }
-        @media (min-width: 500px) { .search-wrap { display: block; } }
 
-        .search-input { 
-            width: 100%; padding: 10px 40px 10px 15px; border-radius: 50px; 
-            border: 1px solid var(--border); background: #fff; font-size: 14px; 
-        }
-        .search-icon { 
-            position: absolute; right: 15px; top: 50%; transform: translateY(-50%); 
-            color: var(--text-muted); font-size: 14px; 
-        }
-        .btn-tele { 
-            width: 40px; height: 40px; background: #29b6f6; color: white; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            font-size: 18px; text-decoration: none; 
+        .logo { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; text-decoration: none; cursor: pointer; }
+        
+        .search-wrap { flex: 1; margin: 0 15px; position: relative; max-width: 400px; display: none; }
+        @media (min-width: 500px) { .search-wrap { display: block; } }
+        
+        .search-input { width: 100%; padding: 10px 40px 10px 15px; border-radius: 12px; border: none; background: var(--search-bg); color: var(--text-main); font-size: 14px; font-weight: 500; transition: background-color 0.25s ease, box-shadow 0.25s ease; }
+        .search-input:focus { box-shadow: 0 0 0 2px var(--primary); background: var(--bg-card); }
+        .search-input::placeholder { color: var(--text-muted); font-weight: 400; }
+        .search-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 14px; pointer-events: none; }
+        
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+        .btn-tele:active { transform: scale(0.9); }
+
+        @media (min-width: 900px) {
+            header { padding: 0 5%; }
+            .search-wrap { max-width: 600px; display: block; margin: 0 auto;}
         }
 
         /* --- MAIN CONTENT CENTERED --- */
@@ -82,6 +125,7 @@
             padding: 20px;
             position: relative;
             z-index: 1;
+            min-height: calc(100vh - var(--header-h) - 60px);
         }
 
         /* DECORATION BLOBS */
@@ -91,26 +135,26 @@
             filter: blur(90px); opacity: 0.15; border-radius: 50%;
             z-index: -1; animation: moveBlob 8s infinite alternate;
         }
-        .blob-1 { top: 20%; left: -50px; }
-        .blob-2 { bottom: 20%; right: -50px; animation-delay: -4s; }
+        .blob-1 { top: 10%; left: -50px; }
+        .blob-2 { bottom: 10%; right: -50px; animation-delay: -4s; }
 
         @keyframes moveBlob {
             from { transform: translate(0, 0); }
             to { transform: translate(30px, 40px); }
         }
 
-        /* ERROR CARD */
+        /* ERROR CARD (Terintegrasi Tema) */
         .error-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border: 1px solid #fff;
+            background: var(--bg-card);
+            border: 1px solid var(--card-border);
             padding: 40px 30px;
             border-radius: 30px;
             text-align: center;
             max-width: 420px;
             width: 100%;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow);
             animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: background-color 0.25s ease, border-color 0.25s ease;
         }
 
         @keyframes popUp {
@@ -131,38 +175,34 @@
             margin-bottom: 5px;
         }
 
-        .error-title { font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; }
-        .error-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; }
+        .error-title { font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; transition: color 0.25s ease; }
+        .error-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; transition: color 0.25s ease; }
 
         /* BUTTONS GROUP */
-        .btn-group { display: flex; flex-direction: column; gap: 10px; }
+        .btn-group { display: flex; flex-direction: column; gap: 12px; }
         
         .btn {
             display: flex; align-items: center; justify-content: center; gap: 10px;
-            width: 100%; padding: 15px; border-radius: 14px;
+            width: 100%; padding: 15px; border-radius: 16px;
             font-weight: 700; font-size: 14px; cursor: pointer; text-decoration: none;
-            transition: 0.2s; border: none;
+            transition: 0.2s, background-color 0.25s ease, color 0.25s ease; border: none; letter-spacing: -0.3px;
         }
 
         .btn-primary {
             background: linear-gradient(90deg, var(--primary), var(--secondary));
             color: white;
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
         }
-        .btn-primary:active { transform: scale(0.98); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15); }
+        .btn-primary:active { transform: scale(0.96); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15); }
 
         .btn-secondary {
-            background: #fff; color: var(--text-main);
-            border: 1px solid var(--border);
+            background: var(--search-bg); 
+            color: var(--text-main);
         }
-        .btn-secondary:active { background: #f1f5f9; transform: scale(0.98); }
+        .btn-secondary:active { transform: scale(0.96); }
 
         /* --- FOOTER --- */
-        footer {
-            text-align: center; padding: 25px; 
-            font-size: 12px; color: var(--text-muted); font-weight: 600;
-            background: var(--bg-glass); border-top: 1px solid var(--border);
-        }
+        .footer { text-align: center; font-size: 12px; font-weight: 500; color: var(--text-muted); padding: 20px; margin-top: auto; }
 
     </style>
 </head>
@@ -172,11 +212,11 @@
         <a href="/" class="logo">MODORA</a>
         
         <div class="search-wrap">
-            <input type="text" class="search-input" placeholder="Search apps...">
+            <input type="text" class="search-input" placeholder="Search apps..." onkeypress="handleSearch(event)">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
 
-        <a href="https://t.me/modora_official" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
     </header>
 
     <div class="main-content">
@@ -202,12 +242,24 @@
         </div>
     </div>
 
-    <footer>
-        &copy; <span id="year"></span> MODORA Store. All rights reserved.
-    </footer>
+    <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
 
     <script>
+        // Update year
         document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Cek mode eco (tanpa blur)
+        if(localStorage.getItem('modora_eco') === 'true') {
+            document.documentElement.classList.add('eco-mode');
+        }
+
+        // Fungsi agar jika user melakukan search di halaman 404, ia langsung dialihkan ke index
+        function handleSearch(event) {
+            if (event.key === "Enter") {
+                // Opsional: jika ingin mengirim query pencarian ke index.html, bisa melalui URL params
+                window.location.href = '/'; 
+            }
+        }
     </script>
 
 </body>
