@@ -173,12 +173,12 @@
             adblock: { title: "Pemblokir Iklan Terdeteksi!", desc: "Situs ini berjalan berkat dukungan sponsor. Mohon <span class='modora-highlight'>matikan Adblock Anda</span> (atau kecualikan situs ini) untuk melanjutkan.", badge: "WAJIB DILAKUKAN", adTitle: "Saya sudah mematikan Adblock", adSub: "Muat ulang halaman", status: "Akses dikunci oleh sistem..." }
         },
         'es': {
-            normal: { title: "Apoya a MODORA", desc: "Tu enlace está listo. Para ayudarnos a mantener los servidores, tómate un momento untuk hacer clic en nuestro <span class='modora-highlight'>enlace patrocinador</span>.", badge: "PATROCINADOR", adTitle: "Ver Ofertas Exclusivas", adSub: "Haz clic aquí para continuar", status: "Esperando visita..." },
+            normal: { title: "Apoya a MODORA", desc: "Tu enlace está listo. Para ayudarnos a mantener los servidores, tómate un momento para hacer clic en nuestro <span class='modora-highlight'>enlace patrocinador</span>.", badge: "PATROCINADOR", adTitle: "Ver Ofertas Exclusivas", adSub: "Haz clic aquí para continuar", status: "Esperando visita..." },
             adblock: { title: "¡Adblock Detectado!", desc: "Dependemos de patrocinadores para mantener este sitio. Por favor, <span class='modora-highlight'>desactiva tu Adblocker</span> para continuar.", badge: "ACCIÓN REQUERIDA", adTitle: "He desactivado Adblock", adSub: "Recargar página", status: "Contenido bloqueado..." }
         },
         'pt': {
             normal: { title: "Apoie MODORA", desc: "Seu link está pronto. Para nos ajudar a manter os servidores, clique em nosso <span class='modora-highlight'>link de patrocinador</span>.", badge: "PATROCINADOR", adTitle: "Ver Ofertas Exclusivas", adSub: "Clique aqui para continuar", status: "Aguardando visita..." },
-            adblock: { title: "Adblock Detectado!", desc: "Dependemos de patrocinadores para manter este site. Por favor, <span class='modora-invite'>desative o Adblocker</span> para continuar.", badge: "AÇÃO NECESSÁRIA", adTitle: "Já desativei o Adblock", adSub: "Recarregar página", status: "Conteúdo bloqueado..." }
+            adblock: { title: "Adblock Detectado!", desc: "Dependemos de patrocinadores para manter este site. Por favor, <span class='modora-highlight'>desative o Adblocker</span> para continuar.", badge: "AÇÃO NECESSÁRIA", adTitle: "Já desativei o Adblock", adSub: "Recarregar página", status: "Conteúdo bloqueado..." }
         }
     };
 
@@ -306,7 +306,7 @@
             wrapper.style.width = '100%';
             wrapper.style.overflow = 'hidden';
 
-            // Memasukkan iklan TEPAT DI BAWAH elemen target (setelah elemen tersebut)
+            // Memasukkan iklan TEPAT DI BAWAH elemen target
             targetElement.parentNode.insertBefore(wrapper, targetElement.nextSibling);
 
             const confScript = document.createElement('script');
@@ -333,18 +333,31 @@
         }
     }
 
+
     // ==============================================
-    // BAGIAN C: INISIALISASI KESELURUHAN (BOOTSTRAP)
+    // BAGIAN C: MEMUAT SCRIPT EKSTERNAL (SHORT.JS)
+    // ==============================================
+    function injectShortScript() {
+        const shortScript = document.createElement('script');
+        shortScript.src = '../../../short.js';
+        shortScript.type = 'text/javascript';
+        // Memasukkan script ke bagian paling bawah body
+        document.body.appendChild(shortScript);
+    }
+
+
+    // ==============================================
+    // BAGIAN D: INISIALISASI KESELURUHAN (BOOTSTRAP)
     // ==============================================
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', function() {
-            // Pasang iklan banner in-page secara langsung tanpa jeda
             injectInPageAds();
-            // Berikan jeda 3 detik sebelum menampilkan pop-up notifikasi/adblock
+            injectShortScript(); // Memanggil short.js
             setTimeout(initModoraAds, 3000); 
         });
     } else {
         injectInPageAds();
+        injectShortScript(); // Memanggil short.js
         setTimeout(initModoraAds, 3000); 
     }
 
