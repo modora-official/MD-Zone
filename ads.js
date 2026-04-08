@@ -141,7 +141,7 @@
                 <h2 class="modora-title" id="modoraLangTitle">Support MODORA</h2>
                 <p class="modora-desc" id="modoraLangDesc">Your download link is ready. To help us keep the servers running, please take a moment to click our <span class="modora-highlight">sponsor link</span>.</p>
                 
-                <a href="https://omg10.com/4/10842740" target="_blank" class="modora-action-card" id="modoraActionBtn">
+                <a href="https://divorceabetpiano.com/kzfd3g5hz9?key=c9375a2b18ee2c1334863091aa2c4e93" target="_blank" class="modora-action-card" id="modoraActionBtn">
                     <div class="modora-badge" id="modoraBadgeContainer"><i class="fa-solid fa-star" id="modoraBadgeIcon" style="font-size: 8px; margin-right: 4px;"></i> <span id="modoraLangBadge">SPONSOR</span></div>
                     <div class="modora-btn-icon" id="modoraBtnIconWrap">
                         <i class="fa-solid fa-bolt" id="modoraBtnIcon"></i>
