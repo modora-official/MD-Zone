@@ -2,21 +2,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // ==========================================
     // IKLAN 1: DI BAWAH TOMBOL DOWNLOAD
-    // (Menggunakan format Div Container)
     // ==========================================
     const btnDownload = document.querySelector('.btn-download-huge');
     if (btnDownload && btnDownload.parentNode) {
-        // Membuat wadah div
+        // Buat wadah iklan
         const ad1Container = document.createElement('div');
         ad1Container.id = 'container-53773056cf29c22519d850bfd8f749f4';
         ad1Container.style.textAlign = 'center';
         ad1Container.style.margin = '20px 0';
         ad1Container.style.width = '100%';
         
-        // Memasukkan wadah di bawah tombol download
+        // Sisipkan wadah setelah tombol download
         btnDownload.parentNode.insertBefore(ad1Container, btnDownload.nextSibling);
 
-        // Memanggil script iklan
+        // Panggil script iklan Adsterra/Network
         const ad1Script = document.createElement('script');
         ad1Script.async = true;
         ad1Script.setAttribute('data-cfasync', 'false');
@@ -24,56 +23,44 @@ document.addEventListener("DOMContentLoaded", function() {
         document.head.appendChild(ad1Script);
     }
 
-
     // ==========================================
-    // FUNGSI BANTUAN UNTUK IKLAN ATOPTIONS (GAMEPLAY & SCREENSHOT)
+    // FUNGSI INJEKSI IKLAN BANNER (atOptions)
     // ==========================================
     function injectAtOptionsAd(targetElement, options, scriptUrl) {
-        // Membuat wadah agar iklan rapi di tengah
+        // Buat bungkus agar iklan berada di tengah
         const wrapper = document.createElement('div');
         wrapper.style.textAlign = 'center';
         wrapper.style.margin = '20px 0';
         wrapper.style.width = '100%';
         wrapper.style.overflow = 'hidden';
 
-        // Memasukkan wadah tepat DI ATAS elemen target (Gameplay/Screenshot)
+        // Sisipkan wadah TEPAT DI ATAS elemen target yang ditentukan
         targetElement.parentNode.insertBefore(wrapper, targetElement);
 
-        // Membuat script konfigurasi (atOptions)
+        // Masukkan konfigurasi opsi iklan
         const confScript = document.createElement('script');
         confScript.type = 'text/javascript';
         confScript.innerHTML = 'atOptions = ' + JSON.stringify(options) + ';';
         wrapper.appendChild(confScript);
 
-        // Membuat script pemanggil iframe iklan
+        // Panggil script iframe iklan
         const invokeScript = document.createElement('script');
         invokeScript.type = 'text/javascript';
         invokeScript.src = scriptUrl;
         wrapper.appendChild(invokeScript);
     }
 
-
     // ==========================================
-    // MENCARI LOKASI GAMEPLAY & SCREENSHOTS
+    // IKLAN 2: DI ATAS PREVIEW GAMEPLAY
     // ==========================================
     const sectionHeads = document.querySelectorAll('.section-head');
     
     sectionHeads.forEach(head => {
         const titleText = head.textContent.toLowerCase();
         
-        // IKLAN 2: DI ATAS GAMEPLAY (160x600)
+        // Cari elemen judul yang mengandung teks "gameplay"
         if (titleText.includes('gameplay')) {
-            injectAtOptionsAd(head, {
-                'key' : 'f1158c60141ee90357dc1f9483b5d6cb',
-                'format' : 'iframe',
-                'height' : 600,
-                'width' : 160,
-                'params' : {}
-            }, 'https://divorceabetpiano.com/f1158c60141ee90357dc1f9483b5d6cb/invoke.js');
-        }
-
-        // IKLAN 3: DI ATAS SCREENSHOTS (468x60)
-        if (titleText.includes('screenshots')) {
+            // Gunakan script ukuran 468x60 (banner memanjang)
             injectAtOptionsAd(head, {
                 'key' : '3a395b6a167706907857cb4846d01b10',
                 'format' : 'iframe',
