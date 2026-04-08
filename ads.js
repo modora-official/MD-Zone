@@ -1,3 +1,4 @@
+// MD-Zone
 (function() {
     // Pastikan script hanya berjalan sekali
     if (window.ModoraAdsInitialized) return;
