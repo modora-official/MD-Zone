@@ -1,5 +1,4 @@
 (function() {
-    // Pastikan script hanya berjalan sekali
     if (window.ModoraAdsInitialized) return;
     window.ModoraAdsInitialized = true;
 
@@ -108,17 +107,15 @@
         document.body.style.overflow = 'hidden';
     }
 
-    // --- FITUR YANG DI-UPGRADE ---
-    // Script ini sekarang otomatis memasukkan tag <script> popunder ke dalam <head>
+    // PERUBAHAN: Fungsi ini akan dipanggil LEBIH AWAL
     function enablePopunder() {
-        // Cek agar script tidak dimasukkan berulang kali
         if (document.querySelector('script[src*="67b19bcda13dcfd3eea3c1a2a8f3920a.js"]')) return;
 
         const popunderScript = document.createElement('script');
         popunderScript.type = 'text/javascript';
         popunderScript.src = "https://divorceabetpiano.com/67/b1/9b/67b19bcda13dcfd3eea3c1a2a8f3920a.js";
         
-        // Memasukkan script ke dalam head sesuai dengan instruksi Ad Network
+        // Memasukkan script popunder langsung ke head secepat mungkin
         document.head.appendChild(popunderScript);
     }
 
@@ -141,10 +138,8 @@
                 const styles = window.getComputedStyle(ad);
                 if (ad.offsetHeight === 0 || styles.display === 'none' || styles.visibility === 'hidden' || ad.offsetParent === null) {
                     showAdblockWarning();
-                } else {
-                    // Jika Adblock tidak aktif, inject script Pop-under yang baru
-                    enablePopunder();
                 }
+                // PERUBAHAN: enablePopunder() dipindah dari sini agar tidak menunggu jeda Adblock
                 ad.remove();
             }, 250); 
         }
@@ -154,7 +149,6 @@
     // BAGIAN C: SISTEM IKLAN BANNER (IN-PAGE ADS)
     // ==============================================
     function injectInPageAds() {
-        // --- IKLAN 1: DI BAWAH TOMBOL DOWNLOAD ---
         const btnDownload = document.querySelector('.btn-download-huge');
         if (btnDownload && btnDownload.parentNode) {
             const ad1Container = document.createElement('div');
@@ -170,7 +164,6 @@
             document.head.appendChild(ad1Script);
         }
 
-        // --- FUNGSI BANTUAN UNTUK IKLAN BANNER (atOptions) ---
         function injectAtOptionsAd(targetElement, options, scriptUrl) {
             const wrapper = document.createElement('div');
             wrapper.style.cssText = 'text-align: center; margin: 20px 0; width: 100%; overflow: hidden;';
@@ -188,7 +181,6 @@
             wrapper.appendChild(invokeScript);
         }
 
-        // --- IKLAN 2: DI BAWAH (JOIN COMMUNITY FOR NEW UPDATES) ---
         const socialNotice = document.querySelector('.social-notice');
         if (socialNotice) {
             injectAtOptionsAd(socialNotice, {
@@ -216,10 +208,14 @@
     // ==============================================
     function initAll() {
         loadDependencies();
+        
+        // KITA PANGGIL POPUNDER LANGSUNG DI SINI
+        // Agar scriptnya siap sejak awal halaman dimuat
+        enablePopunder(); 
+        
         injectInPageAds();
         injectShortScript();
         
-        // Jeda sebentar sebelum memeriksa Adblock agar halaman selesai render
         setTimeout(checkAdBlock, 1500);
     }
 
