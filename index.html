@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
-    <meta name="color-scheme" content="dark light">
+    <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#0f172a" id="metaThemeColor">
     
     <title>Unduh apps and game MOD APK new version.</title>
@@ -19,17 +19,13 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <script>
-        const savedTheme = localStorage.getItem('modora_theme');
-        if(savedTheme === 'light') { 
-            document.documentElement.classList.add('light-mode'); 
-            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
-        }
+        // Apply saved font immediately
         const savedFont = localStorage.getItem('modora_font');
         if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
     </script>
 
     <style>
-        /* --- CONFIG & VARIABLES (DARK MODE BASE) --- */
+        /* --- CONFIG & VARIABLES (DARK MODE BASE ONLY) --- */
         :root {
             --header-h: 70px;
             --nav-h: 65px;
@@ -53,20 +49,6 @@
             --skeleton-grad: linear-gradient(90deg, var(--search-bg) 25%, var(--border) 50%, var(--search-bg) 75%);
         }
 
-        /* LIGHT MODE OVERRIDES */
-        html.light-mode {
-            --bg-body: #f1f5f9;
-            --bg-card: #ffffff;
-            --bg-glass: rgba(255, 255, 255, 0.85);
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            --card-border: var(--border);
-            --search-bg: #e2e8f0;
-            --skeleton-grad: linear-gradient(90deg, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%);
-        }
-
         html.eco-mode {
             --bg-glass: var(--bg-card);
             --glass-blur: none;
@@ -79,12 +61,13 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
         
-        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); position: relative; }
         
         body { 
             color: var(--text-main); 
             padding-top: calc(var(--header-h) + 15px); 
             padding-bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 20px) + 30px);
+            min-height: 100vh;
         }
 
         body.app-ready { transition: background-color 0.25s ease, color 0.25s ease; }
@@ -93,11 +76,39 @@
             -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
         }
 
+        /* --- BACKGROUND ANIMATION --- */
+        #bg-animation {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -1; overflow: hidden; pointer-events: none;
+        }
+        .bg-icon {
+            position: absolute; color: rgba(255, 255, 255, 0.03); 
+            animation: floatUp linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(110vh) rotate(0deg); }
+            100% { transform: translateY(-20vh) rotate(360deg); }
+        }
+
+        /* --- TOAST NOTIFICATION --- */
+        .toast {
+            position: fixed; top: -100px; left: 50%; transform: translateX(-50%);
+            background: var(--bg-card); color: var(--text-main);
+            padding: 12px 24px; border-radius: 50px;
+            border: 1px solid var(--border); box-shadow: var(--shadow);
+            z-index: 9999; transition: top 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 10px;
+        }
+        .toast.show { top: calc(env(safe-area-inset-top, 20px) + 20px); }
+        .toast i { font-size: 16px; }
+
         #mainView { 
             width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; 
             transition: max-width 0.3s ease; min-height: 80vh; 
             animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             opacity: 0;
+            position: relative;
+            z-index: 10;
         }
         @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
 
@@ -146,11 +157,10 @@
         .section-head ion-icon.recom-icon { color: #f59e0b; }
         .section-head ion-icon.apps-icon { color: #10b981; }
         .section-head ion-icon.games-icon { color: #8b5cf6; }
-        .section-head ion-icon.scripts-icon { color: #ec4899; } 
         
         .recom-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
         .recom-wrap::-webkit-scrollbar { display: none; }
-        .recom-scroll { display: flex; gap: 15px; width: max-content; }
+        .recom-scroll { display: flex; gap: 15px; width: max-content; padding-right: 15px; }
 
         .trend-card {
             width: 300px; height: 165px; border-radius: 24px; background: var(--bg-card);
@@ -158,6 +168,7 @@
             padding: 22px; display: flex; flex-direction: column; justify-content: center;
             box-shadow: var(--shadow); cursor: pointer; 
             transition: transform 0.2s, background-color 0.25s ease, border-color 0.25s ease;
+            flex-shrink: 0;
         }
         .trend-card:active { transform: scale(0.96); }
         .trend-bg { position: absolute; right: -25px; bottom: -25px; width: 150px; opacity: 0.5; filter: blur(5px); transform: rotate(-15deg); pointer-events: none; }
@@ -330,6 +341,10 @@
     </style>
 </head>
 <body>
+    
+    <div id="network-toast" class="toast"></div>
+
+    <div id="bg-animation"></div>
 
     <header>
         <div class="logo" onclick="window.location.reload()">MODORA</div>
@@ -344,6 +359,7 @@
         <div id="section-recom">
             <div class="section-head"><ion-icon name="sparkles" class="recom-icon"></ion-icon> Recomended</div>
             <div class="recom-wrap"><div class="recom-scroll" id="recomContainer">
+                <div class="skeleton skel-trend"></div>
                 <div class="skeleton skel-trend"></div>
                 <div class="skeleton skel-trend"></div>
             </div></div>
@@ -368,16 +384,6 @@
             </div>
             <div class="btn-loadmore hidden" id="btnMoreGames" onclick="loadMoreGames()">Show More <i class="fa-solid fa-chevron-down"></i></div>
         </div>
-
-        <div id="section-scripts">
-            <div class="section-head"><ion-icon name="code-slash" class="scripts-icon"></ion-icon> Scripts</div>
-            <div class="list-container view-list" id="scriptsContainer">
-                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
-                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
-                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
-            </div>
-            <div class="btn-loadmore hidden" id="btnMoreScripts" onclick="loadMoreScripts()">Show More <i class="fa-solid fa-chevron-down"></i></div>
-        </div>
         
         <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
     </div>
@@ -401,13 +407,6 @@
                     <div class="color-item" style="background:#10b981;" onclick="setThemeColor('#10b981', '#059669', this)" data-color="#10b981"></div>
                     <div class="color-item" style="background:#8b5cf6;" onclick="setThemeColor('#8b5cf6', '#7c3aed', this)" data-color="#8b5cf6"></div>
                     <div class="color-item" style="background:#f59e0b;" onclick="setThemeColor('#f59e0b', '#d97706', this)" data-color="#f59e0b"></div>
-                </div>
-            </div>
-
-            <div class="set-group">
-                <div class="set-title">
-                    <span>Dark Mode</span>
-                    <div class="toggle-switch" id="themeToggle" onclick="switchTheme()"></div>
                 </div>
             </div>
 
@@ -443,29 +442,22 @@
     </div>
 
     <div class="bottom-nav">
-        <div class="nav-item active" onclick="nav('all', this)">
+        <div class="nav-item active" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
             <div class="icon-wrapper"><ion-icon name="home"></ion-icon></div><span>Home</span>
         </div>
-        <div class="nav-item" onclick="nav('app', this)">
+        <div class="nav-item" onclick="window.location.href='../../apps'">
             <div class="icon-wrapper">
                 <ion-icon name="grid"></ion-icon>
                 <div class="nav-badge" id="badge-app" style="display:none;">0</div>
             </div>
             <span>Apps</span>
         </div>
-        <div class="nav-item" onclick="nav('game', this)">
+        <div class="nav-item" onclick="window.location.href='../../games'">
             <div class="icon-wrapper">
                 <ion-icon name="game-controller"></ion-icon>
                 <div class="nav-badge" id="badge-game" style="display:none;">0</div>
             </div>
             <span>Games</span>
-        </div>
-        <div class="nav-item" onclick="nav('script', this)">
-            <div class="icon-wrapper">
-                <ion-icon name="code-slash"></ion-icon>
-                <div class="nav-badge" id="badge-script" style="display:none;">0</div>
-            </div>
-            <span>Scripts</span>
         </div>
         <div class="nav-item" onclick="toggleSet()">
             <div class="icon-wrapper"><ion-icon name="settings"></ion-icon></div><span>Setting</span>
@@ -479,18 +471,56 @@
             branch: 'main'       
         };
 
-        window.addEventListener('DOMContentLoaded', () => {
+        // --- OFFLINE/ONLINE DETECTION ---
+        function showToast(msg, type) {
+            const t = document.getElementById('network-toast');
+            let iconColor = type === 'offline' ? 'var(--accent)' : '#10b981';
+            let iconClass = type === 'offline' ? 'fa-solid fa-wifi-slash' : 'fa-solid fa-wifi';
+            
+            t.innerHTML = `<i class="${iconClass}" style="color:${iconColor}"></i> ${msg}`;
+            t.className = `toast show ${type}`;
+            setTimeout(() => t.classList.remove('show'), 3500);
+        }
+
+        window.addEventListener('offline', () => showToast('Koneksi internet terputus!', 'offline'));
+        window.addEventListener('online', () => showToast('Kembali online!', 'online'));
+
+        // --- BACKGROUND ANIMATION ICON GENERATOR ---
+        function createBgIcons() {
+            const bgContainer = document.getElementById('bg-animation');
+            const icons = ['fa-brands fa-android', 'fa-solid fa-gamepad', 'fa-solid fa-user-secret', 'fa-solid fa-wand-magic-sparkles', 'fa-solid fa-bug'];
+            
+            for(let i = 0; i < 15; i++) {
+                let el = document.createElement('i');
+                let randomIcon = icons[Math.floor(Math.random() * icons.length)];
+                el.className = `bg-icon ${randomIcon}`;
+                
+                // Randomize positions, durations, and sizes
+                el.style.left = `${Math.random() * 100}vw`;
+                el.style.animationDuration = `${10 + Math.random() * 25}s`;
+                el.style.animationDelay = `-${Math.random() * 20}s`;
+                el.style.fontSize = `${1.5 + Math.random() * 2}rem`;
+                
+                bgContainer.appendChild(el);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createBgIcons();
+            // Menunggu DOM ter-load penuh sebelum menghilangkan skeleton dan memunculkan animasi
             setTimeout(() => { document.body.classList.add('app-ready'); }, 50);
+            
+            if(!navigator.onLine) {
+                setTimeout(() => showToast('Anda sedang offline!', 'offline'), 1000);
+            }
         });
 
         document.getElementById('year').innerText = new Date().getFullYear();
 
         let dbApps = [];
         let dbGames = [];
-        let dbScripts = [];
         let showAppsCount = 10;
         let showGamesCount = 10;
-        let showScriptsCount = 10;
         let isDataLoaded = false;
 
         function getBaseName(name) {
@@ -556,27 +586,23 @@
         }
 
         async function initData() {
-            const [appsRaw, gamesRaw, scriptsRaw] = await Promise.all([
+            const [appsRaw, gamesRaw] = await Promise.all([
                 scanDirectory('apps', 'app'),
-                scanDirectory('games', 'game'),
-                scanDirectory('script', 'script') 
+                scanDirectory('games', 'game')
             ]);
             
             dbApps = filterLatest(appsRaw); 
             dbGames = filterLatest(gamesRaw);
-            dbScripts = filterLatest(scriptsRaw);
             isDataLoaded = true;
             
             renderRecom();
             renderLists();
-            updateNavBadges(); // Eksekusi update badge setelah data sukses dimuat
+            updateNavBadges();
         }
 
-        // UPDATE: Fungsi baru untuk mendeteksi folder/item secara otomatis pada badge
         function updateNavBadges() {
             const badgeApp = document.getElementById('badge-app');
             const badgeGame = document.getElementById('badge-game');
-            const badgeScript = document.getElementById('badge-script');
 
             if (dbApps.length > 0) {
                 badgeApp.innerText = dbApps.length;
@@ -586,24 +612,51 @@
                 badgeGame.innerText = dbGames.length;
                 badgeGame.style.display = 'block';
             }
-            if (dbScripts.length > 0) {
-                badgeScript.innerText = dbScripts.length;
-                badgeScript.style.display = 'block';
+        }
+
+        // --- INFINITE AUTO SCROLL LOGIC ---
+        let autoScrollInterval;
+        let isUserInteracting = false;
+        
+        function initInfiniteScroll() {
+            const wrap = document.querySelector('.recom-wrap');
+            if(!wrap) return;
+
+            function scrollStep() {
+                if(!isUserInteracting && wrap.scrollWidth > wrap.clientWidth) {
+                    wrap.scrollLeft += 1; // Speed
+                    // Jika mencapai setengah (akhir dari data asli), reset halus ke 0
+                    if (wrap.scrollLeft >= wrap.scrollWidth / 2) {
+                        wrap.scrollLeft -= (wrap.scrollWidth / 2);
+                    }
+                }
+                autoScrollInterval = requestAnimationFrame(scrollStep);
             }
+
+            // Hentikan scroll otomatis saat user menyentuh/menggeser secara manual
+            wrap.addEventListener('mouseenter', () => isUserInteracting = true);
+            wrap.addEventListener('mouseleave', () => isUserInteracting = false);
+            wrap.addEventListener('touchstart', () => isUserInteracting = true, {passive: true});
+            wrap.addEventListener('touchend', () => isUserInteracting = false);
+
+            if(autoScrollInterval) cancelAnimationFrame(autoScrollInterval);
+            autoScrollInterval = requestAnimationFrame(scrollStep);
         }
 
         function renderRecom() {
             const container = document.getElementById('recomContainer');
             if(!isDataLoaded) return; 
             
-            const allReal = [...dbApps, ...dbGames, ...dbScripts];
+            const allReal = [...dbApps, ...dbGames];
             if(allReal.length === 0) {
                 container.innerHTML = '<div class="status-msg">No recommendations yet.</div>';
                 return;
             }
 
-            const shuffled = allReal.sort(() => 0.5 - Math.random()).slice(0, 5);
+            // Shuffle untuk rekomendasi dan tampilkan max 15 item
+            const shuffled = allReal.sort(() => 0.5 - Math.random()).slice(0, 15);
             let html = '';
+            
             shuffled.forEach(item => {
                 html += `
                 <div class="trend-card" onclick="openLink('${item.link}')">
@@ -613,25 +666,21 @@
                     <img src="${item.img}" class="trend-bg" loading="lazy" onerror="this.style.opacity=0">
                 </div>`;
             });
-            container.innerHTML = html;
+            
+            // Duplikat konten untuk membuat efek seamless infinite loop
+            container.innerHTML = html + html; 
+            initInfiniteScroll();
         }
 
         function createCardHtml(item) {
-            let iconHtml = '';
             let badgeText = 'MOD';
-
-            if(item.type === 'script') {
-                iconHtml = `<div class="clean-icon" style="display:flex; align-items:center; justify-content:center; background: var(--search-bg);"><i class="fa-solid fa-file-code" style="font-size:32px; color:var(--primary);"></i></div>`;
-                badgeText = 'SCRIPT';
-            } else {
-                iconHtml = `<img src="${item.img}" class="clean-icon" loading="lazy" onerror="this.src='https://via.placeholder.com/70?text=IMG'">`;
-            }
+            let iconHtml = `<img src="${item.img}" class="clean-icon" loading="lazy" onerror="this.src='https://via.placeholder.com/70?text=IMG'">`;
 
             return `
             <div class="clean-card" onclick="openLink('${item.link}')">
                 <div class="icon-wrap">
                     ${iconHtml}
-                    <div class="mod-label" ${item.type === 'script' ? 'style="background: var(--primary);"' : ''}>${badgeText}</div>
+                    <div class="mod-label">${badgeText}</div>
                 </div>
                 <div class="clean-info">
                     <div class="clean-name">${item.name}</div>
@@ -643,7 +692,6 @@
         function renderLists() {
             const cApps = document.getElementById('appsContainer');
             const cGames = document.getElementById('gamesContainer');
-            const cScripts = document.getElementById('scriptsContainer'); 
             
             if(!isDataLoaded) return; 
 
@@ -668,22 +716,10 @@
                 cGames.innerHTML = hGames;
                 document.getElementById('btnMoreGames').classList.toggle('hidden', showGamesCount >= dbGames.length);
             }
-
-            // Render Scripts
-            if(dbScripts.length === 0) {
-                cScripts.innerHTML = '<div class="status-msg">No scripts found in this repository.</div>';
-                document.getElementById('btnMoreScripts').classList.add('hidden');
-            } else {
-                let hScripts = ''; 
-                dbScripts.slice(0, showScriptsCount).forEach(item => hScripts += createCardHtml(item));
-                cScripts.innerHTML = hScripts;
-                document.getElementById('btnMoreScripts').classList.toggle('hidden', showScriptsCount >= dbScripts.length);
-            }
         }
 
         function loadMoreApps() { showAppsCount += 10; renderLists(); }
         function loadMoreGames() { showGamesCount += 10; renderLists(); }
-        function loadMoreScripts() { showScriptsCount += 10; renderLists(); }
         
         function openLink(url) { 
             if(url && url !== '#') window.location.href = url; 
@@ -695,14 +731,19 @@
             const secRecom = document.getElementById('section-recom');
             const secApps = document.getElementById('section-apps');
             const secGames = document.getElementById('section-games');
-            const secScripts = document.getElementById('section-scripts');
 
-            if(val === '') { restoreView(); return; }
+            if(val === '') {
+                secRecom.style.display = 'block'; 
+                secApps.style.display = 'block'; 
+                secGames.style.display = 'block';
+                showAppsCount=10; showGamesCount=10;
+                renderLists();
+                return;
+            }
             
             secRecom.style.display = 'none'; 
             secApps.style.display = 'block'; 
             secGames.style.display = 'block';
-            secScripts.style.display = 'block';
             
             const fApps = dbApps.filter(i => i.name.toLowerCase().includes(val));
             let hApp = ''; 
@@ -715,44 +756,11 @@
             fGames.forEach(item => hGame += createCardHtml(item));
             document.getElementById('gamesContainer').innerHTML = hGame || '<div class="status-msg">No games matched your search</div>';
             document.getElementById('btnMoreGames').classList.add('hidden');
-
-            const fScripts = dbScripts.filter(i => i.name.toLowerCase().includes(val));
-            let hScript = ''; 
-            fScripts.forEach(item => hScript += createCardHtml(item));
-            document.getElementById('scriptsContainer').innerHTML = hScript || '<div class="status-msg">No scripts matched your search</div>';
-            document.getElementById('btnMoreScripts').classList.add('hidden');
-        }
-
-        function restoreView() {
-            const navItems = document.querySelectorAll('.nav-item');
-            let activeType = 'all';
-            if(navItems[1].classList.contains('active')) activeType = 'app';
-            else if(navItems[2].classList.contains('active')) activeType = 'game';
-            else if(navItems[3].classList.contains('active')) activeType = 'script';
-            
-            document.getElementById('section-recom').style.display = (activeType === 'all') ? 'block' : 'none';
-            document.getElementById('section-apps').style.display = (activeType === 'all' || activeType === 'app') ? 'block' : 'none';
-            document.getElementById('section-games').style.display = (activeType === 'all' || activeType === 'game') ? 'block' : 'none';
-            document.getElementById('section-scripts').style.display = (activeType === 'all' || activeType === 'script') ? 'block' : 'none';
-            
-            showAppsCount=10; showGamesCount=10; showScriptsCount=10; 
-            renderLists();
-        }
-
-        function nav(type, el) {
-            document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
-            el.classList.add('active');
-            document.getElementById('search').value = '';
-            restoreView(); window.scrollTo(0,0);
         }
 
         function toggleSet() { document.getElementById('modalSet').classList.toggle('active'); }
 
         function loadSettings() {
-            if(!document.documentElement.classList.contains('light-mode')) {
-                document.getElementById('themeToggle').classList.add('active');
-            }
-
             if(localStorage.getItem('modora_eco') === 'true') {
                 document.documentElement.classList.add('eco-mode');
                 document.getElementById('ecoToggle').classList.add('active');
@@ -775,22 +783,6 @@
             if(currFont.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active');
             else if(currFont.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active');
             else document.getElementById('btnFontTech').classList.add('active');
-        }
-
-        function switchTheme() {
-            const isLight = document.documentElement.classList.toggle('light-mode');
-            const toggleBtn = document.getElementById('themeToggle');
-            const metaTheme = document.getElementById('metaThemeColor');
-            
-            if (isLight) {
-                localStorage.setItem('modora_theme', 'light');
-                toggleBtn.classList.remove('active');
-                metaTheme.setAttribute('content', '#f1f5f9');
-            } else {
-                localStorage.setItem('modora_theme', 'dark');
-                toggleBtn.classList.add('active');
-                metaTheme.setAttribute('content', '#0f172a');
-            }
         }
 
         function toggleEco() {
@@ -827,11 +819,9 @@
         function applyViewModeClass(mode) {
             const cApps = document.getElementById('appsContainer');
             const cGames = document.getElementById('gamesContainer');
-            const cScripts = document.getElementById('scriptsContainer');
 
             cApps.className = `list-container view-${mode}`;
             cGames.className = `list-container view-${mode}`;
-            cScripts.className = `list-container view-${mode}`;
 
             document.getElementById('btnViewList').classList.toggle('active', mode === 'list');
             document.getElementById('btnViewGrid').classList.toggle('active', mode === 'grid');
@@ -877,5 +867,5 @@
         initData();
 
     </script>
-    </body>
+</body>
 </html>
