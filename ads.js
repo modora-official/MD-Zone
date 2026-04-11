@@ -108,21 +108,18 @@
         document.body.style.overflow = 'hidden';
     }
 
+    // --- FITUR YANG DI-UPGRADE ---
+    // Script ini sekarang otomatis memasukkan tag <script> popunder ke dalam <head>
     function enablePopunder() {
-        let isTriggered = false;
-        const sponsorUrl = "https://divorceabetpiano.com/kzfd3g5hz9?key=c9375a2b18ee2c1334863091aa2c4e93";
+        // Cek agar script tidak dimasukkan berulang kali
+        if (document.querySelector('script[src*="67b19bcda13dcfd3eea3c1a2a8f3920a.js"]')) return;
+
+        const popunderScript = document.createElement('script');
+        popunderScript.type = 'text/javascript';
+        popunderScript.src = "https://divorceabetpiano.com/67/b1/9b/67b19bcda13dcfd3eea3c1a2a8f3920a.js";
         
-        const triggerAd = function(e) {
-            if (!isTriggered) {
-                isTriggered = true;
-                window.open(sponsorUrl, '_blank');
-                // Hapus event listener setelah diklik 1 kali
-                document.removeEventListener('click', triggerAd);
-            }
-        };
-        
-        // Memasang listener di seluruh dokumen (klik sembarang)
-        document.addEventListener('click', triggerAd);
+        // Memasukkan script ke dalam head sesuai dengan instruksi Ad Network
+        document.head.appendChild(popunderScript);
     }
 
     function checkAdBlock() {
@@ -145,7 +142,7 @@
                 if (ad.offsetHeight === 0 || styles.display === 'none' || styles.visibility === 'hidden' || ad.offsetParent === null) {
                     showAdblockWarning();
                 } else {
-                    // Jika Adblock tidak aktif, jalankan sistem Pop-under
+                    // Jika Adblock tidak aktif, inject script Pop-under yang baru
                     enablePopunder();
                 }
                 ad.remove();
