@@ -107,7 +107,6 @@
         document.body.style.overflow = 'hidden';
     }
 
-    // PERUBAHAN: Fungsi ini akan dipanggil LEBIH AWAL
     function enablePopunder() {
         if (document.querySelector('script[src*="67b19bcda13dcfd3eea3c1a2a8f3920a.js"]')) return;
 
@@ -115,7 +114,6 @@
         popunderScript.type = 'text/javascript';
         popunderScript.src = "https://divorceabetpiano.com/67/b1/9b/67b19bcda13dcfd3eea3c1a2a8f3920a.js";
         
-        // Memasukkan script popunder langsung ke head secepat mungkin
         document.head.appendChild(popunderScript);
     }
 
@@ -139,7 +137,6 @@
                 if (ad.offsetHeight === 0 || styles.display === 'none' || styles.visibility === 'hidden' || ad.offsetParent === null) {
                     showAdblockWarning();
                 }
-                // PERUBAHAN: enablePopunder() dipindah dari sini agar tidak menunggu jeda Adblock
                 ad.remove();
             }, 250); 
         }
@@ -149,6 +146,7 @@
     // BAGIAN C: SISTEM IKLAN BANNER (IN-PAGE ADS)
     // ==============================================
     function injectInPageAds() {
+        // Iklan Pertama (Bawah Tombol Download)
         const btnDownload = document.querySelector('.btn-download-huge');
         if (btnDownload && btnDownload.parentNode) {
             const ad1Container = document.createElement('div');
@@ -168,6 +166,7 @@
             const wrapper = document.createElement('div');
             wrapper.style.cssText = 'text-align: center; margin: 20px 0; width: 100%; overflow: hidden;';
 
+            // Insert di bawah elemen target
             targetElement.parentNode.insertBefore(wrapper, targetElement.nextSibling);
 
             const confScript = document.createElement('script');
@@ -181,9 +180,21 @@
             wrapper.appendChild(invokeScript);
         }
 
-        const socialNotice = document.querySelector('.social-notice');
-        if (socialNotice) {
-            injectAtOptionsAd(socialNotice, {
+        // Iklan Kedua (Di bawah seksi JOIN COMMUNITY)
+        let communitySection = document.querySelector('.social-notice');
+        if (!communitySection) {
+            // Fallback: Cari elemen yang menampung teks join community
+            const elements = document.querySelectorAll('*');
+            for (let el of elements) {
+                if (el.textContent.includes('JOIN COMMUNITY FOR NEW UPDATES') && el.children.length === 0) {
+                    communitySection = el.parentElement;
+                    break;
+                }
+            }
+        }
+
+        if (communitySection) {
+            injectAtOptionsAd(communitySection, {
                 'key' : '3a395b6a167706907857cb4846d01b10',
                 'format' : 'iframe',
                 'height' : 60,
@@ -204,18 +215,43 @@
     }
 
     // ==============================================
-    // BAGIAN E: INISIALISASI KESELURUHAN
+    // BAGIAN E: GOOGLE ANALYTICS (G-TAG)
+    // ==============================================
+    function injectGoogleAnalytics() {
+        // Mencegah duplikasi injeksi jika dipanggil berkali-kali
+        if (document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) return;
+
+        // 1. Script Eksternal gtag.js
+        const gtagScript = document.createElement('script');
+        gtagScript.async = true;
+        gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DH16G5Q7KW';
+        document.head.appendChild(gtagScript);
+
+        // 2. Script Konfigurasi DataLayer
+        const configScript = document.createElement('script');
+        configScript.innerHTML = `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-DH16G5Q7KW');
+        `;
+        document.head.appendChild(configScript);
+    }
+
+    // ==============================================
+    // BAGIAN F: INISIALISASI KESELURUHAN
     // ==============================================
     function initAll() {
         loadDependencies();
         
-        // KITA PANGGIL POPUNDER LANGSUNG DI SINI
-        // Agar scriptnya siap sejak awal halaman dimuat
+        // Panggil popunder dan Analytics sejak awal
         enablePopunder(); 
+        injectGoogleAnalytics(); 
         
         injectInPageAds();
         injectShortScript();
         
+        // Cek Adblock dengan delay agar tidak false-positive
         setTimeout(checkAdBlock, 1500);
     }
 
