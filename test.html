@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Oci & Dede</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@200;300;400&family=Pinyon+Script&display=swap" rel="stylesheet">
+    <style>
+        /* --- GLOBAL RESETS & VARIABLES --- */
+        :root {
+            --bg-dark: #050505;
+            --text-light: #e0e0e0;
+            --gold-gradient: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* --- TYPOGRAPHY MEWAH --- */
+        .gold-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0px 4px 20px rgba(191, 149, 63, 0.2);
+        }
+
+        h1, h2, h3 { 
+            font-family: 'Cinzel', serif; 
+            letter-spacing: 2px; 
+            font-weight: 400; 
+        }
+        
+        .names {
+            font-family: 'Pinyon Script', cursive;
+            font-size: 5rem;
+            line-height: 1.2;
+            text-shadow: 0px 5px 25px rgba(252, 246, 186, 0.15);
+        }
+
+        /* --- OPENING OVERLAY (BUKA UNDANGAN) --- */
+        #cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: var(--bg-dark);
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1), transform 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+        }
+
+        #cover.open {
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(1.1);
+        }
+
+        .cover-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: floatText 4s ease-in-out infinite;
+        }
+
+        @keyframes floatText {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* --- TOMBOL BUKA UNDANGAN MEWAH --- */
+        .btn-open {
+            margin-top: 50px;
+            padding: 15px 40px;
+            background: var(--gold-gradient);
+            border: none;
+            border-radius: 4px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #000 !important;
+            letter-spacing: 4px;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(191, 149, 63, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .btn-open:active {
+            transform: scale(0.95);
+            box-shadow: 0 2px 10px rgba(191, 149, 63, 0.4);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(5,5,5,0.4) 0%, rgba(5,5,5,1) 100%), 
+                        url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover fixed;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            letter-spacing: 5px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .date-hero {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+        }
+
+        /* --- COUPLE SECTION --- */
+        .section {
+            padding: 100px 20px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .couple-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Flex direction row untuk desktop */
+            flex-direction: row; 
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .person {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* TANDA "&" YANG SUDAH DIPERBAIKI */
+        .ampersand {
+            font-family: 'Cinzel', serif; 
+            font-size: 4rem;
+            line-height: 1;
+            /* Mencegah di-select/diblok biru */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Frame Arch Mewah */
+        .photo-arch {
+            width: 250px;
+            height: 350px;
+            border-radius: 125px 125px 0 0;
+            overflow: hidden;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: inset 0 -50px 50px -10px var(--bg-dark);
+        }
+
+        .photo-arch img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(1.1); 
+            transition: 1s ease;
+        }
+
+        .person:hover .photo-arch img {
+            transform: scale(1.05);
+            filter: grayscale(0%) contrast(1.1);
+        }
+
+        .person h2 { font-family: 'Pinyon Script', cursive; font-size: 3.5rem; text-transform: none; margin-bottom: 10px;}
+        .person p { font-weight: 300; font-size: 0.9rem; color: #a0a0a0; }
+
+        /* --- COUNTDOWN --- */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+
+        .time-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-box span {
+            font-family: 'Cinzel', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .time-box p {
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #888;
+        }
+
+        /* --- EVENT DETAILS --- */
+        .event-details {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 50px;
+        }
+
+        .event-item {
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .event-item h3 { font-size: 2rem; margin-bottom: 15px; }
+        .event-item p { margin-bottom: 8px; font-weight: 300; line-height: 1.6; }
+
+        .btn-location {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 0;
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .btn-location::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0;
+            width: 100%; height: 1px;
+            background: var(--gold-gradient);
+        }
+
+        /* --- ANIMASI REVEAL --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1.2s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MUSIC ICON --- */
+        #music-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid #bf953f;
+            border-radius: 50%;
+            width: 45px; height: 45px;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 100;
+            animation: spin 4s linear infinite;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        #music-btn.paused { animation: none; opacity: 0.5; }
+
+        /* --- RESPONSIVE MOBILE --- */
+        @media (max-width: 768px) {
+            .names { font-size: 4rem; }
+            .countdown-container { gap: 20px; }
+            .time-box span { font-size: 2.5rem; }
+            .photo-arch { width: 200px; height: 280px; }
+            
+            /* KUNCI PERBAIKAN DI SINI: Ubah jadi kolom di HP */
+            .couple-wrapper { 
+                flex-direction: column; 
+                gap: 20px; 
+            }
+            .ampersand {
+                margin: 20px 0;
+            }
+
+            .btn-open { font-size: 1rem; padding: 12px 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-memories.mp3" type="audio/mpeg">
+    </audio>
+
+    <button id="music-btn" onclick="toggleMusic()">🎵</button>
+
+    <div id="cover">
+        <div class="cover-content">
+            <p class="subtitle gold-text">THE WEDDING OF</p>
+            <h1 class="names gold-text" style="margin: 20px 0;">Oci & Dede</h1>
+            <p style="font-weight: 200; letter-spacing: 2px; color: #aaa; margin-top: 10px;">Kepada Yth. Tamu Undangan</p>
+            
+            <button class="btn-open" onclick="openInvitation()">BUKA UNDANGAN</button>
+        </div>
+    </div>
+
+    <section class="hero">
+        <div class="reveal">
+            <p class="subtitle gold-text">WE ARE GETTING MARRIED</p>
+            <h1 class="names gold-text">Oci & Dede</h1>
+            <p class="date-hero">12 JUNI 2026</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="gold-text reveal" style="font-size: 2.5rem;">Mempelai</h2>
+        
+        <div class="couple-wrapper">
+            
+            <div class="person reveal">
+                <div class="photo-arch">
+                    <img src="oci.jpg" alt="Oci">
+                </div>
+                <h2 class="gold-text">Oci</h2>
+                <p>Putri dari Keluarga Bapak ... & Ibu ...</p>
+            </div>
+
+            <div class="ampersand gold-text reveal">&</div>
+
+            <div class="person reveal">
+                <div class="photo-arch">
+                    <img src="dede.jpg" alt="Dede">
+                </div>
+                <h2 class="gold-text">Dede</h2>
+                <p>Putra dari Keluarga Bapak ... & Ibu ...</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 20px;">
+        <h2 class="gold-text reveal" style="font-size: 2rem;">Menuju Hari Bahagia</h2>
+        <div class="countdown-container reveal">
+            <div class="time-box">
+                <span class="gold-text" id="days">00</span>
+                <p>Hari</p>
+            </div>
+            <div class="time-box">
+                <span class="gold-text" id="hours">00</span>
+                <p>Jam</p>
+            </div>
+            <div class="time-box">
+                <span class="gold-text" id="minutes">00</span>
+                <p>Menit</p>
+            </div>
+            <div class="time-box">
+                <span class="gold-text" id="seconds">00</span>
+                <p>Detik</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="gold-text reveal" style="font-size: 2.5rem; margin-bottom: 40px;">Rangkaian Acara</h2>
+        
+        <div class="event-details">
+            <div class="event-item reveal">
+                <h3 class="gold-text">Akad Nikah</h3>
+                <p style="color: var(--text-light);">Jumat, 12 Juni 2026</p>
+                <p style="color: #aaa;">Pukul 08.00 WIB - Selesai</p>
+                <br>
+                <p style="color: var(--text-light); font-weight: 400; font-family: 'Cinzel', serif;">Grand Ballroom Hotel Mewah</p>
+                <p style="color: #aaa;">Jl. Sudirman No. 1, Jakarta</p>
+                <a href="#" class="btn-location gold-text">GOOGLE MAPS</a>
+            </div>
+
+            <div class="event-item reveal" style="margin-top: 30px;">
+                <h3 class="gold-text">Resepsi</h3>
+                <p style="color: var(--text-light);">Jumat, 12 Juni 2026</p>
+                <p style="color: #aaa;">Pukul 19.00 WIB - Selesai</p>
+                <br>
+                <p style="color: var(--text-light); font-weight: 400; font-family: 'Cinzel', serif;">Grand Ballroom Hotel Mewah</p>
+                <p style="color: #aaa;">Jl. Sudirman No. 1, Jakarta</p>
+                <a href="#" class="btn-location gold-text">GOOGLE MAPS</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 80px 20px; text-align: center; background-color: #000;">
+        <h2 class="names gold-text" style="font-size: 3rem;">Oci & Dede</h2>
+        <p style="margin-top: 10px; font-size: 0.8rem; color: #555; letter-spacing: 2px;">12 JUNE 2026</p>
+    </footer>
+
+    <script>
+        function openInvitation() {
+            document.getElementById('cover').classList.add('open');
+            const audio = document.getElementById('bg-music');
+            audio.play();
+            document.body.style.overflowY = 'auto';
+            setTimeout(reveal, 500);
+        }
+
+        function toggleMusic() {
+            const audio = document.getElementById('bg-music');
+            const btn = document.getElementById('music-btn');
+            if (audio.paused) {
+                audio.play();
+                btn.classList.remove('paused');
+            } else {
+                audio.pause();
+                btn.classList.add('paused');
+            }
+        }
+
+        const targetDate = new Date("Jun 12, 2026 08:00:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                document.getElementById("days").innerText = "00";
+                document.getElementById("hours").innerText = "00";
+                document.getElementById("minutes").innerText = "00";
+                document.getElementById("seconds").innerText = "00";
+                return;
+            }
+
+            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d < 10 ? "0" + d : d;
+            document.getElementById("hours").innerText = h < 10 ? "0" + h : h;
+            document.getElementById("minutes").innerText = m < 10 ? "0" + m : m;
+            document.getElementById("seconds").innerText = s < 10 ? "0" + s : s;
+        }, 1000);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                var revealPoint = 100; 
+
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        
+        document.body.style.overflowY = 'hidden';
+        window.addEventListener('scroll', reveal);
+    </script>
+</body>
+</html>
