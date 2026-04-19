@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Romeo & Juliet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #c5a059;
+            --light-gold: #e2c275;
+            --dark-bg: #1a1a1a;
+            --white: #ffffff;
+            --cream: #fdfbf7;
+            --text-gray: #4a4a4a;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--cream);
+            color: var(--text-gray);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 3px;
+        }
+
+        .script-font {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--primary-gold);
+        }
+
+        /* Overlay / Cover */
+        #invitation-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
+            color: white;
+            text-align: center;
+        }
+
+        #invitation-overlay.unlocked {
+            transform: translateY(-100%);
+        }
+
+        .btn-open {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-open:hover {
+            background: var(--light-gold);
+            transform: scale(1.05);
+        }
+
+        /* Navbar Style Hero */
+        section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: linear-gradient(var(--cream), #fff);
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 20px 0;
+            color: var(--dark-bg);
+        }
+
+        .gold-line {
+            width: 100px;
+            height: 2px;
+            background: var(--primary-gold);
+            margin: 20px auto;
+        }
+
+        /* Couple Section */
+        .couple-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .couple-box {
+            flex: 1;
+            min-width: 300px;
+            padding: 20px;
+        }
+
+        .ampersand {
+            font-size: 4rem;
+            color: var(--primary-gold);
+            margin: 0 20px;
+        }
+
+        /* Countdown */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .count-item {
+            background: var(--dark-bg);
+            color: var(--light-gold);
+            padding: 15px;
+            border-radius: 8px;
+            min-width: 80px;
+        }
+
+        .count-item span {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        /* Event Details */
+        .event-card {
+            background: white;
+            border: 1px solid var(--light-gold);
+            padding: 40px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-radius: 5px;
+        }
+
+        .btn-map {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn-map:hover {
+            background: var(--primary-gold);
+            color: white;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Music Controls */
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-gold);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .script-font { font-size: 2.2rem; }
+            .ampersand { margin: 20px 0; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="weddingMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-memories.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-control" onclick="toggleMusic()">🎵</div>
+
+    <div id="invitation-overlay">
+        <h3 style="letter-spacing: 5px;">THE WEDDING OF</h3>
+        <h1 style="font-size: 3rem; margin: 20px 0;">Romeo & Juliet</h1>
+        <p>Kepada Bapak/Ibu/Saudara/i</p>
+        <p style="margin-top: 10px; font-weight: 600;">Tamu Undangan Terhormat</p>
+        <button class="btn-open" onclick="openInvitation()">BUKA UNDANGAN</button>
+    </div>
+
+    <section class="hero">
+        <div class="reveal">
+            <h3>SAVE THE DATE</h3>
+            <div class="gold-line"></div>
+            <h1>Romeo <span class="script-font" style="color: var(--dark-bg);">&</span> Juliet</h1>
+            <p>19 DESEMBER 2026</p>
+        </div>
+    </section>
+
+    <section id="couple">
+        <h2 class="reveal">Mempelai</h2>
+        <div class="couple-container">
+            <div class="couple-box reveal">
+                <h2 class="script-font">Romeo Montague</h2>
+                <p>Putra dari Bapak Montague & Ibu Montague</p>
+            </div>
+            <div class="ampersand reveal">&</div>
+            <div class="couple-box reveal">
+                <h2 class="script-font">Juliet Capulet</h2>
+                <p>Putri dari Bapak Capulet & Ibu Capulet</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background-color: #f4f4f4;">
+        <h2 class="reveal">Menghitung Hari</h2>
+        <div id="countdown" class="reveal">
+            <div class="count-item"><span id="days">00</span>Hari</div>
+            <div class="count-item"><span id="hours">00</span>Jam</div>
+            <div class="count-item"><span id="minutes">00</span>Menit</div>
+            <div class="count-item"><span id="seconds">00</span>Detik</div>
+        </div>
+    </section>
+
+    <section id="event">
+        <div class="event-card reveal">
+            <h2 style="margin-bottom: 20px;">Akad Nikah</h2>
+            <p>Sabtu, 19 Desember 2026</p>
+            <p>08.00 - 10.00 WIB</p>
+            <p style="margin-top: 15px;"><b>Grand Ballroom Ritz-Carlton</b></p>
+            <p>Jl. Jenderal Sudirman Kav. 52-53, Jakarta</p>
+            <a href="#" class="btn-map">LIHAT LOKASI</a>
+        </div>
+
+        <div class="event-card reveal" style="background-color: var(--dark-bg); color: white; border: none;">
+            <h2 style="margin-bottom: 20px; color: var(--light-gold);">Resepsi</h2>
+            <p>Sabtu, 19 Desember 2026</p>
+            <p>19.00 WIB - Selesai</p>
+            <p style="margin-top: 15px; color: var(--light-gold);"><b>Grand Ballroom Ritz-Carlton</b></p>
+            <p>Jakarta Selatan</p>
+            <a href="#" class="btn-map" style="color: var(--light-gold); border-color: var(--light-gold);">LIHAT LOKASI</a>
+        </div>
+    </section>
+
+    <footer style="padding: 50px 0; background: var(--cream); border-top: 1px solid #ddd;">
+        <p class="script-font" style="font-size: 2rem;">Terima Kasih</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">Romeo & Juliet Wedding 2026</p>
+    </footer>
+
+    <script>
+        // Buka Undangan
+        function openInvitation() {
+            document.getElementById('invitation-overlay').classList.add('unlocked');
+            document.body.style.overflow = 'auto';
+            const audio = document.getElementById('weddingMusic');
+            audio.play();
+        }
+
+        // Toggle Music
+        function toggleMusic() {
+            const audio = document.getElementById('weddingMusic');
+            const control = document.getElementById('music-control');
+            if (audio.paused) {
+                audio.play();
+                control.innerHTML = "🎵";
+            } else {
+                audio.pause();
+                control.innerHTML = "🔇";
+            }
+        }
+
+        // Countdown Logic
+        const targetDate = new Date("Dec 19, 2026 08:00:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = d;
+            document.getElementById("hours").innerText = h;
+            document.getElementById("minutes").innerText = m;
+            document.getElementById("seconds").innerText = s;
+        }, 1000);
+
+        // Scroll Reveal Animation
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                var revealPoint = 150;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+
+        // Jalankan reveal sekali saat load
+        window.onload = reveal;
+    </script>
+</body>
+</html>
