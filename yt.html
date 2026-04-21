@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>iOS Dark - Thumbnail Downloader</title>
+    <style>
+        /* iOS DARK THEME VARIABLES */
+        :root {
+            --bg-base: #000000;
+            --bg-card: #1C1C1E;
+            --bg-card-glass: rgba(28, 28, 30, 0.8);
+            --bg-input: #2C2C2E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #8E8E93;
+            --accent-blue: #0A84FF;
+            --accent-blue-hover: #0070E0;
+            --accent-green: #32D74B;
+            --accent-green-hover: #28B83D;
+            --divider: rgba(84, 84, 88, 0.35);
+            --radius-xl: 24px;
+            --radius-lg: 16px;
+            --radius-md: 12px;
+            --radius-sm: 8px;
+            --transition-smooth: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            background-image: radial-gradient(circle at 50% -20%, #1a1a2e 0%, #000000 100%);
+        }
+
+        .app-container {
+            background: var(--bg-card-glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            width: 100%;
+            max-width: 600px;
+            border-radius: var(--radius-xl);
+            padding: 30px 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 2vh;
+            transition: var(--transition-smooth);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h2 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
+        }
+
+        .header p {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            background-color: var(--bg-input);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+            font-size: 16px;
+            padding: 16px 80px 16px 18px;
+            border-radius: var(--radius-lg);
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        input[type="text"]::placeholder {
+            color: var(--text-secondary);
+        }
+
+        input[type="text"]:focus {
+            border-color: var(--accent-blue);
+            background-color: #3A3A3C;
+            box-shadow: 0 0 0 3px rgba(10, 132, 255, 0.2);
+        }
+
+        .btn-paste {
+            position: absolute;
+            right: 8px;
+            background: rgba(10, 132, 255, 0.15);
+            color: var(--accent-blue);
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-paste:active {
+            transform: scale(0.95);
+            background: rgba(10, 132, 255, 0.3);
+        }
+
+        .btn-primary {
+            width: 100%;
+            background-color: var(--accent-blue);
+            color: #FFF;
+            border: none;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-blue-hover);
+        }
+
+        .btn-primary:active {
+            transform: scale(0.97);
+        }
+
+        /* Loading */
+        .loading-container {
+            display: none;
+            text-align: center;
+            margin: 30px 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .loading-container.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .spinner {
+            width: 28px;
+            height: 28px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: var(--accent-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 12px;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Result Section */
+        .result-section {
+            display: none;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid var(--divider);
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .result-section.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .title-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+            background: var(--bg-input);
+            padding: 15px;
+            border-radius: var(--radius-md);
+        }
+
+        .video-title {
+            font-size: 15px;
+            font-weight: 500;
+            line-height: 1.5;
+            color: var(--text-primary);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .btn-copy {
+            background-color: rgba(255,255,255,0.1);
+            color: var(--text-primary);
+            border: none;
+            padding: 6px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            flex-shrink: 0;
+        }
+
+        .btn-copy:active {
+            transform: scale(0.92);
+            background-color: var(--accent-blue);
+        }
+
+        /* Grid Resolusi */
+        .resolutions-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .resolution-card {
+            background: var(--bg-input);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition-smooth);
+        }
+
+        .resolution-card:hover {
+            border-color: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+        }
+
+        .thumb-preview {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-color: #000;
+            position: relative;
+        }
+
+        .thumb-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-body {
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .quality-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .quality-title {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .quality-subtitle {
+            font-size: 12px;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        .btn-download {
+            background-color: var(--accent-green);
+            color: #000;
+            border: none;
+            padding: 10px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-download:hover {
+            background-color: var(--accent-green-hover);
+        }
+
+        .btn-download:active {
+            transform: scale(0.95);
+        }
+        
+        .btn-download.loading {
+            opacity: 0.7;
+            pointer-events: none;
+            background-color: #555;
+            color: #FFF;
+        }
+
+        @media (min-width: 480px) {
+            .resolutions-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        <div class="header">
+            <h2>MODORA Official</h2>
+            <p>POWERED by bakekok</p>
+        </div>
+
+        <div class="input-group">
+            <input type="text" id="urlInput" placeholder="Paste link YouTube di sini..." autocomplete="off">
+            <button class="btn-paste" onclick="pasteUrl()">Paste</button>
+        </div>
+
+        <button class="btn-primary" onclick="fetchDetails()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Ambil Thumbnail
+        </button>
+
+        <div id="loader" class="loading-container">
+            <div class="spinner"></div>
+            <p style="color: var(--text-secondary); font-size: 14px; font-weight: 500;">Memproses tautan...</p>
+        </div>
+
+        <div id="resultBox" class="result-section">
+            <div class="title-row">
+                <div id="videoTitle" class="video-title">Memuat judul...</div>
+                <button class="btn-copy" onclick="copyTitle()" id="copyBtnText">Salin</button>
+            </div>
+            
+            <div class="resolutions-grid" id="resolutionsContainer">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        // Fitur Tombol Paste dengan animasi soft
+        async function pasteUrl() {
+            try {
+                const text = await navigator.clipboard.readText();
+                const input = document.getElementById('urlInput');
+                input.value = text;
+                input.focus(); 
+            } catch (err) {
+                alert('Akses clipboard ditolak browser. Silakan paste manual.');
+            }
+        }
+
+        // Fitur Tombol Copy Judul
+        function copyTitle() {
+            const titleText = document.getElementById('videoTitle').innerText;
+            navigator.clipboard.writeText(titleText).then(() => {
+                const copyBtn = document.getElementById('copyBtnText');
+                copyBtn.innerText = 'Disalin!';
+                copyBtn.style.backgroundColor = 'var(--accent-blue)';
+                copyBtn.style.color = '#FFF';
+                
+                setTimeout(() => {
+                    copyBtn.innerText = 'Salin';
+                    copyBtn.style.backgroundColor = 'rgba(255,255,255,0.1)';
+                    copyBtn.style.color = 'var(--text-primary)';
+                }, 2000);
+            }).catch(err => {
+                alert('Gagal menyalin teks.');
+            });
+        }
+
+        // Fungsi ekstrak ID YouTube
+        function extractVideoID(url) {
+            const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        // Fungsi Utama Fetch Data
+        async function fetchDetails() {
+            const urlInput = document.getElementById('urlInput').value.trim();
+            const resultBox = document.getElementById('resultBox');
+            const loader = document.getElementById('loader');
+            const container = document.getElementById('resolutionsContainer');
+            
+            if (!urlInput) {
+                alert('Tautan YouTube tidak boleh kosong.');
+                return;
+            }
+
+            const videoID = extractVideoID(urlInput);
+
+            if (!videoID) {
+                alert('Tautan tidak valid. Harap masukkan link YouTube yang benar.');
+                return;
+            }
+
+            // Animasi Transisi
+            resultBox.classList.remove('active');
+            container.innerHTML = ''; 
+            setTimeout(() => { loader.classList.add('active'); }, 100);
+
+            // Fetch Judul
+            try {
+                const noembedUrl = `https://noembed.com/embed?url=${encodeURIComponent('https://www.youtube.com/watch?v=' + videoID)}`;
+                const response = await fetch(noembedUrl);
+                const data = await response.json();
+                document.getElementById('videoTitle').innerText = data.title || 'Judul tidak tersedia';
+            } catch (error) {
+                document.getElementById('videoTitle').innerText = 'Judul Video YouTube';
+            }
+
+            // Daftar Resolusi
+            const qualities = [
+                { id: 'maxresdefault', name: 'HD', desc: '1080p / 720p' },
+                { id: 'sddefault', name: 'SD', desc: '480p' },
+                { id: 'hqdefault', name: 'HQ', desc: '360p' },
+                { id: 'mqdefault', name: 'MQ', desc: '180p' }
+            ];
+
+            qualities.forEach(q => {
+                const imgUrl = `https://img.youtube.com/vi/${videoID}/${q.id}.jpg`;
+                
+                // Buat struktur card
+                const card = document.createElement('div');
+                card.className = 'resolution-card';
+                card.id = `card-${q.id}`;
+                
+                card.innerHTML = `
+                    <div class="thumb-preview">
+                        <img src="${imgUrl}" id="img-${q.id}" alt="Thumbnail ${q.name}">
+                    </div>
+                    <div class="card-body">
+                        <div class="quality-info">
+                            <span class="quality-title">${q.name}</span>
+                            <span class="quality-subtitle">${q.desc}</span>
+                        </div>
+                        <button class="btn-download" id="btn-${q.id}" onclick="directDownload('${imgUrl}', 'btn-${q.id}')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            Unduh
+                        </button>
+                    </div>
+                `;
+
+                container.appendChild(card);
+
+                // Deteksi jika gambar tidak ada (YouTube mengembalikan dummy 120x90)
+                const imgCheck = new Image();
+                imgCheck.onload = function() {
+                    if (this.width === 120 && (q.id === 'maxresdefault' || q.id === 'sddefault')) {
+                        document.getElementById(`card-${q.id}`).style.display = 'none';
+                    }
+                };
+                imgCheck.src = imgUrl;
+            });
+
+            // Tampilkan hasil
+            setTimeout(() => {
+                loader.classList.remove('active');
+                setTimeout(() => {
+                    resultBox.classList.add('active');
+                }, 100);
+            }, 800);
+        }
+
+        // Fitur Direct Download dengan sistem "Racing Proxy" (Siapa Cepat Dia Dapat)
+        async function directDownload(imageUrl, btnId) {
+            const btn = document.getElementById(btnId);
+            const originalContent = btn.innerHTML;
+            
+            // Animasi tombol loading
+            btn.classList.add('loading');
+            btn.innerHTML = 'Memproses...';
+
+            // Generate nama file random
+            const randomString = Math.random().toString(36).substring(2, 10).toUpperCase();
+            const randomFileName = `THUMB_${randomString}.jpg`;
+            const cleanUrl = imageUrl.replace(/^https?:\/\//, '');
+
+            // Siapkan pemutus koneksi
+            const controllers = [];
+
+            // 4 Server Proxy ditembak bersamaan
+            const proxies = [
+                `https://wsrv.nl/?url=${encodeURIComponent(cleanUrl)}&output=jpg&q=100`,
+                `https://api.allorigins.win/raw?url=${encodeURIComponent(imageUrl)}`,
+                `https://corsproxy.io/?${encodeURIComponent(imageUrl)}`,
+                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(imageUrl)}`
+            ];
+
+            // Bikin array promise balapan
+            const fetchPromises = proxies.map((proxy) => {
+                const controller = new AbortController();
+                controllers.push(controller);
+                
+                return new Promise(async (resolve, reject) => {
+                    try {
+                        const response = await fetch(proxy, { signal: controller.signal });
+                        if (!response.ok) throw new Error('Server Sibuk');
+                        const blob = await response.blob();
+                        resolve(blob); // Yang pertama sukses akan me-resolve ini
+                    } catch (err) {
+                        reject(err);
+                    }
+                });
+            });
+
+            try {
+                // Promise.any akan mengambil proxy PERTAMA yang membalas, sisanya otomatis ditinggalkan
+                const blob = await Promise.any(fetchPromises);
+                
+                // Matikan request ke proxy lain yang kalah cepat agar tidak boros kuota/lemot
+                controllers.forEach(ctrl => ctrl.abort());
+                
+                const blobUrl = window.URL.createObjectURL(blob);
+                
+                // Trigger Download
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.href = blobUrl;
+                a.download = randomFileName; 
+                document.body.appendChild(a);
+                a.click();
+                
+                // Bersihkan cache
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(blobUrl);
+
+                btn.innerHTML = 'Berhasil!';
+                btn.style.backgroundColor = '#0A84FF'; // Biru sukses
+            } catch (error) {
+                btn.innerHTML = 'Gagal!';
+                btn.style.backgroundColor = '#FF3B30'; // Merah gagal
+                alert('Gagal mengunduh otomatis. Server proxy sedang diblokir sementara oleh jaringan Anda.');
+            } finally {
+                // Kembalikan tombol ke semula setelah 2.5 detik
+                setTimeout(() => {
+                    btn.classList.remove('loading');
+                    btn.innerHTML = originalContent;
+                    btn.style.backgroundColor = '';
+                }, 2500);
+            }
+        }
+    </script>
+</body>
+</html>
