@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DH16G5Q7KW"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-DH16G5Q7KW');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DH16G5Q7KW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DH16G5Q7KW');
+    </script>
         
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    
     <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#0f172a" id="metaThemeColor">
     
-    <title>Unduh apps and game MOD APK new version.</title>
-    <meta name="description" content="Unduh apps and game mod apk free for android.">
+    <title>MODORA - Unduh Apps & Games MOD APK New Version</title>
+    <meta name="description" content="Platform terbaik untuk unduh aplikasi dan game MOD APK gratis, aman, dan versi terbaru untuk Android.">
+    <meta name="keywords" content="MODORA, mod apk, unduh game mod, aplikasi premium gratis, download apk mod, game android">
     <meta name="author" content="MODORA Official Inc.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://modora.my.id">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://modora.my.id/">
+    <meta property="og:title" content="MODORA - Unduh Apps & Games MOD APK">
+    <meta property="og:description" content="Platform terbaik untuk unduh aplikasi dan game MOD APK gratis, aman, dan versi terbaru untuk Android.">
+    <meta property="og:image" content="/modora.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://modora.my.id/">
+    <meta property="twitter:title" content="MODORA - Unduh Apps & Games MOD APK">
+    <meta property="twitter:description" content="Platform terbaik untuk unduh aplikasi dan game MOD APK gratis, aman, dan versi terbaru untuk Android.">
+    <meta property="twitter:image" content="/modora.png">
+
     <link rel="icon" href="/modora.png" type="image/png">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "MODORA",
+      "url": "https://modora.my.id",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://modora.my.id/?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 
     <script>
-        // Apply saved font immediately
         const savedFont = localStorage.getItem('modora_font');
         if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
     </script>
 
     <style>
-        /* --- CONFIG & VARIABLES (DARK MODE BASE ONLY) --- */
         :root {
             --header-h: 70px;
             --nav-h: 65px;
-            
             --bg-body: #0f172a;
             --bg-card: #1e293b;
             --bg-glass: rgba(15, 23, 42, 0.85);
@@ -50,7 +70,6 @@
             --shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             --card-border: rgba(255, 255, 255, 0.05);
             --search-bg: #334155;
-            
             --glass-blur: blur(20px);
             --primary: #2563eb; 
             --secondary: #4f46e5;
@@ -87,7 +106,6 @@
             -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
         }
 
-        /* --- BACKGROUND ANIMATION --- */
         #bg-animation {
             position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
             z-index: -1; overflow: hidden; pointer-events: none;
@@ -101,7 +119,6 @@
             100% { transform: translateY(-20vh) rotate(360deg); }
         }
 
-        /* --- TOAST NOTIFICATION --- */
         .toast {
             position: fixed; top: -100px; left: 50%; transform: translateX(-50%);
             background: var(--bg-card); color: var(--text-main);
@@ -111,26 +128,21 @@
             font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 10px;
         }
         .toast.show { top: calc(env(safe-area-inset-top, 20px) + 20px); }
-        .toast i { font-size: 16px; }
 
         #mainView { 
             width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; 
             transition: max-width 0.3s ease; min-height: 80vh; 
             animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0;
-            position: relative;
-            z-index: 10;
+            opacity: 0; position: relative; z-index: 10;
         }
         @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
 
-        /* --- HEADER --- */
         header {
             position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
             padding: 0 24px; background: var(--bg-glass); 
             backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
             display: flex; align-items: center; justify-content: space-between;
-            border-bottom: 1px solid var(--border); z-index: 1000;
-            transform: translateZ(0);
+            border-bottom: 1px solid var(--border); z-index: 1000; transform: translateZ(0);
             transition: background-color 0.25s ease, border-color 0.25s ease;
         }
 
@@ -145,7 +157,6 @@
         .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
         .btn-tele:active { transform: scale(0.9); }
 
-        /* --- SKELETON LOADERS --- */
         @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
         .skeleton { background: var(--skeleton-grad); background-size: 200% 100%; animation: shimmer 1.5s infinite linear; border-radius: 8px; }
         .skel-trend { width: 300px; height: 165px; border-radius: 24px; flex-shrink: 0; }
@@ -162,12 +173,10 @@
         .view-grid .skel-card .skel-line { width: 90%; }
         .view-grid .skel-card .skel-btn { width: 100%; margin-top: 12px; }
 
-        /* --- RECOMMENDATION --- */
         .section-head { font-size: 19px; font-weight: 800; margin-bottom: 16px; margin-top: 45px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
-        .section-head ion-icon { font-size: 22px; }
-        .section-head ion-icon.recom-icon { color: #f59e0b; }
-        .section-head ion-icon.apps-icon { color: #10b981; }
-        .section-head ion-icon.games-icon { color: #8b5cf6; }
+        .recom-icon { color: #f59e0b; }
+        .apps-icon { color: #10b981; }
+        .games-icon { color: #8b5cf6; }
         
         .recom-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; padding-bottom: 20px; scrollbar-width: none; }
         .recom-wrap::-webkit-scrollbar { display: none; }
@@ -187,10 +196,9 @@
         .trend-name { font-size: 20px; font-weight: 800; width: 85%; line-height: 1.3; margin-bottom: 6px; z-index: 2; position: relative; letter-spacing: -0.5px; }
         .trend-act { font-size: 13px; color: var(--text-muted); font-weight: 600; z-index: 2; position: relative; }
 
-        /* --- LIST & GRID CARDS --- */
         .list-container { width: 100%; display: grid; gap: 14px; min-height: 100px; }
         .list-container.view-list { grid-template-columns: 1fr; }
-        .list-container.view-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        .list-container.view-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; align-items: start; }
 
         .clean-card {
             background: var(--bg-card); padding: 16px; border-radius: 22px;
@@ -200,11 +208,11 @@
         }
         .clean-card:active { transform: scale(0.96); }
 
-        .view-grid .clean-card { flex-direction: column; text-align: center; height: auto; padding: 20px 16px; }
-        .view-grid .clean-card .icon-wrap { width: 70px; height: 70px; margin-bottom: 8px; }
-        .view-grid .clean-card .clean-info { width: 100%; justify-content: center; }
-        .view-grid .clean-card .clean-name { -webkit-line-clamp: 2; height: 2.6em; }
-        .view-grid .clean-card .btn-unduh { width: 100%; margin-top: 12px; padding: 10px; }
+        .view-grid .clean-card { flex-direction: column; text-align: center; height: 100%; padding: 20px 16px; justify-content: space-between; }
+        .view-grid .clean-card .icon-wrap { width: 70px; height: 70px; margin-bottom: 8px; margin-left: auto; margin-right: auto; }
+        .view-grid .clean-card .clean-info { width: 100%; justify-content: center; margin-bottom: 12px; }
+        .view-grid .clean-card .clean-name { -webkit-line-clamp: 2; height: 2.7em; }
+        .view-grid .clean-card .btn-unduh { width: 100%; margin-top: auto; padding: 10px; }
 
         .icon-wrap { position: relative; width: 60px; height: 60px; flex-shrink: 0; }
         .clean-icon { width: 100%; height: 100%; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.08); background-color: var(--border); pointer-events: none; transition: background-color 0.25s ease; }
@@ -247,7 +255,6 @@
             .search-wrap { max-width: 600px; }
         }
 
-        /* --- ROCKET --- */
         .rocket-wrap { 
             position: fixed; bottom: calc(var(--nav-h) + env(safe-area-inset-bottom, 20px) + 20px); right: 24px; 
             opacity: 0; visibility: hidden; transition: opacity 0.4s; z-index: 1800;
@@ -271,7 +278,6 @@
         @keyframes vibrate { 0% { transform: translate(0, 0) rotate(0deg); } 25% { transform: translate(-2px, 2px) rotate(-2deg); } 50% { transform: translate(2px, -2px) rotate(2deg); } 75% { transform: translate(-2px, -2px) rotate(-2deg); } 100% { transform: translate(0, 0) rotate(0deg); } }
         @keyframes rocketFly { 0% { transform: translateY(0) scale(1); } 20% { transform: translateY(20px) scale(0.9); } 100% { transform: translateY(-120vh) scale(1.2); opacity: 0; } }
 
-        /* --- BOTTOM NAV & BADGE --- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%; 
             height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
@@ -280,20 +286,19 @@
             backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
             border-top: 1px solid var(--border); display: flex; 
             justify-content: space-evenly; align-items: center; z-index: 1900;
-            transform: translateZ(0);
-            transition: background-color 0.25s ease, border-color 0.25s ease;
+            transform: translateZ(0); transition: background-color 0.25s ease, border-color 0.25s ease;
         }
 
         .nav-item { 
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 4px; color: var(--text-muted); cursor: pointer; flex: 1; height: 100%; transition: color 0.2s;
+            gap: 6px; color: var(--text-muted); cursor: pointer; flex: 1; height: 100%; transition: color 0.2s;
         }
         
         .icon-wrapper { position: relative; display: flex; align-items: center; justify-content: center; }
-        .nav-item ion-icon { font-size: 24px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .nav-item i.fa-solid { font-size: 20px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .nav-item span { font-size: 10px; font-weight: 600; }
         .nav-item.active { color: var(--primary); }
-        .nav-item.active ion-icon { transform: scale(1.15) translateY(-2px); }
+        .nav-item.active i.fa-solid { transform: scale(1.15) translateY(-2px); }
 
         .nav-badge {
             position: absolute; top: -6px; right: -12px; background: var(--accent); color: white;
@@ -302,7 +307,6 @@
             transition: border-color 0.25s ease, background-color 0.25s ease;
         }
 
-        /* --- MODAL SETTINGS --- */
         .modal { 
             position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(0,0,0,0); z-index: 2100; display: flex; align-items: flex-end; 
@@ -354,7 +358,6 @@
 <body>
     
     <div id="network-toast" class="toast"></div>
-
     <div id="bg-animation"></div>
 
     <header>
@@ -363,55 +366,53 @@
             <input type="text" id="search" class="search-input" placeholder="Search..." onkeyup="doSearch()">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
-        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+        <a href="../../../../telegram" aria-label="Telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
     </header>
 
-    <div id="mainView">
-        <div id="section-recom">
-            <div class="section-head"><ion-icon name="sparkles" class="recom-icon"></ion-icon> Recomended</div>
+    <main id="mainView">
+        <section id="section-recom">
+            <div class="section-head" id="t-recom"><i class="fa-solid fa-wand-magic-sparkles recom-icon"></i> Recommended</div>
             <div class="recom-wrap"><div class="recom-scroll" id="recomContainer">
                 <div class="skeleton skel-trend"></div>
                 <div class="skeleton skel-trend"></div>
                 <div class="skeleton skel-trend"></div>
             </div></div>
-        </div>
-        
-        <div id="section-apps">
-            <div class="section-head"><ion-icon name="grid" class="apps-icon"></ion-icon> Apps</div>
-            <div class="list-container view-list" id="appsContainer">
-                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
-                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
-                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
-            </div>
-            <div class="btn-loadmore hidden" id="btnMoreApps" onclick="loadMoreApps()">Show More <i class="fa-solid fa-chevron-down"></i></div>
-        </div>
-        
-        <div id="section-games">
-            <div class="section-head"><ion-icon name="game-controller" class="games-icon"></ion-icon> Games</div>
+        </section>
+
+        <section id="section-games">
+            <div class="section-head" id="t-games"><i class="fa-solid fa-gamepad games-icon"></i> Games</div>
             <div class="list-container view-list" id="gamesContainer">
                 <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
                 <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+            </div>
+            <div class="btn-loadmore hidden" id="btnMoreGames" onclick="loadMoreGames()"><span id="t-showMoreGames">Show More</span> <i class="fa-solid fa-chevron-down"></i></div>
+        </section>
+        
+        <section id="section-apps">
+            <div class="section-head" id="t-apps"><i class="fa-solid fa-grip apps-icon"></i> Apps</div>
+            <div class="list-container view-list" id="appsContainer">
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
                 <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
             </div>
-            <div class="btn-loadmore hidden" id="btnMoreGames" onclick="loadMoreGames()">Show More <i class="fa-solid fa-chevron-down"></i></div>
-        </div>
+            <div class="btn-loadmore hidden" id="btnMoreApps" onclick="loadMoreApps()"><span id="t-showMoreApps">Show More</span> <i class="fa-solid fa-chevron-down"></i></div>
+        </section>
         
-        <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
-    </div>
+        <footer class="footer">© <span id="year"></span> MODORA | All Rights Reserved</footer>
+    </main>
 
     <div class="rocket-wrap" id="rocket">
-        <div class="rocket-btn" id="rocketBtn" onclick="launchSequence()"><i class="fa-solid fa-rocket"></i></div>
+        <div class="rocket-btn" id="rocketBtn" aria-label="Scroll to top" onclick="launchSequence()"><i class="fa-solid fa-rocket"></i></div>
     </div>
 
     <div class="modal" id="modalSet" onclick="if(event.target === this) toggleSet()">
         <div class="modal-box">
             <div style="text-align:center; margin-bottom:25px;">
                 <div class="modal-handle"></div>
-                <h3 style="font-size:18px; font-weight: 800; letter-spacing: -0.3px;">Settings</h3>
+                <h3 style="font-size:18px; font-weight: 800; letter-spacing: -0.3px;" id="t-settingsTitle">Settings</h3>
             </div>
             
             <div class="set-group">
-                <div class="set-title">Color Theme</div>
+                <div class="set-title" id="t-colorTheme">Color Theme</div>
                 <div class="color-grid">
                     <div class="color-item" style="background:#2563eb;" onclick="setThemeColor('#2563eb', '#4f46e5', this)" data-color="#2563eb"></div>
                     <div class="color-item" style="background:#ef4444;" onclick="setThemeColor('#ef4444', '#b91c1c', this)" data-color="#ef4444"></div>
@@ -423,21 +424,21 @@
 
             <div class="set-group">
                 <div class="set-title">
-                    <span>Battery Saver (No Blur)</span>
+                    <span id="t-batterySaver">Battery Saver (No Blur)</span>
                     <div class="toggle-switch" id="ecoToggle" onclick="toggleEco()"></div>
                 </div>
             </div>
 
             <div class="set-group">
-                <div class="set-title">View Mode</div>
+                <div class="set-title" id="t-viewMode">View Mode</div>
                 <div class="segmented-control">
-                    <button onclick="setViewMode('list')" id="btnViewList" class="seg-btn active"><i class="fa-solid fa-list"></i> List</button>
-                    <button onclick="setViewMode('grid')" id="btnViewGrid" class="seg-btn"><i class="fa-solid fa-border-all"></i> Grid</button>
+                    <button onclick="setViewMode('list')" id="btnViewList" class="seg-btn active"><i class="fa-solid fa-list"></i> <span id="t-list">List</span></button>
+                    <button onclick="setViewMode('grid')" id="btnViewGrid" class="seg-btn"><i class="fa-solid fa-border-all"></i> <span id="t-grid">Grid</span></button>
                 </div>
             </div>
 
             <div class="set-group">
-                <div class="set-title">Font Style</div>
+                <div class="set-title" id="t-fontStyle">Font Style</div>
                 <div class="segmented-control">
                     <button onclick="chFont('Plus Jakarta Sans')" id="btnFontModern" class="seg-btn active">Modern</button>
                     <button onclick="chFont('Merriweather')" id="btnFontClassic" class="seg-btn" style="font-family:serif;">Classic</button>
@@ -446,57 +447,92 @@
             </div>
 
             <div class="modal-actions">
-                <button class="btn-reset" onclick="resetSettings()">Reset</button>
-                <button class="btn-close" onclick="toggleSet()">Close</button>
+                <button class="btn-reset" id="t-btnReset" onclick="resetSettings()">Reset</button>
+                <button class="btn-close" id="t-btnClose" onclick="toggleSet()">Close</button>
             </div>
         </div>
     </div>
 
-    <div class="bottom-nav">
+    <nav class="bottom-nav">
         <div class="nav-item active" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-            <div class="icon-wrapper"><ion-icon name="home"></ion-icon></div><span>Home</span>
-        </div>
-        <div class="nav-item" onclick="window.location.href='../../apps'">
-            <div class="icon-wrapper">
-                <ion-icon name="grid"></ion-icon>
-                <div class="nav-badge" id="badge-app" style="display:none;">0</div>
-            </div>
-            <span>Apps</span>
+            <div class="icon-wrapper"><i class="fa-solid fa-house"></i></div><span id="t-navHome">Home</span>
         </div>
         <div class="nav-item" onclick="window.location.href='../../games'">
             <div class="icon-wrapper">
-                <ion-icon name="game-controller"></ion-icon>
+                <i class="fa-solid fa-gamepad"></i>
                 <div class="nav-badge" id="badge-game" style="display:none;">0</div>
             </div>
-            <span>Games</span>
+            <span id="t-navGames">Games</span>
+        </div>
+        <div class="nav-item" onclick="window.location.href='../../apps'">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-grip"></i>
+                <div class="nav-badge" id="badge-app" style="display:none;">0</div>
+            </div>
+            <span id="t-navApps">Apps</span>
         </div>
         <div class="nav-item" onclick="toggleSet()">
-            <div class="icon-wrapper"><ion-icon name="settings"></ion-icon></div><span>Setting</span>
+            <div class="icon-wrapper"><i class="fa-solid fa-gear"></i></div><span id="t-navSettings">Setting</span>
         </div>
-    </div>
+    </nav>
 
     <script>
+        // --- MULTI-LANGUAGE SYSTEM (i18n) ---
+        const i18n = {
+            en: { recom: "Recommended", games: "Games", apps: "Apps", search: "Search...", showMore: "Show More", home: "Home", settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)", viewMode: "View Mode", fontStyle: "Font Style", list: "List", grid: "Grid", reset: "Reset", close: "Close", noGames: "No games found in this repository.", noApps: "No apps found in this repository.", getBtn: "GET", getNow: "Get Now" },
+            id: { recom: "Rekomendasi", games: "Game", apps: "Aplikasi", search: "Cari...", showMore: "Tampilkan", home: "Beranda", settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai", viewMode: "Tampilan", fontStyle: "Gaya Huruf", list: "Daftar", grid: "Kotak", reset: "Atur Ulang", close: "Tutup", noGames: "Tidak ada game ditemukan.", noApps: "Tidak ada aplikasi ditemukan.", getBtn: "UNDUH", getNow: "Dapatkan" },
+            es: { recom: "Recomendado", games: "Juegos", apps: "Aplicaciones", search: "Buscar...", showMore: "Mostrar Más", home: "Inicio", settings: "Ajustes", colorTheme: "Tema de Color", batterySaver: "Ahorro de Batería", viewMode: "Modo de Vista", fontStyle: "Estilo de Fuente", list: "Lista", grid: "Cuadrícula", reset: "Reiniciar", close: "Cerrar", noGames: "No se encontraron juegos.", noApps: "No se encontraron aplicaciones.", getBtn: "OBTENER", getNow: "Consíguelo" },
+            pt: { recom: "Recomendado", games: "Jogos", apps: "Aplicativos", search: "Pesquisar...", showMore: "Mostrar Mais", home: "Início", settings: "Configurações", colorTheme: "Tema de Cor", batterySaver: "Economia de Bateria", viewMode: "Modo de Exibição", fontStyle: "Estilo de Fonte", list: "Lista", grid: "Grade", reset: "Redefinir", close: "Fechar", noGames: "Nenhum jogo encontrado.", noApps: "Nenhum aplicativo encontrado.", getBtn: "OBTER", getNow: "Obter Agora" },
+            ru: { recom: "Рекомендуемые", games: "Игры", apps: "Приложения", search: "Поиск...", showMore: "Показать еще", home: "Главная", settings: "Настройки", colorTheme: "Цветовая тема", batterySaver: "Экономия батареи", viewMode: "Режим просмотра", fontStyle: "Стиль шрифта", list: "Список", grid: "Сетка", reset: "Сброс", close: "Закрыть", noGames: "Игры не найдены.", noApps: "Приложения не найдены.", getBtn: "СКАЧАТЬ", getNow: "Получить" },
+            hi: { recom: "अनुशंसित", games: "खेल", apps: "ऐप्स", search: "खोजें...", showMore: "और दिखाएं", home: "होम", settings: "सेटिंग्स", colorTheme: "रंग विषय", batterySaver: "बैटरी सेवर", viewMode: "दृश्य मोड", fontStyle: "फ़ॉन्ट शैली", list: "सूची", grid: "ग्रिड", reset: "रीसेट", close: "बंद करें", noGames: "कोई खेल नहीं मिला।", noApps: "कोई ऐप नहीं मिला।", getBtn: "प्राप्त करें", getNow: "अभी प्राप्त करें" }
+        };
+
+        let userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
+        if (!i18n[userLang]) userLang = 'en'; 
+
+        function t(key) { return i18n[userLang][key]; }
+
+        function applyLanguage() {
+            document.getElementById('t-recom').innerHTML = `<i class="fa-solid fa-wand-magic-sparkles recom-icon"></i> ${t('recom')}`;
+            document.getElementById('t-games').innerHTML = `<i class="fa-solid fa-gamepad games-icon"></i> ${t('games')}`;
+            document.getElementById('t-apps').innerHTML = `<i class="fa-solid fa-grip apps-icon"></i> ${t('apps')}`;
+            document.getElementById('search').placeholder = t('search');
+            document.getElementById('t-showMoreGames').innerText = t('showMore');
+            document.getElementById('t-showMoreApps').innerText = t('showMore');
+            document.getElementById('t-navHome').innerText = t('home');
+            document.getElementById('t-navGames').innerText = t('games');
+            document.getElementById('t-navApps').innerText = t('apps');
+            document.getElementById('t-navSettings').innerText = t('settings');
+            document.getElementById('t-settingsTitle').innerText = t('settings');
+            document.getElementById('t-colorTheme').innerText = t('colorTheme');
+            document.getElementById('t-batterySaver').innerText = t('batterySaver');
+            document.getElementById('t-viewMode').innerText = t('viewMode');
+            document.getElementById('t-fontStyle').innerText = t('fontStyle');
+            document.getElementById('t-list').innerText = t('list');
+            document.getElementById('t-grid').innerText = t('grid');
+            document.getElementById('t-btnReset').innerText = t('reset');
+            document.getElementById('t-btnClose').innerText = t('close');
+        }
+
         const GITHUB_CONFIG = {
             owner: 'modora-official',   
             repo: 'MD-Zone',    
             branch: 'main'       
         };
 
-        // --- OFFLINE/ONLINE DETECTION ---
         function showToast(msg, type) {
-            const t = document.getElementById('network-toast');
+            const toastEl = document.getElementById('network-toast');
             let iconColor = type === 'offline' ? 'var(--accent)' : '#10b981';
             let iconClass = type === 'offline' ? 'fa-solid fa-wifi-slash' : 'fa-solid fa-wifi';
             
-            t.innerHTML = `<i class="${iconClass}" style="color:${iconColor}"></i> ${msg}`;
-            t.className = `toast show ${type}`;
-            setTimeout(() => t.classList.remove('show'), 3500);
+            toastEl.innerHTML = `<i class="${iconClass}" style="color:${iconColor}"></i> ${msg}`;
+            toastEl.className = `toast show ${type}`;
+            setTimeout(() => toastEl.classList.remove('show'), 3500);
         }
 
-        window.addEventListener('offline', () => showToast('Koneksi internet terputus!', 'offline'));
-        window.addEventListener('online', () => showToast('Kembali online!', 'online'));
+        window.addEventListener('offline', () => showToast(userLang==='id'?'Koneksi internet terputus!':'Internet connection lost!', 'offline'));
+        window.addEventListener('online', () => showToast(userLang==='id'?'Kembali online!':'Back online!', 'online'));
 
-        // --- BACKGROUND ANIMATION ICON GENERATOR ---
         function createBgIcons() {
             const bgContainer = document.getElementById('bg-animation');
             const icons = ['fa-brands fa-android', 'fa-solid fa-gamepad', 'fa-solid fa-user-secret', 'fa-solid fa-wand-magic-sparkles', 'fa-solid fa-bug'];
@@ -505,24 +541,20 @@
                 let el = document.createElement('i');
                 let randomIcon = icons[Math.floor(Math.random() * icons.length)];
                 el.className = `bg-icon ${randomIcon}`;
-                
-                // Randomize positions, durations, and sizes
                 el.style.left = `${Math.random() * 100}vw`;
                 el.style.animationDuration = `${10 + Math.random() * 25}s`;
                 el.style.animationDelay = `-${Math.random() * 20}s`;
                 el.style.fontSize = `${1.5 + Math.random() * 2}rem`;
-                
                 bgContainer.appendChild(el);
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage();
             createBgIcons();
-            // Menunggu DOM ter-load penuh sebelum menghilangkan skeleton dan memunculkan animasi
             setTimeout(() => { document.body.classList.add('app-ready'); }, 50);
-            
             if(!navigator.onLine) {
-                setTimeout(() => showToast('Anda sedang offline!', 'offline'), 1000);
+                setTimeout(() => showToast(userLang==='id'?'Anda sedang offline!':'You are offline!', 'offline'), 1000);
             }
         });
 
@@ -576,7 +608,7 @@
                 });
                 return items;
             } catch (error) {
-                console.error(`Failed to scan ${folderPath} via GitHub API:`, error);
+                console.error(`Failed to scan ${folderPath}:`, error);
                 return []; 
             }
         }
@@ -615,17 +647,10 @@
             const badgeApp = document.getElementById('badge-app');
             const badgeGame = document.getElementById('badge-game');
 
-            if (dbApps.length > 0) {
-                badgeApp.innerText = dbApps.length;
-                badgeApp.style.display = 'block';
-            }
-            if (dbGames.length > 0) {
-                badgeGame.innerText = dbGames.length;
-                badgeGame.style.display = 'block';
-            }
+            if (dbApps.length > 0) { badgeApp.innerText = dbApps.length; badgeApp.style.display = 'block'; }
+            if (dbGames.length > 0) { badgeGame.innerText = dbGames.length; badgeGame.style.display = 'block'; }
         }
 
-        // --- INFINITE AUTO SCROLL LOGIC ---
         let autoScrollInterval;
         let isUserInteracting = false;
         
@@ -635,8 +660,7 @@
 
             function scrollStep() {
                 if(!isUserInteracting && wrap.scrollWidth > wrap.clientWidth) {
-                    wrap.scrollLeft += 1; // Speed
-                    // Jika mencapai setengah (akhir dari data asli), reset halus ke 0
+                    wrap.scrollLeft += 1; 
                     if (wrap.scrollLeft >= wrap.scrollWidth / 2) {
                         wrap.scrollLeft -= (wrap.scrollWidth / 2);
                     }
@@ -644,7 +668,6 @@
                 autoScrollInterval = requestAnimationFrame(scrollStep);
             }
 
-            // Hentikan scroll otomatis saat user menyentuh/menggeser secara manual
             wrap.addEventListener('mouseenter', () => isUserInteracting = true);
             wrap.addEventListener('mouseleave', () => isUserInteracting = false);
             wrap.addEventListener('touchstart', () => isUserInteracting = true, {passive: true});
@@ -660,43 +683,40 @@
             
             const allReal = [...dbApps, ...dbGames];
             if(allReal.length === 0) {
-                container.innerHTML = '<div class="status-msg">No recommendations yet.</div>';
+                container.innerHTML = `<div class="status-msg">${t('noGames')}</div>`;
                 return;
             }
 
-            // Shuffle untuk rekomendasi dan tampilkan max 15 item
             const shuffled = allReal.sort(() => 0.5 - Math.random()).slice(0, 15);
             let html = '';
             
             shuffled.forEach(item => {
                 html += `
                 <div class="trend-card" onclick="openLink('${item.link}')">
-                    <span class="trend-badge">RECOMMENDED</span>
+                    <span class="trend-badge">MOD</span>
                     <div class="trend-name">${item.name}</div>
-                    <div class="trend-act">Get Now <i class="fa-solid fa-arrow-right"></i></div>
+                    <div class="trend-act">${t('getNow')} <i class="fa-solid fa-arrow-right"></i></div>
                     <img src="${item.img}" class="trend-bg" loading="lazy" onerror="this.style.opacity=0">
                 </div>`;
             });
             
-            // Duplikat konten untuk membuat efek seamless infinite loop
             container.innerHTML = html + html; 
             initInfiniteScroll();
         }
 
         function createCardHtml(item) {
-            let badgeText = 'MOD';
             let iconHtml = `<img src="${item.img}" class="clean-icon" loading="lazy" onerror="this.src='https://via.placeholder.com/70?text=IMG'">`;
 
             return `
             <div class="clean-card" onclick="openLink('${item.link}')">
                 <div class="icon-wrap">
                     ${iconHtml}
-                    <div class="mod-label">${badgeText}</div>
+                    <div class="mod-label">MOD</div>
                 </div>
                 <div class="clean-info">
                     <div class="clean-name">${item.name}</div>
                 </div>
-                <button class="btn-unduh">GET</button>
+                <button class="btn-unduh">${t('getBtn')}</button>
             </div>`;
         }
 
@@ -706,26 +726,26 @@
             
             if(!isDataLoaded) return; 
 
-            // Render Apps
-            if(dbApps.length === 0) {
-                cApps.innerHTML = '<div class="status-msg">No apps found in this repository.</div>';
-                document.getElementById('btnMoreApps').classList.add('hidden');
-            } else {
-                let hApps = ''; 
-                dbApps.slice(0, showAppsCount).forEach(item => hApps += createCardHtml(item));
-                cApps.innerHTML = hApps;
-                document.getElementById('btnMoreApps').classList.toggle('hidden', showAppsCount >= dbApps.length);
-            }
-            
-            // Render Games
+            // Render Games First
             if(dbGames.length === 0) {
-                cGames.innerHTML = '<div class="status-msg">No games found in this repository.</div>';
+                cGames.innerHTML = `<div class="status-msg">${t('noGames')}</div>`;
                 document.getElementById('btnMoreGames').classList.add('hidden');
             } else {
                 let hGames = ''; 
                 dbGames.slice(0, showGamesCount).forEach(item => hGames += createCardHtml(item));
                 cGames.innerHTML = hGames;
                 document.getElementById('btnMoreGames').classList.toggle('hidden', showGamesCount >= dbGames.length);
+            }
+
+            // Render Apps Second
+            if(dbApps.length === 0) {
+                cApps.innerHTML = `<div class="status-msg">${t('noApps')}</div>`;
+                document.getElementById('btnMoreApps').classList.add('hidden');
+            } else {
+                let hApps = ''; 
+                dbApps.slice(0, showAppsCount).forEach(item => hApps += createCardHtml(item));
+                cApps.innerHTML = hApps;
+                document.getElementById('btnMoreApps').classList.toggle('hidden', showAppsCount >= dbApps.length);
             }
         }
 
@@ -756,17 +776,17 @@
             secApps.style.display = 'block'; 
             secGames.style.display = 'block';
             
-            const fApps = dbApps.filter(i => i.name.toLowerCase().includes(val));
-            let hApp = ''; 
-            fApps.forEach(item => hApp += createCardHtml(item));
-            document.getElementById('appsContainer').innerHTML = hApp || '<div class="status-msg">No apps matched your search</div>';
-            document.getElementById('btnMoreApps').classList.add('hidden');
-
             const fGames = dbGames.filter(i => i.name.toLowerCase().includes(val));
             let hGame = ''; 
             fGames.forEach(item => hGame += createCardHtml(item));
-            document.getElementById('gamesContainer').innerHTML = hGame || '<div class="status-msg">No games matched your search</div>';
+            document.getElementById('gamesContainer').innerHTML = hGame || `<div class="status-msg">${t('noGames')}</div>`;
             document.getElementById('btnMoreGames').classList.add('hidden');
+
+            const fApps = dbApps.filter(i => i.name.toLowerCase().includes(val));
+            let hApp = ''; 
+            fApps.forEach(item => hApp += createCardHtml(item));
+            document.getElementById('appsContainer').innerHTML = hApp || `<div class="status-msg">${t('noApps')}</div>`;
+            document.getElementById('btnMoreApps').classList.add('hidden');
         }
 
         function toggleSet() { document.getElementById('modalSet').classList.toggle('active'); }
@@ -818,13 +838,8 @@
         }
 
         function setViewMode(mode) {
-            if (!document.startViewTransition) {
-                applyViewModeClass(mode);
-                return;
-            }
-            document.startViewTransition(() => {
-                applyViewModeClass(mode);
-            });
+            if (!document.startViewTransition) { applyViewModeClass(mode); return; }
+            document.startViewTransition(() => { applyViewModeClass(mode); });
         }
 
         function applyViewModeClass(mode) {
@@ -876,7 +891,6 @@
 
         loadSettings(); 
         initData();
-
     </script>
 </body>
 </html>
