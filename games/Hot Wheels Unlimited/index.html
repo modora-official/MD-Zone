@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../../../ads.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>Hot Wheels Unlimited MOD APK V2026.2.1</title>
+    <link rel="icon" href="https://play-lh.googleusercontent.com/OUJIeWLhJxmUGRK-TFbPl6GuuPU-0cMp-La08QfSEnaM-0UEvMOpB4qywJv5NRKnvqQ-c1FkJ2eT2CDrrnLj2A=s512" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem('modora_theme');
+        if(savedTheme === 'light') { 
+            document.documentElement.classList.add('light-mode'); 
+            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+        }
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a; --bg-card: #1e293b; --bg-glass: rgba(15, 23, 42, 0.85);
+            --text-main: #f8fafc; --text-muted: #94a3b8; --border: #334155;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2); --card-border: rgba(255, 255, 255, 0.05);
+            --search-bg: #334155; --glass-blur: blur(20px);
+            --primary: #2563eb; --secondary: #4f46e5; --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.light-mode {
+            --bg-body: #f1f5f9; --bg-card: #ffffff; --bg-glass: rgba(255, 255, 255, 0.85);
+            --text-main: #0f172a; --text-muted: #64748b; --border: #e2e8f0;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04); --card-border: var(--border); --search-bg: #e2e8f0;
+        }
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+
+        .app-hero { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; margin-top: 10px; }
+        .app-icon-wrap { position: relative; width: 100px; height: 100px; flex-shrink: 0; }
+        .app-icon { width: 100%; height: 100%; border-radius: 25px; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); }
+        .mod-badge { position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); background: var(--accent); color: white; font-size: 10px; font-weight: 800; padding: 4px 12px; border-radius: 12px; border: 3px solid var(--bg-body); box-shadow: 0 2px 5px rgba(0,0,0,0.2); white-space: nowrap; }
+        
+        .app-titles { flex: 1; }
+        .app-name { font-size: 18px; font-weight: 800; line-height: 1.2; margin-bottom: 6px; letter-spacing: -0.5px; }
+        .app-dev { font-size: 14px; color: var(--primary); font-weight: 600; }
+
+        .action-top-wrap { margin-bottom: 20px; display: flex; flex-direction: column; gap: 5px; }
+        .btn-download-huge { 
+            width: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); 
+            color: white; border: none; padding: 15px; border-radius: 20px; text-decoration: none;
+            font-size: 16px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-direction: column;
+            cursor: pointer; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .btn-download-huge:active { transform: scale(0.97); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Social Notification */
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; }
+        .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 10px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 30px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; flex-shrink: 0; }
+
+        .section-head { font-size: 18px; font-weight: 800; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head ion-icon { color: var(--primary); font-size: 20px; }
+        
+        .ss-wrap { margin-right: -24px; padding-right: 24px; overflow-x: auto; scrollbar-width: none; scroll-snap-type: x mandatory; padding-bottom: 15px; margin-bottom: 15px; }
+        .ss-wrap::-webkit-scrollbar { display: none; }
+        .ss-scroll { display: flex; gap: 15px; width: max-content; }
+        .ss-img { height: 280px; width: auto; border-radius: 18px; scroll-snap-align: start; box-shadow: var(--shadow); border: 1px solid var(--card-border); object-fit: cover; cursor: pointer; transition: opacity 0.2s; }
+        .ss-img:active { opacity: 0.7; }
+
+        .content-box { background: var(--bg-card); padding: 20px; border-radius: 24px; border: 1px solid var(--card-border); font-size: 14px; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
+        .content-box strong { color: var(--text-main); }
+        .content-box p { margin-bottom: 10px; }
+        .content-box p:last-child { margin-bottom: 0; }
+
+        /* Lightbox CSS */
+        .lightbox { display: none; position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; transition: 0.3s; user-select: none; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); z-index: 10001; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.4); }
+        .prev-lb { left: 10px; } 
+        .next-lb { right: 10px; }
+
+        @media (min-width: 900px) { #mainView { max-width: 800px; } header { padding-left: 5%; padding-right: 5%; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../" class="btn-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <div class="header-title">Detail App</div>
+        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        <div class="app-hero">
+            <div class="app-icon-wrap">
+                <img src="https://play-lh.googleusercontent.com/OUJIeWLhJxmUGRK-TFbPl6GuuPU-0cMp-La08QfSEnaM-0UEvMOpB4qywJv5NRKnvqQ-c1FkJ2eT2CDrrnLj2A=s512" class="app-icon" alt="Hot Wheels Unlimited MOD APK V2026.2.1">
+                <div class="mod-badge">MOD APK</div>
+            </div>
+            <div class="app-titles">
+                <h1 class="app-name">Hot Wheels Unlimited MOD APK V2026.2.1</h1>
+                <div class="app-dev"><a href="https://play.google.com/store/apps/details?id=com.budgestudios.googleplay.HotWheelsUnlimited" target="_blank" style="color: inherit; text-decoration: none;">Budge Studios</a></div>
+            </div>
+        </div>
+
+        <div class="action-top-wrap">
+            
+            <a href="https://sfl.gl/KmRXz60J" class="btn-download-huge" style="margin-bottom: 12px;">
+                <div><span>DOWNLOAD (830.34 MB)</span></div>
+                <div class="btn-date">Update: 24 April 2026</div>
+            </a>
+            <div class="mini-actions">
+                <a href="../../tutorials" class="btn-mini">
+                    <i class="fa-solid fa-book-open"></i><span>Tutorials Unduh</span>
+                </a>
+                <a href="../../requests" class="btn-mini">
+                    <i class="fa-solid fa-code-pull-request"></i><span>Requests</span>
+                </a>
+                <a href="../../" class="btn-mini">
+                    <i class="fa-solid fa-house"></i><span>Home</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="social-notice">
+            <p>JOIN COMMUNITY FOR NEW UPDATES</p>
+            <div class="social-links">
+                <a href="../../../../../whatsapp" target="_blank" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="../../../../../telegram" target="_blank" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Cars</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Track</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Free Shopping</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Support All Device</span></div>
+        </div>
+
+        
+
+        <div class="section-head"><ion-icon name="images"></ion-icon> Screenshots</div>
+        <div class="ss-wrap">
+            <div class="ss-scroll">
+                <img src="https://play-lh.googleusercontent.com/ldb4dTIYIAX6uoY1AQHKIdWplQAkaoZcT6qUn8g6TZwtiyMRCjVizZFw_RCNj-rmGw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/HqXOHxmft1gUikmLuce6c0C6KeEUK3aBRRypjJbO91Xr43OV0LgwNcdcbMklTJNz0Hs=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/JcDrHU2w7cWJgaNL0q2D8DTSBRYxI4VZAs0y94vbW_uibfM5RES9FgC2m10992E67lVIhOeaiPr2CeiYXLmdrQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/KjfHvau0c55xPzlHJHGyWNXyQnhfk5QiVYwt6hlZrm4yenEkl7iE8fcwZ_6JHr3AMbs=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/MNj6MjX_pjfow1oxAWGcI7jf9s5ivWE6opfwIPYoBagVOaUSchFzV7F8bV7_hZSxwg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/QQdv58T4FpwVgDuodSmPsmyVGpLQSUiWGmTh20GaLx5P94i6CRxPPVA86EB5yN3peQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/PRXJXVMqIGrjltcPkOgVvybjUERimmzZpumj2vuPlSejdVY00ccek51YsqhGJAVOMDA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/AS1Yzc3uH4T37D_0naGkqbsdSXWdGNDs_nrApYEf31ngXxnYpeLaVKguvRHG5wZl0WB_=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/PUS0QVXtbqF3A4sMikzTG7lSmrnmvzAps7wS91jvqHRJM1pkY2CRAG2r3xvZXwvrk2U=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/CXSdcK8Do4qcurcpD6Q0i8fuJDUh3JqoEJLtDScDJqh868QkBvQKMiBKc9nAEaG4Tg=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/I1TcWQ4NKJ-CBXKZuM_YgEGCpA8vNC0bMvv1AFIVf3BDHanqOvbx4PJe-KCRELrPdx_-9HIwuHc033EZnAe_=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/VuaxaUC0g5P0jW0UD4ZNmx7gulV1QsOq7cu7gI02hQYBCItxTfzFHx8GTfM-luTw-9HW=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/STwjIuin7_pf4jd7y8Qodfkq05CMYe6w1QC5-IK0snjO5dGMYCAJa7Nv3aN3Ryt5Aw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/QfhwIPKMMyiDzBqv64uGbZZ2kZcekNwrmLUfiwgWUhmHGNnBIirRQQUXSZzjZFKiMw=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/yM3z-LtpB4bOvGZn66SuKRIhVdZTmC50u_IuIsRk8cEECTUOdLqTdEI3qv69ppA3wvY=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Gd_9UT1yu1WE5K7OeAzVa26MiXkB_p1bZRrrsL19Ic9m6Cf6xSTJNcV67M9Vh0ytkQ=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/j_7xY4YcJTAD3T4WGlbZyaFcc0WEMXucA4DhlvbNgDMw_IW5ZXYnYgyagtzHlDIRlww=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/LrNHRVWQs7WQhsUGvAtUbeMUsO9F8yojlZK7z5_e8rAqKeO8xL3AvF0Si4gC1SIUJbk=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/tWE49z6foK1fC9Sd6CuetX3llMdLyzxrsSfdILlz42vcEegQ56oqGk06YpbkzOy3IOA=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/HfVHwN1bJch47JQCM9cSsi8DQIYUtDGQCF0MIo8Db56lL8FGjl88IMb-AYN83_4B0Q=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/XnvvR-MafxEc9QdiYZ-GuEISj-v0EahIVusirpOpZllVv8gxm3cQ1OSkRfblxA4DhhU=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/Gjnt3xEOdcRyLmdUZTUCMNekSHGT-uG8_QNsH_baXDQPPR2g5M9bmw17syvIBttdmq8=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                <img src="https://play-lh.googleusercontent.com/J8NVNF2QBClURE00ASwPGetryplJnRvQhsFW6SVV0TS2cma54Kq94oILoEmAlJtPTCMf=s720" class="ss-img" alt="MODORA Official" loading="lazy">
+                
+            </div>
+        </div>
+
+        <div class="section-head"><ion-icon name="document-text"></ion-icon> Description</div>
+        <div class="content-box">
+            <p>Buckle up! Get ready to race around Hot Wheels™ Islands! We’re all about awesome cars, monster trucks, fun racing games, crazy challenges, and building the coolest race tracks around. Head on over to Hot Wheels™ City to test your skills with fun puzzle or car racing challenges. Race solo or compete against friends! Start your engines, this is going to be an awesome ride! </p>
+            
+            <p>An awesome free car and monster truck racing game for boys and kids 5-13. Parents and other family members can play along too!</p>
+            <p>BUILD – Fuel your imagination with the best Hot Wheels™ Track Builder on mobile! Bring to life the craziest stunt courses full of loops,  jumps, boosters and epic ramps. Dare to make your racetracks full of monstrous Nemeses? Clash with the Gorilla’s stomp or Shark’s chomp! These creatures are sure to add a twist to your tracks! Ready, set, build!</p>
+            
+            <p>RACE – Race your own mega-tracks! Racing with cars and monster trucks is super fun and easy: use your finger to steer and drift along the racetrack! Take on big stunts, daring jumps and twisted loops. Want more speed? Smash that Boost button to go full throttle in this fun filled kids racing game.</p>
+            
+            <p>CHALLENGE – Test your skills with a truck-load of awesome challenges! If you prefer fast driving and drifting, racing challenges are made for you. Then it’s simple: win a challenge to get a Red Wheel! Collect enough of them to unlock a rad new car or Monster Truck and cool track pieces.</p>
+            
+            <p>COLLECT – Build your collection of legendary Hot Wheels™, like Rodger Dodger™, Bone Shaker™, Night Shifter™ or spectacular Monster Trucks. You can collect them all in the ultimate garage!</p>
+            
+            <p>COMPETE – Feel the need to show off your daring new track? Start your engines to drift and race against your friends in the 2-player multiplayer mode.</p>
+            
+            <p>POWER UPS – Competition is fierce on the racetracks as you face off against 5 rivals! There are cool power ups: leave sticky oil on the track for your rivals, shield yourself against attacks, or get a boost with a rocket!</p>
+            
+            <p>Go bigger, better &amp; faster with Hot Wheels Unlimited™! Fun and free arcade style car racing games for boys and girls and kids of all ages. Play with Monster trucks, karts, drag racers, muscle cars &amp; more!</p>
+            
+            <p>SUBSCRIPTION DETAILS</p>
+            <p>- This app may offer monthly and yearly subscriptions</p>
+            <p>- Payment will be charged to your Apple ID Account at confirmation of purchase</p>
+            <p>- Subscription automatically renews unless auto-renew is turned off at least 24-hours before the end of the current period</p>
+            <p>- Subscriptions may be managed by the user and auto-renewal may be turned off by going to the user's Account Settings after purchase</p>
+            <p>- Your account will be charged for renewal within 24-hours prior to the end of the current period </p>
+            <p>- You can cancel your subscription at any time, but please note that you will not get a refund for any remaining period of a subscription</p>
+            <p>- Users may be offered a free trial of the subscription</p>
+            <p>- One free trial per account, on new subscriptions only</p>
+            <p>- Any unused portion of a free trial period, if offered, will be forfeited when the user purchases a subscription</p>
+            
+            <p>PRIVACY &amp; ADVERTISING</p>
+            <p>Budge Studios takes children's privacy seriously and ensures that its apps are compliant with child privacy laws. This application has received the “ESRB Privacy Certified Kids’ Privacy Seal”. Read our privacy policy at: https://budgestudios.com/en/legal/privacy-policy/, or email our Data Protection Officer at: privacy@budgestudios.ca</p>
+            
+            <p>END-USER LICENSE AGREEMENT</p>
+            <p>https://budgestudios.com/en/legal-embed/eula/</p>
+            
+            <p>HAVE QUESTIONS? </p>
+            <p>We always welcome your questions, suggestions and comments. Contact us 24/7 at support@budgestudios.ca </p>
+            
+            <p>HOT WHEELS and associated trademarks and trade dress are owned by, and used under license from, Mattel. ©2021 Mattel.</p>
+            
+            <p>BUDGE and BUDGE STUDIOS are trademarks of Budge Studios Inc.</p>
+            
+            <p>Hot Wheels Unlimited™ ©2021 Budge Studios Inc. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-lb"><i class="fa-solid fa-xmark"></i></span>
+        <span class="prev-lb"><i class="fa-solid fa-chevron-left"></i></span>
+        <img class="lightbox-content" id="img-lb">
+        <span class="next-lb"><i class="fa-solid fa-chevron-right"></i></span>
+    </div>
+
+    <script>
+        function loadSettingsForDetail() {
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+            }
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            loadSettingsForDetail();
+            
+            // Inisialisasi Lightbox
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            // Tutup jika klik diluar area gambar
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
+        });
+    </script>
+</body>
+</html>
