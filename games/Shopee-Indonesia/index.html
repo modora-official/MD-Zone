@@ -1,26 +1,6 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <script>
-        (function() {
-            var userLang = navigator.language || navigator.userLanguage;
-            var targetLang = userLang.split('-')[0];
-            var currentLang = 'id';
-            if (targetLang !== currentLang) {
-                var cookieStr = "googtrans=/" + currentLang + "/" + targetLang;
-                document.cookie = cookieStr + "; path=/; domain=" + window.location.hostname;
-                document.cookie = cookieStr + "; path=/";
-            }
-        })();
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'id',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script src="https://divorceabetpiano.com/67/b1/9b/67b19bcda13dcfd3eea3c1a2a8f3920a.js"></script>
 
     <meta charset="UTF-8">
@@ -40,16 +20,13 @@
         html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
         body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
         
-        /* Sembunyikan UI Google Translate agar terlihat premium dan clean */
-        .skiptranslate, #goog-gt-tt, .goog-te-banner-frame { display: none !important; }
-        body { top: 0px !important; }
-        #google_translate_element { display: none !important; }
-
         #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
         
+        /* ADVERTISEMENT CONTAINERS - Fully Responsive */
         .ad-box { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 25px 0; overflow-x: auto; scrollbar-width: none; background: rgba(0,0,0,0.15); border-radius: 12px; padding: 10px 0; border: 1px dashed var(--border); }
         .ad-box::-webkit-scrollbar { display: none; }
+        .ad-label { font-size: 10px; color: var(--text-muted); text-transform: uppercase; margin-bottom: 8px; letter-spacing: 1px; font-weight: 700; opacity: 0.6; }
 
         header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
         .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
@@ -108,7 +85,6 @@
     </style>
 </head>
 <body>
-    <div id="google_translate_element"></div>
 
     <header>
         <a href="javascript:history.back()" class="btn-back"><i class="fa-solid fa-angle-left"></i></a>
@@ -119,6 +95,7 @@
     <div id="mainView">
         
         <div class="ad-box">
+            <div class="ad-label">- Sponsored 320x50 -</div>
             <script> atOptions = { 'key' : '2139bb0bcc42a03b2434aed0b391acf3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; </script>
             <script src="https://divorceabetpiano.com/2139bb0bcc42a03b2434aed0b391acf3/invoke.js"></script>
         </div>
@@ -133,12 +110,13 @@
         </div>
 
         <div class="ad-box">
+            <div class="ad-label">- Advertisement 300x250 -</div>
             <script> atOptions = { 'key' : 'a6e2777fb180c83683a51931383325df', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} }; </script>
             <script src="https://divorceabetpiano.com/a6e2777fb180c83683a51931383325df/invoke.js"></script>
         </div>
 
         <div class="mini-actions">
-            <a href="javascript:void(0)" onclick="scrollToDownload(event)" class="btn-mini"><i class="fa-solid fa-download"></i><span>Download</span></a>
+            <a href="#download-section" class="btn-mini"><i class="fa-solid fa-download"></i><span>Download</span></a>
             <a href="https://play.google.com/store/apps/details?id=com.shopee.id" target="_blank" class="btn-mini"><i class="fa-brands fa-google-play"></i><span>Play Store</span></a>
             <div class="btn-mini" onclick="shareApp()"><i class="fa-solid fa-share-nodes"></i><span>Bagikan</span></div>
         </div>
@@ -155,6 +133,7 @@
         </div>
 
         <div class="ad-box">
+            <div class="ad-label">- Native Ads 1:1 -</div>
             <script async="async" data-cfasync="false" src="https://divorceabetpiano.com/53773056cf29c22519d850bfd8f749f4/invoke.js"></script>
             <div id="container-53773056cf29c22519d850bfd8f749f4"></div>
         </div>
@@ -162,13 +141,14 @@
         
 
         <div class="ad-box">
+            <div class="ad-label">- Advertisement 468x60 -</div>
             <script> atOptions = { 'key' : '3a395b6a167706907857cb4846d01b10', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} }; </script>
             <script src="https://divorceabetpiano.com/3a395b6a167706907857cb4846d01b10/invoke.js"></script>
         </div>
 
         <div class="section-title"><i class="fa-solid fa-star"></i> Fitur MOD</div>
         <div class="mod-feature-grid">
-            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>God Mode</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Anti-Ban</span></div>
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>One Hit Kill</span></div>
         </div>
 
         <div class="section-title"><i class="fa-solid fa-circle-info"></i> Deskripsi</div>
@@ -212,6 +192,7 @@
         </div>
 
         <div class="ad-box">
+            <div class="ad-label">- Advertisement 728x90 -</div>
             <script> atOptions = { 'key' : '57933ea88c2fb6be24407e7918624e2d', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} }; </script>
             <script src="https://divorceabetpiano.com/57933ea88c2fb6be24407e7918624e2d/invoke.js"></script>
         </div>
@@ -224,6 +205,7 @@
         </div>
 
         <div class="ad-box">
+            <div class="ad-label">- Sponsored 160x300 -</div>
             <script> atOptions = { 'key' : '6e1b0ee6f30c9e15b030b250195c9b9f', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} }; </script>
             <script src="https://divorceabetpiano.com/6e1b0ee6f30c9e15b030b250195c9b9f/invoke.js"></script>
         </div>
@@ -239,7 +221,7 @@
                             <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary, #2563eb), var(--accent, #10b981)); transition: width 1s linear; border-radius: 10px;"></div>
                         </div>
                     </div>
-                    <a href="https://modorazone.com/games/Shopee-Indonesia" class="btn-download-huge" id="dl-btn-0" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
+                    <a href="hjsjek288.com" class="btn-download-huge" id="dl-btn-0" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
                         <div><span>DOWNLOAD (Unknown)</span></div>
                         <div class="btn-date">Update: 19 Mei 2026</div>
                     </a>
@@ -270,6 +252,7 @@
                 </div>
         
         <div class="ad-box">
+            <div class="ad-label">- Advertisement 160x600 -</div>
             <script> atOptions = { 'key' : 'f1158c60141ee90357dc1f9483b5d6cb', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} }; </script>
             <script src="https://divorceabetpiano.com/f1158c60141ee90357dc1f9483b5d6cb/invoke.js"></script>
         </div>
@@ -287,15 +270,6 @@
     <script src="https://divorceabetpiano.com/45/ec/72/45ec7202b42e61ef7004f766c7305b5f.js"></script>
 
     <script>
-        // Fungsi scroll ke download akurat di tengah layar
-        function scrollToDownload(e) {
-            if(e) e.preventDefault();
-            const section = document.getElementById('download-section');
-            if(section) {
-                section.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }
-
         document.addEventListener('DOMContentLoaded', () => {
             const lb = document.getElementById('lightbox');
             const lbImg = document.getElementById('img-lb');
