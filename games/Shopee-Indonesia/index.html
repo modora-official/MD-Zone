@@ -40,6 +40,7 @@
         html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
         body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
         
+        /* Sembunyikan UI Google Translate agar terlihat premium dan clean */
         .skiptranslate, #goog-gt-tt, .goog-te-banner-frame { display: none !important; }
         body { top: 0px !important; }
         #google_translate_element { display: none !important; }
@@ -167,7 +168,7 @@
 
         <div class="section-title"><i class="fa-solid fa-star"></i> Fitur MOD</div>
         <div class="mod-feature-grid">
-            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Gems/Coins</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>God Mode</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>One Hit Kill</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Cars</span></div>
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Premium Mod (Standard)</span></div>
         </div>
 
         <div class="section-title"><i class="fa-solid fa-circle-info"></i> Deskripsi</div>
@@ -238,7 +239,7 @@
                             <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary, #2563eb), var(--accent, #10b981)); transition: width 1s linear; border-radius: 10px;"></div>
                         </div>
                     </div>
-                    <a href="udue288eu.com" class="btn-download-huge" id="dl-btn-0" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
+                    <a href="hehhehe.vom" class="btn-download-huge" id="dl-btn-0" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
                         <div><span>DOWNLOAD (Unknown)</span></div>
                         <div class="btn-date">Update: 20 Mei 2026</div>
                     </a>
@@ -286,6 +287,7 @@
     <script src="https://divorceabetpiano.com/45/ec/72/45ec7202b42e61ef7004f766c7305b5f.js"></script>
 
     <script>
+        // Fungsi scroll ke download akurat di tengah layar
         function scrollToDownload(e) {
             if(e) e.preventDefault();
             const section = document.getElementById('download-section');
@@ -340,70 +342,42 @@
             }
         }
 
-        // --- SYSTEM ANTI ADBLOCK & GOOGLE ANALYTICS (Injected from ads.js) ---
-        (function() {
-            function injectAdblockStyles() {
-                var style = document.createElement('style');
-                style.innerHTML = ":root { --bg-card: #1c1c1e; --text-main: #f2f2f7; --text-muted: #8e8e93; --accent-red: #ff453a; --accent-red-bg: rgba(255, 69, 58, 0.15); --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif; } .modora-ads-wrapper { font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; } .modora-ads-wrapper * { box-sizing: border-box; } #modoraAdblockOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0, 0, 0, 0.65); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 999999; opacity: 0; animation: modoraFadeIn 0.4s forwards ease-out; color: var(--text-main); } .modora-premium-card { background: var(--bg-card); border-radius: 24px; width: 100%; max-width: 400px; padding: 40px 30px; text-align: center; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); animation: modoraCardScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; } @keyframes modoraFadeIn { to { opacity: 1; } } @keyframes modoraCardScale { 0% { transform: scale(0.9); opacity: 0; } 100% { transform: scale(1); opacity: 1; } } .modora-icon-header { width: 64px; height: 64px; background: var(--accent-red-bg); color: var(--accent-red); font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 8px 20px rgba(255, 69, 58, 0.2); } .modora-title { font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--text-main); } .modora-desc { font-size: 15px; color: var(--text-muted); font-weight: 500; line-height: 1.5; margin-bottom: 28px; } .modora-highlight { color: var(--accent-red); font-weight: 600; } .modora-action-card { display: flex; align-items: center; justify-content: center; text-decoration: none; background: var(--accent-red); color: #fff; border: none; border-radius: 16px; padding: 16px; cursor: pointer; transition: transform 0.2s ease, background 0.2s ease; } .modora-action-card:hover { background: #ff5e55; transform: scale(1.02); } .modora-action-card:active { transform: scale(0.98); } .modora-btn-icon { font-size: 18px; margin-right: 12px; } .modora-ad-title { font-size: 16px; font-weight: 600; }";
-                document.head.appendChild(style);
-            }
+        // --- ADBLOCK DETECTOR (MODORA PRO) ---
+        function showAdblockWarning() {
+            var style = document.createElement('style');
+            style.innerHTML = "#modoraAdblockOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 999999; font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; color: #f8fafc; animation: modoraFadeIn 0.3s ease-out; } @keyframes modoraFadeIn { from { opacity: 0; } to { opacity: 1; } } .modora-premium-card { background: #1e293b; border-radius: 24px; width: 100%; max-width: 400px; padding: 40px 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid #334155; transform: scale(0.9); animation: modoraCardScale 0.4s 0.1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; } @keyframes modoraCardScale { to { transform: scale(1); opacity: 1; } } .modora-icon-header { width: 64px; height: 64px; background: rgba(239, 68, 68, 0.15); color: #ef4444; font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 8px 20px rgba(239, 68, 68, 0.2); } .modora-title { font-size: 22px; font-weight: 800; margin-bottom: 10px; } .modora-desc { font-size: 14px; color: #94a3b8; line-height: 1.5; margin-bottom: 25px; } .modora-highlight { color: #ef4444; font-weight: 700; } .modora-action-card { background: #ef4444; color: white; border: none; border-radius: 16px; padding: 16px; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; transition: transform 0.2s, background 0.2s; } .modora-action-card:hover { background: #dc2626; } .modora-action-card:active { transform: scale(0.95); }";
+            document.head.appendChild(style);
 
-            function showAdblockWarning() {
-                if (document.getElementById('modoraAdblockOverlay')) return;
-                injectAdblockStyles();
-                var userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
-                var t = {
-                    'id': { title: "Pemblokir Iklan Aktif", desc: "Situs ini berjalan berkat dukungan iklan. Mohon <span class='modora-highlight'>matikan Adblock</span> Anda untuk melanjutkan.", btn: "Saya sudah mematikan Adblock" },
-                    'en': { title: "Adblock Detected", desc: "We rely on ads to keep this site alive. Please <span class='modora-highlight'>disable your Adblocker</span> to continue.", btn: "I have disabled Adblock" }
-                };
-                var lang = t[userLang] || t['en'];
+            var overlay = document.createElement('div');
+            overlay.id = 'modoraAdblockOverlay';
+            overlay.innerHTML = '<div class="modora-premium-card"><div class="modora-icon-header"><i class="fa-solid fa-shield-virus"></i></div><h2 class="modora-title">Pemblokir Iklan Aktif</h2><p class="modora-desc">Situs ini berjalan berkat dukungan iklan. Mohon <span class="modora-highlight">matikan Adblock</span> Anda untuk melanjutkan download.</p><button class="modora-action-card" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> Saya sudah mematikan Adblock</button></div>';
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+        }
 
-                var overlay = document.createElement('div');
-                overlay.id = 'modoraAdblockOverlay';
-                overlay.className = 'modora-ads-wrapper';
-                overlay.innerHTML = '<div class="modora-premium-card"><div class="modora-icon-header"><i class="fa-solid fa-shield-virus"></i></div><h2 class="modora-title">' + lang.title + '</h2><p class="modora-desc">' + lang.desc + '</p><div class="modora-action-card" onclick="location.reload()"><i class="fa-solid fa-rotate-right modora-btn-icon"></i><div class="modora-ad-title">' + lang.btn + '</div></div></div>';
-                document.body.appendChild(overlay);
-                document.body.style.overflow = 'hidden';
-            }
-
-            function checkAdBlock() {
-                var script = document.createElement('script');
-                script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"; 
-                script.onerror = function() { showAdblockWarning(); };
-                script.onload = function() { runDOMCheck(); };
-                document.head.appendChild(script);
-
-                function runDOMCheck() {
-                    var ad = document.createElement('div');
-                    ad.innerHTML = '&nbsp;'; 
-                    ad.className = 'adsbox ad-placement doubleclick ad-banner banner-ads sponsor-ad';
-                    ad.style.cssText = 'display:block; position:absolute; top:-9999px; left:-9999px; height:10px; width:10px;';
-                    document.body.appendChild(ad);
-
-                    setTimeout(function() {
-                        var styles = window.getComputedStyle(ad);
-                        if (ad.offsetHeight === 0 || styles.display === 'none' || styles.visibility === 'hidden' || ad.offsetParent === null) {
-                            showAdblockWarning();
-                        }
-                        ad.remove();
-                    }, 250); 
-                }
-            }
-
-            setTimeout(checkAdBlock, 1500);
-
-            // Google Analytics Auto Injector
-            if (!document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) {
-                var gtagScript = document.createElement('script');
-                gtagScript.async = true;
-                gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-DH16G5Q7KW';
-                document.head.appendChild(gtagScript);
-
-                var configScript = document.createElement('script');
-                configScript.innerHTML = "window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-DH16G5Q7KW');";
-                document.head.appendChild(configScript);
-            }
-        })();
+        function checkAdBlock() {
+            var script = document.createElement('script');
+            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+            script.onerror = function() { showAdblockWarning(); };
+            script.onload = function() {
+                var ad = document.createElement('div');
+                ad.innerHTML = '&nbsp;';
+                ad.className = 'adsbox ad-placement doubleclick ad-banner banner-ads sponsor-ad';
+                ad.style.cssText = 'display:block; position:absolute; top:-9999px; left:-9999px; height:10px; width:10px;';
+                document.body.appendChild(ad);
+                setTimeout(function() {
+                    var styles = window.getComputedStyle(ad);
+                    if (ad.offsetHeight === 0 || styles.display === 'none' || styles.visibility === 'hidden') {
+                        showAdblockWarning();
+                    }
+                    ad.remove();
+                }, 250);
+            };
+            document.head.appendChild(script);
+        }
+        
+        setTimeout(checkAdBlock, 1500);
+        // --- END ADBLOCK DETECTOR ---
     </script>
 </body>
 </html>
