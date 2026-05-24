@@ -1,10 +1,12 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
 
 import {
   getDatabase,
   ref,
   runTransaction
-} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+}
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBLef7bGChvtMaDCmCkiv_048A8Fdj2ehY",
@@ -19,50 +21,101 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-const box = document.createElement("div");
-
-box.className = "modora-views";
-
-box.innerHTML = `
-<i class="fa-solid fa-eye"></i>
-<span id="views">0</span>
-<span>Views</span>
-`;
-
-document.body.appendChild(box);
-
 const style = document.createElement("style");
 
 style.innerHTML = `
-.modora-views{
-  width:100%;
+.modora-view-wrap{
   display:flex;
   justify-content:center;
-  align-items:center;
-  gap:8px;
-  margin:25px 0;
-  color:#f8fafc;
-  font-size:15px;
-  font-weight:700;
-  font-family:'Plus Jakarta Sans',sans-serif;
+  margin:22px 0;
 }
 
-.modora-views i{
-  color:#94a3b8;
+.modora-view-box{
+  display:flex;
+  align-items:center;
+  gap:8px;
+
+  padding:10px 16px;
+
+  border-radius:14px;
+
+  background:
+  rgba(30,41,59,.75);
+
+  border:
+  1px solid rgba(255,255,255,.06);
+
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  color:#f8fafc;
+
+  font-family:'Plus Jakarta Sans',sans-serif;
+
+  box-shadow:
+  0 4px 18px rgba(0,0,0,.22);
+}
+
+.modora-view-box i{
   font-size:14px;
+  color:#94a3b8;
+}
+
+#views{
+  font-size:14px;
+  font-weight:800;
+  color:white;
+}
+
+.modora-view-box small{
+  font-size:13px;
+  font-weight:700;
+  color:#94a3b8;
 }
 `;
 
 document.head.appendChild(style);
 
-const pageName = location.pathname.replace(/\//g, "_");
+const wrapper = document.createElement("div");
 
-const viewRef = ref(db, "views/" + pageName);
+wrapper.className = "modora-view-wrap";
+
+wrapper.innerHTML = `
+<div class="modora-view-box">
+
+  <i class="fa-regular fa-eye"></i>
+
+  <span id="views">0</span>
+
+  <small>Views</small>
+
+</div>
+`;
+
+const target =
+document.querySelector(".app-header-detail");
+
+if(target){
+  target.insertAdjacentElement(
+    "afterend",
+    wrapper
+  );
+}
+
+const pageName =
+location.pathname.replace(/\//g, "_");
+
+const viewRef =
+ref(db, "views/" + pageName);
 
 runTransaction(viewRef, (count) => {
   return (count || 0) + 1;
 })
 .then((result) => {
-  document.getElementById("views").innerText =
-    result.snapshot.val().toLocaleString();
+
+  document.getElementById("views")
+  .innerText =
+  result.snapshot.val()
+  .toLocaleString();
+
 });
