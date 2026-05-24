@@ -298,5 +298,46 @@
         var go_url = 'https://sfl.gl/'; var api = 'c6860d49e9dc09f506140805a1cd075cdc10f23b'; var shorten_includ = ["safefileku.com"];
     </script>
     <script src="//safelinku.com/js/web-script.js"></script>
+    <span id="views">👁 Loading...</span>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+
+import {
+  getDatabase,
+  ref,
+  runTransaction
+} from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBLef7bGChvtMaDCmCkiv_048A8Fdj2ehY",
+  authDomain: "modora-b86c4.firebaseapp.com",
+  databaseURL: "https://modora-b86c4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "modora-b86c4",
+  storageBucket: "modora-b86c4.firebasestorage.app",
+  messagingSenderId: "792954478651",
+  appId: "1:792954478651:web:9888c53a16830a59283c1e"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const pageName = location.pathname.replace(/\//g, "_");
+
+const viewRef = ref(db, "views/" + pageName);
+
+runTransaction(viewRef, (count) => {
+  return (count || 0) + 1;
+})
+.then((result) => {
+  document.getElementById("views").innerHTML =
+    `👁 ${result.snapshot.val().toLocaleString()} Views`;
+})
+.catch((error) => {
+  console.error(error);
+  document.getElementById("views").innerHTML =
+    "👁 0 Views";
+});
+</script>
 </body>
 </html>
