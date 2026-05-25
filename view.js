@@ -24,98 +24,69 @@ const db = getDatabase(app);
 const style = document.createElement("style");
 
 style.innerHTML = `
-.modora-view-wrap{
-  display:flex;
-  justify-content:center;
-  margin:22px 0;
+/* Wrapper baru agar badge berjajar rapi ke samping */
+.modora-badges-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap; /* Mencegah elemen bertumpuk jika layar sangat kecil */
 }
 
-.modora-view-box{
-  display:flex;
-  align-items:center;
-  gap:8px;
-
-  padding:10px 16px;
-
-  border-radius:14px;
-
-  background:
-  rgba(30,41,59,.75);
-
-  border:
-  1px solid rgba(255,255,255,.06);
-
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-
-  color:#f8fafc;
-
-  font-family:'Plus Jakarta Sans',sans-serif;
-
-  box-shadow:
-  0 4px 18px rgba(0,0,0,.22);
+/* Styling badge views disamakan persis dengan .badge-mod di index.html */
+.modora-view-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(37, 99, 235, 0.15); /* Menggunakan warna var(--primary) transparan */
+  color: #60a5fa; /* Biru terang agar kontras di Dark OS */
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  gap: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.modora-view-box i{
-  font-size:14px;
-  color:#94a3b8;
-}
-
-#views{
-  font-size:14px;
-  font-weight:800;
-  color:white;
-}
-
-.modora-view-box small{
-  font-size:13px;
-  font-weight:700;
-  color:#94a3b8;
+.modora-view-badge i {
+  font-size: 12px;
 }
 `;
 
 document.head.appendChild(style);
 
 const wrapper = document.createElement("div");
+wrapper.className = "modora-view-badge";
 
-wrapper.className = "modora-view-wrap";
-
+// Teks VIEWS disamakan gaya uppercase-nya dengan MOD APK
 wrapper.innerHTML = `
-<div class="modora-view-box">
-
   <i class="fa-regular fa-eye"></i>
-
-  <span id="views">0</span>
-
-  <small>Views</small>
-
-</div>
+  <span id="views">0</span> VIEWS
 `;
 
-const target =
-document.querySelector(".app-header-detail");
+// Cari elemen badge-mod yang sudah ada di HTML
+const badgeMod = document.querySelector(".badge-mod");
 
-if(target){
-  target.insertAdjacentElement(
-    "afterend",
-    wrapper
-  );
+if (badgeMod) {
+  // Buat div container flex baru
+  const badgeContainer = document.createElement("div");
+  badgeContainer.className = "modora-badges-wrapper";
+
+  // Sisipkan container baru tepat sebelum badge-mod
+  badgeMod.parentNode.insertBefore(badgeContainer, badgeMod);
+  
+  // Pindahkan badge-mod ke dalam container flex
+  badgeContainer.appendChild(badgeMod);
+  
+  // Tambahkan badge views di sebelah kanannya
+  badgeContainer.appendChild(wrapper);
 }
 
-const pageName =
-location.pathname.replace(/\//g, "_");
-
-const viewRef =
-ref(db, "views/" + pageName);
+const pageName = location.pathname.replace(/\//g, "_");
+const viewRef = ref(db, "views/" + pageName);
 
 runTransaction(viewRef, (count) => {
   return (count || 0) + 1;
 })
 .then((result) => {
-
-  document.getElementById("views")
-  .innerText =
-  result.snapshot.val()
-  .toLocaleString();
-
+  document.getElementById("views").innerText = result.snapshot.val().toLocaleString();
 });
