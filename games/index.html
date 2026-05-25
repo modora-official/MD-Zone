@@ -16,13 +16,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
-        // Apply saved font immediately
         const savedFont = localStorage.getItem('modora_font');
         if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
     </script>
 
     <style>
-        /* --- CONFIG & VARIABLES (DARK MODE BASE ONLY) --- */
         :root {
             --header-h: 70px;
             --nav-h: 65px;
@@ -33,7 +31,7 @@
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
             --border: #334155;
-            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
             --card-border: rgba(255, 255, 255, 0.05);
             --search-bg: #334155;
             
@@ -52,9 +50,7 @@
         }
 
         ::view-transition-old(root),
-        ::view-transition-new(root) {
-            animation-duration: 0.35s;
-        }
+        ::view-transition-new(root) { animation-duration: 0.35s; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
         
@@ -67,55 +63,8 @@
             min-height: 100vh;
         }
 
-        body.app-ready { transition: background-color 0.25s ease, color 0.25s ease; }
-
         .btn-unduh, .nav-item, .logo, .clean-card, .btn-tele, .rocket-btn, .seg-btn, .color-item, .toggle-switch, img {
             -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
-        }
-
-        /* --- ENTRY ANIMATIONS (SPLASH & STAGGER) --- */
-        #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-            background: var(--bg-body); z-index: 9999; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; transition: opacity 0.5s ease, visibility 0.5s;
-        }
-        #splash-screen.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-        
-        .splash-logo {
-            font-size: 34px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -1px;
-            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite; margin-bottom: 25px;
-        }
-        .splash-spinner {
-            width: 40px; height: 40px; border: 4px solid var(--search-bg);
-            border-top-color: var(--primary); border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.95); } }
-        @keyframes spin { 100% { transform: rotate(360deg); } }
-
-        /* Initial hidden states */
-        header { transform: translateY(-100%); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border-color 0.25s ease; }
-        .bottom-nav { transform: translateY(100%); transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border-color 0.25s ease; }
-        #section-games { opacity: 0; transform: translateY(30px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-        .footer { opacity: 0; transform: translateY(20px); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
-
-        /* Ready animated states */
-        body.app-ready header { transform: translateY(0); }
-        body.app-ready .bottom-nav { transform: translateY(0); }
-        body.app-ready #section-games { opacity: 1; transform: translateY(0); transition-delay: 0.15s; }
-        body.app-ready .footer { opacity: 1; transform: translateY(0); transition-delay: 0.3s; }
-
-        /* --- CARD ENTRANCE ANIMATION (PREMIUM SPRING EFFECT) --- */
-        @keyframes cardPopUp {
-            0% {
-                opacity: 0;
-                transform: translateY(40px) scale(0.9);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
         }
 
         /* --- BACKGROUND ANIMATION --- */
@@ -124,7 +73,7 @@
             z-index: -1; overflow: hidden; pointer-events: none;
         }
         .bg-icon {
-            position: absolute; color: rgba(255, 255, 255, 0.03); 
+            position: absolute; color: rgba(255, 255, 255, 0.02); 
             animation: floatUp linear infinite;
         }
         @keyframes floatUp {
@@ -142,7 +91,6 @@
             font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 10px;
         }
         .toast.show { top: calc(env(safe-area-inset-top, 20px) + 20px); }
-        .toast i { font-size: 16px; }
 
         #mainView { 
             width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; 
@@ -157,7 +105,6 @@
             backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
             display: flex; align-items: center; justify-content: space-between;
             border-bottom: 1px solid var(--border); z-index: 1000;
-            transform: translateZ(0);
         }
 
         .logo { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; cursor: pointer; }
@@ -174,19 +121,14 @@
         /* --- SKELETON LOADERS --- */
         @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
         .skeleton { background: var(--skeleton-grad); background-size: 200% 100%; animation: shimmer 1.5s infinite linear; border-radius: 8px; }
-        
-        .skel-card { 
-            background: var(--bg-card); padding: 16px; border-radius: 22px; 
-            border: 1px solid var(--card-border); display: flex; align-items: center; gap: 16px; 
-            opacity: 0; animation: cardPopUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
+        .skel-card { background: var(--bg-card); padding: 16px; border-radius: 22px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
         .skel-icon { width: 60px; height: 60px; border-radius: 16px; flex-shrink: 0; }
         .skel-info { flex: 1; display: flex; flex-direction: column; gap: 8px; }
         .skel-line { height: 14px; width: 80%; border-radius: 4px; }
         .skel-line.short { width: 50%; }
         .skel-btn { width: 70px; height: 34px; border-radius: 50px; flex-shrink: 0; }
 
-        .view-grid .skel-card { flex-direction: column; height: auto; padding: 20px 16px; align-items: center; }
+        .view-grid .skel-card { flex-direction: column; height: auto; padding: 20px 16px; align-items: center; margin-bottom: 0; }
         .view-grid .skel-card .skel-icon { width: 70px; height: 70px; margin-bottom: 8px; }
         .view-grid .skel-card .skel-info { width: 100%; align-items: center; }
         .view-grid .skel-card .skel-line { width: 90%; }
@@ -194,22 +136,32 @@
 
         /* --- LIST & GRID CARDS --- */
         .section-head { font-size: 19px; font-weight: 800; margin-bottom: 16px; margin-top: 20px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
-        .section-head i { font-size: 20px; }
-        .section-head i.games-icon { color: #8b5cf6; }
+        .section-head i { font-size: 20px; color: #8b5cf6; }
 
         .list-container { width: 100%; display: grid; gap: 14px; min-height: 100px; }
         .list-container.view-list { grid-template-columns: 1fr; }
         .list-container.view-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
 
+        /* NATIVE IOS STYLE SCROLL ANIMATION */
         .clean-card {
             background: var(--bg-card); padding: 16px; border-radius: 22px;
             border: 1px solid var(--card-border); display: flex; align-items: center; gap: 16px;
             cursor: pointer; box-shadow: var(--shadow); position: relative; overflow: hidden;
-            transition: transform 0.2s, background-color 0.25s ease, border-color 0.25s ease;
-            opacity: 0; /* Mulai disembunyikan */
-            animation: cardPopUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; /* Efek Spring Premium */
+            
+            opacity: 0; 
+            transform: translateY(35px) scale(0.96);
+            transition: opacity 0.5s cubic-bezier(0.215, 0.610, 0.355, 1), 
+                        transform 0.5s cubic-bezier(0.215, 0.610, 0.355, 1), 
+                        background-color 0.25s ease, border-color 0.25s ease;
+            will-change: opacity, transform;
         }
-        .clean-card:active { transform: scale(0.96); }
+        
+        .clean-card.show-card {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .clean-card:active { transform: scale(0.96); transition-duration: 0.1s; }
 
         .view-grid .clean-card { flex-direction: column; text-align: center; height: auto; padding: 20px 16px; }
         .view-grid .clean-card .icon-wrap { width: 70px; height: 70px; margin-bottom: 8px; }
@@ -217,13 +169,27 @@
         .view-grid .clean-card .clean-name { -webkit-line-clamp: 2; height: 2.6em; }
         .view-grid .clean-card .btn-unduh { width: 100%; margin-top: 12px; padding: 10px; }
 
-        .icon-wrap { position: relative; width: 60px; height: 60px; flex-shrink: 0; }
-        .clean-icon { width: 100%; height: 100%; border-radius: 16px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.08); background-color: var(--border); pointer-events: none; transition: background-color 0.25s ease; }
+        /* --- IMAGE SPINNER & LAZY LOAD STYLES --- */
+        .icon-wrap { position: relative; width: 60px; height: 60px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+        
+        .img-placeholder {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            background: var(--search-bg); border-radius: 16px; z-index: 1;
+            color: var(--primary); font-size: 20px;
+        }
+
+        .clean-icon { 
+            position: relative; z-index: 2; width: 100%; height: 100%; 
+            border-radius: 16px; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.08); 
+            opacity: 0; transition: opacity 0.4s ease; pointer-events: none; 
+        }
+        .clean-icon.loaded { opacity: 1; }
+        
         .mod-label {
             position: absolute; bottom: -5px; right: -5px; background: var(--accent); color: white;
             font-size: 9px; font-weight: 800; padding: 3px 6px; border-radius: 8px; 
             border: 2px solid var(--bg-card); box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 5;
-            transition: border-color 0.25s ease;
         }
         
         .clean-info { flex: 1; min-width: 0; display: flex; align-items: center; }
@@ -231,11 +197,10 @@
             font-size: 15px; font-weight: 700; color: var(--text-main);
             display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
             overflow: hidden; text-overflow: ellipsis; line-height: 1.35; letter-spacing: -0.2px;
-            transition: color 0.25s ease;
         }
 
         .btn-unduh {
-            background: color-mix(in srgb, var(--primary) 12%, transparent);
+            background: color-mix(in srgb, var(--primary) 15%, transparent);
             color: var(--primary); padding: 8px 18px; height: auto; min-height: 34px;
             border-radius: 50px; font-size: 12px; font-weight: 800; border: none;
             display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: transform 0.2s;
@@ -275,7 +240,7 @@
         @keyframes vibrate { 0% { transform: translate(0, 0) rotate(0deg); } 25% { transform: translate(-2px, 2px) rotate(-2deg); } 50% { transform: translate(2px, -2px) rotate(2deg); } 75% { transform: translate(-2px, -2px) rotate(-2deg); } 100% { transform: translate(0, 0) rotate(0deg); } }
         @keyframes rocketFly { 0% { transform: translateY(0) scale(1); } 20% { transform: translateY(20px) scale(0.9); } 100% { transform: translateY(-120vh) scale(1.2); opacity: 0; } }
 
-        /* --- BOTTOM NAV & BADGE --- */
+        /* --- BOTTOM NAV & BADGE (FIXED IN ORDER: HOME -> GAMES -> APPS -> SETTINGS) --- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%; 
             height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
@@ -283,26 +248,34 @@
             background: var(--bg-glass); 
             backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
             border-top: 1px solid var(--border); display: flex; 
-            justify-content: space-evenly; align-items: center; z-index: 1900;
-            transform: translateZ(0);
+            justify-content: space-around; align-items: center; z-index: 1900;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
         }
 
         .nav-item { 
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 6px; color: var(--text-muted); cursor: pointer; flex: 1; height: 100%; transition: color 0.2s;
+            gap: 5px; color: var(--text-muted); cursor: pointer; flex: 1; height: 100%; transition: color 0.2s;
+            position: relative;
         }
         
         .icon-wrapper { position: relative; display: flex; align-items: center; justify-content: center; }
-        .nav-item i.fa-solid { font-size: 20px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .nav-item span { font-size: 10px; font-weight: 600; }
+        .nav-item i.fa-solid { font-size: 22px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .nav-item span { font-size: 11px; font-weight: 600; letter-spacing: -0.2px; }
+        
         .nav-item.active { color: var(--primary); }
-        .nav-item.active i.fa-solid { transform: scale(1.15) translateY(-2px); }
+        .nav-item.active i.fa-solid { transform: scale(1.2) translateY(-3px); }
+        .nav-item::before {
+            content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%) scaleX(0);
+            width: 35px; height: 3px; background: var(--primary); border-radius: 0 0 5px 5px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 8px var(--primary);
+        }
+        .nav-item.active::before { transform: translateX(-50%) scaleX(1); }
 
         .nav-badge {
             position: absolute; top: -6px; right: -12px; background: var(--accent); color: white;
             font-size: 9px; font-weight: 800; padding: 2px 5px; border-radius: 12px; min-width: 18px; text-align: center;
             border: 2px solid var(--bg-glass); box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10;
-            transition: border-color 0.25s ease, background-color 0.25s ease;
         }
 
         /* --- MODAL SETTINGS --- */
@@ -355,14 +328,8 @@
     </style>
 </head>
 <body>
-    
-    <div id="splash-screen">
-        <div class="splash-logo">MODORA</div>
-        <div class="splash-spinner"></div>
-    </div>
 
     <div id="network-toast" class="toast"></div>
-
     <div id="bg-animation"></div>
 
     <header>
@@ -376,13 +343,16 @@
 
     <div id="mainView">
         <div id="section-games">
-            <div class="section-head"><i class="fa-solid fa-gamepad games-icon"></i> All Games</div>
-            <div class="list-container view-list" id="gamesContainer">
-                <div class="skel-card" style="animation-delay: 0.1s;"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
-                <div class="skel-card" style="animation-delay: 0.2s;"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
-                <div class="skel-card" style="animation-delay: 0.3s;"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
-                <div class="skel-card" style="animation-delay: 0.4s;"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+            <div class="section-head"><i class="fa-solid fa-gamepad games-icon"></i> <span id="txt-section-title">All Games</span></div>
+            
+            <div class="list-container view-list" id="skeletonContainer">
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
+                <div class="skel-card"><div class="skeleton skel-icon"></div><div class="skel-info"><div class="skeleton skel-line"></div><div class="skeleton skel-line short"></div></div><div class="skeleton skel-btn"></div></div>
             </div>
+
+            <div class="list-container view-list" id="gamesContainer" style="display: none;"></div>
         </div>
         
         <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
@@ -396,11 +366,11 @@
         <div class="modal-box">
             <div style="text-align:center; margin-bottom:25px;">
                 <div class="modal-handle"></div>
-                <h3 style="font-size:18px; font-weight: 800; letter-spacing: -0.3px;">Settings</h3>
+                <h3 style="font-size:18px; font-weight: 800; letter-spacing: -0.3px;" id="txt-modal-title">Settings</h3>
             </div>
             
             <div class="set-group">
-                <div class="set-title">Color Theme</div>
+                <div class="set-title" id="txt-theme-title">Color Theme</div>
                 <div class="color-grid">
                     <div class="color-item" style="background:#2563eb;" onclick="setThemeColor('#2563eb', '#4f46e5', this)" data-color="#2563eb"></div>
                     <div class="color-item" style="background:#ef4444;" onclick="setThemeColor('#ef4444', '#b91c1c', this)" data-color="#ef4444"></div>
@@ -412,21 +382,21 @@
 
             <div class="set-group">
                 <div class="set-title">
-                    <span>Battery Saver (No Blur)</span>
+                    <span id="txt-eco-title">Battery Saver (No Blur)</span>
                     <div class="toggle-switch" id="ecoToggle" onclick="toggleEco()"></div>
                 </div>
             </div>
 
             <div class="set-group">
-                <div class="set-title">View Mode</div>
+                <div class="set-title" id="txt-view-title">View Mode</div>
                 <div class="segmented-control">
-                    <button onclick="setViewMode('list')" id="btnViewList" class="seg-btn active"><i class="fa-solid fa-list"></i> List</button>
-                    <button onclick="setViewMode('grid')" id="btnViewGrid" class="seg-btn"><i class="fa-solid fa-border-all"></i> Grid</button>
+                    <button onclick="setViewMode('list')" id="btnViewList" class="seg-btn active"><i class="fa-solid fa-list"></i> <span id="txt-btn-list">List</span></button>
+                    <button onclick="setViewMode('grid')" id="btnViewGrid" class="seg-btn"><i class="fa-solid fa-border-all"></i> <span id="txt-btn-grid">Grid</span></button>
                 </div>
             </div>
 
             <div class="set-group">
-                <div class="set-title">Font Style</div>
+                <div class="set-title" id="txt-font-title">Font Style</div>
                 <div class="segmented-control">
                     <button onclick="chFont('Plus Jakarta Sans')" id="btnFontModern" class="seg-btn active">Modern</button>
                     <button onclick="chFont('Merriweather')" id="btnFontClassic" class="seg-btn" style="font-family:serif;">Classic</button>
@@ -435,32 +405,32 @@
             </div>
 
             <div class="modal-actions">
-                <button class="btn-reset" onclick="resetSettings()">Reset</button>
-                <button class="btn-close" onclick="toggleSet()">Close</button>
+                <button class="btn-reset" onclick="resetSettings()" id="txt-btn-reset">Reset</button>
+                <button class="btn-close" onclick="toggleSet()" id="txt-btn-close">Close</button>
             </div>
         </div>
     </div>
 
     <div class="bottom-nav">
         <div class="nav-item" onclick="window.location.href='../../../../../'">
-            <div class="icon-wrapper"><i class="fa-solid fa-house"></i></div><span>Home</span>
-        </div>
-        <div class="nav-item" onclick="window.location.href='../../apps'">
-            <div class="icon-wrapper">
-                <i class="fa-solid fa-grip"></i>
-                <div class="nav-badge" id="badge-app" style="display:none;">0</div>
-            </div>
-            <span>Apps</span>
+            <div class="icon-wrapper"><i class="fa-solid fa-house"></i></div><span id="txt-nav-home">Home</span>
         </div>
         <div class="nav-item active" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
             <div class="icon-wrapper">
                 <i class="fa-solid fa-gamepad"></i>
                 <div class="nav-badge" id="badge-game" style="display:none;">0</div>
             </div>
-            <span>Games</span>
+            <span id="txt-nav-games">Games</span>
+        </div>
+        <div class="nav-item" onclick="window.location.href='../../apps'">
+            <div class="icon-wrapper">
+                <i class="fa-solid fa-grip"></i>
+                <div class="nav-badge" id="badge-app" style="display:none;">0</div>
+            </div>
+            <span id="txt-nav-apps">Apps</span>
         </div>
         <div class="nav-item" onclick="toggleSet()">
-            <div class="icon-wrapper"><i class="fa-solid fa-gear"></i></div><span>Settings</span>
+            <div class="icon-wrapper"><i class="fa-solid fa-gear"></i></div><span id="txt-nav-settings">Settings</span>
         </div>
     </div>
 
@@ -471,7 +441,69 @@
             branch: 'main'       
         };
 
-        // --- OFFLINE/ONLINE DETECTION ---
+        const scrollObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show-card');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px 0px -40px 0px', 
+            threshold: 0.05
+        });
+
+        // --- KAMUS MULTI-BAHASA GLOBAL (UPDATE: AMBIL -> DOWNLOAD) ---
+        const LANG_DICT = {
+            id: { secTitle: "Semua Game", searchPlaceholder: "Cari Game...", modalTitle: "Pengaturan", themeTitle: "Tema Warna", ecoTitle: "Penghemat Baterai", viewTitle: "Mode Tampilan", fontTitle: "Gaya Font", btnList: "Daftar", btnGrid: "Grid", btnReset: "Atur Ulang", btnClose: "Tutup", navHome: "Beranda", navGames: "Game", navApps: "Aplikasi", navSettings: "Pengaturan", noGames: "Tidak ada game di repositori ini.", noMatch: "Tidak ada game yang cocok", toastOffline: "Internet terputus!", toastOnline: "Kembali online!", btnGet: "Download" },
+            en: { secTitle: "All Games", searchPlaceholder: "Search Games...", modalTitle: "Settings", themeTitle: "Color Theme", ecoTitle: "Battery Saver", viewTitle: "View Mode", fontTitle: "Font Style", btnList: "List", btnGrid: "Grid", btnReset: "Reset", btnClose: "Close", navHome: "Home", navGames: "Games", navApps: "Apps", navSettings: "Settings", noGames: "No games found.", noMatch: "No matches found", toastOffline: "Connection lost!", toastOnline: "Back online!", btnGet: "Download" },
+            es: { secTitle: "Todos los Juegos", searchPlaceholder: "Buscar Juegos...", modalTitle: "Ajustes", themeTitle: "Tema de Color", ecoTitle: "Ahorro de Batería", viewTitle: "Modo de Vista", fontTitle: "Estilo de Fuente", btnList: "Lista", btnGrid: "Cuadrícula", btnReset: "Reiniciar", btnClose: "Cerrar", navHome: "Inicio", navGames: "Juegos", navApps: "Apps", navSettings: "Ajustes", noGames: "No se encontraron juegos.", noMatch: "Sin coincidencias", toastOffline: "¡Sin conexión!", toastOnline: "¡En línea!", btnGet: "Descargar" },
+            pt: { secTitle: "Todos os Jogos", searchPlaceholder: "Buscar Jogos...", modalTitle: "Configurações", themeTitle: "Tema de Cor", ecoTitle: "Economia de Bateria", viewTitle: "Modo de Exibição", fontTitle: "Estilo de Fonte", btnList: "Lista", btnGrid: "Grade", btnReset: "Redefinir", btnClose: "Fechar", navHome: "Início", navGames: "Jogos", navApps: "Apps", navSettings: "Configurações", noGames: "Nenhum jogo encontrado.", noMatch: "Nenhuma correspondência", toastOffline: "Sem conexão!", toastOnline: "Online novamente!", btnGet: "Baixar" },
+            ru: { secTitle: "Все игры", searchPlaceholder: "Поиск игр...", modalTitle: "Настройки", themeTitle: "Цветовая тема", ecoTitle: "Экономия батареи", viewTitle: "Режим", fontTitle: "Шрифт", btnList: "Список", btnGrid: "Сетка", btnReset: "Сброс", btnClose: "Закрыть", navHome: "Главная", navGames: "Игры", navApps: "Прил.", navSettings: "Настройки", noGames: "Игры не найдены.", noMatch: "Нет совпадений", toastOffline: "Нет сети!", toastOnline: "В сети!", btnGet: "Скачать" },
+            fr: { secTitle: "Tous les Jeux", searchPlaceholder: "Rechercher...", modalTitle: "Paramètres", themeTitle: "Thème de Couleur", ecoTitle: "Économie Batterie", viewTitle: "Affichage", fontTitle: "Police", btnList: "Liste", btnGrid: "Grille", btnReset: "Réinitialiser", btnClose: "Fermer", navHome: "Accueil", navGames: "Jeux", navApps: "Apps", navSettings: "Paramètres", noGames: "Aucun jeu trouvé.", noMatch: "Aucune correspondance", toastOffline: "Hors ligne!", toastOnline: "En ligne!", btnGet: "Télécharger" },
+            de: { secTitle: "Alle Spiele", searchPlaceholder: "Spiele suchen...", modalTitle: "Einstellungen", themeTitle: "Farbschema", ecoTitle: "Energiesparmodus", viewTitle: "Ansicht", fontTitle: "Schriftart", btnList: "Liste", btnGrid: "Raster", btnReset: "Zurücksetzen", btnClose: "Schließen", navHome: "Start", navGames: "Spiele", navApps: "Apps", navSettings: "Einstell.", noGames: "Keine Spiele gefunden.", noMatch: "Keine Treffer", toastOffline: "Kein Internet!", toastOnline: "Wieder online!", btnGet: "Download" },
+            ar: { secTitle: "كل الألعاب", searchPlaceholder: "ابحث عن الألعاب...", modalTitle: "الإعدادات", themeTitle: "سمة اللون", ecoTitle: "موفر البطارية", viewTitle: "وضع العرض", fontTitle: "نمط الخط", btnList: "قائمة", btnGrid: "شبكة", btnReset: "إعادة ضبط", btnClose: "إغلاق", navHome: "الرئيسية", navGames: "ألعاب", navApps: "تطبيقات", navSettings: "إعدادات", noGames: "لم يتم العثور على ألعاب.", noMatch: "لا توجد تطابقات", toastOffline: "لا يوجد اتصال!", toastOnline: "متصل الآن!", btnGet: "تحميل" },
+            zh: { secTitle: "所有游戏", searchPlaceholder: "搜索游戏...", modalTitle: "设置", themeTitle: "颜色主题", ecoTitle: "省电模式", viewTitle: "视图模式", fontTitle: "字体", btnList: "列表", btnGrid: "网格", btnReset: "重置", btnClose: "关闭", navHome: "首页", navGames: "游戏", navApps: "应用", navSettings: "设置", noGames: "未找到游戏。", noMatch: "没有匹配项", toastOffline: "断网了！", toastOnline: "已恢复网络！", btnGet: "下载" },
+            ja: { secTitle: "すべてのゲーム", searchPlaceholder: "ゲームを検索...", modalTitle: "設定", themeTitle: "カラー", ecoTitle: "バッテリー節約", viewTitle: "表示モード", fontTitle: "フォント", btnList: "リスト", btnGrid: "グリッド", btnReset: "リセット", btnClose: "閉じる", navHome: "ホーム", navGames: "ゲーム", navApps: "アプリ", navSettings: "設定", noGames: "ゲームが見つかりません。", noMatch: "一致しません", toastOffline: "オフライン！", toastOnline: "オンライン！", btnGet: "ダウンロード" },
+            ko: { secTitle: "모든 게임", searchPlaceholder: "게임 검색...", modalTitle: "설정", themeTitle: "색상 테마", ecoTitle: "배터리 절약", viewTitle: "보기 모드", fontTitle: "글꼴", btnList: "목록", btnGrid: "그리드", btnReset: "초기화", btnClose: "닫기", navHome: "홈", navGames: "게임", navApps: "앱", navSettings: "설정", noGames: "게임을 찾을 수 없음.", noMatch: "결과 없음", toastOffline: "연결 끊김!", toastOnline: "온라인!", btnGet: "다운로드" },
+            hi: { secTitle: "सभी खेल", searchPlaceholder: "खेल खोजें...", modalTitle: "सेटिंग्स", themeTitle: "रंग विषय", ecoTitle: "बैटरी सेवर", viewTitle: "दृश्य", fontTitle: "फ़ॉन्ट", btnList: "सूची", btnGrid: "ग्रिड", btnReset: "रीसेट", btnClose: "बंद करें", navHome: "होम", navGames: "खेल", navApps: "ऐप्स", navSettings: "सेटिंग्स", noGames: "कोई खेल नहीं मिला।", noMatch: "कोई मेल नहीं", toastOffline: "ऑफ़लाइन!", toastOnline: "ऑनलाइन!", btnGet: "डाउनलोड" },
+            vi: { secTitle: "Mọi Trò Chơi", searchPlaceholder: "Tìm Kiếm...", modalTitle: "Cài đặt", themeTitle: "Màu sắc", ecoTitle: "Tiết kiệm Pin", viewTitle: "Chế độ Xem", fontTitle: "Phông chữ", btnList: "Danh sách", btnGrid: "Lưới", btnReset: "Đặt lại", btnClose: "Đóng", navHome: "Trang chủ", navGames: "Trò chơi", navApps: "Ứng dụng", navSettings: "Cài đặt", noGames: "Không có trò chơi.", noMatch: "Không có kết quả", toastOffline: "Mất mạng!", toastOnline: "Đã có mạng!", btnGet: "Tải về" },
+            th: { secTitle: "เกมทั้งหมด", searchPlaceholder: "ค้นหาเกม...", modalTitle: "การตั้งค่า", themeTitle: "ธีมสี", ecoTitle: "ประหยัดแบต", viewTitle: "มุมมอง", fontTitle: "ฟอนต์", btnList: "รายการ", btnGrid: "กริด", btnReset: "รีเซ็ต", btnClose: "ปิด", navHome: "หน้าแรก", navGames: "เกม", navApps: "แอพ", navSettings: "ตั้งค่า", noGames: "ไม่พบเกม", noMatch: "ไม่พบข้อมูล", toastOffline: "ออฟไลน์!", toastOnline: "ออนไลน์!", btnGet: "ดาวน์โหลด" },
+            ms: { secTitle: "Semua Permainan", searchPlaceholder: "Cari Permainan...", modalTitle: "Tetapan", themeTitle: "Tema Warna", ecoTitle: "Jimat Bateri", viewTitle: "Mod Paparan", fontTitle: "Gaya Fon", btnList: "Senarai", btnGrid: "Grid", btnReset: "Semula", btnClose: "Tutup", navHome: "Utama", navGames: "Permainan", navApps: "Aplikasi", navSettings: "Tetapan", noGames: "Tiada permainan.", noMatch: "Tiada padanan", toastOffline: "Tiada internet!", toastOnline: "Dalam talian!", btnGet: "Muat Turun" }
+        };
+
+        let currentLang = 'en';
+
+        function initLanguageDetection() {
+            const browserLang = (navigator.language || navigator.userLanguage).slice(0, 2).toLowerCase();
+            if (LANG_DICT[browserLang]) {
+                currentLang = browserLang;
+            } else {
+                currentLang = 'en';
+            }
+            applyLanguageText();
+        }
+
+        function applyLanguageText() {
+            const d = LANG_DICT[currentLang];
+            document.getElementById('txt-section-title').innerText = d.secTitle;
+            document.getElementById('search').placeholder = d.searchPlaceholder;
+            document.getElementById('txt-modal-title').innerText = d.modalTitle;
+            document.getElementById('txt-theme-title').innerText = d.themeTitle;
+            document.getElementById('txt-eco-title').innerText = d.ecoTitle;
+            document.getElementById('txt-view-title').innerText = d.viewTitle;
+            document.getElementById('txt-btn-list').innerText = d.btnList;
+            document.getElementById('txt-btn-grid').innerText = d.btnGrid;
+            document.getElementById('txt-font-title').innerText = d.fontTitle;
+            document.getElementById('txt-btn-reset').innerText = d.btnReset;
+            document.getElementById('txt-btn-close').innerText = d.btnClose;
+            document.getElementById('txt-nav-home').innerText = d.navHome;
+            document.getElementById('txt-nav-games').innerText = d.navGames;
+            document.getElementById('txt-nav-apps').innerText = d.navApps;
+            document.getElementById('txt-nav-settings').innerText = d.navSettings;
+        }
+
         function showToast(msg, type) {
             const t = document.getElementById('network-toast');
             let iconColor = type === 'offline' ? 'var(--accent)' : '#10b981';
@@ -482,39 +514,27 @@
             setTimeout(() => t.classList.remove('show'), 3500);
         }
 
-        window.addEventListener('offline', () => showToast('Koneksi internet terputus!', 'offline'));
-        window.addEventListener('online', () => showToast('Kembali online!', 'online'));
+        window.addEventListener('offline', () => showToast(LANG_DICT[currentLang].toastOffline, 'offline'));
+        window.addEventListener('online', () => showToast(LANG_DICT[currentLang].toastOnline, 'online'));
 
-        // --- BACKGROUND ANIMATION ICON GENERATOR ---
         function createBgIcons() {
             const bgContainer = document.getElementById('bg-animation');
             const icons = ['fa-brands fa-android', 'fa-solid fa-gamepad', 'fa-solid fa-user-secret', 'fa-solid fa-wand-magic-sparkles', 'fa-solid fa-bug'];
-            
             for(let i = 0; i < 15; i++) {
                 let el = document.createElement('i');
-                let randomIcon = icons[Math.floor(Math.random() * icons.length)];
-                el.className = `bg-icon ${randomIcon}`;
-                
+                el.className = `bg-icon ${icons[Math.floor(Math.random() * icons.length)]}`;
                 el.style.left = `${Math.random() * 100}vw`;
                 el.style.animationDuration = `${10 + Math.random() * 25}s`;
                 el.style.animationDelay = `-${Math.random() * 20}s`;
                 el.style.fontSize = `${1.5 + Math.random() * 2}rem`;
-                
                 bgContainer.appendChild(el);
             }
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             createBgIcons();
-            
-            setTimeout(() => { 
-                document.getElementById('splash-screen').classList.add('hidden');
-                document.body.classList.add('app-ready'); 
-            }, 800);
-
-            if(!navigator.onLine) {
-                setTimeout(() => showToast('Anda sedang offline!', 'offline'), 1000);
-            }
+            initLanguageDetection();
+            if(!navigator.onLine) setTimeout(() => showToast(LANG_DICT[currentLang].toastOffline, 'offline'), 1000);
         });
 
         document.getElementById('year').innerText = new Date().getFullYear();
@@ -529,58 +549,38 @@
             n = n.replace(/\(.*\)/g, ''); 
             n = n.replace(/\[.*\]/g, ''); 
             n = n.replace(/mod|apk|premium|pro|unlocked|full/g, '');
-            n = n.replace(/[\.\-\_]/g, ' '); 
-            return n.trim();
+            return n.replace(/[\.\-\_]/g, ' ').trim();
         }
 
         async function scanDirectory(folderPath, type) {
             try {
                 const apiUrl = `https://api.github.com/repos/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/contents/${folderPath}?ref=${GITHUB_CONFIG.branch}`;
                 const response = await fetch(apiUrl);
-                
-                if (!response.ok) {
-                    if(response.status === 404) return []; 
-                    if(response.status === 403) console.warn("GitHub API Rate Limit Exceeded!");
-                    throw new Error(`HTTP Error: ${response.status}`);
-                }
+                if (!response.ok) return []; 
                 
                 const data = await response.json();
                 let items = [];
-
                 data.forEach((item, index) => {
                     if (item.type === 'dir') {
-                        const rawName = item.name;
-                        const pageLink = `/${folderPath}/${rawName}/`; 
-                        const imgUrl = `https://cdn.jsdelivr.net/gh/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}@${GITHUB_CONFIG.branch}/${folderPath}/${rawName}/MODORA-Images.jpg`;
-                        
                         items.push({
-                            name: rawName.replace(/[-_]/g, ' '),
-                            baseName: getBaseName(rawName), 
-                            link: pageLink, 
-                            img: imgUrl,
+                            name: item.name.replace(/[-_]/g, ' '),
+                            baseName: getBaseName(item.name), 
+                            link: `/${folderPath}/${item.name}/`, 
+                            img: `https://cdn.jsdelivr.net/gh/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}@${GITHUB_CONFIG.branch}/${folderPath}/${item.name}/MODORA-Images.jpg`,
                             type: type,
                             time: Date.now() - (index * 1000) 
                         });
                     }
                 });
                 return items;
-            } catch (error) {
-                console.error(`Failed to scan ${folderPath} via GitHub API:`, error);
-                return []; 
-            }
+            } catch (error) { return []; }
         }
 
         function filterLatest(items) {
             let map = {};
             items.forEach(item => {
                 const key = item.baseName; 
-                if (!map[key]) {
-                    map[key] = item;
-                } else {
-                    if (item.time > map[key].time) {
-                        map[key] = item;
-                    }
-                }
+                if (!map[key] || item.time > map[key].time) map[key] = item;
             });
             return Object.values(map).sort((a, b) => b.time - a.time);
         }
@@ -603,26 +603,24 @@
             const badgeApp = document.getElementById('badge-app');
             const badgeGame = document.getElementById('badge-game');
 
-            if (dbApps.length > 0) {
-                badgeApp.innerText = dbApps.length;
-                badgeApp.style.display = 'block';
-            }
-            if (dbGames.length > 0) {
-                badgeGame.innerText = dbGames.length;
-                badgeGame.style.display = 'block';
-            }
+            if (dbApps.length > 0) { badgeApp.innerText = dbApps.length; badgeApp.style.display = 'block'; }
+            if (dbGames.length > 0) { badgeGame.innerText = dbGames.length; badgeGame.style.display = 'block'; }
         }
 
-        // MENAMBAHKAN PARAMETER INDEX UNTUK DELAY ANIMASI (STAGGERED EFFECT)
-        function createCardHtml(item, index) {
+        // --- RENDER DENGAN LOADING SPINNER ---
+        function createCardHtml(item) {
             let badgeText = 'MOD';
-            let iconHtml = `<img src="${item.img}" class="clean-icon" loading="lazy" onerror="this.src='https://via.placeholder.com/70?text=IMG'">`;
             
-            // Memberikan jarak animasi 0.08 detik pada setiap kartu agar munculnya bergantian dari atas ke bawah
-            let delay = (index * 0.08) + 0.1; 
+            // HTML untuk Placeholder berputar & Image
+            let iconHtml = `
+                <div class="img-placeholder"><i class="fa-solid fa-circle-notch fa-spin"></i></div>
+                <img src="${item.img}" class="clean-icon" loading="lazy" 
+                     onload="this.classList.add('loaded'); this.previousElementSibling.style.display='none';" 
+                     onerror="this.src='https://via.placeholder.com/70?text=IMG'; this.classList.add('loaded'); this.previousElementSibling.style.display='none';">
+            `;
 
             return `
-            <div class="clean-card" style="animation-delay: ${delay}s;" onclick="openLink('${item.link}')">
+            <div class="clean-card" onclick="openLink('${item.link}')">
                 <div class="icon-wrap">
                     ${iconHtml}
                     <div class="mod-label">${badgeText}</div>
@@ -630,42 +628,45 @@
                 <div class="clean-info">
                     <div class="clean-name">${item.name}</div>
                 </div>
-                <button class="btn-unduh">GET</button>
+                <button class="btn-unduh">${LANG_DICT[currentLang].btnGet}</button>
             </div>`;
         }
 
         function renderLists() {
             const cGames = document.getElementById('gamesContainer');
+            const cSkel = document.getElementById('skeletonContainer');
+            
             if(!isDataLoaded) return; 
 
+            cSkel.style.display = 'none';
+            cGames.style.display = 'grid'; 
+
             if(dbGames.length === 0) {
-                cGames.innerHTML = '<div class="status-msg">No games found in this repository.</div>';
+                cGames.innerHTML = `<div class="status-msg">${LANG_DICT[currentLang].noGames}</div>`;
             } else {
                 let hGames = ''; 
-                // Mengirimkan index saat looping untuk menghitung delay animasi
-                dbGames.forEach((item, index) => hGames += createCardHtml(item, index));
+                dbGames.forEach((item) => { hGames += createCardHtml(item); });
                 cGames.innerHTML = hGames;
+                document.querySelectorAll('.clean-card').forEach(card => scrollObserver.observe(card));
             }
         }
         
         function openLink(url) { 
             if(url && url !== '#') window.location.href = url; 
-            else alert('Link is broken or still processing!'); 
         }
 
         function doSearch() {
             const val = document.getElementById('search').value.toLowerCase();
             const cGames = document.getElementById('gamesContainer');
 
-            if(val === '') {
-                renderLists();
-                return;
-            }
+            if(val === '') { renderLists(); return; }
             
             const fGames = dbGames.filter(i => i.name.toLowerCase().includes(val));
             let hGame = ''; 
-            fGames.forEach((item, index) => hGame += createCardHtml(item, index));
-            cGames.innerHTML = hGame || '<div class="status-msg">No games matched your search</div>';
+            fGames.forEach((item) => hGame += createCardHtml(item));
+            
+            cGames.innerHTML = hGame || `<div class="status-msg">${LANG_DICT[currentLang].noMatch}</div>`;
+            document.querySelectorAll('.clean-card').forEach(card => scrollObserver.observe(card));
         }
 
         function toggleSet() { document.getElementById('modalSet').classList.toggle('active'); }
@@ -686,7 +687,8 @@
                 updateColorActive('#2563eb');
             }
 
-            applyViewModeClass(localStorage.getItem('modora_view') || 'list');
+            const currMode = localStorage.getItem('modora_view') || 'list';
+            applyViewModeClass(currMode);
             
             const currFont = localStorage.getItem('modora_font') || 'Plus Jakarta Sans';
             document.querySelectorAll('.seg-btn[onclick*="chFont"]').forEach(b => b.classList.remove('active'));
@@ -717,19 +719,21 @@
         }
 
         function setViewMode(mode) {
-            if (!document.startViewTransition) {
-                applyViewModeClass(mode);
-                return;
-            }
+            if (!document.startViewTransition) { applyViewModeClass(mode); return; }
             document.startViewTransition(() => {
                 applyViewModeClass(mode);
+                document.querySelectorAll('.clean-card').forEach(card => {
+                    card.classList.remove('show-card'); 
+                    scrollObserver.observe(card);
+                });
             });
         }
 
         function applyViewModeClass(mode) {
             const cGames = document.getElementById('gamesContainer');
+            const cSkel = document.getElementById('skeletonContainer');
             cGames.className = `list-container view-${mode}`;
-
+            cSkel.className = `list-container view-${mode}`;
             document.getElementById('btnViewList').classList.toggle('active', mode === 'list');
             document.getElementById('btnViewGrid').classList.toggle('active', mode === 'grid');
             localStorage.setItem('modora_view', mode);
@@ -744,10 +748,7 @@
             else document.getElementById('btnFontTech').classList.add('active');
         }
 
-        function resetSettings() {
-            localStorage.clear();
-            window.location.reload();
-        }
+        function resetSettings() { localStorage.clear(); window.location.reload(); }
 
         const rocketWrap = document.getElementById('rocket');
         const rocketBtn = document.getElementById('rocketBtn');
@@ -772,7 +773,6 @@
 
         loadSettings(); 
         initData();
-
     </script>
 </body>
 </html>
