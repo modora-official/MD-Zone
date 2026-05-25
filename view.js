@@ -1,12 +1,5 @@
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
-
-import {
-  getDatabase,
-  ref,
-  runTransaction
-}
-from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-app.js";
+import { getDatabase, ref, runTransaction } from "https://www.gstatic.com/firebasejs/12.13.0/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBLef7bGChvtMaDCmCkiv_048A8Fdj2ehY",
@@ -23,21 +16,13 @@ const db = getDatabase(app);
 
 const style = document.createElement("style");
 
+// Styling disamakan 100% dengan .badge-mod, cuma beda warna dan ditambah margin kiri
 style.innerHTML = `
-/* Wrapper baru agar badge berjajar rapi ke samping */
-.modora-badges-wrapper {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  flex-wrap: wrap; /* Mencegah elemen bertumpuk jika layar sangat kecil */
-}
-
-/* Styling badge views disamakan persis dengan .badge-mod di index.html */
 .modora-view-badge {
   display: inline-flex;
   align-items: center;
-  background: rgba(37, 99, 235, 0.15); /* Menggunakan warna var(--primary) transparan */
-  color: #60a5fa; /* Biru terang agar kontras di Dark OS */
+  background: rgba(37, 99, 235, 0.15); /* Warna premium Dark OS (biru transparan) */
+  color: #60a5fa; /* Teks biru terang */
   padding: 4px 10px;
   border-radius: 8px;
   font-size: 11px;
@@ -45,6 +30,8 @@ style.innerHTML = `
   gap: 5px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  margin-left: 8px; /* Ini yang bikin dia pas di sebelah kanan badge hijau */
+  vertical-align: middle;
 }
 
 .modora-view-badge i {
@@ -57,28 +44,18 @@ document.head.appendChild(style);
 const wrapper = document.createElement("div");
 wrapper.className = "modora-view-badge";
 
-// Teks VIEWS disamakan gaya uppercase-nya dengan MOD APK
+// Format teks ngikutin gaya "100% MOD APK"
 wrapper.innerHTML = `
   <i class="fa-regular fa-eye"></i>
   <span id="views">0</span> VIEWS
 `;
 
-// Cari elemen badge-mod yang sudah ada di HTML
+// Cari elemen badge-mod dan taruh views tepat di kanan sebelahnya
 const badgeMod = document.querySelector(".badge-mod");
 
 if (badgeMod) {
-  // Buat div container flex baru
-  const badgeContainer = document.createElement("div");
-  badgeContainer.className = "modora-badges-wrapper";
-
-  // Sisipkan container baru tepat sebelum badge-mod
-  badgeMod.parentNode.insertBefore(badgeContainer, badgeMod);
-  
-  // Pindahkan badge-mod ke dalam container flex
-  badgeContainer.appendChild(badgeMod);
-  
-  // Tambahkan badge views di sebelah kanannya
-  badgeContainer.appendChild(wrapper);
+  // afterend = sisipkan tepat setelah penutup tag elemen target
+  badgeMod.insertAdjacentElement("afterend", wrapper);
 }
 
 const pageName = location.pathname.replace(/\//g, "_");
