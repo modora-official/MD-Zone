@@ -5,21 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     
     <meta name="color-scheme" content="dark light">
-    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    <meta name="theme-color" content="#030712" id="metaThemeColor">
     
-    <title>404 - Page Not Found | MODORA</title>
+    <title>404 - Dimension Not Found | MODORA</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
     <script>
         const savedTheme = localStorage.getItem('modora_theme');
         if(savedTheme === 'light') { 
             document.documentElement.classList.add('light-mode'); 
-            document.getElementById('metaThemeColor').setAttribute('content', '#f1f5f9');
+            document.getElementById('metaThemeColor').setAttribute('content', '#ffffff');
         }
         const savedFont = localStorage.getItem('modora_font');
         if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
@@ -33,232 +30,369 @@
     </script>
 
     <style>
-        /* --- CONFIG & VARIABLES (SAMA DENGAN INDEX.HTML) --- */
+        /* --- CONFIG & VARIABLES --- */
         :root {
             --header-h: 70px;
-            --nav-h: 65px;
+            --nav-h: 75px; 
             
-            --bg-body: #0f172a;
-            --bg-card: #1e293b;
-            --bg-glass: rgba(15, 23, 42, 0.85);
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #334155;
-            --shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            --card-border: rgba(255, 255, 255, 0.05);
-            --search-bg: #334155;
+            --bg-body: #030712;
+            --bg-nav: rgba(3, 7, 18, 0.5);
+            --bg-glass: rgba(3, 7, 18, 0.85);
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --border: rgba(255, 255, 255, 0.08);
+            --search-bg: rgba(255, 255, 255, 0.04);
             
-            --glass-blur: blur(20px);
-            --primary: #2563eb; 
-            --secondary: #4f46e5;
-            --accent: #ef4444; 
-            --radius: 20px;
+            --primary: #3b82f6; 
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
             --font-main: 'Plus Jakarta Sans', sans-serif;
         }
 
-        /* LIGHT MODE OVERRIDES */
         html.light-mode {
-            --bg-body: #f1f5f9;
-            --bg-card: #ffffff;
+            --bg-body: #ffffff;
+            --bg-nav: rgba(255, 255, 255, 0.6);
             --bg-glass: rgba(255, 255, 255, 0.85);
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-            --card-border: var(--border);
-            --search-bg: #e2e8f0;
+            --text-main: #111827;
+            --text-muted: #6b7280;
+            --border: rgba(0, 0, 0, 0.08);
+            --search-bg: rgba(0, 0, 0, 0.03);
         }
 
-        html.eco-mode {
-            --bg-glass: var(--bg-card);
-            --glass-blur: none;
+        html.eco-mode * {
+            animation: none !important;
+            backdrop-filter: none !important;
+            transition-duration: 0.1s !important;
+            transform: none !important;
         }
+        html.eco-mode .bg-grid, html.eco-mode .ambient-glow { display: none; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
         
+        /* KUNCI LAYAR: FIX 1 HALAMAN, NO SCROLL */
         body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
+            background-color: var(--bg-body); color: var(--text-main);
+            height: 100vh; height: 100dvh; /* Support Dynamic Viewport Mobile */
+            overflow: hidden; /* Anti-scroll */
+            display: flex; flex-direction: column;
             position: relative;
-            overflow-x: hidden;
-            padding-top: calc(var(--header-h));
-            transition: background-color 0.25s ease, color 0.25s ease;
+            padding-top: var(--header-h);
+            padding-bottom: var(--nav-h);
+            perspective: 1000px;
         }
 
-        /* --- HEADER (SAMA DENGAN INDEX.HTML) --- */
+        /* --- BACKGROUND FULL --- */
+        .bg-wrapper {
+            position: fixed; inset: 0; z-index: -2; overflow: hidden;
+            background: radial-gradient(circle at 50% 50%, var(--bg-body) 0%, #000000 100%);
+        }
+        html.light-mode .bg-wrapper { background: radial-gradient(circle at 50% 50%, #ffffff 0%, #f3f4f6 100%); }
+
+        .ambient-glow {
+            position: absolute; width: 60vw; height: 60vw;
+            background: conic-gradient(from 0deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            border-radius: 50%; filter: blur(150px); opacity: 0.15;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            animation: spinGlow 10s linear infinite; will-change: transform;
+        }
+        @keyframes spinGlow { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+
+        .bg-grid {
+            position: absolute; inset: 0;
+            background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: linear-gradient(to bottom, transparent, black 50%, transparent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent, black 50%, transparent);
+            animation: moveGrid 20s linear infinite; opacity: 0.4;
+        }
+        @keyframes moveGrid { 0% { transform: translateY(0); } 100% { transform: translateY(60px); } }
+
+        /* --- HEADER --- */
         header {
             position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
-            padding: 0 24px; background: var(--bg-glass); 
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            padding: 0 4%; background: var(--bg-nav); 
+            backdrop-filter: blur(24px) saturate(150%); -webkit-backdrop-filter: blur(24px);
             display: flex; align-items: center; justify-content: space-between;
-            border-bottom: 1px solid var(--border); z-index: 1000;
-            transition: background-color 0.25s ease, border-color 0.25s ease;
+            border-bottom: 1px solid var(--border); z-index: 100;
         }
 
-        .logo { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; text-decoration: none; cursor: pointer; }
-        
-        .search-wrap { flex: 1; margin: 0 15px; position: relative; max-width: 400px; display: none; }
-        @media (min-width: 500px) { .search-wrap { display: block; } }
-        
-        .search-input { width: 100%; padding: 10px 40px 10px 15px; border-radius: 12px; border: none; background: var(--search-bg); color: var(--text-main); font-size: 14px; font-weight: 500; transition: background-color 0.25s ease, box-shadow 0.25s ease; }
-        .search-input:focus { box-shadow: 0 0 0 2px var(--primary); background: var(--bg-card); }
-        .search-input::placeholder { color: var(--text-muted); font-weight: 400; }
-        .search-icon { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 14px; pointer-events: none; }
-        
-        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); }
+        .logo { 
+            font-size: 22px; font-weight: 800; display: flex; align-items: center; gap: 8px; text-decoration: none;
+            background: linear-gradient(270deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: liquidText 6s ease infinite;
+        }
+
+        .btn-tele { 
+            width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 20px; text-decoration: none; color: white; position: relative;
+            background: linear-gradient(135deg, #0088cc, #00aaff); box-shadow: 0 8px 15px rgba(0, 136, 204, 0.3);
+            transition: transform 0.3s;
+        }
         .btn-tele:active { transform: scale(0.9); }
 
-        @media (min-width: 900px) {
-            header { padding: 0 5%; }
-            .search-wrap { max-width: 600px; display: block; margin: 0 auto;}
-        }
-
-        /* --- MAIN CONTENT CENTERED --- */
+        /* --- MAIN CONTENT (CENTERED) --- */
         .main-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            position: relative;
-            z-index: 1;
-            min-height: calc(100vh - var(--header-h) - 60px);
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            padding: 0 20px; position: relative; z-index: 10;
+        }
+        .scene-3d { 
+            display: flex; flex-direction: column; align-items: center; text-align: center; 
+            transform-style: preserve-3d; transition: transform 0.1s ease-out; 
+            width: 100%; max-width: 500px;
         }
 
-        /* DECORATION BLOBS */
-        .blob {
-            position: absolute; width: 300px; height: 300px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            filter: blur(90px); opacity: 0.15; border-radius: 50%;
-            z-index: -1; animation: moveBlob 8s infinite alternate;
+        .gyro-box {
+            position: relative; width: 200px; height: 200px; margin-bottom: 25px; transform-style: preserve-3d;
+            animation: float3D 6s ease-in-out infinite alternate;
         }
-        .blob-1 { top: 10%; left: -50px; }
-        .blob-2 { bottom: 10%; right: -50px; animation-delay: -4s; }
+        @keyframes float3D { 0% { transform: translateY(0) rotateX(5deg) rotateY(-5deg); } 100% { transform: translateY(-15px) rotateX(-5deg) rotateY(5deg); } }
 
-        @keyframes moveBlob {
-            from { transform: translate(0, 0); }
-            to { transform: translate(30px, 40px); }
+        .gyro-ring {
+            position: absolute; inset: 0; border-radius: 50%; border: 2px solid transparent;
+            box-shadow: inset 0 0 15px rgba(255,255,255,0.05), 0 0 10px rgba(255,255,255,0.05); will-change: transform;
         }
+        .ring-1 { border-top-color: var(--primary); border-bottom-color: var(--primary); animation: spin3D-1 8s linear infinite; }
+        .ring-2 { border-left-color: var(--secondary); border-right-color: var(--secondary); animation: spin3D-2 12s linear infinite; width: 85%; height: 85%; top: 7.5%; left: 7.5%; }
+        .ring-3 { border-top-color: var(--accent); border-bottom-color: var(--accent); border-style: dashed; animation: spin3D-3 15s linear infinite; width: 70%; height: 70%; top: 15%; left: 15%; }
 
-        /* ERROR CARD (Terintegrasi Tema) */
-        .error-card {
-            background: var(--bg-card);
-            border: 1px solid var(--card-border);
-            padding: 40px 30px;
-            border-radius: 30px;
-            text-align: center;
-            max-width: 420px;
-            width: 100%;
-            box-shadow: var(--shadow);
-            animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transition: background-color 0.25s ease, border-color 0.25s ease;
+        @keyframes spin3D-1 { 100% { transform: rotateX(70deg) rotateY(0deg) rotateZ(360deg); } }
+        @keyframes spin3D-2 { 100% { transform: rotateX(0deg) rotateY(70deg) rotateZ(360deg); } }
+        @keyframes spin3D-3 { 100% { transform: rotateX(45deg) rotateY(45deg) rotateZ(360deg); } }
+
+        .core-text {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) translateZ(40px);
+            font-size: 70px; font-weight: 900; line-height: 1; letter-spacing: -2px;
+            background: linear-gradient(270deg, var(--text-main), var(--primary), var(--secondary), var(--text-main));
+            background-size: 300% 300%; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: liquidText 4s ease infinite; filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
         }
+        @keyframes liquidText { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
-        @keyframes popUp {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        .title { font-size: 26px; font-weight: 800; margin-bottom: 12px; opacity: 0; animation: fadeUp 0.8s forwards 0.3s; line-height: 1.2; }
+        .desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; opacity: 0; animation: fadeUp 0.8s forwards 0.5s; padding: 0 10px; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        .icon-box { font-size: 60px; margin-bottom: 10px; animation: floatIcon 3s ease-in-out infinite; }
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .code-text {
-            font-size: 80px; font-weight: 900; line-height: 1;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
-        }
-
-        .error-title { font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 10px; transition: color 0.25s ease; }
-        .error-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; transition: color 0.25s ease; }
-
-        /* BUTTONS GROUP */
-        .btn-group { display: flex; flex-direction: column; gap: 12px; }
+        .action-tray { display: flex; flex-direction: column; gap: 12px; width: 100%; padding: 0 15px; opacity: 0; animation: fadeUp 0.8s forwards 0.7s; }
         
+        .btn-wrapper { position: relative; padding: 2px; border-radius: 50px; overflow: hidden; cursor: pointer; transition: transform 0.2s; width: 100%; }
+        .btn-wrapper::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(from 0deg, transparent 0%, var(--primary) 25%, var(--secondary) 50%, var(--accent) 75%, transparent 100%);
+            animation: spinBorder 3s linear infinite;
+        }
+        @keyframes spinBorder { 100% { transform: rotate(360deg); } }
+
         .btn {
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            width: 100%; padding: 15px; border-radius: 16px;
-            font-weight: 700; font-size: 14px; cursor: pointer; text-decoration: none;
-            transition: 0.2s, background-color 0.25s ease, color 0.25s ease; border: none; letter-spacing: -0.3px;
+            position: relative; display: flex; align-items: center; justify-content: center; gap: 10px;
+            padding: 14px; font-size: 14px; font-weight: 700; border-radius: 48px;
+            text-decoration: none; z-index: 1; background: var(--bg-body); color: var(--text-main);
+            border: none; width: 100%; transition: background-color 0.2s;
+        }
+        .btn-wrapper:active { transform: scale(0.96); }
+        .btn-wrapper:hover .btn { background: rgba(59, 130, 246, 0.1); }
+
+        .btn-ghost-wrapper::before { display: none; }
+        .btn-ghost-wrapper { padding: 0; }
+        .btn-ghost { background: var(--search-bg); border: 1px solid var(--border); }
+        .btn-ghost-wrapper:active { transform: scale(0.96); }
+
+        /* --- BOTTOM NAVIGATION (CUMA 2 TAB) --- */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; width: 100%; 
+            height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
+            padding-bottom: env(safe-area-inset-bottom, 0px);
+            background: var(--bg-glass); 
+            backdrop-filter: blur(20px) saturate(150%); -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid var(--border); display: flex; 
+            justify-content: space-evenly; align-items: center; z-index: 1900;
+            box-shadow: 0 -5px 25px rgba(0,0,0,0.3);
         }
 
-        .btn-primary {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            color: white;
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.25);
+        .nav-item { 
+            position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            gap: 6px; color: var(--text-muted); cursor: pointer; flex: 1; height: 100%; transition: color 0.3s;
         }
-        .btn-primary:active { transform: scale(0.96); box-shadow: 0 4px 10px rgba(37, 99, 235, 0.15); }
-
-        .btn-secondary {
-            background: var(--search-bg); 
-            color: var(--text-main);
+        
+        .nav-item::before {
+            content: ''; position: absolute; top: -1px; left: 50%; transform: translateX(-50%) scaleX(0);
+            width: 40px; height: 3px; background: var(--primary); border-radius: 0 0 5px 5px;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 2px 10px var(--primary);
         }
-        .btn-secondary:active { transform: scale(0.96); }
+        
+        /* Buat Tab aktif saat disentuh/di-hover */
+        .nav-item:active { color: var(--primary); }
+        .nav-item:active::before { transform: translateX(-50%) scaleX(1); }
+        .nav-item:active i.fa-solid { transform: translateY(-3px) scale(1.1); filter: drop-shadow(0 4px 8px rgba(37, 99, 235, 0.4)); }
+        
+        .icon-wrapper { position: relative; display: flex; align-items: center; justify-content: center; }
+        .nav-item i.fa-solid { font-size: 24px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .nav-item span { font-size: 12px; font-weight: 700; transition: transform 0.3s; }
 
-        /* --- FOOTER --- */
-        .footer { text-align: center; font-size: 12px; font-weight: 500; color: var(--text-muted); padding: 20px; margin-top: auto; }
-
+        @media (min-width: 600px) {
+            .gyro-box { width: 240px; height: 240px; margin-bottom: 30px; }
+            .core-text { font-size: 80px; }
+            .title { font-size: 32px; }
+            .desc { font-size: 15px; }
+            .action-tray { flex-direction: row; }
+            .btn-wrapper, .btn-ghost-wrapper { width: auto; flex: 1; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="/" class="logo">MODORA</a>
-        
-        <div class="search-wrap">
-            <input type="text" class="search-input" placeholder="Search apps..." onkeypress="handleSearch(event)">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        </div>
+    <div class="bg-wrapper">
+        <div class="bg-grid"></div>
+        <div class="ambient-glow"></div>
+    </div>
 
+    <header>
+        <a href="/" class="logo"><i class="fa-solid fa-cube fa-spin-pulse"></i> MODORA</a>
         <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
     </header>
 
     <div class="main-content">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-
-        <div class="error-card">
-            <div class="icon-box">🛸</div>
-            <div class="code-text">404</div>
-            <div class="error-title">Page Not Found</div>
-            <div class="error-desc">
-                Oops! The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+        <div class="scene-3d" id="scene3d">
+            
+            <div class="gyro-box">
+                <div class="gyro-ring ring-1"></div>
+                <div class="gyro-ring ring-2"></div>
+                <div class="gyro-ring ring-3"></div>
+                <div class="core-text">404</div>
             </div>
 
-            <div class="btn-group">
-                <a href="/" class="btn btn-primary">
-                    <i class="fa-solid fa-house"></i> Back to Home
-                </a>
-                <button onclick="location.reload()" class="btn btn-secondary">
-                    <i class="fa-solid fa-rotate-right"></i> Refresh Page
-                </button>
+            <h1 class="title" id="t-title">Reality Glitch Detected</h1>
+            <p class="desc" id="t-desc">
+                The coordinates you entered lead to an anomaly. This space doesn't exist in our current spacetime continuum. 
+            </p>
+
+            <div class="action-tray">
+                <div class="btn-wrapper magnetic-element" onclick="window.location.href='/'">
+                    <button class="btn">
+                        <i class="fa-solid fa-house-chimney"></i> <span id="t-btnHome">Restore Reality</span>
+                    </button>
+                </div>
+
+                <div class="btn-ghost-wrapper magnetic-element" onclick="location.reload()">
+                    <button class="btn btn-ghost">
+                        <i class="fa-solid fa-satellite-dish"></i> <span id="t-btnRefresh">Re-Scan Signal</span>
+                    </button>
+                </div>
             </div>
+
         </div>
     </div>
 
-    <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
+    <nav class="bottom-nav">
+        <div class="nav-item" onclick="window.location.href='../../../../../games'">
+            <div class="icon-wrapper"><i class="fa-solid fa-gamepad"></i></div>
+            <span id="t-navGames">Games</span>
+        </div>
+        
+        <div class="nav-item" onclick="window.location.href='../../../../../apps'">
+            <div class="icon-wrapper"><i class="fa-solid fa-layer-group"></i></div>
+            <span id="t-navApps">Apps</span>
+        </div>
+    </nav>
 
     <script>
-        // Update year
-        document.getElementById('year').innerText = new Date().getFullYear();
-
-        // Cek mode eco (tanpa blur)
-        if(localStorage.getItem('modora_eco') === 'true') {
-            document.documentElement.classList.add('eco-mode');
-        }
-
-        // Fungsi agar jika user melakukan search di halaman 404, ia langsung dialihkan ke index
-        function handleSearch(event) {
-            if (event.key === "Enter") {
-                // Opsional: jika ingin mengirim query pencarian ke index.html, bisa melalui URL params
-                window.location.href = '/'; 
+        // ==========================================
+        // AUTO-LANGUAGE DETECTION (i18n)
+        // ==========================================
+        const i18n = {
+            en: { 
+                title: "Reality Glitch Detected", 
+                desc: "The coordinates you entered lead to an anomaly. This space doesn't exist in our current spacetime continuum.",
+                btnHome: "Restore Reality",
+                btnRefresh: "Re-Scan Signal",
+                navGames: "Games",
+                navApps: "Apps"
+            },
+            id: { 
+                title: "Tidak ada hasil", 
+                desc: "Koordinat yang Anda masukkan mengarah ke anomali. Ruang ini tidak ditemukan dalam dimensi ruang dan waktu saat ini.",
+                btnHome: "Home",
+                btnRefresh: "Refresh",
+                navGames: "Game",
+                navApps: "Aplikasi"
+            },
+            es: { 
+                title: "Fallo de Realidad Detectado", 
+                desc: "Las coordenadas que introdujiste conducen a una anomalía. Este espacio no existe en nuestro continuo espacio-tiempo actual.",
+                btnHome: "Restaurar Realidad",
+                btnRefresh: "Volver a Escanear",
+                navGames: "Juegos",
+                navApps: "Apps"
+            },
+            pt: { 
+                title: "Falha de Realidade Detectada", 
+                desc: "As coordenadas que você inseriu levam a uma anomalia. Este espaço não existe em nosso contínuo espaço-tempo atual.",
+                btnHome: "Restaurar Realidade",
+                btnRefresh: "Re-escanear Sinal",
+                navGames: "Jogos",
+                navApps: "Apps"
+            },
+            ru: { 
+                title: "Обнаружен Сбой Реальности", 
+                desc: "Введенные вами координаты ведут к аномалии. Этого пространства не существует.",
+                btnHome: "Восстановить",
+                btnRefresh: "Пересканировать",
+                navGames: "Игры",
+                navApps: "Приложения"
+            },
+            hi: { 
+                title: "वास्तविकता में गड़बड़ी", 
+                desc: "आपके द्वारा दर्ज किए गए निर्देशांक एक विसंगति की ओर ले जाते हैं। यह स्थान हमारे वर्तमान अंतरिक्ष-समय सातत्य में मौजूद नहीं है।",
+                btnHome: "वास्तविकता बहाल करें",
+                btnRefresh: "पुनः स्कैन करें",
+                navGames: "खेल",
+                navApps: "ऐप्स"
             }
+        };
+
+        let userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
+        if (!i18n[userLang]) userLang = 'en'; 
+
+        function t(key) { return i18n[userLang][key]; }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('t-title').innerText = t('title');
+            document.getElementById('t-desc').innerText = t('desc');
+            document.getElementById('t-btnHome').innerText = t('btnHome');
+            document.getElementById('t-btnRefresh').innerText = t('btnRefresh');
+            document.getElementById('t-navGames').innerText = t('navGames');
+            document.getElementById('t-navApps').innerText = t('navApps');
+        });
+
+        // ==========================================
+        // FITUR LAINNYA & ANIMASI PARALLAX
+        // ==========================================
+        
+        const isEco = localStorage.getItem('modora_eco') === 'true';
+        if(isEco) document.documentElement.classList.add('eco-mode');
+
+        if (!isEco && window.innerWidth > 768) {
+            const scene = document.getElementById('scene3d');
+            
+            document.addEventListener('mousemove', (e) => {
+                const x = (window.innerWidth / 2 - e.pageX) / 50;
+                const y = (window.innerHeight / 2 - e.pageY) / 50;
+                scene.style.transform = `rotateY(${x}deg) rotateX(${y}deg)`;
+            });
+
+            const magneticElements = document.querySelectorAll('.magnetic-element');
+            magneticElements.forEach((elem) => {
+                elem.addEventListener('mousemove', (e) => {
+                    const rect = elem.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    elem.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px) scale(1.05)`;
+                });
+                elem.addEventListener('mouseleave', () => {
+                    elem.style.transform = 'translate(0px, 0px) scale(1)';
+                });
+            });
         }
     </script>
 
