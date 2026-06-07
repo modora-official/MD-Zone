@@ -61,10 +61,9 @@
         body.app-ready header { transition: background 0.4s, border 0.4s; }
         .header-left { display: flex; align-items: center; gap: 15px; }
         
-        /* Style untuk tombol di header */
         .btn-back, .btn-tele { width: 40px; height: 40px; border-radius: 12px; background: var(--search-bg); display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.2s; cursor: pointer; }
         .btn-back { color: var(--text-main); font-size: 16px; }
-        .btn-tele { color: #3390ec; font-size: 20px; } /* Warna biru khas Telegram */
+        .btn-tele { color: #3390ec; font-size: 20px; } 
         .btn-back:active, .btn-tele:active { transform: scale(0.9); }
         
         .logo { font-size: 22px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.5px; }
@@ -182,7 +181,7 @@
 
         <div id="chat-history">
             <div class="loading-text" id="loader"><i class="fa-solid fa-circle-notch fa-spin"></i> Syncing live requests...</div>
-            </div>
+        </div>
 
         <div class="footer">© <span id="year"></span> MODORA | All Rights Reserved</div>
     </div>
@@ -216,15 +215,22 @@
             setTimeout(() => { toast.classList.remove('show'); }, 3500);
         }
 
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
         // ==========================================
         // TELEGRAM BOT & CHANNEL CONFIGURATION
         // ==========================================
-        const _0xkey1 = "ODQxMzUzMDU4MDpBQUZ5Q2laZlNYT1BObGx4T216bExLT1ZlaW9wQzd3RGJTZw==";
-        const _0xkey2 = "LTEwMDM4MzA4MDE2MTY="; // ID: -1003830801616
+        const _0xkey1 = "ODQxMzUzMDU4MDpBQUd0T1VTN0dlbTZJMEY2ZVZUZERTTEk1eGxGS2NOOGo4TQ==";
+        const _0xkey2 = "LTEwMDM4MzA4MDE2MTY="; 
         const CHANNEL_NAME = "mdzone_requests";
         
         let lastUpdateId = null;
         const historyContainer = document.getElementById('chat-history');
+        const renderedMessageSignatures = new Set(); // Melacak pesan unik untuk cegah duplikasi
 
         // ==========================================
         // FUNCTION 1: FORM SUBMISSION & INSTANT REFRESH
@@ -255,12 +261,10 @@
                 if (response.ok) {
                     showToast('Request submitted successfully!');
                     
-                    // --- FITUR REFRESH LIVE CHAT OTOMATIS TANPA RELOAD PAGE ---
-                    const htmlContent = `🤖 <b>NEW MOD REQUEST</b><br><br>📌 <b>Name:</b> ${name}<br>🏷️ <b>Version:</b> ${version}<br>✨ <b>Features:</b> ${features}`;
+                    const htmlContent = `🤖 <b>NEW MOD REQUEST</b><br><br>📌 <b>Name:</b> ${escapeHTML(name)}<br>🏷️ <b>Version:</b> ${escapeHTML(version)}<br>✨ <b>Features:</b> ${escapeHTML(features)}`;
                     const timeText = new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' });
                     
                     renderMsgCard(htmlContent, timeText, true);
-                    
                     document.getElementById('modRequestForm').reset();
                 } else {
                     showToast('Failed to submit request.', true);
@@ -281,7 +285,7 @@
             const targetUrl = `https://t.me/s/${CHANNEL_NAME}`;
             
             const proxies = [
-                `https://api.codetabs.com/v1/proxy?quest=${targetUrl}`,
+                `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(targetUrl)}`,
                 `https://corsproxy.io/?${encodeURIComponent(targetUrl)}`
             ];
 
@@ -302,6 +306,7 @@
 
                     if (messages.length > 0) loader.style.display = 'none';
 
+                    // Iterasi riwayat dari bawah ke atas agar urutan waktu di website sinkron (terbaru di atas)
                     messages.forEach(msg => {
                         const textContent = msg.querySelector('.tgme_widget_message_text');
                         const timeContent = msg.querySelector('.tgme_widget_message_date time');
@@ -309,27 +314,38 @@
                             renderMsgCard(textContent.innerHTML, timeContent ? timeContent.textContent : "", false);
                         }
                     });
+                } else {
+                    loader.innerHTML = '<i class="fa-solid fa-bolt"></i> Connecting to direct live channel stream...';
                 }
-            } catch (error) { console.error("History error"); } 
+            } catch (error) { 
+                console.error("History error"); 
+            } 
             finally {
                 loader.style.display = 'none';
-                initLiveUpdates();
+                initLiveUpdates(); // Mulai Long Polling instan setelah riwayat ditarik
             }
         }
 
         // ==========================================
-        // FUNCTION 3: LIVE REAL-TIME CHAT
+        // FUNCTION 3: LIVE REAL-TIME CHAT (LONG POLLING METHOD)
         // ==========================================
         async function initLiveUpdates() {
             const TELEGRAM_BOT_TOKEN = atob(_0xkey1);
             try {
-                const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?offset=-1&timeout=0&_=${Date.now()}`);
+                // Ambil offset update ID terakhir agar tidak menarik data usang di awal loop
+                const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?offset=-1&timeout=0`);
                 const data = await res.json();
-                if (data.ok && data.result.length > 0) { lastUpdateId = data.result[0].update_id; } 
-                else { lastUpdateId = 0; }
-            } catch (e) { lastUpdateId = 0; }
+                if (data.ok && data.result.length > 0) { 
+                    lastUpdateId = data.result[0].update_id; 
+                } else { 
+                    lastUpdateId = 0; 
+                }
+            } catch (e) { 
+                lastUpdateId = 0; 
+            }
             
-            setInterval(pollLiveChat, 1500);
+            // Luncurkan loop Long Polling tak terbatas (super instan)
+            pollLiveChat();
         }
 
         async function pollLiveChat() {
@@ -338,7 +354,8 @@
 
             try {
                 const offsetParam = lastUpdateId ? `&offset=${lastUpdateId + 1}` : '';
-                const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?timeout=0${offsetParam}&_=${Date.now()}`);
+                // Menggunakan timeout=30 (Long Polling) membuat koneksi menggantung menunggu pesan baru secara instan
+                const res = await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates?timeout=30${offsetParam}`);
                 const data = await res.json();
 
                 if (data.ok && data.result.length > 0) {
@@ -357,13 +374,26 @@
                         }
                     });
                 }
-            } catch (error) { console.warn("Polling tertunda"); }
+                // Jika sukses / timeout tercapai tanpa pesan baru, langsung eksekusi kembali (instant loop)
+                setTimeout(pollLiveChat, 50);
+            } catch (error) { 
+                console.warn("Polling tertunda / masalah jaringan, mencoba ulang..."); 
+                // Beri jeda 2 detik saat error jaringan agar tidak menyebabkan spam loop link terputus
+                setTimeout(pollLiveChat, 2000);
+            }
         }
 
         // ==========================================
         // UI RENDERER FOR CHAT
         // ==========================================
         function renderMsgCard(htmlContent, timeText, isLive) {
+            // Bersihkan spasi atau karakter ganjil untuk membuat sidik jari unik pesan
+            const msgSignature = htmlContent.replace(/\s+/g, '').toLowerCase();
+            
+            // Tolak render jika pesan sudah ada (mencegah tabrakan data riwayat vs data live)
+            if (renderedMessageSignatures.has(msgSignature)) return;
+            renderedMessageSignatures.add(msgSignature);
+
             const card = document.createElement('div');
             card.className = `msg-card ${isLive ? 'new-live-msg' : ''}`;
             
@@ -372,18 +402,16 @@
                 <span class="msg-time">${timeText}</span>
             `;
             
-            // PREPEND digunakan agar pesan selalu muncul di paling atas list chat
+            // PREPEND digunakan agar data baru selalu didorong ke posisi paling atas feed website
             historyContainer.prepend(card);
             
             if(isLive) {
-                // Auto scroll halus ke arah judul "Live Feed" agar user fokus ke pesan baru
                 document.getElementById('live-feed-header').scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
-        // Jalankan fetch history saat halaman dimuat
+        // Eksekusi pemuatan riwayat instan saat web dibuka
         loadHistory();
-
     </script>
 </body>
 </html>
