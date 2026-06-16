@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <script>
+        (function() {
+            var userLang = navigator.language || navigator.userLanguage;
+            var targetLang = userLang.split('-')[0];
+            var currentLang = 'id';
+            if (targetLang !== currentLang) {
+                var cookieStr = "googtrans=/" + currentLang + "/" + targetLang;
+                document.cookie = cookieStr + "; path=/; domain=" + window.location.hostname;
+                document.cookie = cookieStr + "; path=/";
+            }
+        })();
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'id',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script src="../../../../../mdads.js"></script>
+    <script>if(typeof renderModoraAd === 'function') renderModoraAd(1);</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metalstorm: Modern Air Combat MOD APK V1.0.89.580908287 - MODORA Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #0f172a; --bg-card: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8;
+            --primary: #2563eb; --accent: #10b981; --border: #334155; --card-border: #334155;
+            --bg-glass: rgba(30, 41, 59, 0.85); --glass-blur: blur(12px);
+            --font-main: 'Plus Jakarta Sans', sans-serif; --header-h: 60px;
+            --search-bg: rgba(255, 255, 255, 0.05); --shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        .skiptranslate, #goog-gt-tt, .goog-te-banner-frame { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { display: none !important; }
+
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+        
+        .ad-box { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 25px 0; overflow-x: auto; scrollbar-width: none; background: rgba(0,0,0,0.15); border-radius: 12px; padding: 10px 0; border: 1px dashed var(--border); }
+        .ad-box::-webkit-scrollbar { display: none; }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; }
+        .btn-tele:active { transform: scale(0.9); }
+
+        .app-header-detail { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
+        .app-icon-detail { width: 90px; height: 90px; border-radius: 20px; object-fit: cover; box-shadow: var(--shadow); }
+        .app-meta-detail { flex: 1; }
+        .app-meta-detail h1 { font-size: 20px; font-weight: 800; line-height: 1.3; margin-bottom: 5px; color: var(--text-main); }
+        .app-dev-detail { font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
+        .badge-mod { display: inline-flex; align-items: center; background: rgba(16, 185, 129, 0.15); color: var(--accent); padding: 2px 5px; border-radius: 8px; font-size: 11px; font-weight: 800; gap: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .ss-scroll { display: flex; gap: 15px; overflow-x: auto; scroll-snap-type: x mandatory; margin-bottom: 25px; padding-bottom: 10px; scrollbar-width: none; }
+        .ss-scroll::-webkit-scrollbar { display: none; }
+        .ss-img { height: 150px; border-radius: 16px; scroll-snap-align: center; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); cursor: pointer; }
+
+        .section-title { font-size: 16px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+        .section-title i { color: var(--primary); }
+
+        .desc-box { font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 25px; background: var(--bg-card); padding: 20px; border-radius: 16px; border: 1px solid var(--card-border); }
+        .desc-box p { margin-bottom: 10px; }
+        .desc-box p:last-child { margin-bottom: 0; }
+
+        .btn-download-huge { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: linear-gradient(135deg, var(--primary), #1d4ed8); padding: 18px; border-radius: 16px; color: white; text-decoration: none; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; gap: 4px; }
+        .btn-download-huge:active { transform: scale(0.96); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; } .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 25px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 25px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; }
+
+        .lightbox { position: fixed; top: 0; left: 0; z-index: 10000; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; display: none; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10001; transition: background 0.2s; }
+        .prev-lb { left: 10px; } .next-lb { right: 10px; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.3); }
+    </style>
+</head>
+<body>
+    <div id="google_translate_element"></div>
+
+    <header>
+        <a href="../../../../../" class="btn-back"><i class="fa-solid fa-angle-left"></i></a>
+        <div class="header-title">App Detail</div>
+        <a href="https://modorazone.com/telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(2);</script>
+        </div>
+
+        <div class="app-header-detail">
+            <img src="https://play-lh.googleusercontent.com/HPohvS8dkir5p775N9jZxUjoQAxtCBW6RRsW6qBynIegyvHwKbvZqwkM2fCxPVy6dHNcLCkGZL6z_ZilFdm_RQ" class="app-icon-detail" alt="Icon">
+            <div class="app-meta-detail">
+                <h1>Metalstorm: Modern Air Combat MOD APK V1.0.89.580908287</h1>
+                <div class="app-dev-detail">Starform, Inc</div>
+                <div class="badge-mod"><i class="fa-solid fa-screwdriver-wrench"></i> 100% MOD</div>
+            </div>
+        </div>        
+        
+        <div class="mini-actions">
+            <a href="javascript:void(0)" onclick="scrollToDownload(event)" class="btn-mini"><i class="fa-solid fa-download"></i><span>Download</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.starform.metalstorm" target="_blank" class="btn-mini"><i class="fa-brands fa-google-play"></i><span>Play Store</span></a>
+            <div class="btn-mini" onclick="shareApp()"><i class="fa-solid fa-share-nodes"></i><span>Bagikan</span></div>
+        </div>
+        
+        <div class="section-title"><i class="fa-solid fa-star"></i> Fitur MOD</div>
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Ads</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Menu Mod</span></div>
+        </div>
+        
+        <div class="section-title"><i class="fa-solid fa-images"></i> Screenshot</div>
+        <div class="ss-scroll">
+            <img src="https://play-lh.googleusercontent.com/UZYdOje9iKAlwNy839d9Lhbjx44WhXF2exeVaf_0IU2ehmO9_6fMhvax_WmCg9Cd9hD6vUZY_PPYTqL3T8Cx3w" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/h1qlvcvTv_VRZof3GGQoj5X5apCNthWykocEmVN6xnS_yuFc4NxC9jrBAkP5v4IqFUqFPnhQpTzwSnnZbxk9ro8" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/GMWbS6Cqqe6kJGqrRkIl1_Q8zzKQp8ealS-UA7KyUGcxyoNC1ct0I7dXgGInieIiR0pCHeqq2NaTF-demLVAGv8" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/G9QjeJaVGwEBExrZ1Kn_FKag5_98LhHMJoYAFguRzNnWAKTWZp1Hv8797WJHll2FXgWUgoSvIDBg6T4cTvmyc-U" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/IteKu1VT-084ZkkRWPfSZAfrlS9PNS0HYHQn0WteNXVjH8pZBWPUurz2VflHIozFFTnZIu6D6a7ByxnAy_UvRQ" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/BWE7FVtTYMhyvpGABQ4uLFbxA77pQlqAuUIjE5lKuRkvDjJqI0RYAkEfoBMMZw7iNph26_vXS5ZsDgp3QZ8MXHc" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/UZYdOje9iKAlwNy839d9Lhbjx44WhXF2exeVaf_0IU2ehmO9_6fMhvax_WmCg9Cd9hD6vUZY_PPYTqL3T8Cx3w" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/h1qlvcvTv_VRZof3GGQoj5X5apCNthWykocEmVN6xnS_yuFc4NxC9jrBAkP5v4IqFUqFPnhQpTzwSnnZbxk9ro8" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/GMWbS6Cqqe6kJGqrRkIl1_Q8zzKQp8ealS-UA7KyUGcxyoNC1ct0I7dXgGInieIiR0pCHeqq2NaTF-demLVAGv8" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/G9QjeJaVGwEBExrZ1Kn_FKag5_98LhHMJoYAFguRzNnWAKTWZp1Hv8797WJHll2FXgWUgoSvIDBg6T4cTvmyc-U" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/IteKu1VT-084ZkkRWPfSZAfrlS9PNS0HYHQn0WteNXVjH8pZBWPUurz2VflHIozFFTnZIu6D6a7ByxnAy_UvRQ" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/BWE7FVtTYMhyvpGABQ4uLFbxA77pQlqAuUIjE5lKuRkvDjJqI0RYAkEfoBMMZw7iNph26_vXS5ZsDgp3QZ8MXHc" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/UZYdOje9iKAlwNy839d9Lhbjx44WhXF2exeVaf_0IU2ehmO9_6fMhvax_WmCg9Cd9hD6vUZY_PPYTqL3T8Cx3w" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/h1qlvcvTv_VRZof3GGQoj5X5apCNthWykocEmVN6xnS_yuFc4NxC9jrBAkP5v4IqFUqFPnhQpTzwSnnZbxk9ro8" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/GMWbS6Cqqe6kJGqrRkIl1_Q8zzKQp8ealS-UA7KyUGcxyoNC1ct0I7dXgGInieIiR0pCHeqq2NaTF-demLVAGv8" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/G9QjeJaVGwEBExrZ1Kn_FKag5_98LhHMJoYAFguRzNnWAKTWZp1Hv8797WJHll2FXgWUgoSvIDBg6T4cTvmyc-U" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/IteKu1VT-084ZkkRWPfSZAfrlS9PNS0HYHQn0WteNXVjH8pZBWPUurz2VflHIozFFTnZIu6D6a7ByxnAy_UvRQ" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/BWE7FVtTYMhyvpGABQ4uLFbxA77pQlqAuUIjE5lKuRkvDjJqI0RYAkEfoBMMZw7iNph26_vXS5ZsDgp3QZ8MXHc" class="ss-img" alt="MODORA Official" loading="lazy">
+                            
+        </div>        
+
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(3);</script>
+        </div>        
+
+        <div class="section-title"><i class="fa-solid fa-circle-info"></i> Deskripsi</div>
+        <div class="desc-box">
+            <p>Metalstorm adalah game tembak-menembak kompetitif online di mana pertandingan ditentukan oleh keterampilan, posisi, dan koordinasi tim. Terjunlah ke dalam pertempuran multipemain real-time melawan pemain sungguhan, kuasai peran tempur dan jet yang berbeda, dan berkompetisi dalam pertempuran udara cepat yang dirancang untuk pemain PvP serius. Dimainkan oleh jutaan pemain di seluruh dunia, Metalstorm menghadirkan peperangan modern untuk penggemar game tembak-menembak kompetitif.</p>
+                        
+                        <p>Kuasai peran Anda, menangkan pertempuran, dan raih status ace.</p>
+                        
+                        <p>PERTEMPURAN MULTIPLAYER 5V5 KOMPETITIF</p>
+                        <p>Metalstorm dirancang untuk PvP berbasis keterampilan dan koordinasi tim.</p>
+                        
+                        <p>- Pertempuran Online 5v5: Bertarunglah dengan regu Anda dalam mode multipemain real-time seperti Team Deathmatch, Air Superiority, dan Elimination</p>
+                        <p>- Pencarian Lawan Cepat: Terjunlah ke pertandingan cepat 6 menit dengan pemain sungguhan dalam hitungan detik.</p>
+                        
+                        <p>- Peringkat Global: Naiki papan peringkat global dan buktikan status Anda sebagai jagoan legendaris dalam mode PvP kami</p>
+                        <p>- Pertempuran Udara Berbasis Tim: Kuasai senjata Anda dan kuasai langit dalam game yang dirancang untuk aksi, bukan simulasi</p>
+                        
+                        <p>PERAN TEMPUR &amp; KEMAMPUAN JET YANG BERBEDA</p>
+                        <p>Setiap pesawat di Metalstorm memiliki peran tempur yang unik. Pilih gaya bermain Anda dan sesuaikan strategi Anda dengan 5 peran kelas yang berbeda dan lebih dari 42 jet otentik untuk dipilih.</p>
+                        
+                        <p>- Tank Garis Depan (A-10 Thunderbolt): Menghancurkan pertahanan musuh dan mendominasi pertempuran jarak dekat dengan senjata ikonik</p>
+                        <p>- Pembunuh Siluman (JAS39 Gripen): Menyerang musuh dengan serangan presisi dan menghilang</p>
+                        <p>- Pengintai (F-35 Lightning): Memberikan pengawasan untuk tim Anda dengan intelijen medan perang</p>
+                        <p>- Penembak Jitu (F-14 Tomcat): Mengontrol wilayah udara dengan sistem rudal multi-lock</p>
+                        <p>- Dukungan Taktis (Rafale): Mengganggu penargetan musuh dengan peperangan elektronik canggih</p>
+                        
+                        <p>BANGUN, TINGKATKAN, DAN SESUAIKAN ARSENAL ANDA</p>
+                        <p>Maju melalui sistem peningkatan mendalam yang dirancang untuk penguasaan jangka panjang dan keseimbangan kompetitif. Modifikasi armada Anda seperti seorang ahli strategi perang sejati agar sesuai dengan kebutuhan tim multipemain Anda:</p>
+                        
+                        <p>- Statistik Jet: Tingkatkan kecepatan, daya tahan, dan persenjataan di 20 level</p>
+                        <p>- Modifikasi: Sesuaikan jet dengan ketahanan terhadap kerusakan, peningkatan persenjataan, dan peningkatan manuver tingkat tinggi</p>
+                        <p>- Kemampuan Unik: Buka kemampuan pamungkas yang kuat yang dapat mengubah jalannya pertempuran</p>
+                        <p>- Pesawat Berlisensi: Terbangkan pesawat berlisensi resmi dari Lockheed Martin, Boeing, dan Northrop Grumman, termasuk F-16 Fighting Falcon, F-22 Raptor, F/A-18 Super Hornet, dan F-14 Tomcat</p>
+                        
+                        <p>ACARA LANGSUNG, MUSIM &amp; PEMBARUAN REGULER</p>
+                        <p>Aksi tidak pernah berhenti. Metalstorm adalah game multipemain langsung dengan konten baru yang terus-menerus dan tantangan terbatas waktu.</p>
+                        
+                        <p>- Battle Pass Musiman: Selesaikan misi untuk membuka kustomisasi dan meningkatkan sumber daya</p>
+                        <p>- Acara Mingguan &amp; Terbatas Waktu: Rasakan mode permainan yang berganti-ganti dan tantangan khusus</p>
+                        <p>- Misi Harian: Tetap siap tempur dengan tantangan dan hadiah harian</p>
+                        <p>- Pasar Gelap: Bersiaplah untuk rilis jet baru dengan tantangan berbasis regu dan hadiah acara</p>
+                        
+                        <p>BERGABUNGLAH DENGAN TEMAN</p>
+                        <p>Bergabunglah dengan regu prajurit dan berkompetisi bersama dalam game multipemain daring paling sosial di ponsel. Diskusikan strategi dengan rekan satu tim dan naiki Papan Peringkat Regu bersama. Baik Anda penggemar aksi kasual atau penembak kompetitif hardcore, Metalstorm menawarkan pengalaman multipemain sosial yang dibangun di sekitar kerja sama tim dan kemajuan.</p>
+                        
+                        <p>PETA EPIK &amp; PERFORMA YANG DIOPTIMALKAN</p>
+                        <p>Bertempur di peta dinamis yang dirancang untuk pertempuran udara taktis. Gunakan medan, perlindungan, dan ketinggian untuk mengalahkan lawan di berbagai lingkungan seperti medan perang Arktik yang dingin dan fasilitas nuklir berisiko tinggi. Nikmati visual definisi tinggi dan performa lancar yang dioptimalkan untuk perangkat seluler.</p>
+                        
+                        <p>Unduh Metalstorm sekarang dan rasakan salah satu penembak PvP jet daring paling kompetitif. Masuklah ke kokpit dan raih tempatmu di antara para pilot ulung dunia.</p>
+                        
+                        <p>TETAP TERHUBUNG:</p>
+                        <p>Discord: http://discord.gg/metalstorm</p>
+                        <p>TikTok: https://www.tiktok.com/@playmetalstorm</p>
+                        <p>Instagram: https://www.instagram.com/playmetalstorm</p>
+                        <p>Facebook: https://www.facebook.com/playmetalstorm</p>
+                        <p>Twitter: https://twitter.com/playmetalstorm</p>
+                        <p>YouTube: https://youtube.com/@playmetalstorm</p>
+                        
+                        <p>Butuh bantuan? Hubungi kami di: https://support.playmetalstorm.com/hc/en-us</p>
+        </div>
+
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(4);</script>
+        </div>
+
+        <div class="social-notice">
+            <p>Komunitas Modora Official</p>
+            <div class="social-links">
+                <a href="https://modorazone.com/telegram" class="btn-tg"><i class="fa-brands fa-telegram"></i> Join Telegram</a>
+            </div>
+        </div>
+
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(5);</script>
+        </div>
+
+        <div class="section-title" id="download-section" style="margin-top: 15px;"><i class="fa-solid fa-cloud-arrow-down"></i> Area Download</div>
+        
+        
+                <div id="dl-wrap-0" style="margin-bottom: 12px;">
+                    <div id="dl-loading-0" style="background: var(--bg-card, #1e293b); border: 1px solid var(--card-border, #334155); border-radius: 16px; padding: 25px 20px; text-align: center; color: var(--text-main, #f8fafc); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 28px; color: var(--primary, #2563eb);"></i>
+                        <span style="font-size: 14px; font-weight: 700;">Mempersiapkan Link... <span id="dl-count-0" style="color: var(--primary, #2563eb); font-size: 18px; font-weight: 800;">10</span>s</span>
+                        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.5); border-radius: 10px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">
+                            <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary, #2563eb), var(--accent, #10b981)); transition: width 1s linear; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                    <a href="https://modorazone.it.com/md/?download=Mtls%20-%20MOD%20APK%20%28MODORAZONE.COM%29.xapk" class="btn-download-huge" id="dl-btn-0" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
+                        <div><span>DOWNLOAD (2.4 GB)</span></div>
+                        <div class="btn-date">Update: 17 Juni 2026</div>
+                    </a>
+                    <script>
+                        setTimeout(() => {
+                            let timeLeft = 10;
+                            let loadingEl = document.getElementById('dl-loading-0');
+                            let btnEl = document.getElementById('dl-btn-0');
+                            let countEl = document.getElementById('dl-count-0');
+                            let progressEl = document.getElementById('dl-progress-0');
+                            
+                            let dlTimer = setInterval(() => {
+                                timeLeft--;
+                                let pct = ((10 - timeLeft) / 10) * 100;
+                                if(progressEl) progressEl.style.width = pct + '%';
+                                
+                                if(timeLeft > 0) {
+                                    if(countEl) countEl.innerText = timeLeft;
+                                } else {
+                                    clearInterval(dlTimer);
+                                    if(loadingEl) loadingEl.style.display = 'none';
+                                    if(btnEl) btnEl.style.display = 'flex';
+                                }
+                            }, 1000);
+                            setTimeout(() => { if(progressEl) progressEl.style.width = '10%'; }, 50);
+                        }, 100);
+                    </script>
+                </div>
+        
+        <div class="social-notice">
+            <p>Komunitas Modora Official</p>
+            <div class="social-links">
+                <a href="https://modorazone.com/telegram" class="btn-tg"><i class="fa-brands fa-telegram"></i> Join Telegram</a>
+            </div>
+        </div>
+        
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(6);</script>
+        </div>
+
+        <div style="height: 60px;"></div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <div class="close-lb"><i class="fa-solid fa-xmark"></i></div>
+        <div class="prev-lb"><i class="fa-solid fa-angle-left"></i></div>
+        <img class="lightbox-content" id="img-lb" src="">
+        <div class="next-lb"><i class="fa-solid fa-angle-right"></i></div>
+    </div>
+
+    <script>
+        function scrollToDownload(e) {
+            if(e) e.preventDefault();
+            const section = document.getElementById('download-section');
+            if(section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
+        });
+
+        function shareApp() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Metalstorm: Modern Air Combat MOD APK V1.0.89.580908287',
+                    text: 'Download Metalstorm: Modern Air Combat MOD APK V1.0.89.580908287 MOD APK terbaru dari MODORA Official!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link disalin ke clipboard!');
+            }
+        }
+
+        function showAdblockWarning() {
+            var style = document.createElement('style');
+            style.innerHTML = "#modoraAdblockOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 999999; font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; color: #f8fafc; animation: modoraFadeIn 0.3s ease-out; } @keyframes modoraFadeIn { from { opacity: 0; } to { opacity: 1; } } .modora-premium-card { background: #1e293b; border-radius: 24px; width: 100%; max-width: 400px; padding: 40px 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid #334155; transform: scale(0.9); animation: modoraCardScale 0.4s 0.1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; } @keyframes modoraCardScale { to { transform: scale(1); opacity: 1; } } .modora-icon-header { width: 64px; height: 64px; background: rgba(239, 68, 68, 0.15); color: #ef4444; font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 8px 20px rgba(239, 68, 68, 0.2); } .modora-title { font-size: 22px; font-weight: 800; margin-bottom: 10px; } .modora-desc { font-size: 14px; color: #94a3b8; line-height: 1.5; margin-bottom: 25px; } .modora-highlight { color: #ef4444; font-weight: 700; } .modora-action-card { background: #ef4444; color: white; border: none; border-radius: 16px; padding: 16px; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; transition: transform 0.2s, background 0.2s; } .modora-action-card:hover { background: #dc2626; } .modora-action-card:active { transform: scale(0.95); }";
+            document.head.appendChild(style);
+
+            var overlay = document.createElement('div');
+            overlay.id = 'modoraAdblockOverlay';
+            overlay.innerHTML = '<div class="modora-premium-card"><div class="modora-icon-header"><i class="fa-solid fa-shield-virus"></i></div><h2 class="modora-title">Pemblokir Iklan Aktif</h2><p class="modora-desc">Situs ini berjalan berkat dukungan iklan. Mohon <span class="modora-highlight">matikan Adblock</span> Anda untuk melanjutkan download.</p><button class="modora-action-card" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> Saya sudah mematikan Adblock</button></div>';
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function checkAdBlock() {
+            var script = document.createElement('script');
+            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+            script.onerror = function() { showAdblockWarning(); };
+            script.onload = function() {
+                var ad = document.createElement('div');
+                ad.innerHTML = '&nbsp;';
+                ad.className = 'adsbox ad-placement doubleclick ad-banner banner-ads sponsor-ad';
+                ad.style.cssText = 'display:block; position:absolute; top:-9999px; left:-9999px; height:10px; width:10px;';
+                document.body.appendChild(ad);
+                setTimeout(function() {
+                    var styles = window.getComputedStyle(ad);
+                    if (ad.offsetHeight === 0 || styles.display === 'none' || styles.visibility === 'hidden') {
+                        showAdblockWarning();
+                    }
+                    ad.remove();
+                }, 250);
+            };
+            document.head.appendChild(script);
+        }
+        
+        setTimeout(checkAdBlock, 1500);
+    </script>
+    <script>if(typeof renderModoraAd === 'function') renderModoraAd(7);</script>
+</body>
+</html>
