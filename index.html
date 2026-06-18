@@ -149,49 +149,6 @@
         .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); flex-shrink: 0; }
         .btn-tele:active { transform: scale(0.9); }
 
-        /* --- AD BLOCKS CSS --- */
-        .ad-block {
-            background: var(--bg-card);
-            border: 1px dashed var(--border);
-            border-radius: var(--radius);
-            margin: 25px auto;
-            padding: 20px 10px 10px 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-            text-align: center;
-            gap: 15px;
-            transition: border-color 0.3s ease;
-        }
-        .ad-block:hover { border-color: var(--primary); }
-        .ad-block::before {
-            content: 'SPONSORED';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--search-bg);
-            color: var(--text-muted);
-            font-size: 9px;
-            font-weight: 800;
-            padding: 3px 12px;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            letter-spacing: 1px;
-            z-index: 2;
-        }
-        .ad-flex-row { flex-direction: row; flex-wrap: wrap; align-items: flex-start; }
-        .ad-mobile-only { display: block; width: 100%; display: flex; justify-content: center; }
-        .ad-desktop-only { display: none; width: 100%; justify-content: center; }
-        @media (min-width: 768px) {
-            .ad-mobile-only { display: none; }
-            .ad-desktop-only { display: flex; }
-        }
-
         @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
         .skeleton { background: var(--skeleton-grad); background-size: 200% 100%; animation: shimmer 1.5s infinite linear; border-radius: 8px; }
         .skel-trend { width: 300px; height: 165px; border-radius: 24px; flex-shrink: 0; }
@@ -435,33 +392,6 @@
     </header>
 
     <main id="mainView">
-        
-        <div class="ad-block scroll-wait">
-            <div class="ad-mobile-only">
-                <script>
-                  atOptions = {
-                    'key' : '2139bb0bcc42a03b2434aed0b391acf3',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                  };
-                </script>
-                <script src="https://divorceabetpiano.com/2139bb0bcc42a03b2434aed0b391acf3/invoke.js"></script>
-            </div>
-            <div class="ad-desktop-only">
-                <script>
-                  atOptions = {
-                    'key' : '3a395b6a167706907857cb4846d01b10',
-                    'format' : 'iframe',
-                    'height' : 60,
-                    'width' : 468,
-                    'params' : {}
-                  };
-                </script>
-                <script src="https://divorceabetpiano.com/3a395b6a167706907857cb4846d01b10/invoke.js"></script>
-            </div>
-        </div>
 
         <section id="section-recom" class="scroll-wait">
             <div class="section-head" id="t-recom"><i class="fa-solid fa-wand-magic-sparkles recom-icon"></i> Recommended</div>
@@ -472,11 +402,6 @@
             </div></div>
         </section>
 
-        <div class="ad-block scroll-wait">
-            <script async="async" data-cfasync="false" src="https://divorceabetpiano.com/53773056cf29c22519d850bfd8f749f4/invoke.js"></script>
-            <div id="container-53773056cf29c22519d850bfd8f749f4"></div>
-        </div>
-        
         <section id="section-games" class="scroll-wait">
             <div class="section-head" id="t-games"><i class="fa-solid fa-gamepad games-icon"></i> Games</div>
             <div class="list-container view-list" id="gamesContainer">
@@ -485,33 +410,6 @@
             </div>
             <div class="btn-loadmore hidden" id="btnMoreGames" onclick="loadMoreGames()"><span id="t-showMoreGames">Show More</span> <i class="fa-solid fa-chevron-down"></i></div>
         </section>
-
-        <div class="ad-block scroll-wait">
-            <div class="ad-mobile-only">
-                <script>
-                  atOptions = {
-                    'key' : 'a6e2777fb180c83683a51931383325df',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                  };
-                </script>
-                <script src="https://divorceabetpiano.com/a6e2777fb180c83683a51931383325df/invoke.js"></script>
-            </div>
-            <div class="ad-desktop-only">
-                <script>
-                  atOptions = {
-                    'key' : '57933ea88c2fb6be24407e7918624e2d',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                  };
-                </script>
-                <script src="https://divorceabetpiano.com/57933ea88c2fb6be24407e7918624e2d/invoke.js"></script>
-            </div>
-        </div>
         
         <section id="section-apps" class="scroll-wait">
             <div class="section-head" id="t-apps"><i class="fa-solid fa-grip apps-icon"></i> Apps</div>
@@ -521,21 +419,6 @@
             </div>
             <div class="btn-loadmore hidden" id="btnMoreApps" onclick="loadMoreApps()"><span id="t-showMoreApps">Show More</span> <i class="fa-solid fa-chevron-down"></i></div>
         </section>
-
-        <div class="ad-block ad-flex-row scroll-wait">
-            <div>
-                <script>
-                  atOptions = {
-                    'key' : '6e1b0ee6f30c9e15b030b250195c9b9f',
-                    'format' : 'iframe',
-                    'height' : 300,
-                    'width' : 160,
-                    'params' : {}
-                  };
-                </script>
-                <script src="https://divorceabetpiano.com/6e1b0ee6f30c9e15b030b250195c9b9f/invoke.js"></script>
-            </div>            
-        </div>
         
         <footer class="footer">© <span id="year"></span> MODORA | All Rights Reserved</footer>
     </main>
@@ -619,12 +502,12 @@
     <script>
         // --- MULTI-LANGUAGE SYSTEM (i18n) ---
         const i18n = {
-            en: { recom: "Recommended", games: "Games", apps: "Apps", search: "Search...", showMore: "Show More", home: "Home", settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)", viewMode: "View Mode", fontStyle: "Font Style", list: "List", grid: "Grid", reset: "Reset", close: "Close", noGames: "No games found in this repository.", noApps: "No apps found in this repository.", getBtn: "GET", getNow: "Get Now" },
-            id: { recom: "Rekomendasi", games: "Game", apps: "Aplikasi", search: "Cari...", showMore: "Tampilkan", home: "Beranda", settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai", viewMode: "Tampilan", fontStyle: "Gaya Huruf", list: "Daftar", grid: "Kotak", reset: "Atur Ulang", close: "Tutup", noGames: "Tidak ada game ditemukan.", noApps: "Tidak ada aplikasi ditemukan.", getBtn: "UNDUH", getNow: "Dapatkan" },
-            es: { recom: "Recomendado", games: "Juegos", apps: "Aplicaciones", search: "Buscar...", showMore: "Mostrar Más", home: "Inicio", settings: "Ajustes", colorTheme: "Tema de Color", batterySaver: "Ahorro de Batería", viewMode: "Modo de Vista", fontStyle: "Estilo de Fuente", list: "Lista", grid: "Cuadrícula", reset: "Reiniciar", close: "Cerrar", noGames: "No se encontraron juegos.", noApps: "No se encontraron aplicaciones.", getBtn: "OBTENER", getNow: "Consíguelo" },
-            pt: { recom: "Recomendado", games: "Jogos", apps: "Aplicativos", search: "Pesquisar...", showMore: "Mostrar Mais", home: "Início", settings: "Configurações", colorTheme: "Tema de Cor", batterySaver: "Economia de Bateria", viewMode: "Modo de Exibição", fontStyle: "Estilo de Fonte", list: "Lista", grid: "Grade", reset: "Redefinir", close: "Fechar", noGames: "Nenhum jogo encontrado.", noApps: "Nenhum aplicativo encontrado.", getBtn: "OBTER", getNow: "Obter Agora" },
-            ru: { recom: "Рекомендуемые", games: "Игры", apps: "Приложения", search: "Поиск...", showMore: "Показать еще", home: "Главная", settings: "Настройки", colorTheme: "Цветовая тема", batterySaver: "Экономия батареи", viewMode: "Режим просмотра", fontStyle: "Стиль шрифта", list: "Список", grid: "Сетка", reset: "Сброс", close: "Закрыть", noGames: "Игры не найдены.", noApps: "Приложения не найдены.", getBtn: "СКАЧАТЬ", getNow: "Получить" },
-            hi: { recom: "अनुशंसित", games: "खेल", apps: "ऐप्स", search: "खोजें...", showMore: "और दिखाएं", home: "होम", settings: "सेटिंग्स", colorTheme: "रंग विषय", batterySaver: "बैटरी सेवर", viewMode: "दृश्य मोड", fontStyle: "फ़ॉन्ट शैली", list: "सूची", grid: "ग्रिड", reset: "रीसेट", close: "बंद करें", noGames: "कोई खेल नहीं मिला।", noApps: "कोई ऐप नहीं मिला।", getBtn: "प्राप्त करें", getNow: "अभी प्राप्त करें" }
+            en: { recom: "Recommended", games: "Games", apps: "Apps", search: "Search...", showMore: "Show More", home: "Home", settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)", viewMode: "View Mode", fontStyle: "Font Style", list: "List", grid: "Grid", reset: "Reset", close: "Close", noGames: "No games found in this repository.", noApps: "No apps found in this repository.", getBtn: "GET", getNow: "Get Now", didYouMean: "No exact match. Did you mean:" },
+            id: { recom: "Rekomendasi", games: "Game", apps: "Aplikasi", search: "Cari...", showMore: "Tampilkan", home: "Beranda", settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai", viewMode: "Tampilan", fontStyle: "Gaya Huruf", list: "Daftar", grid: "Kotak", reset: "Atur Ulang", close: "Tutup", noGames: "Tidak ada game ditemukan.", noApps: "Tidak ada aplikasi ditemukan.", getBtn: "UNDUH", getNow: "Dapatkan", didYouMean: "Tidak ditemukan. Apakah maksud kamu:" },
+            es: { recom: "Recomendado", games: "Juegos", apps: "Aplicaciones", search: "Buscar...", showMore: "Mostrar Más", home: "Inicio", settings: "Ajustes", colorTheme: "Tema de Color", batterySaver: "Ahorro de Batería", viewMode: "Modo de Vista", fontStyle: "Estilo de Fuente", list: "Lista", grid: "Cuadrícula", reset: "Reiniciar", close: "Cerrar", noGames: "No se encontraron juegos.", noApps: "No se encontraron aplicaciones.", getBtn: "OBTENER", getNow: "Consíguelo", didYouMean: "Sin coincidencias exactas. Quisiste decir:" },
+            pt: { recom: "Recomendado", games: "Jogos", apps: "Aplicativos", search: "Pesquisar...", showMore: "Mostrar Mais", home: "Início", settings: "Configurações", colorTheme: "Tema de Cor", batterySaver: "Economia de Bateria", viewMode: "Modo de Exibição", fontStyle: "Estilo de Fonte", list: "Lista", grid: "Grade", reset: "Redefinir", close: "Fechar", noGames: "Nenhum jogo encontrado.", noApps: "Nenhum aplicativo encontrado.", getBtn: "OBTER", getNow: "Obter Agora", didYouMean: "Sem correspondência exata. Você quis dizer:" },
+            ru: { recom: "Рекомендуемые", games: "Игры", apps: "Приложения", search: "Поиск...", showMore: "Показать еще", home: "Главная", settings: "Настройки", colorTheme: "Цветовая тема", batterySaver: "Экономия батареи", viewMode: "Режим просмотра", fontStyle: "Стиль шрифта", list: "Список", grid: "Сетка", reset: "Сброс", close: "Закрыть", noGames: "Игры не найдены.", noApps: "Приложения не найдены.", getBtn: "СКАЧАТЬ", getNow: "Получить", didYouMean: "Нет точных совпадений. Вы имели в виду:" },
+            hi: { recom: "अनुशंसित", games: "खेल", apps: "ऐप्स", search: "खोजें...", showMore: "और दिखाएं", home: "होम", settings: "सेटिंग्स", colorTheme: "रंग विषय", batterySaver: "बैटरी सेवर", viewMode: "दृश्य मोड", fontStyle: "फ़ॉन्ट शैली", list: "सूची", grid: "ग्रिड", reset: "रीसेट", close: "बंद करें", noGames: "कोई खेल नहीं मिला।", noApps: "कोई ऐप नहीं मिला।", getBtn: "प्राप्त करें", getNow: "अभी प्राप्त करें", didYouMean: "कोई सटीक मिलान नहीं। क्या आपका मतलब था:" }
         };
 
         let userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
@@ -918,11 +801,30 @@
             else alert('Link is broken or still processing!'); 
         }
 
+        // --- ALGORITMA LEVENSHTEIN DISTANCE UNTUK FUZZY SEARCH (TYPO) ---
+        function levenshteinDistance(a, b) {
+            const matrix = [];
+            for (let i = 0; i <= b.length; i++) matrix[i] = [i];
+            for (let j = 0; j <= a.length; j++) matrix[0][j] = j;
+            for (let i = 1; i <= b.length; i++) {
+                for (let j = 1; j <= a.length; j++) {
+                    if (b.charAt(i - 1) === a.charAt(j - 1)) {
+                        matrix[i][j] = matrix[i - 1][j - 1];
+                    } else {
+                        matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+                    }
+                }
+            }
+            return matrix[b.length][a.length];
+        }
+
         function doSearch() {
-            const val = document.getElementById('search').value.toLowerCase();
+            const val = document.getElementById('search').value.toLowerCase().trim();
             const secRecom = document.getElementById('section-recom');
             const secApps = document.getElementById('section-apps');
             const secGames = document.getElementById('section-games');
+            const cGames = document.getElementById('gamesContainer');
+            const cApps = document.getElementById('appsContainer');
 
             if(val === '') {
                 secRecom.style.display = 'block'; 
@@ -937,17 +839,60 @@
             secApps.style.display = 'block'; 
             secGames.style.display = 'block';
             
+            // Filter Cocok Secara Pasti (Strict)
             const fGames = dbGames.filter(i => i.name.toLowerCase().includes(val));
-            let hGame = ''; 
-            fGames.forEach(item => hGame += createCardHtml(item));
-            document.getElementById('gamesContainer').innerHTML = hGame || `<div class="status-msg">${t('noGames')}</div>`;
-            document.getElementById('btnMoreGames').classList.add('hidden');
-
             const fApps = dbApps.filter(i => i.name.toLowerCase().includes(val));
-            let hApp = ''; 
-            fApps.forEach(item => hApp += createCardHtml(item));
-            document.getElementById('appsContainer').innerHTML = hApp || `<div class="status-msg">${t('noApps')}</div>`;
-            document.getElementById('btnMoreApps').classList.add('hidden');
+
+            let isTypo = false;
+            let recommendations = [];
+
+            // Jika hasil kosong, jalankan pencarian Typo (Fuzzy Search)
+            if (fGames.length === 0 && fApps.length === 0) {
+                isTypo = true;
+                const allItems = [...dbGames, ...dbApps];
+                
+                // Beri skor kedekatan karakter untuk setiap item
+                const scoredItems = allItems.map(item => {
+                    const dist = levenshteinDistance(val, item.name.toLowerCase());
+                    return { item, dist };
+                });
+
+                // Urutkan dari yang skor typonya paling sedikit
+                scoredItems.sort((a, b) => a.dist - b.dist);
+
+                // Ambil 5 rekomendasi terbaik dengan toleransi typo dinamis (maksimal 3-4 huruf salah)
+                const maxToleransi = Math.max(3, Math.floor(val.length / 2));
+                recommendations = scoredItems.filter(s => s.dist <= maxToleransi).slice(0, 5).map(s => s.item);
+            }
+
+            if (isTypo && recommendations.length > 0) {
+                secApps.style.display = 'none'; // Sembunyikan apps, gabungkan ke area games sebagai "Rekomendasi"
+                
+                let hRecom = `<div class="status-msg" style="color: var(--primary);"><i class="fa-solid fa-lightbulb"></i> ${t('didYouMean')}</div>`;
+                recommendations.forEach(item => hRecom += createCardHtml(item));
+                
+                cGames.innerHTML = hRecom;
+                document.getElementById('btnMoreGames').classList.add('hidden');
+                document.getElementById('btnMoreApps').classList.add('hidden');
+
+            } else if (isTypo && recommendations.length === 0) {
+                cGames.innerHTML = `<div class="status-msg"><i class="fa-solid fa-ghost"></i> ${t('noGames')}</div>`;
+                cApps.innerHTML = `<div class="status-msg"><i class="fa-solid fa-ghost"></i> ${t('noApps')}</div>`;
+                document.getElementById('btnMoreGames').classList.add('hidden');
+                document.getElementById('btnMoreApps').classList.add('hidden');
+            } else {
+                // Hasil Pencarian Normal
+                let hGame = ''; 
+                fGames.forEach(item => hGame += createCardHtml(item));
+                cGames.innerHTML = hGame || `<div class="status-msg">${t('noGames')}</div>`;
+                document.getElementById('btnMoreGames').classList.add('hidden');
+
+                let hApp = ''; 
+                fApps.forEach(item => hApp += createCardHtml(item));
+                cApps.innerHTML = hApp || `<div class="status-msg">${t('noApps')}</div>`;
+                document.getElementById('btnMoreApps').classList.add('hidden');
+            }
+
             triggerScrollAnimations();
         }
 
