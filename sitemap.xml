@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://modorazone.com/404.html</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
     <loc>https://modorazone.com/apps/1dm%20Browser%20Video%20Download/index.html</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>yearly</changefreq>
@@ -1226,24 +1220,6 @@
   </url>
   <url>
     <loc>https://modorazone.com/index.html</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://modorazone.com/requests/index.html</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://modorazone.com/telegram.html</loc>
-    <lastmod>2026-06-22</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://modorazone.com/yt.html</loc>
     <lastmod>2026-06-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>1.0</priority>
