@@ -1,1 +1,529 @@
-// File baru dibuat dari MD Zone
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MODORA | Advanced Sitemap Generator</title>
+    <style>
+        :root {
+            --bg-base: #000000;
+            --bg-surface: #0c0c0e;
+            --bg-card: #151518;
+            --border-color: #2a2a2e;
+            --text-primary: #f5f5f7;
+            --text-secondary: #86868b;
+            --accent-blue: #0a84ff;
+            --accent-blue-hover: #007aff;
+            --accent-green: #30d158;
+            --accent-red: #ff453a;
+            --accent-yellow: #ffd60a;
+            --font-main: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --font-mono: "SF Mono", "Menlo", "Consolas", monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* Navbar / Header */
+        .brand-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .brand-header h1 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            background: linear-gradient(180deg, #ffffff 0%, #999999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
+        }
+
+        .brand-header p {
+            color: var(--text-secondary);
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* Main Container */
+        .app-container {
+            width: 100%;
+            max-width: 850px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* Card Style */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Repository Badge */
+        .repo-badge-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background-color: rgba(10, 132, 255, 0.08);
+            border: 1px solid rgba(10, 132, 255, 0.2);
+            padding: 12px 20px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .repo-icon {
+            color: var(--accent-blue);
+        }
+
+        .repo-text {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: var(--accent-blue);
+            font-weight: 600;
+        }
+
+        /* Input Group */
+        .input-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .input-label {
+            display: block;
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="url"] {
+            width: 100%;
+            background-color: var(--bg-surface);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: var(--font-main);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        input[type="url"]:focus {
+            border-color: var(--accent-blue);
+            background-color: #121214;
+            box-shadow: 0 0 0 4px rgba(10, 132, 255, 0.15);
+        }
+
+        /* Button */
+        button.btn-primary {
+            width: 100%;
+            background-color: var(--accent-blue);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        button.btn-primary:hover {
+            background-color: var(--accent-blue-hover);
+        }
+
+        button.btn-primary:active {
+            transform: scale(0.98);
+        }
+
+        button.btn-primary:disabled {
+            background-color: var(--border-color);
+            color: var(--text-secondary);
+            cursor: not-allowed;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+        }
+
+        /* Output Window (macOS Terminal Style) */
+        .output-card {
+            display: none;
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .window-header {
+            background-color: var(--bg-surface);
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .mac-dots {
+            display: flex;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot.red { background-color: var(--accent-red); }
+        .dot.yellow { background-color: var(--accent-yellow); }
+        .dot.green { background-color: var(--accent-green); }
+
+        .window-title {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--text-secondary);
+            flex: 1;
+            text-align: center;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .action-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--text-primary);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: auto;
+        }
+
+        .action-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .action-btn.success {
+            background: var(--accent-green);
+            color: #000;
+        }
+        
+        .action-btn.download {
+            background: rgba(10, 132, 255, 0.2);
+            color: var(--accent-blue);
+        }
+        
+        .action-btn.download:hover {
+            background: rgba(10, 132, 255, 0.4);
+        }
+
+        .code-container {
+            padding: 24px;
+            background-color: #000;
+            max-height: 450px;
+            overflow-y: auto;
+            cursor: text;
+        }
+
+        pre {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            line-height: 1.6;
+            color: #e5e5ea;
+            margin: 0;
+        }
+
+        /* Syntax Highlighting */
+        .xml-tag { color: #ff7ab2; } 
+        .xml-attr { color: #d19a66; }
+        .xml-val { color: #61afef; } 
+        .xml-content { color: var(--text-primary); }
+
+        /* Stats Footer */
+        .stats-bar {
+            background-color: var(--bg-surface);
+            padding: 10px 24px;
+            font-size: 12px;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Filter Info Badge */
+        .filter-info {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 12px;
+            color: var(--accent-green);
+            background: rgba(48, 209, 88, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+        }
+
+        /* Animations */
+        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-card); }
+        ::-webkit-scrollbar-thumb { background: #3a3a3c; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #4a4a4c; }
+    </style>
+</head>
+<body>
+
+    <div class="brand-header">
+        <h1>MODORA</h1>
+        <p>XML Sitemap Generator Utility</p>
+    </div>
+
+    <div class="app-container">
+        <div class="card">
+            <div class="repo-badge-container">
+                <svg class="repo-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                </svg>
+                <span class="repo-text">Target: modora-official / MD-Zone</span>
+            </div>
+            
+            <div class="input-group">
+                <label class="input-label" for="domainInput">Domain Website Utama</label>
+                <input type="url" id="domainInput" value="https://modorazone.com" placeholder="https://modorazone.com" required autocomplete="off">
+                <div class="filter-info">Target scan: games-apps/index.html & games-apps/*/index.html</div>
+            </div>
+
+            <button class="btn-primary" id="generateBtn" onclick="generateSitemap()">
+                <span class="spinner" id="btnSpinner"></span>
+                <span id="btnText">Mulai Generate Sitemap</span>
+            </button>
+        </div>
+
+        <div class="card output-card" id="outputCard">
+            <div class="window-header">
+                <div class="mac-dots">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                </div>
+                <div class="window-title">sitemap.xml</div>
+                <div class="action-buttons">
+                    <button class="action-btn download" id="downloadBtn" onclick="downloadSitemap()">Download</button>
+                    <button class="action-btn" id="copyBtn" onclick="copyToClipboard()">Salin Kode</button>
+                </div>
+            </div>
+            <div class="code-container">
+                <pre><code id="sitemapOutput"></code></pre>
+            </div>
+            <div class="stats-bar">
+                <span id="statCount">Total URL: 0</span>
+                <span id="statDate"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Konfigurasi Repositori
+        const githubUser = 'modora-official';
+        const githubRepo = 'MD-Zone';
+
+        // Fungsi Escape & Syntax Highlighting XML
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+            );
+        }
+
+        function highlightXML(xmlString) {
+            let escaped = escapeHTML(xmlString);
+            escaped = escaped.replace(/(&lt;\/?)([a-zA-Z0-9:]+)(&gt;)/g, '<span class="xml-tag">$1$2$3</span>');
+            return escaped;
+        }
+
+        async function generateSitemap() {
+            let domain = document.getElementById('domainInput').value.trim();
+            const btn = document.getElementById('generateBtn');
+            const btnText = document.getElementById('btnText');
+            const spinner = document.getElementById('btnSpinner');
+            const outputCard = document.getElementById('outputCard');
+            const sitemapOutput = document.getElementById('sitemapOutput');
+            const copyBtn = document.getElementById('copyBtn');
+
+            if (!domain) {
+                alert('Silakan masukkan URL domain terlebih dahulu.');
+                document.getElementById('domainInput').focus();
+                return;
+            }
+            
+            if (!domain.startsWith('http://') && !domain.startsWith('https://')) {
+                domain = 'https://' + domain;
+            }
+            if (domain.endsWith('/')) {
+                domain = domain.slice(0, -1);
+            }
+
+            // UI State: Loading
+            btn.disabled = true;
+            btnText.innerText = 'Menghubungkan ke GitHub...';
+            spinner.style.display = 'block';
+            outputCard.style.display = 'none';
+            copyBtn.innerText = "Salin Kode";
+            copyBtn.classList.remove('success');
+
+            try {
+                const repoRes = await fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}`);
+                if (!repoRes.ok) throw new Error('Repositori tidak ditemukan. Pastikan repo bersifat publik.');
+                const repoData = await repoRes.json();
+                const defaultBranch = repoData.default_branch;
+
+                btnText.innerText = 'Membaca struktur file...';
+
+                const treeRes = await fetch(`https://api.github.com/repos/${githubUser}/${githubRepo}/git/trees/${defaultBranch}?recursive=1`);
+                if (!treeRes.ok) throw new Error('Gagal membaca struktur folder (API Rate Limit atau Network Error).');
+                const treeData = await treeRes.json();
+
+                let sitemapXML = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+                sitemapXML += `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`;
+                
+                const today = new Date().toISOString().split('T')[0];
+                let urlCount = 0;
+
+                treeData.tree.forEach(item => {
+                    // Hanya memproses file index.html
+                    if (item.type === 'blob' && item.path.endsWith('index.html')) {
+                        
+                        const pathParts = item.path.split('/');
+                        
+                        // Cek 1: Apakah file berada di root folder games-apps? (games-apps/index.html)
+                        const isRootGamesApps = (pathParts.length === 2 && pathParts[0] === 'games-apps' && pathParts[1] === 'index.html');
+                        
+                        // Cek 2: Apakah file berada di 1 sub-folder games-apps? (games-apps/nama_folder/index.html)
+                        const isSubGamesApps = (pathParts.length === 3 && pathParts[0] === 'games-apps' && pathParts[2] === 'index.html');
+
+                        // Eksekusi hanya jika memenuhi format di atas
+                        if (isRootGamesApps || isSubGamesApps) {
+                            
+                            const urlSafePath = item.path.split('/').map(segment => encodeURIComponent(segment)).join('/');
+                            const priority = isRootGamesApps ? '1.0' : '0.8';
+                            
+                            sitemapXML += `  <url>\n`;
+                            sitemapXML += `    <loc>${domain}/${urlSafePath}</loc>\n`;
+                            sitemapXML += `    <lastmod>${today}</lastmod>\n`;
+                            sitemapXML += `    <changefreq>yearly</changefreq>\n`;
+                            sitemapXML += `    <priority>${priority}</priority>\n`;
+                            sitemapXML += `  </url>\n`;
+                            
+                            urlCount++;
+                        }
+                    }
+                });
+
+                sitemapXML += `</urlset>`;
+
+                sitemapOutput.dataset.rawXml = sitemapXML; 
+                sitemapOutput.innerHTML = highlightXML(sitemapXML); 
+                
+                document.getElementById('statCount').innerText = `Total URL Terdeteksi: ${urlCount}`;
+                document.getElementById('statDate').innerText = `Last update: ${today}`;
+                
+                outputCard.style.display = 'block';
+
+                setTimeout(() => {
+                    outputCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+
+            } catch (error) {
+                alert(`Terjadi Kesalahan:\n${error.message}`);
+            } finally {
+                btn.disabled = false;
+                btnText.innerText = 'Mulai Generate Sitemap';
+                spinner.style.display = 'none';
+            }
+        }
+
+        function copyToClipboard() {
+            const rawXml = document.getElementById('sitemapOutput').dataset.rawXml;
+            const copyBtn = document.getElementById('copyBtn');
+
+            if (!rawXml) return;
+
+            navigator.clipboard.writeText(rawXml).then(() => {
+                copyBtn.innerText = "Tersalin!";
+                copyBtn.classList.add('success');
+                
+                setTimeout(() => {
+                    copyBtn.innerText = "Salin Kode";
+                    copyBtn.classList.remove('success');
+                }, 2500);
+            }).catch(err => {
+                alert('Gagal menyalin ke clipboard: ' + err);
+            });
+        }
+
+        function downloadSitemap() {
+            const rawXml = document.getElementById('sitemapOutput').dataset.rawXml;
+            if (!rawXml) return;
+
+            const blob = new Blob([rawXml], { type: 'text/xml' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            
+            a.download = 'Sitemap (Modora).xml'; 
+            
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
