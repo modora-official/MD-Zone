@@ -1,21 +1,50 @@
 User-agent: *
+# Izinkan akses ke direktori utama dan folder target
 Allow: /
+Allow: /apps/
+Allow: /games/
 
-# Blok folder sistem
+# -------------------------------------
+# BLOKIR FILE & FOLDER (SESUAI SCREENSHOT)
+# -------------------------------------
+Disallow: /requests/
+Disallow: /404.html
+Disallow: /CNAME
+Disallow: /mdads.js
+Disallow: /modora.png
+Disallow: /README.md
+Disallow: /site.html
+Disallow: /telegram.html
+Disallow: /yt.html
+
+# -------------------------------------
+# BLOKIR SISTEM & KEAMANAN (WAJIB ADA)
+# -------------------------------------
 Disallow: /.git/
 Disallow: /.github/
 Disallow: /node_modules/
 Disallow: /private/
 Disallow: /backup/
 Disallow: /tmp/
-
-# Blok file sensitif
+Disallow: /vendor/
 Disallow: /.env
 Disallow: /.htaccess
 Disallow: /error_log
 
-# Blok URL parameter aneh
+# -------------------------------------
+# BLOKIR PARAMETER (CEGAH DUPLIKAT KONTEN)
+# -------------------------------------
+# Blokir semua query parameter aneh agar tidak di-index
 Disallow: /*?*
+# Pengecualian: Izinkan parameter pada file aset web
+Allow: /*.css?*
+Allow: /*.js?*
+Allow: /*.png?*
+Allow: /*.jpg?*
+Allow: /*.jpeg?*
+Allow: /*.svg?*
 
-# Sitemap
+# -------------------------------------
+# SITEMAP
+# -------------------------------------
 Sitemap: https://modorazone.com/sitemap.xml
