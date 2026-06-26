@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <script>
+        (function() {
+            var userLang = navigator.language || navigator.userLanguage;
+            var targetLang = userLang.split('-')[0];
+            var currentLang = 'id';
+            if (targetLang !== currentLang) {
+                var cookieStr = "googtrans=/" + currentLang + "/" + targetLang;
+                document.cookie = cookieStr + "; path=/; domain=" + window.location.hostname;
+                document.cookie = cookieStr + "; path=/";
+            }
+        })();
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'id',
+                autoDisplay: false
+            }, 'google_translate_element');
+        }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <script src="../../../../../mdads.js"></script>
+    <script>if(typeof renderModoraAd === 'function') renderModoraAd(1);</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prey Day: Zombie Survival MOD APK V15.3.51 - MODORA Official</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #0f172a; --bg-card: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8;
+            --primary: #2563eb; --accent: #10b981; --border: #334155; --card-border: #334155;
+            --bg-glass: rgba(30, 41, 59, 0.85); --glass-blur: blur(12px);
+            --font-main: 'Plus Jakarta Sans', sans-serif; --header-h: 60px;
+            --search-bg: rgba(255, 255, 255, 0.05); --shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+        
+        .skiptranslate, #goog-gt-tt, .goog-te-banner-frame { display: none !important; }
+        body { top: 0px !important; }
+        #google_translate_element { display: none !important; }
+
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+        
+        .ad-box { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 25px 0; overflow-x: auto; scrollbar-width: none; background: rgba(0,0,0,0.15); border-radius: 12px; padding: 10px 0; border: 1px dashed var(--border); }
+        .ad-box::-webkit-scrollbar { display: none; }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; }
+        .btn-tele:active { transform: scale(0.9); }
+
+        .app-header-detail { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
+        .app-icon-detail { width: 90px; height: 90px; border-radius: 20px; object-fit: cover; box-shadow: var(--shadow); }
+        .app-meta-detail { flex: 1; }
+        .app-meta-detail h1 { font-size: 20px; font-weight: 800; line-height: 1.3; margin-bottom: 5px; color: var(--text-main); }
+        .app-dev-detail { font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
+        .badge-mod { display: inline-flex; align-items: center; background: rgba(16, 185, 129, 0.15); color: var(--accent); padding: 2px 5px; border-radius: 8px; font-size: 11px; font-weight: 800; gap: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .ss-scroll { display: flex; gap: 15px; overflow-x: auto; scroll-snap-type: x mandatory; margin-bottom: 25px; padding-bottom: 10px; scrollbar-width: none; }
+        .ss-scroll::-webkit-scrollbar { display: none; }
+        .ss-img { height: 150px; border-radius: 16px; scroll-snap-align: center; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); cursor: pointer; }
+
+        .section-title { font-size: 16px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+        .section-title i { color: var(--primary); }
+
+        .desc-box { font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 25px; background: var(--bg-card); padding: 20px; border-radius: 16px; border: 1px solid var(--card-border); }
+        .desc-box p { margin-bottom: 10px; }
+        .desc-box p:last-child { margin-bottom: 0; }
+
+        .btn-download-huge { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: linear-gradient(135deg, var(--primary), #1d4ed8); padding: 18px; border-radius: 16px; color: white; text-decoration: none; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; gap: 4px; }
+        .btn-download-huge:active { transform: scale(0.96); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; } .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 25px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 25px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; }
+
+        .lightbox { position: fixed; top: 0; left: 0; z-index: 10000; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; display: none; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10001; transition: background 0.2s; }
+        .prev-lb { left: 10px; } .next-lb { right: 10px; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.3); }
+    </style>
+</head>
+<body>
+    <div id="google_translate_element"></div>
+
+    <header>
+        <a href="../../../../../" class="btn-back"><i class="fa-solid fa-angle-left"></i></a>
+        <div class="header-title">App Detail</div>
+        <a href="https://modorazone.com/telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(2);</script>
+        </div>
+
+        <div class="app-header-detail">
+            <img src="https://play-lh.googleusercontent.com/lplRwZKG_E33Ham7vKATGfYsAMkHNkUrc3Fs_ZI8ybJjrlMdLQqfr-F5-gVjGUvU9uV7HEFmZea-UeQitA24rjg" class="app-icon-detail" alt="Icon">
+            <div class="app-meta-detail">
+                <h1>Prey Day: Zombie Survival MOD APK V15.3.51</h1>
+                <div class="app-dev-detail">GreenPixel Ltd</div>
+                <div class="badge-mod"><i class="fa-solid fa-screwdriver-wrench"></i> 100% MOD</div>
+            </div>
+        </div>        
+        
+        <div class="mini-actions">
+            <a href="javascript:void(0)" onclick="scrollToDownload(event)" class="btn-mini"><i class="fa-solid fa-download"></i><span>Download</span></a>
+            <a href="https://play.google.com/store/apps/details?id=zombie.survival.online.craft" target="_blank" class="btn-mini"><i class="fa-brands fa-google-play"></i><span>Play Store</span></a>
+            <div class="btn-mini" onclick="shareApp()"><i class="fa-solid fa-share-nodes"></i><span>Bagikan</span></div>
+        </div>
+        
+        <div class="section-title"><i class="fa-solid fa-star"></i> Fitur MOD</div>
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Mod Menu Apk</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Esp Lines</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Box</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Names</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Distance</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Drone View</span></div>
+        </div>
+        
+        <div class="section-title"><i class="fa-solid fa-images"></i> Screenshot</div>
+        <div class="ss-scroll">
+            <img src="https://play-lh.googleusercontent.com/SS_UKEMbKjxLbA3umHv_KbAYoPLLyOrCy-fImfbSgvAuTiS0pY_0l_pAHG9P7IDrjGQSq7daDwjCd5yiY70ByA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/fwSmd_Tb2PLMPz9qkvmXR3paaWITrYJ7s6yGDzB7s1680gDyH4ETXhY3W1t4L1smCt1C8AK9djEbYAHQdPeAdA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/bHzcKDZ6WV5GR0LXG0ZBwTXvusCVk-k3ZHD9_RLI18n0KdNgVtAMZLs_2rco0shyYsgKmcGhtxMfwKeHJHkcew" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/5Vz05N0_a6chdEgAWtjBJqsC1VT8ok9EPtjJc2GsUBcEae-UvFxckic2vxkS0YrZcSBX6udDuuPp669XeLgBDA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/pQSBwp_CYxRuTIDKZus1BUa38AskBreU48rVqqXsav3EQqXvCwJlGzyZ0HOCSkuQle8DjMmfyTb6DBRYpNMi" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/AjYpBbUgCu2lvGKs7g4XV3vHLPHsYWJpCQDNKUBITVUVr66xLCu59vSKyZedapBsPRDYqs-k85ZzqiZgoo4H" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/a6EiB_U3Evn-Fv3EmLOtWPPTa-DgWjYXZLrVqVv7TD6arTWaQkjOQzAd6c5BV2qPWg_jYqPNKps5GBNAaZzr" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/A1IH8_5iwHG3GE8UcjGJ6j9sP6IwMg33krCCrdL7aqvBQ38PrQtvlp80Cr-oZYIvWCBgDZze1Fm3tHsZB5Exyo8" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/zeTIQIKrPMxWyo5LqvEiJNTpM0WK1GBdQDJk6MzUEYtFcztxchA-ibrsjBDljIo75Mvpt2fKXAwpMiiycBUT" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/SWDxB--s_qOnpQ42wk_1l8smE9UUYnRUK9ymPBpWZEBFHwk2fEJyZImP5WEx_jVZigXO0PsZBmpPn-HqrYanBA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/O8ntlerG1ERgEeDC7FHu6cg4vGIe2UtakYG3psXago3RJHDBUt2vIl2tjKrSc772-rBb7-ZtbXRTV7QzC9qd" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/0y3X5jpZ8UQK0zH9OSMOJb7kOuknaYxGi4AEGUWnCuF_I3vVP-h1sUTMCmgTV14Qhcbtv1OFH0dMquZaRFkZzfI" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/j7JzsANU4tGWl5JMglyv90sOEJ9ITXmTcqCKRd_vH4UAcyn2grXcssUQNuBu4ibp6OnVXc4nOTcD3FvKs5inOg" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/6VVc9xPw8T2hB-TL-g_1eRikdQocgMF5FsT5bErmJHuJzVt2oHiqKe1ID7Xol14LiclzUdNZuDOTUFkSOiOi" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/A1IH8_5iwHG3GE8UcjGJ6j9sP6IwMg33krCCrdL7aqvBQ38PrQtvlp80Cr-oZYIvWCBgDZze1Fm3tHsZB5Exyo8" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/zeTIQIKrPMxWyo5LqvEiJNTpM0WK1GBdQDJk6MzUEYtFcztxchA-ibrsjBDljIo75Mvpt2fKXAwpMiiycBUT" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/SWDxB--s_qOnpQ42wk_1l8smE9UUYnRUK9ymPBpWZEBFHwk2fEJyZImP5WEx_jVZigXO0PsZBmpPn-HqrYanBA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/O8ntlerG1ERgEeDC7FHu6cg4vGIe2UtakYG3psXago3RJHDBUt2vIl2tjKrSc772-rBb7-ZtbXRTV7QzC9qd" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/0y3X5jpZ8UQK0zH9OSMOJb7kOuknaYxGi4AEGUWnCuF_I3vVP-h1sUTMCmgTV14Qhcbtv1OFH0dMquZaRFkZzfI" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/j7JzsANU4tGWl5JMglyv90sOEJ9ITXmTcqCKRd_vH4UAcyn2grXcssUQNuBu4ibp6OnVXc4nOTcD3FvKs5inOg" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/6VVc9xPw8T2hB-TL-g_1eRikdQocgMF5FsT5bErmJHuJzVt2oHiqKe1ID7Xol14LiclzUdNZuDOTUFkSOiOi" class="ss-img" alt="MODORA Official" loading="lazy">
+                            
+        </div>        
+
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(3);</script>
+        </div>        
+
+        <div class="section-title"><i class="fa-solid fa-circle-info"></i> Deskripsi</div>
+        <div class="desc-box">
+            <p>Pada tahun 2033, dunia menyaksikan wabah infeksi yang tidak diketahui yang menewaskan sebagian besar populasi manusia.</p>
+                        
+                        <p>Prey Day adalah gim bertahan hidup tembak-menembak multipemain daring yang berlatar di kota besar di dunia setelah kiamat zombi. Virus yang tidak diketahui telah menghancurkan sebagian besar populasi, hanya menyisakan segelintir orang yang selamat di bumi. Sebagian besar penduduk telah menjadi zombi atau bermutasi di bawah pengaruh virus. Di antara labirin jalan-jalan yang kosong, para penyintas membangun kamp untuk melawan gerombolan zombi, dan menjelajah ke luar untuk menemukan penyebab infeksi yang membuat dunia dalam keadaan bertahan hidup.</p>
+                        
+                        <p>Anda adalah salah satu dari sedikit penyintas yang takdirnya terkait langsung dengan peristiwa-peristiwa ini. Dalam kehidupan Anda setelah kiamat, Anda akan menghadapi rasa lapar dan haus, mencari kamp penyintas lain, dan menghabiskan hari-hari gelap Anda dengan membuat tempat berlindung sendiri dari bahan-bahan yang dikumpulkan. Selidiki penyebab infeksi yang memicu kiamat dengan menyelesaikan misi. Jelajahi sudut-sudut tergelap Kota untuk membuat baju zirah dan senjata yang unik. Bangun kendaraan yang akan memberimu akses ke area rahasia.</p>
+                        
+                        <p>Hadapi penyintas lain yang rakus akan jarahan yang kamu bawa. Bersatulah dengan yang lain di jalanan Harbortown untuk melawan zombi dan penyintas lain yang bersembunyi dan memburu mangsa yang mudah. Kumpulkan teman-temanmu dan berpetualanglah bersama ke bagian kota yang paling berbahaya.</p>
+                        
+                        <p>DUNIA ONLINE YANG LUAS</p>
+                        <p>Dunia Prey Day adalah gim tembak-menembak dunia terbuka yang berlatar di kota besar yang hancur oleh gelombang infeksi. Kamu harus bertahan hidup dengan manusia lain - pemain sungguhan. Kamu dapat berkomunikasi dengan pemain mana pun yang kamu temui, bergabung dengan mereka dalam grup, atau bertarung melawan mereka untuk mengambil jarahan mereka. Tidak ada aturan dalam gim dunia terbuka!</p>
+                        
+                        <p>KLAN</p>
+                        <p>Bersatulah dengan pemain lain dalam klan yang kuat, buka akses ke lokasi klan, tempat kamu dapat menemukan barang langka dan membuka kerajinan baru yang dapat membantumu dalam perang melawan mayat hidup. Bersama klanmu, kamu dapat mengambil alih bunker militer yang terbengkalai, membangun markas klan, dan memulai aksi militer sungguhan di jalanan.</p>
+                        
+                        <p>KERAJINAN</p>
+                        <p>Kamu dapat membuat senjata dan peralatan baru dari berbagai barang yang dikumpulkan dalam perjalananmu. Picu resep kerajinan baru yang dapat membantu melindungi hidup Anda dari pemain lain - keterampilan kerajinan memungkinkan Anda membangun tempat berlindung sendiri dan melindunginya dengan jebakan!</p>
+                        
+                        <p>PETUALANGAN</p>
+                        <p>Apa yang menyebabkan kiamat? Dalam game zombi ini, Anda akan menyelesaikan misi dan menjelajahi Harbortown. Game zombi terbaik memiliki alur cerita yang kaya dan misterius, dan Prey Day tidak berbeda. Terjunlah ke dalam serangkaian petualangan, turun ke kereta bawah tanah kota, bepergian ke pegunungan dan taman nasional di tepi kota, dan menjelajah melalui gurun, sambil menembaki gerombolan mayat hidup.</p>
+                        
+                        <p>RPG DAN BERTAHAN HIDUP</p>
+                        <p>Prey Day adalah salah satu game bertahan hidup zombi paling berbahaya yang penuh dengan pemain yang mungkin memiliki tujuan dan metode bertahan hidup yang berbeda - berlari, menembak, bertahan, membentuk tim, menargetkan, dan melawan pemain sungguhan yang berjuang untuk bertahan hidup seperti Anda. Game tembak-menembak menantang keterampilan, kecepatan, dan waktu reaksi Anda, dan saat Anda berjuang untuk bertahan hidup, Anda akan melakukan apa pun yang Anda bisa untuk tidak mati. Dengan elemen co op dan PVP, Anda dapat berkomunikasi dan bersatu dengan teman, atau melawan dan membunuh pesaing - tradisi terbaik MMO dan game multipemain daring!</p>
+        </div>
+
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(4);</script>
+        </div>
+
+        <div class="social-notice">
+            <p>Komunitas Modora Official</p>
+            <div class="social-links">
+                <a href="https://modorazone.com/telegram" class="btn-tg"><i class="fa-brands fa-telegram"></i> Join Telegram</a>
+            </div>
+        </div>
+
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(5);</script>
+        </div>
+
+        <div class="section-title" id="download-section" style="margin-top: 15px;"><i class="fa-solid fa-cloud-arrow-down"></i> Area Download</div>
+        
+        
+                <div id="dl-wrap-0" style="margin-bottom: 12px;">
+                    <div id="dl-loading-0" style="background: var(--bg-card, #1e293b); border: 1px solid var(--card-border, #334155); border-radius: 16px; padding: 25px 20px; text-align: center; color: var(--text-main, #f8fafc); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 28px; color: var(--primary, #2563eb);"></i>
+                        <span style="font-size: 14px; font-weight: 700;">Mempersiapkan Link... <span id="dl-count-0" style="color: var(--primary, #2563eb); font-size: 18px; font-weight: 800;">10</span>s</span>
+                        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.5); border-radius: 10px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">
+                            <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary, #2563eb), var(--accent, #10b981)); transition: width 1s linear; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                    <a href="https://modsfire.com/3c35DN0Khxrdz6F" class="btn-download-huge" id="dl-btn-0" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
+                        <div><span>DOWNLOAD (99 MB)</span></div>
+                        <div class="btn-date">Update: 26 Juni 2026</div>
+                    </a>
+                    <script>
+                        setTimeout(() => {
+                            let timeLeft = 10;
+                            let loadingEl = document.getElementById('dl-loading-0');
+                            let btnEl = document.getElementById('dl-btn-0');
+                            let countEl = document.getElementById('dl-count-0');
+                            let progressEl = document.getElementById('dl-progress-0');
+                            
+                            let dlTimer = setInterval(() => {
+                                timeLeft--;
+                                let pct = ((10 - timeLeft) / 10) * 100;
+                                if(progressEl) progressEl.style.width = pct + '%';
+                                
+                                if(timeLeft > 0) {
+                                    if(countEl) countEl.innerText = timeLeft;
+                                } else {
+                                    clearInterval(dlTimer);
+                                    if(loadingEl) loadingEl.style.display = 'none';
+                                    if(btnEl) btnEl.style.display = 'flex';
+                                }
+                            }, 1000);
+                            setTimeout(() => { if(progressEl) progressEl.style.width = '10%'; }, 50);
+                        }, 100);
+                    </script>
+                </div>
+                <div id="dl-wrap-1" style="margin-bottom: 12px;">
+                    <div id="dl-loading-1" style="background: var(--bg-card, #1e293b); border: 1px solid var(--card-border, #334155); border-radius: 16px; padding: 25px 20px; text-align: center; color: var(--text-main, #f8fafc); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 28px; color: var(--primary, #2563eb);"></i>
+                        <span style="font-size: 14px; font-weight: 700;">Mempersiapkan Link... <span id="dl-count-1" style="color: var(--primary, #2563eb); font-size: 18px; font-weight: 800;">10</span>s</span>
+                        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.5); border-radius: 10px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">
+                            <div id="dl-progress-1" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary, #2563eb), var(--accent, #10b981)); transition: width 1s linear; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                    <a href="https://modsfire.com/fVxc45Z1mrPCx2u" class="btn-download-huge" id="dl-btn-1" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
+                        <div><span>DOWNLOAD OBB (457MB)</span></div>
+                        <div class="btn-date">Update: 26 Juni 2026</div>
+                    </a>
+                    <script>
+                        setTimeout(() => {
+                            let timeLeft = 10;
+                            let loadingEl = document.getElementById('dl-loading-1');
+                            let btnEl = document.getElementById('dl-btn-1');
+                            let countEl = document.getElementById('dl-count-1');
+                            let progressEl = document.getElementById('dl-progress-1');
+                            
+                            let dlTimer = setInterval(() => {
+                                timeLeft--;
+                                let pct = ((10 - timeLeft) / 10) * 100;
+                                if(progressEl) progressEl.style.width = pct + '%';
+                                
+                                if(timeLeft > 0) {
+                                    if(countEl) countEl.innerText = timeLeft;
+                                } else {
+                                    clearInterval(dlTimer);
+                                    if(loadingEl) loadingEl.style.display = 'none';
+                                    if(btnEl) btnEl.style.display = 'flex';
+                                }
+                            }, 1000);
+                            setTimeout(() => { if(progressEl) progressEl.style.width = '10%'; }, 50);
+                        }, 100);
+                    </script>
+                </div>
+        
+        <div class="social-notice">
+            <p>Komunitas Modora Official</p>
+            <div class="social-links">
+                <a href="https://modorazone.com/telegram" class="btn-tg"><i class="fa-brands fa-telegram"></i> Join Telegram</a>
+            </div>
+        </div>
+        
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(6);</script>
+        </div>
+
+        <div style="height: 60px;"></div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <div class="close-lb"><i class="fa-solid fa-xmark"></i></div>
+        <div class="prev-lb"><i class="fa-solid fa-angle-left"></i></div>
+        <img class="lightbox-content" id="img-lb" src="">
+        <div class="next-lb"><i class="fa-solid fa-angle-right"></i></div>
+    </div>
+
+    <script>
+        function scrollToDownload(e) {
+            if(e) e.preventDefault();
+            const section = document.getElementById('download-section');
+            if(section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            lb.onclick = (e) => { 
+                if(e.target === lb) lb.classList.remove('show'); 
+            };
+        });
+
+        function shareApp() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Prey Day: Zombie Survival MOD APK V15.3.51',
+                    text: 'Download Prey Day: Zombie Survival MOD APK V15.3.51 MOD APK terbaru dari MODORA Official!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link disalin ke clipboard!');
+            }
+        }
+
+        function showAdblockWarning() {
+            var style = document.createElement('style');
+            style.innerHTML = "#modoraAdblockOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 999999; font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; color: #f8fafc; animation: modoraFadeIn 0.3s ease-out; } @keyframes modoraFadeIn { from { opacity: 0; } to { opacity: 1; } } .modora-premium-card { background: #1e293b; border-radius: 24px; width: 100%; max-width: 400px; padding: 40px 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid #334155; transform: scale(0.9); animation: modoraCardScale 0.4s 0.1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; } @keyframes modoraCardScale { to { transform: scale(1); opacity: 1; } } .modora-icon-header { width: 64px; height: 64px; background: rgba(239, 68, 68, 0.15); color: #ef4444; font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 8px 20px rgba(239, 68, 68, 0.2); } .modora-title { font-size: 22px; font-weight: 800; margin-bottom: 10px; } .modora-desc { font-size: 14px; color: #94a3b8; line-height: 1.5; margin-bottom: 25px; } .modora-highlight { color: #ef4444; font-weight: 700; } .modora-action-card { background: #ef4444; color: white; border: none; border-radius: 16px; padding: 16px; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; transition: transform 0.2s, background 0.2s; } .modora-action-card:hover { background: #dc2626; } .modora-action-card:active { transform: scale(0.95); }";
+            document.head.appendChild(style);
+
+            var overlay = document.createElement('div');
+            overlay.id = 'modoraAdblockOverlay';
+            overlay.innerHTML = '<div class="modora-premium-card"><div class="modora-icon-header"><i class="fa-solid fa-shield-virus"></i></div><h2 class="modora-title">Pemblokir Iklan Aktif</h2><p class="modora-desc">Situs ini berjalan berkat dukungan iklan. Mohon <span class="modora-highlight">matikan Adblock</span> Anda untuk melanjutkan download.</p><button class="modora-action-card" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> Saya sudah mematikan Adblock</button></div>';
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function checkAdBlock() {
+            var script = document.createElement('script');
+            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+            script.onerror = function() { showAdblockWarning(); };
+            script.onload = function() {
+                var ad = document.createElement('div');
+                ad.innerHTML = '&nbsp;';
+                ad.className = 'adsbox ad-placement doubleclick ad-banner banner-ads sponsor-ad';
+                ad.style.cssText = 'display:block; position:absolute; top:-9999px; left:-9999px; height:10px; width:10px;';
+                document.body.appendChild(ad);
+                setTimeout(function() {
+                    var styles = window.getComputedStyle(ad);
+                    if (ad.offsetHeight === 0 || styles.display === 'none' || styles.visibility === 'hidden') {
+                        showAdblockWarning();
+                    }
+                    ad.remove();
+                }, 250);
+            };
+            document.head.appendChild(script);
+        }
+        
+        setTimeout(checkAdBlock, 1500);
+    </script>
+    <script>if(typeof renderModoraAd === 'function') renderModoraAd(7);</script>
+</body>
+</html>
