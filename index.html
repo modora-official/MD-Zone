@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://divorceabetpiano.com/67/b1/9b/67b19bcda13dcfd3eea3c1a2a8f3920a.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <meta name="color-scheme" content="dark">
@@ -31,6 +30,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- MENGHUBUNGKAN FILE IKLAN mdhomeads.js -->
+    <script src="../../../../../mdhomeads.js"></script>
+
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -150,6 +152,59 @@
         .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); flex-shrink: 0; }
         .btn-tele:active { transform: scale(0.9); }
 
+        /* --- AD BOX UI & ANIMATIONS --- */
+        .mod-ad-container {
+            width: 100%; background: var(--bg-card); border: 1px solid var(--card-border);
+            border-radius: 24px; padding: 16px; margin: 26px 0; box-shadow: var(--shadow);
+            position: relative; overflow: hidden; display: flex; flex-direction: column;
+            align-items: center; transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mod-ad-header {
+            width: 100%; display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px dashed var(--border);
+            z-index: 2;
+        }
+
+        .mod-ad-title { font-size: 10px; font-weight: 800; color: var(--text-muted); letter-spacing: 0.8px; text-transform: uppercase; display: flex; align-items: center; gap: 7px; }
+        .mod-ad-tag { font-size: 9px; font-weight: 800; background: rgba(255,255,255,0.06); color: var(--text-muted); padding: 2px 7px; border-radius: 6px; border: 1px solid var(--border); letter-spacing: 0.5px; }
+
+        .mod-ad-body { display: flex; justify-content: center; align-items: center; width: 100%; position: relative; z-index: 2; min-height: 50px; overflow: hidden; }
+
+        .ad-mobile-only { display: block; width: 100%; text-align: center; }
+        .ad-desktop-only { display: none; width: 100%; text-align: center; }
+
+        @media (min-width: 768px) {
+            .ad-mobile-only { display: none; }
+            .ad-desktop-only { display: block; }
+        }
+
+        /* Animations */
+        .live-dot { width: 7px; height: 7px; background: #10b981; border-radius: 50%; display: inline-block; animation: adLiveBlink 1.2s infinite ease-in-out; }
+        @keyframes adLiveBlink { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.25; transform: scale(0.8); } }
+
+        .ad-cyber-pulse { animation: adPulseGlow 3s infinite alternate ease-in-out; }
+        @keyframes adPulseGlow {
+            0% { border-color: var(--border); box-shadow: var(--shadow); }
+            100% { border-color: var(--primary); box-shadow: 0 6px 28px color-mix(in srgb, var(--primary) 28%, transparent); }
+        }
+
+        .ad-shimmer-sweep::before {
+            content: ''; position: absolute; top: 0; left: -150%; width: 60%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transform: skewX(-25deg); animation: adSweep 5.5s infinite linear; pointer-events: none; z-index: 1;
+        }
+        @keyframes adSweep { 0% { left: -150%; } 20% { left: 200%; } 100% { left: 200%; } }
+
+        .ad-rgb-shift { animation: adRgbBorder 6s infinite linear; }
+        @keyframes adRgbBorder {
+            0% { border-color: #2563eb; } 33% { border-color: #8b5cf6; } 66% { border-color: #ec4899; } 100% { border-color: #2563eb; }
+        }
+
+        @media (max-width: 500px) {
+            .ad-scale-mobile { transform: scale(0.68); transform-origin: center center; margin: -10px 0; }
+        }
+
         @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
         .skeleton { background: var(--skeleton-grad); background-size: 200% 100%; animation: shimmer 1.5s infinite linear; border-radius: 8px; }
         .skel-trend { width: 300px; height: 165px; border-radius: 24px; flex-shrink: 0; }
@@ -166,7 +221,7 @@
         .view-grid .skel-card .skel-line { width: 90%; }
         .view-grid .skel-card .skel-btn { width: 100%; margin-top: 12px; }
 
-        .section-head { font-size: 19px; font-weight: 800; margin-bottom: 16px; margin-top: 45px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
+        .section-head { font-size: 19px; font-weight: 800; margin-bottom: 16px; margin-top: 35px; display: flex; align-items: center; gap: 8px; letter-spacing: -0.3px; }
         .recom-icon { color: #f59e0b; }
         .apps-icon { color: #10b981; }
         .games-icon { color: #8b5cf6; }
@@ -175,7 +230,6 @@
         .recom-wrap::-webkit-scrollbar { display: none; }
         .recom-scroll { display: flex; gap: 15px; width: max-content; padding-right: 15px; }
 
-        /* --- SCROLL ANIMATIONS --- */
         .scroll-wait {
             opacity: 0;
             transform: translateY(30px) scale(0.96);
@@ -201,7 +255,6 @@
         .trend-name { font-size: 20px; font-weight: 800; width: 85%; line-height: 1.3; margin-bottom: 6px; z-index: 2; position: relative; letter-spacing: -0.5px; }
         .trend-act { font-size: 13px; color: var(--text-muted); font-weight: 600; z-index: 2; position: relative; }
 
-        /* --- LIST ENTRANCE ANIMATION --- */
         @keyframes listSlideIn {
             0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -229,7 +282,6 @@
 
         .icon-wrap { position: relative; width: 60px; height: 60px; flex-shrink: 0; }
         
-        /* --- SPINNER & ICON CSS --- */
         .img-spinner {
             position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             font-size: 20px; color: var(--primary); z-index: 1;
@@ -394,6 +446,25 @@
 
     <main id="mainView">
 
+        <!-- POSISI 1: Native Banner 1x1 (Silent Trigger via mdhomeads.js) -->
+        <script>adNative1x1();</script>
+
+        <!-- POSISI 2: Top Billboard (Responsive Banner 320x50 / 728x90) -->
+        <div class="mod-ad-container ad-shimmer-sweep scroll-wait">
+            <div class="mod-ad-header">
+                <span class="mod-ad-title"><i class="live-dot"></i> OFFICIAL PARTNER</span>
+                <span class="mod-ad-tag">AD</span>
+            </div>
+            <div class="mod-ad-body">
+                <div class="ad-mobile-only">
+                    <script>adBanner320x50();</script>
+                </div>
+                <div class="ad-desktop-only">
+                    <script>adBanner728x90();</script>
+                </div>
+            </div>
+        </div>
+
         <section id="section-recom" class="scroll-wait">
             <div class="section-head" id="t-recom"><i class="fa-solid fa-wand-magic-sparkles recom-icon"></i> Recommended</div>
             <div class="recom-wrap"><div class="recom-scroll" id="recomContainer">
@@ -402,6 +473,17 @@
                 <div class="skeleton skel-trend"></div>
             </div></div>
         </section>
+
+        <!-- POSISI 3: Spotlight Partner (Banner 300x250) -->
+        <div class="mod-ad-container ad-cyber-pulse scroll-wait">
+            <div class="mod-ad-header">
+                <span class="mod-ad-title"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> SPOTLIGHT PARTNER</span>
+                <span class="mod-ad-tag">SPONSORED</span>
+            </div>
+            <div class="mod-ad-body">
+                <script>adBanner300x250();</script>
+            </div>
+        </div>
 
         <section id="section-games" class="scroll-wait">
             <div class="section-head" id="t-games"><i class="fa-solid fa-gamepad games-icon"></i> Games</div>
@@ -412,6 +494,30 @@
             <div class="btn-loadmore hidden" id="btnMoreGames" onclick="loadMoreGames()"><span id="t-showMoreGames">Show More</span> <i class="fa-solid fa-chevron-down"></i></div>
         </section>
         
+        <!-- POSISI 4: Gaming Intermission (Banner 468x60 - With Mobile CSS Auto Scale) -->
+        <div class="mod-ad-container ad-shimmer-sweep scroll-wait">
+            <div class="mod-ad-header">
+                <span class="mod-ad-title"><i class="fa-solid fa-gamepad" style="color:var(--secondary);"></i> GAMING SPONSOR</span>
+                <span class="mod-ad-tag">PROMO</span>
+            </div>
+            <div class="mod-ad-body">
+                <div class="ad-scale-mobile">
+                    <script>adBanner468x60();</script>
+                </div>
+            </div>
+        </div>
+
+        <!-- POSISI 5: Trending Pick Showcase (Banner 160x300) -->
+        <div class="mod-ad-container scroll-wait">
+            <div class="mod-ad-header">
+                <span class="mod-ad-title"><i class="fa-solid fa-fire" style="color:#ef4444;"></i> TRENDING PICK</span>
+                <span class="mod-ad-tag">AD</span>
+            </div>
+            <div class="mod-ad-body">
+                <script>adBanner160x300();</script>
+            </div>
+        </div>
+
         <section id="section-apps" class="scroll-wait">
             <div class="section-head" id="t-apps"><i class="fa-solid fa-grip apps-icon"></i> Apps</div>
             <div class="list-container view-list" id="appsContainer">
@@ -421,6 +527,17 @@
             <div class="btn-loadmore hidden" id="btnMoreApps" onclick="loadMoreApps()"><span id="t-showMoreApps">Show More</span> <i class="fa-solid fa-chevron-down"></i></div>
         </section>
         
+        <!-- POSISI 6: Premier Pillar Showcase (Banner 160x600 - RGB Border Animated) -->
+        <div class="mod-ad-container ad-rgb-shift scroll-wait" style="margin-top: 38px;">
+            <div class="mod-ad-header">
+                <span class="mod-ad-title"><i class="fa-solid fa-gem" style="color:#06b6d4;"></i> PREMIER SHOWCASE</span>
+                <span class="mod-ad-tag">PARTNER</span>
+            </div>
+            <div class="mod-ad-body">
+                <script>adBanner160x600();</script>
+            </div>
+        </div>
+
         <footer class="footer">© <span id="year"></span> MODORA | All Rights Reserved</footer>
     </main>
 
@@ -501,7 +618,6 @@
     </nav>
 
     <script>
-        // --- MULTI-LANGUAGE SYSTEM (i18n) ---
         const i18n = {
             en: { recom: "Recommended", games: "Games", apps: "Apps", search: "Search...", showMore: "Show More", home: "Home", settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)", viewMode: "View Mode", fontStyle: "Font Style", list: "List", grid: "Grid", reset: "Reset", close: "Close", noGames: "No games found in this repository.", noApps: "No apps found in this repository.", getBtn: "GET", getNow: "Get Now", didYouMean: "No exact match. Did you mean:" },
             id: { recom: "Rekomendasi", games: "Game", apps: "Aplikasi", search: "Cari...", showMore: "Tampilkan", home: "Beranda", settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai", viewMode: "Tampilan", fontStyle: "Gaya Huruf", list: "Daftar", grid: "Kotak", reset: "Atur Ulang", close: "Tutup", noGames: "Tidak ada game ditemukan.", noApps: "Tidak ada aplikasi ditemukan.", getBtn: "UNDUH", getNow: "Dapatkan", didYouMean: "Tidak ditemukan. Apakah maksud kamu:" },
@@ -590,7 +706,6 @@
         let showGamesCount = 10;
         let isDataLoaded = false;
 
-        // --- INTERSECTION OBSERVER UNTUK ANIMASI SCROLL ---
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if(entry.isIntersecting) {
@@ -653,8 +768,10 @@
             }
         }
 
+        // FUNGSI INI TELAH DIUPGRADE UNTUK MENGACAK DATA (FISHER-YATES SHUFFLE)
         function filterLatest(items) {
             let map = {};
+            // Filter duplikasi data terlebih dahulu berdasarkan baseName
             items.forEach(item => {
                 const key = item.baseName; 
                 if (!map[key]) {
@@ -665,7 +782,17 @@
                     }
                 }
             });
-            return Object.values(map).sort((a, b) => b.time - a.time);
+            
+            // Konversi objek kembali ke array
+            let uniqueItems = Object.values(map);
+            
+            // Fisher-Yates Shuffle - Algoritma untuk mengacak susunan array 100% berbeda tiap refresh
+            for (let i = uniqueItems.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [uniqueItems[i], uniqueItems[j]] = [uniqueItems[j], uniqueItems[i]];
+            }
+            
+            return uniqueItems;
         }
 
         async function initData() {
@@ -674,6 +801,7 @@
                 scanDirectory('games', 'game')
             ]);
             
+            // dbApps dan dbGames kini menerima array yang sudah dikocok (Random)
             dbApps = filterLatest(appsRaw); 
             dbGames = filterLatest(gamesRaw);
             isDataLoaded = true;
@@ -770,23 +898,23 @@
             
             if(!isDataLoaded) return; 
 
-            // Render Games First
             if(dbGames.length === 0) {
                 cGames.innerHTML = `<div class="status-msg">${t('noGames')}</div>`;
                 document.getElementById('btnMoreGames').classList.add('hidden');
             } else {
                 let hGames = ''; 
+                // Mengambil 10 data acak karena array dbGames sudah diacak
                 dbGames.slice(0, showGamesCount).forEach(item => hGames += createCardHtml(item));
                 cGames.innerHTML = hGames;
                 document.getElementById('btnMoreGames').classList.toggle('hidden', showGamesCount >= dbGames.length);
             }
 
-            // Render Apps Second
             if(dbApps.length === 0) {
                 cApps.innerHTML = `<div class="status-msg">${t('noApps')}</div>`;
                 document.getElementById('btnMoreApps').classList.add('hidden');
             } else {
                 let hApps = ''; 
+                // Mengambil 10 data acak karena array dbApps sudah diacak
                 dbApps.slice(0, showAppsCount).forEach(item => hApps += createCardHtml(item));
                 cApps.innerHTML = hApps;
                 document.getElementById('btnMoreApps').classList.toggle('hidden', showAppsCount >= dbApps.length);
@@ -802,7 +930,6 @@
             else alert('Link is broken or still processing!'); 
         }
 
-        // --- ALGORITMA LEVENSHTEIN DISTANCE UNTUK FUZZY SEARCH (TYPO) ---
         function levenshteinDistance(a, b) {
             const matrix = [];
             for (let i = 0; i <= b.length; i++) matrix[i] = [i];
@@ -840,34 +967,29 @@
             secApps.style.display = 'block'; 
             secGames.style.display = 'block';
             
-            // Filter Cocok Secara Pasti (Strict)
             const fGames = dbGames.filter(i => i.name.toLowerCase().includes(val));
             const fApps = dbApps.filter(i => i.name.toLowerCase().includes(val));
 
             let isTypo = false;
             let recommendations = [];
 
-            // Jika hasil kosong, jalankan pencarian Typo (Fuzzy Search)
             if (fGames.length === 0 && fApps.length === 0) {
                 isTypo = true;
                 const allItems = [...dbGames, ...dbApps];
                 
-                // Beri skor kedekatan karakter untuk setiap item
                 const scoredItems = allItems.map(item => {
                     const dist = levenshteinDistance(val, item.name.toLowerCase());
                     return { item, dist };
                 });
 
-                // Urutkan dari yang skor typonya paling sedikit
                 scoredItems.sort((a, b) => a.dist - b.dist);
 
-                // Ambil 5 rekomendasi terbaik dengan toleransi typo dinamis (maksimal 3-4 huruf salah)
                 const maxToleransi = Math.max(3, Math.floor(val.length / 2));
                 recommendations = scoredItems.filter(s => s.dist <= maxToleransi).slice(0, 5).map(s => s.item);
             }
 
             if (isTypo && recommendations.length > 0) {
-                secApps.style.display = 'none'; // Sembunyikan apps, gabungkan ke area games sebagai "Rekomendasi"
+                secApps.style.display = 'none'; 
                 
                 let hRecom = `<div class="status-msg" style="color: var(--primary);"><i class="fa-solid fa-lightbulb"></i> ${t('didYouMean')}</div>`;
                 recommendations.forEach(item => hRecom += createCardHtml(item));
@@ -882,7 +1004,6 @@
                 document.getElementById('btnMoreGames').classList.add('hidden');
                 document.getElementById('btnMoreApps').classList.add('hidden');
             } else {
-                // Hasil Pencarian Normal
                 let hGame = ''; 
                 fGames.forEach(item => hGame += createCardHtml(item));
                 cGames.innerHTML = hGame || `<div class="status-msg">${t('noGames')}</div>`;
