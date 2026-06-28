@@ -1,1 +1,5 @@
-// File baru dibuat dari MD Zone
+RewriteEngine On
+
+# Redirect semua request ke domain baru sambil mempertahankan path & query string
+RewriteCond %{HTTP_HOST} ^(www\.)?modorazone\.com$ [NC]
+RewriteRule ^(.*)$ https://modoracore.biz.id/$1 [R=301,L]
