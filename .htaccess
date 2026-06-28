@@ -1,9 +1,0 @@
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    
-    # Memastikan redirect hanya berlaku jika domain yang diakses adalah modorazone.com
-    RewriteCond %{HTTP_HOST} ^(?:www\.)?modorazone\.com$ [NC]
-    
-    # Mengalihkan semua request beserta path-nya ke modoracore.biz.id secara permanen
-    RewriteRule ^(.*)$ https://modoracore.biz.id/$1 [R=301,L]
-</IfModule>
