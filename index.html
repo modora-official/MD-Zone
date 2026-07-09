@@ -30,7 +30,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- MENGHUBUNGKAN FILE IKLAN mdhomeads.js -->
     <script src="../../../../../mdhomeads.js"></script>
 
     <script type="application/ld+json">
@@ -157,7 +156,7 @@
             width: 100%; background: var(--bg-card); border: 1px solid var(--card-border);
             border-radius: 24px; padding: 16px; margin: 26px 0; box-shadow: var(--shadow);
             position: relative; overflow: hidden; display: flex; flex-direction: column;
-            align-items: center; transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            align-items: center; transition: border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
         }
 
         .mod-ad-header {
@@ -446,10 +445,8 @@
 
     <main id="mainView">
 
-        <!-- POSISI 1: Native Banner 1x1 (Silent Trigger via mdhomeads.js) -->
         <script>adNative1x1();</script>
 
-        <!-- POSISI 2: Top Billboard (Responsive Banner 320x50 / 728x90) -->
         <div class="mod-ad-container ad-shimmer-sweep scroll-wait">
             <div class="mod-ad-header">
                 <span class="mod-ad-title"><i class="live-dot"></i> OFFICIAL PARTNER</span>
@@ -474,7 +471,6 @@
             </div></div>
         </section>
 
-        <!-- POSISI 3: Spotlight Partner (Banner 300x250) -->
         <div class="mod-ad-container ad-cyber-pulse scroll-wait">
             <div class="mod-ad-header">
                 <span class="mod-ad-title"><i class="fa-solid fa-bolt" style="color:#f59e0b;"></i> SPOTLIGHT PARTNER</span>
@@ -494,7 +490,6 @@
             <div class="btn-loadmore hidden" id="btnMoreGames" onclick="loadMoreGames()"><span id="t-showMoreGames">Show More</span> <i class="fa-solid fa-chevron-down"></i></div>
         </section>
         
-        <!-- POSISI 4: Gaming Intermission (Banner 468x60 - With Mobile CSS Auto Scale) -->
         <div class="mod-ad-container ad-shimmer-sweep scroll-wait">
             <div class="mod-ad-header">
                 <span class="mod-ad-title"><i class="fa-solid fa-gamepad" style="color:var(--secondary);"></i> GAMING SPONSOR</span>
@@ -507,7 +502,6 @@
             </div>
         </div>
 
-        <!-- POSISI 5: Trending Pick Showcase (Banner 160x300) -->
         <div class="mod-ad-container scroll-wait">
             <div class="mod-ad-header">
                 <span class="mod-ad-title"><i class="fa-solid fa-fire" style="color:#ef4444;"></i> TRENDING PICK</span>
@@ -527,7 +521,6 @@
             <div class="btn-loadmore hidden" id="btnMoreApps" onclick="loadMoreApps()"><span id="t-showMoreApps">Show More</span> <i class="fa-solid fa-chevron-down"></i></div>
         </section>
         
-        <!-- POSISI 6: Premier Pillar Showcase (Banner 160x600 - RGB Border Animated) -->
         <div class="mod-ad-container ad-rgb-shift scroll-wait" style="margin-top: 38px;">
             <div class="mod-ad-header">
                 <span class="mod-ad-title"><i class="fa-solid fa-gem" style="color:#06b6d4;"></i> PREMIER SHOWCASE</span>
@@ -953,11 +946,13 @@
             const secGames = document.getElementById('section-games');
             const cGames = document.getElementById('gamesContainer');
             const cApps = document.getElementById('appsContainer');
+            const adContainers = document.querySelectorAll('.mod-ad-container'); // Menyeleksi semua ruang iklan
 
             if(val === '') {
                 secRecom.style.display = 'block'; 
                 secApps.style.display = 'block'; 
                 secGames.style.display = 'block';
+                adContainers.forEach(ad => ad.style.display = ''); // Tampilkan kembali iklan ke gaya default-nya
                 showAppsCount=10; showGamesCount=10;
                 renderLists();
                 return;
@@ -966,6 +961,7 @@
             secRecom.style.display = 'none'; 
             secApps.style.display = 'block'; 
             secGames.style.display = 'block';
+            adContainers.forEach(ad => ad.style.display = 'none'); // Sembunyikan iklan jika ada teks di pencarian
             
             const fGames = dbGames.filter(i => i.name.toLowerCase().includes(val));
             const fApps = dbApps.filter(i => i.name.toLowerCase().includes(val));
