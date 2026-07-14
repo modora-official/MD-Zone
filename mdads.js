@@ -83,7 +83,7 @@ function injectTutorialSection() {
                 </div>
                 
                 <!-- HTML5 Native Video -->
-                <video id="tutorial-vid" src="https://github.com/modora-official/modora/raw/refs/heads/main/TikDownloader.mp4" playsinline controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; display: none;"></video>
+                <video id="tutorial-vid" src="https://github.com/modora-official/modora/raw/refs/heads/main/tutorials.mp4" playsinline controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; display: none;"></video>
             </div>
         `;
         
