@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <div id="tutorial-video-box" style="position: relative; width: 100%; max-width: 280px; margin: 0 auto 25px; aspect-ratio: 9/16; border-radius: 16px; overflow: hidden; border: 2px solid var(--card-border, #334155); box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,0.5)); background: var(--bg-card, #1e293b); cursor: pointer; z-index: 999;">
                 
                 <!-- Thumbnail -->
-                <img src="https://modorazone.com/modorazone.png" alt="Tutorial Thumbnail" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                <img src="https://modorazone.com/thumb.jpg" alt="Tutorial Thumbnail" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
                 
                 <!-- Play Button Overlay -->
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; pointer-events: none;">
