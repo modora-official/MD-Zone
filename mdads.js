@@ -75,7 +75,7 @@ function injectTutorialSection() {
             <div id="tutorial-video-container" style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; border: 1px solid var(--card-border, #334155); box-shadow: 0 10px 30px rgba(0,0,0,0.5); background: #000; cursor: pointer; margin-bottom: 25px; z-index: 99;">
                 
                 <!-- Thumbnail Cover (Link Absolut) -->
-                <img id="tutorial-thumb" src="https://modorazone.com/thumb.jpg" alt="Tutorial Thumbnail" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+                <img id="tutorial-thumb" src="https://modorazone.com/thumb.png" alt="Tutorial Thumbnail" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
                 
                 <!-- Play Button Overlay -->
                 <div id="tutorial-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 2;">
@@ -83,7 +83,7 @@ function injectTutorialSection() {
                 </div>
                 
                 <!-- HTML5 Native Video -->
-                <video id="tutorial-vid" src="https://modorazone.com/tutorial.mp4" playsinline controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; display: none;"></video>
+                <video id="tutorial-vid" src="https://github.com/modora-official/modora/raw/refs/heads/main/TikDownloader.mp4" playsinline controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; display: none;"></video>
             </div>
         `;
         
