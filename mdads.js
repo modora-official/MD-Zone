@@ -49,88 +49,116 @@ function renderModoraAd(adId) {
 // ==========================================
 // DYNAMIC INJECTION: TUTORIALS DOWNLOAD
 // ==========================================
-document.addEventListener("DOMContentLoaded", function() {
-    // Cari tombol download terakhir untuk menempatkan Tutorial di bawahnya
+function injectTutorialSection() {
+    // Cek agar tidak ter-inject dua kali
+    if (document.getElementById('modora-tutorial-section')) return;
+    
+    // Cari elemen tombol download terakhir untuk patokan penempatan
     const dlWrappers = document.querySelectorAll('div[id^="dl-wrap-"]');
+    let targetElement = null;
     
     if (dlWrappers.length > 0) {
-        const lastDlWrapper = dlWrappers[dlWrappers.length - 1];
-        
-        // Bikin container baru buat Video Tutorial
-        const tutorialSection = document.createElement('div');
-        tutorialSection.id = "modora-tutorial-section";
-        tutorialSection.innerHTML = `
-            <div class="section-title" style="margin-top: 30px;">
+        targetElement = dlWrappers[dlWrappers.length - 1];
+    } else {
+        targetElement = document.getElementById('download-section');
+    }
+    
+    if (targetElement) {
+        const tutorialDiv = document.createElement('div');
+        tutorialDiv.id = "modora-tutorial-section";
+        tutorialDiv.innerHTML = `
+            <div class="section-title" style="margin-top: 35px; margin-bottom: 15px;">
                 <i class="fa-solid fa-circle-play"></i> TUTORIALS DOWNLOAD
             </div>
             
-            <!-- Perhatikan: z-index 2147483647 (maksimal) untuk menembus invisible overlay iklan -->
-            <div id="tutorial-video-box" style="position: relative; width: 100%; max-width: 100%; margin: 0 auto 25px; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; border: 2px solid var(--card-border, #334155); box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,0.5)); background: var(--bg-card, #1e293b); cursor: pointer; z-index: 2147483647 !important;">
+            <!-- Tambahan z-index: 99 biar bisa diklik nembus iklan, tapi tetep ngetrigger iklannya -->
+            <div id="tutorial-video-container" style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; border: 1px solid var(--card-border, #334155); box-shadow: 0 10px 30px rgba(0,0,0,0.5); background: #000; cursor: pointer; margin-bottom: 25px; z-index: 99;">
                 
-                <!-- Thumbnail -->
-                <img src="thumb.jpg" alt="Tutorial Thumbnail" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                <!-- Thumbnail Cover (Link Absolut) -->
+                <img id="tutorial-thumb" src="https://modorazone.com/thumb.jpg" alt="Tutorial Thumbnail" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
                 
                 <!-- Play Button Overlay -->
-                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; pointer-events: none;">
-                    <i class="fa-solid fa-play" style="font-size: 55px; color: white; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));"></i>
+                <div id="tutorial-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 2;">
+                    <i class="fa-solid fa-play" style="font-size: 65px; color: white; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));"></i>
                 </div>
                 
-                <!-- Video Element (Hidden initially) -->
-                <video id="modora-vid-player" src="https://modorazone.com/tutorial.mp4" preload="none" playsinline style="display:none; width: 100%; height: 100%;"></video>
+                <!-- HTML5 Native Video -->
+                <video id="tutorial-vid" src="https://modorazone.com/tutorial.mp4" playsinline controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; display: none;"></video>
             </div>
         `;
         
-        // Injeksi ke HTML tepat di bawah area tombol download
-        lastDlWrapper.parentNode.insertBefore(tutorialSection, lastDlWrapper.nextSibling);
+        // Letakkan tepat di bawah target elemen
+        targetElement.parentNode.insertBefore(tutorialDiv, targetElement.nextSibling);
 
-        const videoBox = document.getElementById('tutorial-video-box');
-        const videoPlayer = document.getElementById('modora-vid-player');
+        const container = document.getElementById('tutorial-video-container');
+        const video = document.getElementById('tutorial-vid');
+        const thumb = document.getElementById('tutorial-thumb');
+        const overlay = document.getElementById('tutorial-overlay');
 
-        // --- SISTEM ANTI POP-UNDER LEVEL 2 (CAPTURING PHASE) ---
-        // Kita cegat event dari paling luar (window) sebelum script iklan sempat merespon.
-        // Parameter 'true' di akhir membuat listener ini berjalan di "Capture Phase", bukan "Bubble Phase".
-        ['mousedown', 'mouseup', 'click', 'touchstart', 'touchend'].forEach(evt => {
-            window.addEventListener(evt, function(e) {
-                // Cek apakah target klik ada di dalam kotak video kita
-                if (videoBox && (e.target === videoBox || videoBox.contains(e.target))) {
-                    e.stopPropagation(); // Stop iklan baca klik
-                }
-            }, true); 
-        });
-
-        // FUNGSI PLAY & FULLSCREEN
-        videoBox.addEventListener('click', (e) => {
-            e.preventDefault(); 
+        // Fungsi klik: Hilangkan cover, jalankan video, dan paksa Full Screen
+        container.addEventListener('click', function() {
+            // Sembunyikan cover & ikon play
+            thumb.style.display = 'none';
+            overlay.style.display = 'none';
             
-            // Tampilkan tag video
-            videoPlayer.style.display = 'block'; 
+            // Tampilkan native player
+            video.style.display = 'block';
             
-            // Request Fullscreen otomatis (Support semua jenis browser)
-            if (videoPlayer.requestFullscreen) {
-                videoPlayer.requestFullscreen();
-            } else if (videoPlayer.webkitRequestFullscreen) {
-                videoPlayer.webkitRequestFullscreen(); // Safari / iOS
-            } else if (videoPlayer.msRequestFullscreen) {
-                videoPlayer.msRequestFullscreen(); // IE / Edge lama
+            // Putar Video dengan penanganan error biar browser nggak nge-block
+            let playPromise = video.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("Auto-play ditahan browser. User harus tap tombol play manual.", error);
+                });
             }
             
-            // Langsung Mainkan Video
-            videoPlayer.play();
+            // Eksekusi Full Screen (Disesuaikan untuk berbagai browser HP/Desktop)
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitEnterFullscreen) {
+                video.webkitEnterFullscreen(); // Khusus iPhone/iOS Safari
+            } else if (video.webkitRequestFullscreen) {
+                video.webkitRequestFullscreen(); // Standar browser webkit lama
+            } else if (video.msRequestFullscreen) {
+                video.msRequestFullscreen(); // Edge lama
+            }
         });
 
-        // FUNGSI EXIT FULLSCREEN: Kalo user keluar dari mode fullscreen, otomatis pause & sembunyi
-        const handleFullscreenExit = () => {
-            const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
+        // Event saat user keluar dari mode Full Screen
+        const exitFullscreenHandler = () => {
+            const isFullScreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
             
-            if (!isFullscreen) {
-                videoPlayer.pause();
-                videoPlayer.style.display = 'none'; // Sembunyikan video biar thumbnail balik
+            // Kalau layarnya udah nggak full screen, kembalikan posisi seperti semula
+            if (!isFullScreen && !video.webkitDisplayingFullscreen) {
+                video.pause();
+                video.style.display = 'none';
+                thumb.style.display = 'block';
+                overlay.style.display = 'flex';
             }
         };
 
-        document.addEventListener('fullscreenchange', handleFullscreenExit);
-        document.addEventListener('webkitfullscreenchange', handleFullscreenExit);
-        document.addEventListener('mozfullscreenchange', handleFullscreenExit);
-        document.addEventListener('MSFullscreenChange', handleFullscreenExit);
+        // Pasang sensor untuk mendeteksi kapan user keluar dari layar penuh
+        document.addEventListener('fullscreenchange', exitFullscreenHandler);
+        document.addEventListener('webkitfullscreenchange', exitFullscreenHandler);
+        
+        // Khusus sensor layar penuh milik iOS
+        video.addEventListener('webkitendfullscreen', function() {
+            video.pause();
+            video.style.display = 'none';
+            thumb.style.display = 'block';
+            overlay.style.display = 'flex';
+        });
     }
-});
+}
+
+// ==========================================
+// AUTO INITIALIZER
+// ==========================================
+// Kita pakai 3 lapis perlindungan untuk memastikan fitur ini selalu muncul
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', injectTutorialSection);
+} else {
+    injectTutorialSection();
+}
+// Fallback: Dieksekusi otomatis setelah web sepenuhnya di-load
+setTimeout(injectTutorialSection, 800);
