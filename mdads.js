@@ -48,7 +48,6 @@ function renderModoraAd(adId) {
 
 // ==========================================
 // DYNAMIC INJECTION: TUTORIALS DOWNLOAD
-// Murni diakses dari JS, jadi admin.html tetep utuh!
 // ==========================================
 document.addEventListener("DOMContentLoaded", function() {
     // Cari tombol download terakhir untuk menempatkan Tutorial di bawahnya
@@ -65,10 +64,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 <i class="fa-solid fa-circle-play"></i> TUTORIALS DOWNLOAD
             </div>
             
-            <div id="tutorial-video-box" style="position: relative; width: 100%; max-width: 280px; margin: 0 auto 25px; aspect-ratio: 9/16; border-radius: 16px; overflow: hidden; border: 2px solid var(--card-border, #334155); box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,0.5)); background: var(--bg-card, #1e293b); cursor: pointer; z-index: 999;">
+            <!-- Perhatikan: z-index 2147483647 (maksimal) untuk menembus invisible overlay iklan -->
+            <div id="tutorial-video-box" style="position: relative; width: 100%; max-width: 100%; margin: 0 auto 25px; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; border: 2px solid var(--card-border, #334155); box-shadow: var(--shadow, 0 10px 30px rgba(0,0,0,0.5)); background: var(--bg-card, #1e293b); cursor: pointer; z-index: 2147483647 !important;">
                 
                 <!-- Thumbnail -->
-                <img src="https://modorazone.com/thumb.jpg" alt="Tutorial Thumbnail" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
+                <img src="thumb.jpg" alt="Tutorial Thumbnail" style="width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;">
                 
                 <!-- Play Button Overlay -->
                 <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; pointer-events: none;">
@@ -83,18 +83,19 @@ document.addEventListener("DOMContentLoaded", function() {
         // Injeksi ke HTML tepat di bawah area tombol download
         lastDlWrapper.parentNode.insertBefore(tutorialSection, lastDlWrapper.nextSibling);
 
-        // --- SISTEM PLAY & ANTI POP-UNDER ---
         const videoBox = document.getElementById('tutorial-video-box');
         const videoPlayer = document.getElementById('modora-vid-player');
 
-        // FUNGSI BLOKIR IKLAN: Mencegah script iklan (Pop-under Case 1) mendeteksi klik
-        const blockAdsTrigger = (e) => {
-            e.stopPropagation(); // Mencegah event "click" naik ke document body (tempat iklan ngintip)
-        };
-
-        // Pasang tameng blokir ke semua jenis tap/klik
+        // --- SISTEM ANTI POP-UNDER LEVEL 2 (CAPTURING PHASE) ---
+        // Kita cegat event dari paling luar (window) sebelum script iklan sempat merespon.
+        // Parameter 'true' di akhir membuat listener ini berjalan di "Capture Phase", bukan "Bubble Phase".
         ['mousedown', 'mouseup', 'click', 'touchstart', 'touchend'].forEach(evt => {
-            videoBox.addEventListener(evt, blockAdsTrigger, { passive: false });
+            window.addEventListener(evt, function(e) {
+                // Cek apakah target klik ada di dalam kotak video kita
+                if (videoBox && (e.target === videoBox || videoBox.contains(e.target))) {
+                    e.stopPropagation(); // Stop iklan baca klik
+                }
+            }, true); 
         });
 
         // FUNGSI PLAY & FULLSCREEN
@@ -117,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
             videoPlayer.play();
         });
 
-        // FUNGSI EXIT FULLSCREEN: Kalo user keluar dari mode fullscreen, video otomatis pause dan sembunyi lagi ke thumbnail
+        // FUNGSI EXIT FULLSCREEN: Kalo user keluar dari mode fullscreen, otomatis pause & sembunyi
         const handleFullscreenExit = () => {
             const isFullscreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement;
             
