@@ -1,1 +1,505 @@
-// File baru dibuat
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#0f172a" id="metaThemeColor">
+    
+    <title>Tutorials - MODORA</title>
+    <meta name="description" content="Tutorial cara unduh dan instal aplikasi & game di MODORA.">
+    <meta name="robots" content="index, follow">
+    
+    <!-- FAVICON -->
+    <link rel="icon" href="https://modorazone.com/modorazone.png" type="image/png">
+    <link rel="shortcut icon" href="https://modorazone.com/modorazone.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://modorazone.com/modorazone.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        const savedFont = localStorage.getItem('modora_font');
+        if(savedFont) { document.documentElement.style.setProperty('--font-main', savedFont); }
+    </script>
+
+    <style>
+        /* CSS VARIABLES */
+        :root {
+            --header-h: 70px;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --bg-glass: rgba(15, 23, 42, 0.75);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --search-bg: #334155;
+            --glass-blur: blur(20px);
+            --primary: #2563eb; 
+            --secondary: #4f46e5;
+            --accent: #ef4444; 
+            --font-main: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html.eco-mode {
+            --bg-glass: var(--bg-card);
+            --glass-blur: none;
+        }
+        
+        html.eco-mode .ambient-orb, html.eco-mode .info-card::before, html.eco-mode .footer-line { display: none !important; }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); position: relative; }
+        
+        body { 
+            color: var(--text-main); 
+            padding-top: calc(var(--header-h) + 15px); 
+            padding-bottom: env(safe-area-inset-bottom, 20px);
+            min-height: 100vh; display: flex; flex-direction: column;
+        }
+
+        .logo, .btn-tele, .btn-setting, .seg-btn, .color-item, .toggle-switch {
+            -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
+        }
+
+        /* --- OPTIMIZED BACKGROUND ANIMATION --- */
+        #bg-animation { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; pointer-events: none; }
+        .bg-icon { position: absolute; color: rgba(255, 255, 255, 0.03); animation: floatUp linear infinite; will-change: transform; transform: translateZ(0); }
+        @keyframes floatUp { 0% { transform: translateY(110vh) rotate(0deg); } 100% { transform: translateY(-20vh) rotate(360deg); } }
+
+        /* ORBS: Blur berat tidak dianimasikan geraknya lagi agar tidak lag */
+        .ambient-orb { position: absolute; border-radius: 50%; filter: blur(70px); z-index: -2; opacity: 0.35; transform: translateZ(0); }
+        .orb-1 { top: -5%; left: -10%; width: 350px; height: 350px; background: var(--primary); }
+        .orb-2 { bottom: 10%; right: -10%; width: 300px; height: 300px; background: var(--secondary); }
+        
+        /* --- LAYOUT UTAMA --- */
+        #mainView { 
+            width: 100%; padding: 0 24px; margin: 0 auto; max-width: 800px; flex: 1;
+            animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; z-index: 10; position: relative;
+        }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+
+        /* --- HEADER MEWAH --- */
+        header {
+            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
+            padding: 0 24px; background: var(--bg-glass); 
+            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+            display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid rgba(255,255,255,0.03); z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .logo { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; letter-spacing: -0.5px;}
+        .header-title { font-size: 16px; font-weight: 700; color: var(--text-muted); flex: 1; text-align: center; }
+        
+        .header-actions { display: flex; gap: 12px; align-items: center; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(41, 182, 246, 0.3); }
+        .btn-setting { width: 40px; height: 40px; background: rgba(255,255,255,0.05); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; transition: transform 0.2s; }
+        .btn-tele:active, .btn-setting:active { transform: scale(0.9); }
+
+        /* --- TEKS HEADER --- */
+        .tutorial-header { text-align: center; margin-top: 35px; margin-bottom: 25px; }
+        .tutorial-title { 
+            font-size: 28px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; 
+            background: linear-gradient(90deg, #fff, #94a3b8, #fff); background-size: 200% auto;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: textShine 4s linear infinite;
+        }
+        @keyframes textShine { to { background-position: 200% center; } }
+        .tutorial-desc { font-size: 14px; color: var(--text-muted); font-weight: 500; line-height: 1.5; }
+
+        /* --- OPTIMIZED VIDEO BORDER ANIMATION --- */
+        .video-container-glow {
+            position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
+            transform: translate(-50%, -50%) translateZ(0); background: var(--primary);
+            filter: blur(40px); z-index: -1; border-radius: 30px;
+            animation: pulseGlow 4s alternate infinite ease-in-out; pointer-events: none;
+            will-change: opacity; /* GPU Optimasi */
+        }
+        /* Hanya animate opacity untuk meringankan GPU */
+        @keyframes pulseGlow { 0% { opacity: 0.15; } 100% { opacity: 0.35; } } 
+
+        .video-wrapper {
+            position: relative; width: 100%; aspect-ratio: 16 / 9; 
+            margin: 0 auto 40px auto; border-radius: 20px; padding: 4px; 
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; z-index: 1; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+            transform: translateZ(0); /* Hardware Acceleration */
+        }
+
+        .video-wrapper::before {
+            content: ''; position: absolute; width: 200%; height: 200%;
+            background: conic-gradient( transparent 10%, var(--primary) 30%, var(--secondary) 50%, var(--accent) 70%, transparent 90% );
+            animation: spinBorder 4s linear infinite; z-index: -2;
+            will-change: transform; /* GPU Optimasi */
+        }
+        @keyframes spinBorder { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .video-wrapper::after { content: ''; position: absolute; inset: 4px; background: var(--bg-body); border-radius: 16px; z-index: -1; }
+
+        .modora-video { width: 100%; height: 100%; border-radius: 16px; object-fit: cover; outline: none; background-color: #000; position: relative; z-index: 2; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
+
+        /* --- OPTIMIZED INFO CARDS --- */
+        /* Animasi "melayang/floating" dihapus untuk menghentikan lag pada backdrop-filter */
+        .info-card {
+            background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            padding: 22px; border-radius: 20px; border: 1px solid var(--card-border); margin-bottom: 20px; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2); border-left: 5px solid var(--primary);
+            position: relative; overflow: hidden;
+            animation: cardEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0; transform: translateY(20px); will-change: transform, opacity;
+        }
+        
+        .info-card:nth-of-type(1) { animation-delay: 0.1s; }
+        .info-card:nth-of-type(2) { border-left-color: var(--accent); animation-delay: 0.2s; }
+
+        @keyframes cardEntry { to { opacity: 1; transform: translateY(0); } }
+
+        .info-card::before {
+            content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+            transform: skewX(-25deg) translateZ(0); animation: cardShimmer 5s infinite linear; pointer-events: none;
+        }
+        @keyframes cardShimmer { 0% { left: -150%; } 20%, 100% { left: 200%; } }
+
+        .info-card h4 { font-size: 16px; margin-bottom: 8px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+        .info-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+
+        /* --- FOOTER ANIMASI RINGAN --- */
+        .modora-footer {
+            text-align: center; margin-top: 50px; padding: 40px 20px calc(env(safe-area-inset-bottom, 20px) + 20px);
+            font-size: 13px; font-weight: 800; letter-spacing: 0.5px; position: relative; overflow: hidden;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary));
+            background-size: 300% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: gradientFooterText 6s infinite linear; transform: translateZ(0);
+        }
+        .footer-line { position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: rgba(255,255,255,0.05); overflow: hidden; }
+        .footer-line::after {
+            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            animation: sweepLight 4s infinite linear; will-change: left;
+        }
+
+        @keyframes gradientFooterText { 0% { background-position: 0% center; } 100% { background-position: 300% center; } }
+        @keyframes sweepLight { 0% { left: -100%; } 100% { left: 200%; } }
+
+        /* --- MODAL SETTINGS UI --- */
+        .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0); z-index: 2100; display: flex; align-items: flex-end; opacity: 0; visibility: hidden; transition: background-color 0.4s, opacity 0.4s, visibility 0.4s; }
+        .modal.active { background: rgba(0,0,0,0.6); opacity: 1; visibility: visible; }
+        .modal-box { background: var(--bg-card); width: 100%; padding: 30px 24px calc(30px + env(safe-area-inset-bottom, 0px)); border-radius: 35px 35px 0 0; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.2); }
+        .modal.active .modal-box { transform: translateY(0); }
+        .modal-handle { width: 50px; height: 5px; background: var(--text-muted); opacity: 0.3; border-radius: 10px; margin: 0 auto 20px auto; }
+        
+        .set-group { margin-bottom: 25px; }
+        .set-title { font-weight: 800; font-size: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .segmented-control { display: flex; background: var(--search-bg); border-radius: 12px; padding: 3px; }
+        .seg-btn { flex: 1; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 700; color: var(--text-main); background: transparent; border: none; cursor: pointer; transition: background 0.2s; }
+        .seg-btn.active { background: var(--bg-card); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+        .color-grid { display: flex; gap: 15px; justify-content: center; margin-top: 10px; }
+        .color-item { width: 42px; height: 42px; border-radius: 50%; border: 3px solid var(--border); cursor: pointer; position: relative; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .color-item.active { transform: scale(1.15); border-color: var(--text-main); }
+        .color-item::after { content:'\f00c'; font-family:'Font Awesome 6 Free'; font-weight:900; color:white; font-size:14px; position:absolute; top:50%; left:50%; transform:translate(-50%, -50%) scale(0); transition: transform 0.2s; }
+        .color-item.active::after { transform:translate(-50%, -50%) scale(1); }
+        .toggle-switch { width: 51px; height: 31px; background: var(--search-bg); border-radius: 31px; position: relative; cursor: pointer; }
+        .toggle-switch::after { content:''; position: absolute; top: 2px; left: 2px; width: 27px; height: 27px; background: white; border-radius: 50%; transition: left 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .toggle-switch.active { background: #34c759; }
+        .toggle-switch.active::after { left: 22px; }
+        .modal-actions { display: flex; gap: 12px; margin-top: 35px; }
+        .modal-actions button { flex: 1; padding: 16px; border-radius: 16px; font-weight: 800; font-size: 14px; cursor: pointer; border: none; transition: transform 0.2s; }
+        .btn-reset { background: var(--search-bg); color: var(--text-main); }
+        .btn-close { background: var(--text-main); color: var(--bg-body); flex: 2; }
+        .modal-actions button:active { transform: scale(0.96); }
+    </style>
+</head>
+<body>
+    
+    <!-- BACKGROUND ANIMATIONS -->
+    <div id="bg-animation">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+    </div>
+
+    <!-- HEADER + TOMBOL SETTING -->
+    <header>
+        <div class="logo" onclick="window.location.href='/'">MODORA</div>
+        <div class="header-title" id="t-headerCenter">Tutorials Center</div>
+        <div class="header-actions">
+            <!-- Tombol Setting Pindah Kesini -->
+            <button onclick="toggleSet()" aria-label="Settings" class="btn-setting"><i class="fa-solid fa-gear"></i></button>
+            <a href="../../../../telegram" aria-label="Telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+        </div>
+    </header>
+
+    <main id="mainView">
+        
+        <div class="tutorial-header">
+            <h1 class="tutorial-title" id="t-pageTitle">Tutorial Download</h1>
+            <p class="tutorial-desc" id="t-pageDesc">Ikuti langkah-langkah di dalam video ini agar game/aplikasi dapat berjalan dengan sempurna.</p>
+        </div>
+
+        <!-- VIDEO CONTAINER DENGAN ANIMASI MEWAH & RASIO 16:9 -->
+        <div style="position: relative;">
+            <div class="video-container-glow"></div>
+            <div class="video-wrapper">
+                <video 
+                    id="modoraVideo"
+                    class="modora-video" 
+                    controls 
+                    playsinline 
+                    preload="metadata"
+                    poster="https://modorazone.com/thumb.png">
+                    <source src="https://github.com/modora-official/modora/raw/refs/heads/main/tutorials.mp4" type="video/mp4">
+                    Browser Anda tidak mendukung tag video.
+                </video>
+            </div>
+        </div>
+
+        <!-- INFO TAMBAHAN MENGAMBANG & SHIMMER -->
+        <div class="info-card">
+            <h4><i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> <span id="t-noteTitle">Catatan Penting</span></h4>
+            <p id="t-noteDesc">Pastikan Anda telah mengizinkan instalasi dari <b>"Sumber Tidak Dikenal" (Unknown Sources)</b> di pengaturan ponsel Android Anda sebelum melakukan instalasi MOD APK.</p>
+        </div>
+
+        <div class="info-card">
+            <h4><i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> <span id="t-safeTitle">100% Aman & Teruji</span></h4>
+            <p id="t-safeDesc">Semua file di MODORA telah melewati uji keamanan dan dipastikan terbebas dari virus/malware. Jika Anda mengalami masalah, silakan hubungi kami via Telegram.</p>
+        </div>
+
+    </main>
+
+    <!-- FOOTER MEWAH DENGAN TAHUN OTOMATIS -->
+    <footer class="modora-footer">
+        <div class="footer-line"></div>
+        © <span id="currentYear"></span> MODORA | All Rights Reserved
+    </footer>
+
+    <!-- SETTINGS MODAL -->
+    <div class="modal" id="modalSet" onclick="if(event.target === this) toggleSet()">
+        <div class="modal-box">
+            <div style="text-align:center; margin-bottom:25px;">
+                <div class="modal-handle"></div>
+                <h3 style="font-size:18px; font-weight: 800; letter-spacing: -0.3px;" id="t-settingsTitle">Settings</h3>
+            </div>
+            
+            <div class="set-group">
+                <div class="set-title" id="t-colorTheme">Color Theme</div>
+                <div class="color-grid">
+                    <div class="color-item" style="background:#2563eb;" onclick="setThemeColor('#2563eb', '#4f46e5', this)" data-color="#2563eb"></div>
+                    <div class="color-item" style="background:#ef4444;" onclick="setThemeColor('#ef4444', '#b91c1c', this)" data-color="#ef4444"></div>
+                    <div class="color-item" style="background:#10b981;" onclick="setThemeColor('#10b981', '#059669', this)" data-color="#10b981"></div>
+                    <div class="color-item" style="background:#8b5cf6;" onclick="setThemeColor('#8b5cf6', '#7c3aed', this)" data-color="#8b5cf6"></div>
+                    <div class="color-item" style="background:#f59e0b;" onclick="setThemeColor('#f59e0b', '#d97706', this)" data-color="#f59e0b"></div>
+                </div>
+            </div>
+
+            <div class="set-group">
+                <div class="set-title">
+                    <span id="t-batterySaver">Battery Saver (No Blur)</span>
+                    <div class="toggle-switch" id="ecoToggle" onclick="toggleEco()"></div>
+                </div>
+            </div>
+
+            <div class="set-group">
+                <div class="set-title" id="t-fontStyle">Font Style</div>
+                <div class="segmented-control">
+                    <button onclick="chFont('Plus Jakarta Sans')" id="btnFontModern" class="seg-btn active">Modern</button>
+                    <button onclick="chFont('Merriweather')" id="btnFontClassic" class="seg-btn" style="font-family:serif;">Classic</button>
+                    <button onclick="chFont('JetBrains Mono')" id="btnFontTech" class="seg-btn" style="font-family:monospace;">Tech</button>
+                </div>
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn-reset" id="t-btnReset" onclick="resetSettings()">Reset</button>
+                <button class="btn-close" id="t-btnClose" onclick="toggleSet()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* --- UPDATE TAHUN COPYRIGHT OTOMATIS --- */
+        document.getElementById('currentYear').innerText = new Date().getFullYear();
+
+        /* --- SISTEM MULTI-BAHASA (i18n) OTOMATIS --- */
+        const i18n = {
+            en: { 
+                header: "Tutorials Center", pageTitle: "Tutorial Download", 
+                pageDesc: "Follow the steps in this video so the game/app runs perfectly.",
+                noteTitle: "Important Note", 
+                noteDesc: "Make sure you have allowed installation from <b>\"Unknown Sources\"</b> in your Android phone settings before installing the MOD APK.",
+                safeTitle: "100% Safe & Tested", 
+                safeDesc: "All files on MODORA have passed security tests and are guaranteed free of viruses/malware. If you encounter any issues, please contact us via Telegram.",
+                settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)",
+                fontStyle: "Font Style", reset: "Reset", close: "Close"
+            },
+            id: { 
+                header: "Pusat Tutorial", pageTitle: "Tutorial Download", 
+                pageDesc: "Ikuti langkah-langkah di dalam video ini agar game/aplikasi dapat berjalan dengan sempurna.",
+                noteTitle: "Catatan Penting", 
+                noteDesc: "Pastikan Anda telah mengizinkan instalasi dari <b>\"Sumber Tidak Dikenal\" (Unknown Sources)</b> di pengaturan ponsel Android Anda sebelum melakukan instalasi MOD APK.",
+                safeTitle: "100% Aman & Teruji", 
+                safeDesc: "Semua file di MODORA telah melewati uji keamanan dan dipastikan terbebas dari virus/malware. Jika Anda mengalami masalah, silakan hubungi kami via Telegram.",
+                settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai",
+                fontStyle: "Gaya Huruf", reset: "Atur Ulang", close: "Tutup"
+            },
+            es: { 
+                header: "Centro de Tutoriales", pageTitle: "Tutorial de Descarga", 
+                pageDesc: "Sigue los pasos en este video para que el juego/aplicación funcione perfectamente.",
+                noteTitle: "Nota Importante", 
+                noteDesc: "Asegúrate de haber permitido la instalación desde <b>\"Fuentes Desconocidas\"</b> en la configuración de tu teléfono Android antes de instalar el MOD APK.",
+                safeTitle: "100% Seguro y Probado", 
+                safeDesc: "Todos los archivos en MODORA han pasado pruebas de seguridad y están libres de virus. Si encuentras algún problema, contáctanos vía Telegram.",
+                settings: "Ajustes", colorTheme: "Tema de Color", batterySaver: "Ahorro de Batería",
+                fontStyle: "Estilo de Fuente", reset: "Reiniciar", close: "Cerrar"
+            },
+            pt: { 
+                header: "Centro de Tutoriais", pageTitle: "Tutorial de Download", 
+                pageDesc: "Siga os passos neste vídeo para que o jogo/aplicativo funcione perfeitamente.",
+                noteTitle: "Nota Importante", 
+                noteDesc: "Certifique-se de ter permitido a instalação de <b>\"Fontes Desconhecidas\"</b> nas configurações do seu celular Android antes de instalar o MOD APK.",
+                safeTitle: "100% Seguro e Testado", 
+                safeDesc: "Todos os arquivos no MODORA passaram por testes de segurança e estão livres de vírus. Se tiver problemas, contate-nos via Telegram.",
+                settings: "Configurações", colorTheme: "Tema de Cor", batterySaver: "Economia de Bateria",
+                fontStyle: "Estilo de Fonte", reset: "Redefinir", close: "Fechar"
+            },
+            ru: { 
+                header: "Центр Обучения", pageTitle: "Руководство по скачиванию", 
+                pageDesc: "Следуйте инструкциям в этом видео, чтобы игра/приложение работало идеально.",
+                noteTitle: "Важное примечание", 
+                noteDesc: "Перед установкой MOD APK убедитесь, что вы разрешили установку из <b>«Неизвестных источников»</b> в настройках вашего телефона.",
+                safeTitle: "100% Безопасно", 
+                safeDesc: "Все файлы на MODORA прошли проверку безопасности и не содержат вирусов. Если возникнут проблемы, свяжитесь с нами в Telegram.",
+                settings: "Настройки", colorTheme: "Цветовая тема", batterySaver: "Экономия батареи",
+                fontStyle: "Стиль шрифта", reset: "Сброс", close: "Закрыть"
+            },
+            hi: { 
+                header: "ट्यूटोरियल केंद्र", pageTitle: "डाउनलोड ट्यूटोरियल", 
+                pageDesc: "गेम/ऐप पूरी तरह से काम करे, इसके लिए इस वीडियो में दिए गए चरणों का पालन करें।",
+                noteTitle: "महत्वपूर्ण नोट", 
+                noteDesc: "MOD APK इंस्टॉल करने से पहले सुनिश्चित करें कि आपने अपने फ़ोन सेटिंग में <b>\"अज्ञात स्रोत\" (Unknown Sources)</b> से इंस्टॉलेशन की अनुमति दी है।",
+                safeTitle: "100% सुरक्षित और परीक्षित", 
+                safeDesc: "MODORA की सभी फाइलें सुरक्षित हैं और वायरस से मुक्त हैं। कोई समस्या हो तो टेलीग्राम के माध्यम से संपर्क करें।",
+                settings: "सेटिंग्स", colorTheme: "रंग विषय", batterySaver: "बैटरी सेवर",
+                fontStyle: "फ़ॉन्ट शैली", reset: "रीसेट", close: "बंद करें"
+            }
+        };
+
+        let userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
+        if (!i18n[userLang]) userLang = 'en'; 
+
+        function t(key) { return i18n[userLang][key]; }
+
+        function applyLanguage() {
+            document.getElementById('t-headerCenter').innerText = t('header');
+            document.getElementById('t-pageTitle').innerText = t('pageTitle');
+            document.getElementById('t-pageDesc').innerText = t('pageDesc');
+            document.getElementById('t-noteTitle').innerText = t('noteTitle');
+            document.getElementById('t-noteDesc').innerHTML = t('noteDesc');
+            document.getElementById('t-safeTitle').innerText = t('safeTitle');
+            document.getElementById('t-safeDesc').innerText = t('safeDesc');
+            
+            document.getElementById('t-settingsTitle').innerText = t('settings');
+            document.getElementById('t-colorTheme').innerText = t('colorTheme');
+            document.getElementById('t-batterySaver').innerText = t('batterySaver');
+            document.getElementById('t-fontStyle').innerText = t('fontStyle');
+            document.getElementById('t-btnReset').innerText = t('reset');
+            document.getElementById('t-btnClose').innerText = t('close');
+        }
+
+        /* --- FITUR AUTO-FULLSCREEN SAAT KLIK PLAY --- */
+        document.addEventListener('DOMContentLoaded', () => {
+            applyLanguage();
+            
+            const video = document.getElementById('modoraVideo');
+            if (video) {
+                video.addEventListener('play', () => {
+                    if (video.requestFullscreen) {
+                        video.requestFullscreen();
+                    } else if (video.webkitRequestFullscreen) { /* Safari / iOS Lama */
+                        video.webkitRequestFullscreen();
+                    } else if (video.msRequestFullscreen) { /* IE11 */
+                        video.msRequestFullscreen();
+                    }
+                });
+            }
+        });
+
+        /* --- Background Floating Icons (Dioptimalkan jadi 8 ikon agar tidak Lag) --- */
+        function createBgIcons() {
+            const bgContainer = document.getElementById('bg-animation');
+            const icons = ['fa-brands fa-android', 'fa-solid fa-circle-play', 'fa-solid fa-gamepad', 'fa-solid fa-download'];
+            for(let i = 0; i < 8; i++) {
+                let el = document.createElement('i');
+                el.className = `bg-icon ${icons[Math.floor(Math.random() * icons.length)]}`;
+                el.style.left = `${Math.random() * 100}vw`;
+                el.style.animationDuration = `${15 + Math.random() * 25}s`;
+                el.style.animationDelay = `-${Math.random() * 20}s`;
+                el.style.fontSize = `${1.5 + Math.random() * 2}rem`;
+                bgContainer.appendChild(el);
+            }
+        }
+        createBgIcons();
+
+        /* --- Settings Logic --- */
+        function toggleSet() { document.getElementById('modalSet').classList.toggle('active'); }
+
+        function loadSettings() {
+            if(localStorage.getItem('modora_eco') === 'true') {
+                document.documentElement.classList.add('eco-mode');
+                document.getElementById('ecoToggle').classList.add('active');
+            }
+            const savedColor = localStorage.getItem('modora_color');
+            const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) {
+                document.documentElement.style.setProperty('--primary', savedColor);
+                document.documentElement.style.setProperty('--secondary', savedSec);
+                document.querySelectorAll('.color-item').forEach(c => {
+                    c.classList.remove('active');
+                    if(c.getAttribute('data-color') === savedColor) c.classList.add('active');
+                });
+            } else {
+                document.querySelector('.color-item[data-color="#2563eb"]').classList.add('active');
+            }
+            
+            const currFont = localStorage.getItem('modora_font') || 'Plus Jakarta Sans';
+            document.querySelectorAll('.seg-btn[onclick*="chFont"]').forEach(b => b.classList.remove('active'));
+            if(currFont.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active');
+            else if(currFont.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active');
+            else document.getElementById('btnFontTech').classList.add('active');
+        }
+
+        function toggleEco() {
+            const isEco = document.documentElement.classList.toggle('eco-mode');
+            document.getElementById('ecoToggle').classList.toggle('active');
+            localStorage.setItem('modora_eco', isEco ? 'true' : 'false');
+        }
+
+        function setThemeColor(prim, sec, el) {
+            document.documentElement.style.setProperty('--primary', prim);
+            document.documentElement.style.setProperty('--secondary', sec);
+            localStorage.setItem('modora_color', prim);
+            localStorage.setItem('modora_color_sec', sec);
+            document.querySelectorAll('.color-item').forEach(c => c.classList.remove('active'));
+            el.classList.add('active');
+        }
+
+        function chFont(fontName) {
+            document.documentElement.style.setProperty('--font-main', fontName);
+            localStorage.setItem('modora_font', fontName);
+            document.querySelectorAll('.seg-btn[onclick*="chFont"]').forEach(b => b.classList.remove('active'));
+            if(fontName.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active');
+            else if(fontName.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active');
+            else document.getElementById('btnFontTech').classList.add('active');
+        }
+
+        function resetSettings() {
+            localStorage.clear();
+            window.location.reload();
+        }
+
+        loadSettings();
+    </script>
+</body>
+</html>
