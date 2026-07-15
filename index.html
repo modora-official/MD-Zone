@@ -25,7 +25,11 @@
     <meta property="twitter:description" content="Platform terbaik untuk unduh aplikasi dan game MOD APK gratis, aman, dan versi terbaru untuk Android.">
     <meta property="twitter:image" content="https://modorazone.com/modorazone.png">
 
-    <link rel="icon" href="/modora.png" type="image/png">
+    <!-- PERBAIKAN FAVICON UNTUK GOOGLE SEARCH CONSOLE -->
+    <link rel="icon" href="https://modorazone.com/modorazone.png" type="image/png">
+    <link rel="shortcut icon" href="https://modorazone.com/modorazone.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://modorazone.com/modorazone.png">
+    <!-- AKHIR PERBAIKAN FAVICON -->
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -437,7 +441,8 @@
     <header>
         <div class="logo" onclick="window.location.reload()">MODORA</div>
         <div class="search-wrap">
-            <input type="text" id="search" class="search-input" placeholder="Search..." onkeyup="doSearch()">
+            <!-- FITUR DEBOUNCE PADA PENCARIAN AGAR LEBIH RINGAN -->
+            <input type="text" id="search" class="search-input" placeholder="Search..." onkeyup="debounceSearch()">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
         <a href="../../../../telegram" aria-label="Telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
@@ -548,41 +553,41 @@
             <div class="set-group">
                 <div class="set-title" id="t-colorTheme">Color Theme</div>
                 <div class="color-grid">
-                    <div class="color-item" style="background:#2563eb;" onclick="setThemeColor('#2563eb', '#4f46e5', this)" data-color="#2563eb"></div>
-                    <div class="color-item" style="background:#ef4444;" onclick="setThemeColor('#ef4444', '#b91c1c', this)" data-color="#ef4444"></div>
-                    <div class="color-item" style="background:#10b981;" onclick="setThemeColor('#10b981', '#059669', this)" data-color="#10b981"></div>
-                    <div class="color-item" style="background:#8b5cf6;" onclick="setThemeColor('#8b5cf6', '#7c3aed', this)" data-color="#8b5cf6"></div>
-                    <div class="color-item" style="background:#f59e0b;" onclick="setThemeColor('#f59e0b', '#d97706', this)" data-color="#f59e0b"></div>
+                    <div class="color-item" aria-label="Blue theme" style="background:#2563eb;" onclick="setThemeColor('#2563eb', '#4f46e5', this)" data-color="#2563eb"></div>
+                    <div class="color-item" aria-label="Red theme" style="background:#ef4444;" onclick="setThemeColor('#ef4444', '#b91c1c', this)" data-color="#ef4444"></div>
+                    <div class="color-item" aria-label="Green theme" style="background:#10b981;" onclick="setThemeColor('#10b981', '#059669', this)" data-color="#10b981"></div>
+                    <div class="color-item" aria-label="Purple theme" style="background:#8b5cf6;" onclick="setThemeColor('#8b5cf6', '#7c3aed', this)" data-color="#8b5cf6"></div>
+                    <div class="color-item" aria-label="Orange theme" style="background:#f59e0b;" onclick="setThemeColor('#f59e0b', '#d97706', this)" data-color="#f59e0b"></div>
                 </div>
             </div>
 
             <div class="set-group">
                 <div class="set-title">
                     <span id="t-batterySaver">Battery Saver (No Blur)</span>
-                    <div class="toggle-switch" id="ecoToggle" onclick="toggleEco()"></div>
+                    <div class="toggle-switch" aria-label="Toggle battery saver" id="ecoToggle" onclick="toggleEco()"></div>
                 </div>
             </div>
 
             <div class="set-group">
                 <div class="set-title" id="t-viewMode">View Mode</div>
                 <div class="segmented-control">
-                    <button onclick="setViewMode('list')" id="btnViewList" class="seg-btn active"><i class="fa-solid fa-list"></i> <span id="t-list">List</span></button>
-                    <button onclick="setViewMode('grid')" id="btnViewGrid" class="seg-btn"><i class="fa-solid fa-border-all"></i> <span id="t-grid">Grid</span></button>
+                    <button onclick="setViewMode('list')" aria-label="List view" id="btnViewList" class="seg-btn active"><i class="fa-solid fa-list"></i> <span id="t-list">List</span></button>
+                    <button onclick="setViewMode('grid')" aria-label="Grid view" id="btnViewGrid" class="seg-btn"><i class="fa-solid fa-border-all"></i> <span id="t-grid">Grid</span></button>
                 </div>
             </div>
 
             <div class="set-group">
                 <div class="set-title" id="t-fontStyle">Font Style</div>
                 <div class="segmented-control">
-                    <button onclick="chFont('Plus Jakarta Sans')" id="btnFontModern" class="seg-btn active">Modern</button>
-                    <button onclick="chFont('Merriweather')" id="btnFontClassic" class="seg-btn" style="font-family:serif;">Classic</button>
-                    <button onclick="chFont('JetBrains Mono')" id="btnFontTech" class="seg-btn" style="font-family:monospace;">Tech</button>
+                    <button onclick="chFont('Plus Jakarta Sans')" aria-label="Modern font" id="btnFontModern" class="seg-btn active">Modern</button>
+                    <button onclick="chFont('Merriweather')" aria-label="Classic font" id="btnFontClassic" class="seg-btn" style="font-family:serif;">Classic</button>
+                    <button onclick="chFont('JetBrains Mono')" aria-label="Tech font" id="btnFontTech" class="seg-btn" style="font-family:monospace;">Tech</button>
                 </div>
             </div>
 
             <div class="modal-actions">
-                <button class="btn-reset" id="t-btnReset" onclick="resetSettings()">Reset</button>
-                <button class="btn-close" id="t-btnClose" onclick="toggleSet()">Close</button>
+                <button class="btn-reset" aria-label="Reset settings" id="t-btnReset" onclick="resetSettings()">Reset</button>
+                <button class="btn-close" aria-label="Close settings" id="t-btnClose" onclick="toggleSet()">Close</button>
             </div>
         </div>
     </div>
@@ -761,10 +766,8 @@
             }
         }
 
-        // FUNGSI INI TELAH DIUPGRADE UNTUK MENGACAK DATA (FISHER-YATES SHUFFLE)
         function filterLatest(items) {
             let map = {};
-            // Filter duplikasi data terlebih dahulu berdasarkan baseName
             items.forEach(item => {
                 const key = item.baseName; 
                 if (!map[key]) {
@@ -776,10 +779,8 @@
                 }
             });
             
-            // Konversi objek kembali ke array
             let uniqueItems = Object.values(map);
             
-            // Fisher-Yates Shuffle - Algoritma untuk mengacak susunan array 100% berbeda tiap refresh
             for (let i = uniqueItems.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [uniqueItems[i], uniqueItems[j]] = [uniqueItems[j], uniqueItems[i]];
@@ -794,7 +795,6 @@
                 scanDirectory('games', 'game')
             ]);
             
-            // dbApps dan dbGames kini menerima array yang sudah dikocok (Random)
             dbApps = filterLatest(appsRaw); 
             dbGames = filterLatest(gamesRaw);
             isDataLoaded = true;
@@ -896,7 +896,6 @@
                 document.getElementById('btnMoreGames').classList.add('hidden');
             } else {
                 let hGames = ''; 
-                // Mengambil 10 data acak karena array dbGames sudah diacak
                 dbGames.slice(0, showGamesCount).forEach(item => hGames += createCardHtml(item));
                 cGames.innerHTML = hGames;
                 document.getElementById('btnMoreGames').classList.toggle('hidden', showGamesCount >= dbGames.length);
@@ -907,7 +906,6 @@
                 document.getElementById('btnMoreApps').classList.add('hidden');
             } else {
                 let hApps = ''; 
-                // Mengambil 10 data acak karena array dbApps sudah diacak
                 dbApps.slice(0, showAppsCount).forEach(item => hApps += createCardHtml(item));
                 cApps.innerHTML = hApps;
                 document.getElementById('btnMoreApps').classList.toggle('hidden', showAppsCount >= dbApps.length);
@@ -939,6 +937,15 @@
             return matrix[b.length][a.length];
         }
 
+        // FUNGSI DEBOUNCE UNTUK OPTIMALISASI KINERJA PENCARIAN
+        let searchTimeout;
+        function debounceSearch() {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                doSearch();
+            }, 300);
+        }
+
         function doSearch() {
             const val = document.getElementById('search').value.toLowerCase().trim();
             const secRecom = document.getElementById('section-recom');
@@ -946,13 +953,13 @@
             const secGames = document.getElementById('section-games');
             const cGames = document.getElementById('gamesContainer');
             const cApps = document.getElementById('appsContainer');
-            const adContainers = document.querySelectorAll('.mod-ad-container'); // Menyeleksi semua ruang iklan
+            const adContainers = document.querySelectorAll('.mod-ad-container'); 
 
             if(val === '') {
                 secRecom.style.display = 'block'; 
                 secApps.style.display = 'block'; 
                 secGames.style.display = 'block';
-                adContainers.forEach(ad => ad.style.display = ''); // Tampilkan kembali iklan ke gaya default-nya
+                adContainers.forEach(ad => ad.style.display = ''); 
                 showAppsCount=10; showGamesCount=10;
                 renderLists();
                 return;
@@ -961,7 +968,7 @@
             secRecom.style.display = 'none'; 
             secApps.style.display = 'block'; 
             secGames.style.display = 'block';
-            adContainers.forEach(ad => ad.style.display = 'none'); // Sembunyikan iklan jika ada teks di pencarian
+            adContainers.forEach(ad => ad.style.display = 'none'); 
             
             const fGames = dbGames.filter(i => i.name.toLowerCase().includes(val));
             const fApps = dbApps.filter(i => i.name.toLowerCase().includes(val));
