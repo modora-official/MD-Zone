@@ -25,12 +25,9 @@
     <meta property="twitter:description" content="Platform terbaik untuk unduh aplikasi dan game MOD APK gratis, aman, dan versi terbaru untuk Android.">
     <meta property="twitter:image" content="https://modorazone.com/modorazone.png">
 
-    <!-- PERBAIKAN FAVICON UNTUK GOOGLE SEARCH CONSOLE -->
     <link rel="icon" href="https://modorazone.com/modorazone.png" type="image/png">
     <link rel="shortcut icon" href="https://modorazone.com/modorazone.png" type="image/png">
     <link rel="apple-touch-icon" href="https://modorazone.com/modorazone.png">
-    <!-- AKHIR PERBAIKAN FAVICON -->
-
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -100,7 +97,7 @@
 
         body.app-ready { transition: background-color 0.25s ease, color 0.25s ease; }
 
-        .btn-unduh, .btn-loadmore, .nav-item, .logo, .trend-card, .clean-card, .btn-tele, .rocket-btn, .seg-btn, .color-item, .toggle-switch, img {
+        .btn-unduh, .btn-loadmore, .nav-item, .logo, .trend-card, .clean-card, .btn-tele, .rocket-btn, .seg-btn, .color-item, .toggle-switch, .tutorial-banner, img {
             -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
         }
 
@@ -155,12 +152,135 @@
         .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 10px rgba(41, 182, 246, 0.3); flex-shrink: 0; }
         .btn-tele:active { transform: scale(0.9); }
 
+        /* --- TUTORIAL DOWNLOAD BANNER UI --- */
+        .tutorial-banner {
+            width: 100%;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.18), rgba(79, 70, 229, 0.15));
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            border-radius: 24px;
+            padding: 18px 20px;
+            margin: 15px 0 25px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            cursor: pointer;
+            box-shadow: 0 8px 30px rgba(37, 99, 235, 0.15);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 15;
+            text-decoration: none;
+            color: inherit;
+        }
+        .tutorial-banner::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -150%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+            transform: skewX(-25deg);
+            animation: adSweep 4.5s infinite linear;
+            pointer-events: none;
+        }
+        .tutorial-banner:hover {
+            transform: translateY(-2px);
+            border-color: rgba(59, 130, 246, 0.85);
+            box-shadow: 0 12px 35px rgba(37, 99, 235, 0.28);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.25), rgba(79, 70, 229, 0.2));
+        }
+        .tutorial-banner:active {
+            transform: scale(0.97);
+        }
+        .tutorial-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            flex: 1;
+            min-width: 0;
+        }
+        .tutorial-icon-box {
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            flex-shrink: 0;
+        }
+        .tutorial-text {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+        .tutorial-tag-wrap {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .tutorial-badge {
+            font-size: 9px;
+            font-weight: 800;
+            background: rgba(16, 185, 129, 0.2);
+            color: #10b981;
+            padding: 2px 8px;
+            border-radius: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tutorial-title {
+            font-size: 15px;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.3px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .tutorial-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            font-weight: 500;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .tutorial-action {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 14px;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .tutorial-banner:hover .tutorial-action {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            transform: translateX(3px);
+        }
+
         /* --- AD BOX UI & ANIMATIONS --- */
         .mod-ad-container {
             width: 100%; background: var(--bg-card); border: 1px solid var(--card-border);
             border-radius: 24px; padding: 16px; margin: 26px 0; box-shadow: var(--shadow);
             position: relative; overflow: hidden; display: flex; flex-direction: column;
-            align-items: center; transition: border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
+            align-items: center; transition: border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.2s ease, transform 0.3s ease;
         }
 
         .mod-ad-header {
@@ -441,8 +561,7 @@
     <header>
         <div class="logo" onclick="window.location.reload()">MODORA</div>
         <div class="search-wrap">
-            <!-- FITUR DEBOUNCE PADA PENCARIAN AGAR LEBIH RINGAN -->
-            <input type="text" id="search" class="search-input" placeholder="Search..." onkeyup="debounceSearch()">
+            <input type="text" id="search" class="search-input" placeholder="Search..." oninput="handleRealtimeSearch()">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
         <a href="../../../../telegram" aria-label="Telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
@@ -450,7 +569,27 @@
 
     <main id="mainView">
 
-        <script>adNative1x1();</script>
+        <div class="mod-ad-container" style="padding:0; border:none; box-shadow:none; margin:0; background:transparent;">
+            <script>adNative1x1();</script>
+        </div>
+
+        <a href="../../../../../tutorials" class="tutorial-banner scroll-wait" id="tutorialBanner" aria-label="Tutorial Download">
+            <div class="tutorial-left">
+                <div class="tutorial-icon-box">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div class="tutorial-text">
+                    <div class="tutorial-tag-wrap">
+                        <span class="tutorial-badge"><i class="live-dot"></i> <span id="t-tutorialTag">GUIDE</span></span>
+                    </div>
+                    <div class="tutorial-title" id="t-tutorialTitle">How to Download & Install</div>
+                    <div class="tutorial-desc" id="t-tutorialDesc">Step-by-step guide to install MOD APK without errors</div>
+                </div>
+            </div>
+            <div class="tutorial-action">
+                <i class="fa-solid fa-chevron-right"></i>
+            </div>
+        </a>
 
         <div class="mod-ad-container ad-shimmer-sweep scroll-wait">
             <div class="mod-ad-header">
@@ -617,12 +756,12 @@
 
     <script>
         const i18n = {
-            en: { recom: "Recommended", games: "Games", apps: "Apps", search: "Search...", showMore: "Show More", home: "Home", settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)", viewMode: "View Mode", fontStyle: "Font Style", list: "List", grid: "Grid", reset: "Reset", close: "Close", noGames: "No games found in this repository.", noApps: "No apps found in this repository.", getBtn: "GET", getNow: "Get Now", didYouMean: "No exact match. Did you mean:" },
-            id: { recom: "Rekomendasi", games: "Game", apps: "Aplikasi", search: "Cari...", showMore: "Tampilkan", home: "Beranda", settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai", viewMode: "Tampilan", fontStyle: "Gaya Huruf", list: "Daftar", grid: "Kotak", reset: "Atur Ulang", close: "Tutup", noGames: "Tidak ada game ditemukan.", noApps: "Tidak ada aplikasi ditemukan.", getBtn: "UNDUH", getNow: "Dapatkan", didYouMean: "Tidak ditemukan. Apakah maksud kamu:" },
-            es: { recom: "Recomendado", games: "Juegos", apps: "Aplicaciones", search: "Buscar...", showMore: "Mostrar Más", home: "Inicio", settings: "Ajustes", colorTheme: "Tema de Color", batterySaver: "Ahorro de Batería", viewMode: "Modo de Vista", fontStyle: "Estilo de Fuente", list: "Lista", grid: "Cuadrícula", reset: "Reiniciar", close: "Cerrar", noGames: "No se encontraron juegos.", noApps: "No se encontraron aplicaciones.", getBtn: "OBTENER", getNow: "Consíguelo", didYouMean: "Sin coincidencias exactas. Quisiste decir:" },
-            pt: { recom: "Recomendado", games: "Jogos", apps: "Aplicativos", search: "Pesquisar...", showMore: "Mostrar Mais", home: "Início", settings: "Configurações", colorTheme: "Tema de Cor", batterySaver: "Economia de Bateria", viewMode: "Modo de Exibição", fontStyle: "Estilo de Fonte", list: "Lista", grid: "Grade", reset: "Redefinir", close: "Fechar", noGames: "Nenhum jogo encontrado.", noApps: "Nenhum aplicativo encontrado.", getBtn: "OBTER", getNow: "Obter Agora", didYouMean: "Sem correspondência exata. Você quis dizer:" },
-            ru: { recom: "Рекомендуемые", games: "Игры", apps: "Приложения", search: "Поиск...", showMore: "Показать еще", home: "Главная", settings: "Настройки", colorTheme: "Цветовая тема", batterySaver: "Экономия батареи", viewMode: "Режим просмотра", fontStyle: "Стиль шрифта", list: "Список", grid: "Сетка", reset: "Сброс", close: "Закрыть", noGames: "Игры не найдены.", noApps: "Приложения не найдены.", getBtn: "СКАЧАТЬ", getNow: "Получить", didYouMean: "Нет точных совпадений. Вы имели в виду:" },
-            hi: { recom: "अनुशंसित", games: "खेल", apps: "ऐप्स", search: "खोजें...", showMore: "और दिखाएं", home: "होम", settings: "सेटिंग्स", colorTheme: "रंग विषय", batterySaver: "बैटरी सेवर", viewMode: "दृश्य मोड", fontStyle: "फ़ॉन्ट शैली", list: "सूची", grid: "ग्रिड", reset: "रीसेट", close: "बंद करें", noGames: "कोई खेल नहीं मिला।", noApps: "कोई ऐप नहीं मिला।", getBtn: "प्राप्त करें", getNow: "अभी प्राप्त करें", didYouMean: "कोई सटीक मिलान नहीं। क्या आपका मतलब था:" }
+            en: { recom: "Recommended", games: "Games", apps: "Apps", search: "Search...", showMore: "Show More", home: "Home", settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)", viewMode: "View Mode", fontStyle: "Font Style", list: "List", grid: "Grid", reset: "Reset", close: "Close", noGames: "No games found in this repository.", noApps: "No apps found in this repository.", getBtn: "GET", getNow: "Get Now", didYouMean: "No exact match. Did you mean:", tutorialTag: "GUIDE", tutorialTitle: "How to Download & Install", tutorialDesc: "Step-by-step guide to install MOD APK without errors." },
+            id: { recom: "Rekomendasi", games: "Game", apps: "Aplikasi", search: "Cari...", showMore: "Tampilkan", home: "Beranda", settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai", viewMode: "Tampilan", fontStyle: "Gaya Huruf", list: "Daftar", grid: "Kotak", reset: "Atur Ulang", close: "Tutup", noGames: "Tidak ada game ditemukan.", noApps: "Tidak ada aplikasi ditemukan.", getBtn: "UNDUH", getNow: "Dapatkan", didYouMean: "Tidak ditemukan. Apakah maksud kamu:", tutorialTag: "PANDUAN", tutorialTitle: "Cara Download & Instalasi", tutorialDesc: "Panduan lengkap cara unduh & pasang agar tidak error." },
+            es: { recom: "Recomendado", games: "Juegos", apps: "Aplicaciones", search: "Buscar...", showMore: "Mostrar Más", home: "Inicio", settings: "Ajustes", colorTheme: "Tema de Color", batterySaver: "Ahorro de Batería", viewMode: "Modo de Vista", fontStyle: "Estilo de Fuente", list: "Lista", grid: "Cuadrícula", reset: "Reiniciar", close: "Cerrar", noGames: "No se encontraron juegos.", noApps: "No se encontraron aplicaciones.", getBtn: "OBTENER", getNow: "Consíguelo", didYouMean: "Sin coincidencias exactas. Quisiste decir:", tutorialTag: "GUÍA", tutorialTitle: "Cómo descargar e instalar", tutorialDesc: "Guía paso a paso para instalar sin errores." },
+            pt: { recom: "Recomendado", games: "Jogos", apps: "Aplicativos", search: "Pesquisar...", showMore: "Mostrar Mais", home: "Início", settings: "Configurações", colorTheme: "Tema de Cor", batterySaver: "Economia de Bateria", viewMode: "Modo de Exibição", fontStyle: "Estilo de Fonte", list: "Lista", grid: "Grade", reset: "Redefinir", close: "Fechar", noGames: "Nenhum jogo encontrado.", noApps: "Nenhum aplicativo encontrado.", getBtn: "OBTER", getNow: "Obter Agora", didYouMean: "Sem correspondência exata. Você quis dizer:", tutorialTag: "GUIA", tutorialTitle: "Como Baixar e Instalar", tutorialDesc: "Guia passo a passo para instalar sem erros." },
+            ru: { recom: "Рекомендуемые", games: "Игры", apps: "Приложения", search: "Поиск...", showMore: "Показать еще", home: "Главная", settings: "Настройки", colorTheme: "Цветовая тема", batterySaver: "Экономия батареи", viewMode: "Режим просмотра", fontStyle: "Стиль шрифта", list: "Список", grid: "Сетка", reset: "Сброс", close: "Закрыть", noGames: "Игры не найдены.", noApps: "Приложения не найдены.", getBtn: "СКАЧАТЬ", getNow: "Получить", didYouMean: "Нет точных совпадений. Вы имели в виду:", tutorialTag: "ГАЙД", tutorialTitle: "Как скачать и установить", tutorialDesc: "Пошаговое руководство по установке без ошибок." },
+            hi: { recom: "अनुशंसित", games: "खेल", apps: "ऐप्स", search: "खोजें...", showMore: "और दिखाएं", home: "होम", settings: "सेटिंग्स", colorTheme: "रंग विषय", batterySaver: "बैटरी सेवर", viewMode: "दृश्य मोड", fontStyle: "फ़ॉन्ट शैली", list: "सूची", grid: "ग्रिड", reset: "रीसेट", close: "बंद करें", noGames: "कोई खेल नहीं मिला।", noApps: "कोई ऐप नहीं मिला।", getBtn: "प्राप्त करें", getNow: "अभी प्राप्त करें", didYouMean: "कोई सटीक मिलान नहीं। क्या आपका मतलब था:", tutorialTag: "गाइड", tutorialTitle: "कैसे डाउनलोड और इंस्टॉल करें", tutorialDesc: "बिना किसी त्रुटि के इंस्टॉल करने के लिए चरण-दर-चरण मार्गदर्शिका।" }
         };
 
         let userLang = (navigator.language || navigator.userLanguage).substring(0, 2).toLowerCase();
@@ -650,6 +789,9 @@
             document.getElementById('t-grid').innerText = t('grid');
             document.getElementById('t-btnReset').innerText = t('reset');
             document.getElementById('t-btnClose').innerText = t('close');
+            document.getElementById('t-tutorialTag').innerText = t('tutorialTag');
+            document.getElementById('t-tutorialTitle').innerText = t('tutorialTitle');
+            document.getElementById('t-tutorialDesc').innerText = t('tutorialDesc');
         }
 
         const GITHUB_CONFIG = {
@@ -937,7 +1079,27 @@
             return matrix[b.length][a.length];
         }
 
-        // FUNGSI DEBOUNCE UNTUK OPTIMALISASI KINERJA PENCARIAN
+        // FUNGSI PENANGANAN PENCARIAN REAL-TIME (HAPUS IKLAN INSTAN TANPA JEDA)
+        function handleRealtimeSearch() {
+            const val = document.getElementById('search').value.toLowerCase().trim();
+            const adContainers = document.querySelectorAll('.mod-ad-container');
+            
+            // Sembunyikan iklan secara langsung saat itu juga begitu input mulai diisi
+            if (val !== '') {
+                adContainers.forEach(ad => {
+                    ad.style.display = 'none';
+                });
+            } else {
+                adContainers.forEach(ad => {
+                    ad.style.display = '';
+                });
+            }
+
+            // Eksekusi debounce untuk pencarian item katalog
+            debounceSearch();
+        }
+
+        // FUNGSI DEBOUNCE UNTUK OPTIMALISASI KINERJA PENCARIAN KATALOG
         let searchTimeout;
         function debounceSearch() {
             clearTimeout(searchTimeout);
