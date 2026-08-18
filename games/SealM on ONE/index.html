@@ -1,26 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-        (function() {
-            var userLang = navigator.language || navigator.userLanguage;
-            var targetLang = userLang.split('-')[0];
-            var currentLang = 'en';
-            if (targetLang !== currentLang) {
-                var cookieStr = "googtrans=/" + currentLang + "/" + targetLang;
-                document.cookie = cookieStr + "; path=/; domain=" + window.location.hostname;
-                document.cookie = cookieStr + "; path=/";
-            }
-        })();
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'en',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script src="../../../../../mdads.js"></script>
     <script>if(typeof renderModoraAd === 'function') renderModoraAd(1);</script>
 
@@ -38,22 +18,28 @@
             --font-main: 'Plus Jakarta Sans', sans-serif; --header-h: 60px;
             --search-bg: rgba(255, 255, 255, 0.05); --shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none !important; -webkit-tap-highlight-color: transparent !important; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
         html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
         body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
-        
-        .skiptranslate, #goog-gt-tt, .goog-te-banner-frame { display: none !important; }
-        body { top: 0px !important; }
-        #google_translate_element { display: none !important; }
-
-        @keyframes scanline {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
 
         #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
         
+        /* Loading Custom Animation */
+        @keyframes scanline { 0% { left: -100%; } 100% { left: 200%; } }
+        @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        
+        /* Utility class to completely block native link behaviors/previews */
+        .no-select-dl {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         .ad-box { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 25px 0; overflow-x: auto; scrollbar-width: none; background: rgba(0,0,0,0.15); border-radius: 12px; padding: 10px 0; border: 1px dashed var(--border); }
         .ad-box::-webkit-scrollbar { display: none; }
 
@@ -114,11 +100,10 @@
     </style>
 </head>
 <body>
-    <div id="google_translate_element"></div>
 
     <header>
         <a href="../../../../../" class="btn-back"><i class="fa-solid fa-angle-left"></i></a>
-        <div class="header-title">App Details</div>
+        <div class="header-title">App Detail</div>
         <a href="../../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
     </header>
 
@@ -145,7 +130,7 @@
         
         <div class="section-title"><i class="fa-solid fa-star"></i> MOD Features</div>
         <div class="mod-feature-grid">
-            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Premium Mod (Standard)</span></div>
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Anti-Ban</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Menu Mod</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Ammo</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Max Level</span></div>
         </div>
         
         <div class="section-title"><i class="fa-solid fa-images"></i> Screenshots</div>
@@ -210,7 +195,7 @@
         </div>
 
         <div class="social-notice">
-            <p>Request App</p>
+            <p>Request Button</p>
             <div class="social-links">
                 <a href="../../../../../requests" class="btn-tg" style="background: var(--primary);"><i class="fa-solid fa-code-pull-request"></i> Request App/Game</a>
             </div>
@@ -223,21 +208,21 @@
         <div class="section-title" id="download-section" style="margin-top: 15px;"><i class="fa-solid fa-cloud-arrow-down"></i> Download Area</div>
         
         
-                <div id="dl-wrap-0" style="margin-bottom: 12px;">
-                    <div id="dl-loading-0" style="background: rgba(20, 20, 25, 0.8); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); border-radius: 16px; padding: 30px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); position: relative; overflow: hidden;">
-                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); animation: scanline 2s linear infinite;"></div>
-                        <i class="fa-solid fa-shield-halved" style="font-size: 32px; color: var(--primary); text-shadow: 0 0 15px rgba(37,99,235,0.5); margin-bottom: 5px;"></i>
-                        <span style="font-size: 15px; font-weight: 800; color: #f8fafc; letter-spacing: 0.5px;">Preparing Secure Link... <span id="dl-count-0" style="color: var(--accent); font-size: 18px;">10</span>s</span>
-                        <div style="width: 100%; height: 8px; background: rgba(0,0,0,0.6); border-radius: 10px; overflow: hidden; box-shadow: inset 0 2px 5px rgba(0,0,0,0.8); border: 1px solid rgba(255,255,255,0.05);">
-                            <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, #3b82f6, #10b981); box-shadow: 0 0 10px rgba(16, 185, 129, 0.5); transition: width 1s linear; border-radius: 10px;"></div>
+                <div id="dl-wrap-0" style="margin-bottom: 12px; position: relative;" class="no-select-dl">
+                    <div id="dl-loading-0" class="no-select-dl" style="background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(59,130,246,0.4); border-radius: 16px; padding: 30px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 0 30px rgba(59,130,246,0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; overflow: hidden; z-index: 1;" oncontextmenu="return false;">
+                        <div style="position: absolute; top: 0; left: -100%; width: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); animation: scanline 2s linear infinite;"></div>
+                        <i class="fa-solid fa-cloud-arrow-down" style="font-size: 36px; color: var(--primary); filter: drop-shadow(0 0 10px rgba(59,130,246,0.6));"></i>
+                        <div style="font-size: 14px; font-weight: 800; color: #f8fafc; letter-spacing: 1px; text-transform: uppercase; animation: pulseText 1.5s infinite;">Preparing Link... <span id="dl-count-0" style="color: var(--accent); font-size: 18px; text-shadow: 0 0 8px rgba(16,185,129,0.5);">10</span>s</div>
+                        <div style="width: 90%; height: 6px; background: rgba(0,0,0,0.6); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                            <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 1s linear; border-radius: 10px; box-shadow: 0 0 10px rgba(16,185,129,0.8);"></div>
                         </div>
-                        <span id="dl-pct-0" style="font-size: 11px; font-weight: 700; color: var(--text-muted); margin-top: 5px;">0%</span>
                     </div>
-                    <!-- SECURE DOWNLOAD BUTTON: DIV implementation to prevent native long-press preview and link copying -->
-                    <div class="btn-download-huge" id="dl-btn-0" onclick="window.location.href='#'" oncontextmenu="return false;" ondragstart="return false;" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none;">
+                    
+                    <div class="btn-download-huge no-select-dl" id="dl-btn-0" onclick="window.open('#', '_blank')" oncontextmenu="return false;" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; position: relative; z-index: 2;">
                         <div><span>DOWNLOAD (Unknown)</span></div>
-                        <div class="btn-date">Update: 18 August 2026</div>
+                        <div class="btn-date">Update: August 18, 2026</div>
                     </div>
+                    
                     <script>
                         setTimeout(() => {
                             let timeLeft = 10;
@@ -245,13 +230,11 @@
                             let btnEl = document.getElementById('dl-btn-0');
                             let countEl = document.getElementById('dl-count-0');
                             let progressEl = document.getElementById('dl-progress-0');
-                            let pctEl = document.getElementById('dl-pct-0');
                             
                             let dlTimer = setInterval(() => {
                                 timeLeft--;
                                 let pct = ((10 - timeLeft) / 10) * 100;
                                 if(progressEl) progressEl.style.width = pct + '%';
-                                if(pctEl) pctEl.innerText = Math.round(pct) + '%';
                                 
                                 if(timeLeft > 0) {
                                     if(countEl) countEl.innerText = timeLeft;
@@ -267,7 +250,7 @@
                 </div>
         
         <div class="social-notice">
-            <p>Join Our Community</p>
+            <p>Join the Community</p>
             <div class="social-links">
                 <a href="../../../../../whatsapp" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
                 <a href="../../../../../telegram" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
@@ -325,14 +308,17 @@
                 lbImg.src = images[currentIndex].src;
             };
             
-            // Klik background TIDAK akan menutup modal sesuai instruksi
+            // Dihapus agar lightbox HANYA BISA ditutup melalui tombol 'X'
+            // lb.onclick = (e) => { 
+            //     if(e.target === lb) lb.classList.remove('show'); 
+            // };
         });
 
         function shareApp() {
             if (navigator.share) {
                 navigator.share({
                     title: 'SealM on ONE MOD APK V3.6.022',
-                    text: 'Download latest SealM on ONE MOD APK V3.6.022 MOD APK from MODORA Official!',
+                    text: 'Download SealM on ONE MOD APK V3.6.022 MOD APK latest version from MODORA Official!',
                     url: window.location.href
                 });
             } else {
@@ -348,7 +334,7 @@
 
             var overlay = document.createElement('div');
             overlay.id = 'modoraAdblockOverlay';
-            overlay.innerHTML = '<div class="modora-premium-card"><div class="modora-icon-header"><i class="fa-solid fa-shield-virus"></i></div><h2 class="modora-title">Adblock Detected</h2><p class="modora-desc">This site is supported by ads. Please <span class="modora-highlight">disable Adblock</span> to continue downloading.</p><button class="modora-action-card" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> I have disabled Adblock</button></div>';
+            overlay.innerHTML = '<div class="modora-premium-card"><div class="modora-icon-header"><i class="fa-solid fa-shield-virus"></i></div><h2 class="modora-title">Adblocker Detected</h2><p class="modora-desc">This site relies on ads. Please <span class="modora-highlight">disable your Adblock</span> to continue downloading.</p><button class="modora-action-card" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> I have disabled Adblock</button></div>';
             document.body.appendChild(overlay);
             document.body.style.overflow = 'hidden';
         }
