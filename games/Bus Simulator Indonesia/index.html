@@ -26,7 +26,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bus Simulator Indonesia MOD APK V4.5.1 - MODORA Official</title>
+    <title>Bus Simulator Indonesia MOD APK V4.5.2 - MODORA Official</title>
+    <link rel="icon" type="image/png" href="https://modorazone.com/modorazone.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -125,7 +126,7 @@
         <div class="app-header-detail">
             <img src="https://play-lh.googleusercontent.com/LfdrSSQioww3knCgypAnz9E0S1iDxBsLam8kW3UjnDjUfuAbR0WJ0eEih7V065fvRO0twziFp5LiVyRt64rwIA" class="app-icon-detail" alt="Icon">
             <div class="app-meta-detail">
-                <h1>Bus Simulator Indonesia MOD APK V4.5.1</h1>
+                <h1>Bus Simulator Indonesia MOD APK V4.5.2</h1>
                 <div class="app-dev-detail">Maleo</div>
                 <div class="badge-mod"><i class="fa-solid fa-screwdriver-wrench"></i> 100% MOD</div>
             </div>
@@ -211,9 +212,9 @@
                             <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary, #2563eb), var(--accent, #10b981)); transition: width 1s linear; border-radius: 10px;"></div>
                         </div>
                     </div>
-                    <a href="https://safefileku.com/download/5hqA6ZRmLFxTYQEx" class="btn-download-huge" id="dl-btn-0" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
-                        <div><span>DOWNLOAD (1.36 GB)</span></div>
-                        <div class="btn-date">Update: 6 Agustus 2026</div>
+                    <a href="https://safefileku.com/download/eSQCtbw9Nqdelv2l" class="btn-download-huge" id="dl-btn-0" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
+                        <div><span>DOWNLOAD (408 MB)</span></div>
+                        <div class="btn-date">Update: 18 Agustus 2026</div>
                     </a>
                     <script>
                         setTimeout(() => {
@@ -222,6 +223,80 @@
                             let btnEl = document.getElementById('dl-btn-0');
                             let countEl = document.getElementById('dl-count-0');
                             let progressEl = document.getElementById('dl-progress-0');
+                            
+                            let dlTimer = setInterval(() => {
+                                timeLeft--;
+                                let pct = ((10 - timeLeft) / 10) * 100;
+                                if(progressEl) progressEl.style.width = pct + '%';
+                                
+                                if(timeLeft > 0) {
+                                    if(countEl) countEl.innerText = timeLeft;
+                                } else {
+                                    clearInterval(dlTimer);
+                                    if(loadingEl) loadingEl.style.display = 'none';
+                                    if(btnEl) btnEl.style.display = 'flex';
+                                }
+                            }, 1000);
+                            setTimeout(() => { if(progressEl) progressEl.style.width = '10%'; }, 50);
+                        }, 100);
+                    </script>
+                </div>
+                <div id="dl-wrap-1" style="margin-bottom: 12px;">
+                    <div id="dl-loading-1" style="background: var(--bg-card, #1e293b); border: 1px solid var(--card-border, #334155); border-radius: 16px; padding: 25px 20px; text-align: center; color: var(--text-main, #f8fafc); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 28px; color: var(--primary, #2563eb);"></i>
+                        <span style="font-size: 14px; font-weight: 700;">Mempersiapkan Link... <span id="dl-count-1" style="color: var(--primary, #2563eb); font-size: 18px; font-weight: 800;">10</span>s</span>
+                        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.5); border-radius: 10px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">
+                            <div id="dl-progress-1" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary, #2563eb), var(--accent, #10b981)); transition: width 1s linear; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                    <a href="https://safefileku.com/download/PUoL2Nh44XkRkeYq" class="btn-download-huge" id="dl-btn-1" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
+                        <div><span>OBB DOWNLOAD (131 MB)</span></div>
+                        <div class="btn-date">Update: 18 Agustus 2026</div>
+                    </a>
+                    <script>
+                        setTimeout(() => {
+                            let timeLeft = 10;
+                            let loadingEl = document.getElementById('dl-loading-1');
+                            let btnEl = document.getElementById('dl-btn-1');
+                            let countEl = document.getElementById('dl-count-1');
+                            let progressEl = document.getElementById('dl-progress-1');
+                            
+                            let dlTimer = setInterval(() => {
+                                timeLeft--;
+                                let pct = ((10 - timeLeft) / 10) * 100;
+                                if(progressEl) progressEl.style.width = pct + '%';
+                                
+                                if(timeLeft > 0) {
+                                    if(countEl) countEl.innerText = timeLeft;
+                                } else {
+                                    clearInterval(dlTimer);
+                                    if(loadingEl) loadingEl.style.display = 'none';
+                                    if(btnEl) btnEl.style.display = 'flex';
+                                }
+                            }, 1000);
+                            setTimeout(() => { if(progressEl) progressEl.style.width = '10%'; }, 50);
+                        }, 100);
+                    </script>
+                </div>
+                <div id="dl-wrap-2" style="margin-bottom: 12px;">
+                    <div id="dl-loading-2" style="background: var(--bg-card, #1e293b); border: 1px solid var(--card-border, #334155); border-radius: 16px; padding: 25px 20px; text-align: center; color: var(--text-main, #f8fafc); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+                        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 28px; color: var(--primary, #2563eb);"></i>
+                        <span style="font-size: 14px; font-weight: 700;">Mempersiapkan Link... <span id="dl-count-2" style="color: var(--primary, #2563eb); font-size: 18px; font-weight: 800;">10</span>s</span>
+                        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.5); border-radius: 10px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">
+                            <div id="dl-progress-2" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary, #2563eb), var(--accent, #10b981)); transition: width 1s linear; border-radius: 10px;"></div>
+                        </div>
+                    </div>
+                    <a href="https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver" class="btn-download-huge" id="dl-btn-2" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
+                        <div><span>Zarchiver Download</span></div>
+                        <div class="btn-date">Update: 18 Agustus 2026</div>
+                    </a>
+                    <script>
+                        setTimeout(() => {
+                            let timeLeft = 10;
+                            let loadingEl = document.getElementById('dl-loading-2');
+                            let btnEl = document.getElementById('dl-btn-2');
+                            let countEl = document.getElementById('dl-count-2');
+                            let progressEl = document.getElementById('dl-progress-2');
                             
                             let dlTimer = setInterval(() => {
                                 timeLeft--;
@@ -308,8 +383,8 @@
         function shareApp() {
             if (navigator.share) {
                 navigator.share({
-                    title: 'Bus Simulator Indonesia MOD APK V4.5.1',
-                    text: 'Download Bus Simulator Indonesia MOD APK V4.5.1 MOD APK terbaru dari MODORA Official!',
+                    title: 'Bus Simulator Indonesia MOD APK V4.5.2',
+                    text: 'Download Bus Simulator Indonesia MOD APK V4.5.2 MOD APK terbaru dari MODORA Official!',
                     url: window.location.href
                 });
             } else {
