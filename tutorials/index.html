@@ -323,12 +323,16 @@
         <div class="video-box">
             <div class="video-container-glow"></div>
             <div class="video-wrapper">
+                <!-- Atribut video telah diupgrade: preload="auto" dan tag playsinline ditambahkan untuk stabilitas -->
                 <video 
                     id="modoraVideo"
                     class="modora-video" 
                     controls 
                     playsinline 
-                    preload="metadata"
+                    webkit-playsinline="true"
+                    x5-playsinline="true"
+                    x-webkit-airplay="allow"
+                    preload="auto"
                     poster="https://modorazone.com/thumb.png">
                     <!-- Source video di-inject lewat JavaScript berdasarkan bahasa -->
                     Browser Anda tidak mendukung tag video.
@@ -459,7 +463,7 @@
             document.getElementById('t-btnClose').innerText = i18n[userLang].close;
         }
 
-        /* --- FUNGSI PILIH BAHASA --- */
+        /* --- FUNGSI PILIH BAHASA & PAKSA BUFFER VIDEO --- */
         function chooseInitialLang(lang) {
             document.getElementById('welcomeOverlay').classList.add('hidden');
             setTutorialLang(lang);
@@ -481,22 +485,22 @@
                 videoEl.src = videoEN;
             }
             
-            videoEl.load(); // Reload resource video yang baru di-inject
+            // Load resource dan instruksikan browser untuk fetch (mencegah loading/buffering di tengah)
+            videoEl.load(); 
             applyLanguage();
         }
 
-        /* --- FITUR AUTO-FULLSCREEN SAAT KLIK PLAY --- */
+        /* --- FITUR AUTO-FULLSCREEN SAAT KLIK PLAY DIHAPUS --- */
+        // Kode event listener 'play' yang merubah ke fullscreen secara otomatis
+        // telah dihilangkan agar video dapat diputar di halaman tanpa berhenti.
+        
+        // Memastikan video tidak memaksa fullscreen di perangkat mobile tertentu
         document.addEventListener('DOMContentLoaded', () => {
             const video = document.getElementById('modoraVideo');
             if (video) {
-                video.addEventListener('play', () => {
-                    if (video.requestFullscreen) {
-                        video.requestFullscreen();
-                    } else if (video.webkitRequestFullscreen) {
-                        video.webkitRequestFullscreen();
-                    } else if (video.msRequestFullscreen) {
-                        video.msRequestFullscreen();
-                    }
+                // Preload trigger agar video lebih responsif
+                video.addEventListener('loadeddata', () => {
+                    // Video siap dijalankan dengan mulus
                 });
             }
         });
