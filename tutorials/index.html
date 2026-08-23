@@ -8,12 +8,9 @@
     
     <title>Tutorials - MODORA</title>
     <meta name="description" content="Tutorial cara unduh dan instal aplikasi & game di MODORA.">
-    <meta name="robots" content="index, follow">
     
-    <!-- FAVICON -->
     <link rel="icon" href="https://modorazone.com/modorazone.png" type="image/png">
     <link rel="shortcut icon" href="https://modorazone.com/modorazone.png" type="image/png">
-    <link rel="apple-touch-icon" href="https://modorazone.com/modorazone.png">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -43,58 +40,30 @@
             --font-main: 'Plus Jakarta Sans', sans-serif;
         }
 
-        html.eco-mode {
-            --bg-glass: var(--bg-card);
-            --glass-blur: none;
-        }
-        
+        html.eco-mode { --bg-glass: var(--bg-card); --glass-blur: none; }
         html.eco-mode .ambient-orb, html.eco-mode .info-card::before, html.eco-mode .footer-line { display: none !important; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
-        
         html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); position: relative; }
-        
-        body { 
-            color: var(--text-main); 
-            padding-top: calc(var(--header-h) + 15px); 
-            padding-bottom: env(safe-area-inset-bottom, 20px);
-            min-height: 100vh; display: flex; flex-direction: column;
-        }
+        body { color: var(--text-main); padding-top: calc(var(--header-h) + 15px); padding-bottom: env(safe-area-inset-bottom, 20px); min-height: 100vh; display: flex; flex-direction: column; }
+        .logo, .btn-tele, .btn-setting, .seg-btn, .color-item, .toggle-switch, .lang-btn, .welcome-btn { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
 
-        .logo, .btn-tele, .btn-setting, .seg-btn, .color-item, .toggle-switch, .lang-btn, .welcome-btn {
-            -webkit-user-select: none; user-select: none; -webkit-user-drag: none;
-        }
-
-        /* --- OPTIMIZED BACKGROUND ANIMATION --- */
+        /* --- BACKGROUND ANIMATION --- */
         #bg-animation { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; pointer-events: none; }
         .bg-icon { position: absolute; color: rgba(255, 255, 255, 0.03); animation: floatUp linear infinite; will-change: transform; transform: translateZ(0); }
         @keyframes floatUp { 0% { transform: translateY(110vh) rotate(0deg); } 100% { transform: translateY(-20vh) rotate(360deg); } }
-
-        /* ORBS */
         .ambient-orb { position: absolute; border-radius: 50%; filter: blur(70px); z-index: -2; opacity: 0.35; transform: translateZ(0); }
         .orb-1 { top: -5%; left: -10%; width: 350px; height: 350px; background: var(--primary); }
         .orb-2 { bottom: 10%; right: -10%; width: 300px; height: 300px; background: var(--secondary); }
         
         /* --- LAYOUT UTAMA --- */
-        #mainView { 
-            width: 100%; padding: 0 24px; margin: 0 auto; max-width: 800px; flex: 1;
-            animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; z-index: 10; position: relative;
-        }
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 800px; flex: 1; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; z-index: 10; position: relative; }
         @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
 
-        /* --- HEADER MEWAH --- */
-        header {
-            position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h);
-            padding: 0 24px; background: var(--bg-glass); 
-            backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
-            display: flex; align-items: center; justify-content: space-between;
-            border-bottom: 1px solid rgba(255,255,255,0.03); z-index: 1000;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
+        /* --- HEADER --- */
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .logo { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; letter-spacing: -0.5px;}
         .header-title { font-size: 16px; font-weight: 700; color: var(--text-muted); flex: 1; text-align: center; }
-        
         .header-actions { display: flex; gap: 12px; align-items: center; }
         .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(41, 182, 246, 0.3); }
         .btn-setting { width: 40px; height: 40px; background: rgba(255,255,255,0.05); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; transition: transform 0.2s; }
@@ -102,77 +71,36 @@
 
         /* --- TEKS HEADER --- */
         .tutorial-header { text-align: center; margin-top: 35px; margin-bottom: 25px; }
-        .tutorial-title { 
-            font-size: 28px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; 
-            background: linear-gradient(90deg, #fff, #94a3b8, #fff); background-size: 200% auto;
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: textShine 4s linear infinite;
-        }
+        .tutorial-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; background: linear-gradient(90deg, #fff, #94a3b8, #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: textShine 4s linear infinite; }
         @keyframes textShine { to { background-position: 200% center; } }
         .tutorial-desc { font-size: 14px; color: var(--text-muted); font-weight: 500; line-height: 1.5; }
 
-        /* --- LANGUAGE SELECTOR TOGGLE (IN MAIN UI) --- */
-        .lang-selector {
-            display: flex; gap: 10px; margin-bottom: 25px;
-            background: var(--bg-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-            padding: 6px; border-radius: 16px; border: 1px solid var(--card-border);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .lang-btn {
-            flex: 1; padding: 12px; border-radius: 12px; border: none;
-            background: transparent; color: var(--text-muted); font-weight: 700;
-            font-size: 14px; cursor: pointer; transition: all 0.3s ease;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
-        }
-        .lang-btn.active {
-            background: var(--bg-card); color: var(--text-main);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 1px solid var(--primary);
-        }
+        /* --- LANGUAGE SELECTOR --- */
+        .lang-selector { display: flex; gap: 10px; margin-bottom: 25px; background: var(--bg-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 6px; border-radius: 16px; border: 1px solid var(--card-border); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .lang-btn { flex: 1; padding: 12px; border-radius: 12px; border: none; background: transparent; color: var(--text-muted); font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .lang-btn.active { background: var(--bg-card); color: var(--text-main); box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 1px solid var(--primary); }
         .lang-btn:active { transform: scale(0.97); }
-        .flag { font-size: 16px; }
 
-        /* --- WELCOME OVERLAY (SAAT WEB DIBUKA) --- */
-        .welcome-overlay {
-            position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            z-index: 9999; display: flex; align-items: center; justify-content: center;
-            opacity: 1; transition: opacity 0.5s ease, visibility 0.5s;
-        }
+        /* --- WELCOME OVERLAY --- */
+        .welcome-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease, visibility 0.5s; }
         .welcome-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-        .welcome-card {
-            background: var(--bg-card); padding: 40px 25px; border-radius: 28px;
-            text-align: center; max-width: 90%; width: 380px;
-            border: 1px solid var(--card-border); box-shadow: var(--shadow);
-            transform: translateY(0); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+        .welcome-card { background: var(--bg-card); padding: 40px 25px; border-radius: 28px; text-align: center; max-width: 90%; width: 380px; border: 1px solid var(--card-border); box-shadow: var(--shadow); transform: translateY(0); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .welcome-overlay.hidden .welcome-card { transform: translateY(40px); }
-        .welcome-logo {
-            font-size: 28px; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
+        .welcome-logo { font-size: 28px; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .welcome-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
         .welcome-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
-        .welcome-btn {
-            width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 16px;
-            border: 1px solid var(--card-border); background: var(--search-bg);
-            color: var(--text-main); font-size: 15px; font-weight: 700;
-            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;
-            transition: all 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
+        .welcome-btn { width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 16px; border: 1px solid var(--card-border); background: var(--search-bg); color: var(--text-main); font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; transition: all 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         .welcome-btn:hover { background: var(--bg-body); border-color: var(--primary); }
-        .welcome-btn:active { transform: scale(0.96); }
 
-        /* --- OPTIMIZED VIDEO BORDER ANIMATION (RASIO 3:4) --- */
-        .video-box {
-            position: relative; width: 100%; max-width: 450px; margin: 0 auto 40px auto;
-        }
+        /* --- OPTIMASI VIDEO BORDER ANIMATION --- */
+        .video-box { position: relative; width: 100%; max-width: 450px; margin: 0 auto 40px auto; }
+        
         .video-container-glow {
             position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
             transform: translate(-50%, -50%) translateZ(0); background: var(--primary);
             filter: blur(40px); z-index: -1; border-radius: 30px;
             animation: pulseGlow 4s alternate infinite ease-in-out; pointer-events: none;
-            will-change: opacity;
+            transition: opacity 0.5s;
         }
         @keyframes pulseGlow { 0% { opacity: 0.15; } 100% { opacity: 0.35; } } 
 
@@ -181,62 +109,41 @@
             border-radius: 20px; padding: 4px; 
             display: flex; justify-content: center; align-items: center;
             overflow: hidden; z-index: 1; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            transform: translateZ(0);
+            transform: translateZ(0); /* Hardware Acceleration Hardware */
         }
 
         .video-wrapper::before {
             content: ''; position: absolute; width: 200%; height: 200%;
             background: conic-gradient( transparent 10%, var(--primary) 30%, var(--secondary) 50%, var(--accent) 70%, transparent 90% );
             animation: spinBorder 4s linear infinite; z-index: -2;
-            will-change: transform;
+            transition: opacity 0.5s;
         }
         @keyframes spinBorder { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-
         .video-wrapper::after { content: ''; position: absolute; inset: 4px; background: var(--bg-body); border-radius: 16px; z-index: -1; }
 
-        /* object-fit diubah ke contain agar tidak kepotong saat fullscreen */
+        /* ANTI-LAG SYSTEM: PAUSE ANIMASI SAAT VIDEO DIPLAY */
+        .video-box.is-playing .video-container-glow,
+        .video-box.is-playing .video-wrapper::before {
+            animation-play-state: paused !important; /* Hentikan animasi agar GPU fokus memutar video */
+            opacity: 0.1 !important; /* Redupkan efek berat */
+        }
+
         .modora-video { width: 100%; height: 100%; border-radius: 16px; object-fit: contain; outline: none; background-color: #000; position: relative; z-index: 2; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
 
-        /* --- OPTIMIZED INFO CARDS --- */
-        .info-card {
-            background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-            padding: 22px; border-radius: 20px; border: 1px solid var(--card-border); margin-bottom: 20px; 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2); border-left: 5px solid var(--primary);
-            position: relative; overflow: hidden;
-            animation: cardEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            opacity: 0; transform: translateY(20px); will-change: transform, opacity;
-        }
-        
+        /* --- INFO CARDS --- */
+        .info-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 22px; border-radius: 20px; border: 1px solid var(--card-border); margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); border-left: 5px solid var(--primary); position: relative; overflow: hidden; animation: cardEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); will-change: transform, opacity; }
         .info-card:nth-of-type(1) { animation-delay: 0.1s; }
         .info-card:nth-of-type(2) { border-left-color: var(--accent); animation-delay: 0.2s; }
-
         @keyframes cardEntry { to { opacity: 1; transform: translateY(0); } }
-
-        .info-card::before {
-            content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-            transform: skewX(-25deg) translateZ(0); animation: cardShimmer 5s infinite linear; pointer-events: none;
-        }
+        .info-card::before { content: ''; position: absolute; top: 0; left: -150%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent); transform: skewX(-25deg) translateZ(0); animation: cardShimmer 5s infinite linear; pointer-events: none; }
         @keyframes cardShimmer { 0% { left: -150%; } 20%, 100% { left: 200%; } }
-
         .info-card h4 { font-size: 16px; margin-bottom: 8px; font-weight: 800; display: flex; align-items: center; gap: 8px; }
         .info-card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
 
         /* --- FOOTER --- */
-        .modora-footer {
-            text-align: center; margin-top: 50px; padding: 40px 20px calc(env(safe-area-inset-bottom, 20px) + 20px);
-            font-size: 13px; font-weight: 800; letter-spacing: 0.5px; position: relative; overflow: hidden;
-            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary));
-            background-size: 300% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: gradientFooterText 6s infinite linear; transform: translateZ(0);
-        }
+        .modora-footer { text-align: center; margin-top: 50px; padding: 40px 20px calc(env(safe-area-inset-bottom, 20px) + 20px); font-size: 13px; font-weight: 800; letter-spacing: 0.5px; position: relative; overflow: hidden; background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent), var(--primary)); background-size: 300% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: gradientFooterText 6s infinite linear; transform: translateZ(0); }
         .footer-line { position: absolute; top: 0; left: 0; width: 100%; height: 1px; background: rgba(255,255,255,0.05); overflow: hidden; }
-        .footer-line::after {
-            content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
-            background: linear-gradient(90deg, transparent, var(--primary), transparent);
-            animation: sweepLight 4s infinite linear; will-change: left;
-        }
-
+        .footer-line::after { content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, var(--primary), transparent); animation: sweepLight 4s infinite linear; will-change: left; }
         @keyframes gradientFooterText { 0% { background-position: 0% center; } 100% { background-position: 300% center; } }
         @keyframes sweepLight { 0% { left: -100%; } 100% { left: 200%; } }
 
@@ -246,7 +153,6 @@
         .modal-box { background: var(--bg-card); width: 100%; padding: 30px 24px calc(30px + env(safe-area-inset-bottom, 0px)); border-radius: 35px 35px 0 0; transform: translateY(100%); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 -10px 40px rgba(0,0,0,0.2); }
         .modal.active .modal-box { transform: translateY(0); }
         .modal-handle { width: 50px; height: 5px; background: var(--text-muted); opacity: 0.3; border-radius: 10px; margin: 0 auto 20px auto; }
-        
         .set-group { margin-bottom: 25px; }
         .set-title { font-weight: 800; font-size: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
         .segmented-control { display: flex; background: var(--search-bg); border-radius: 12px; padding: 3px; }
@@ -270,13 +176,11 @@
 </head>
 <body>
 
-    <!-- WELCOME OVERLAY (WAJIB PILIH BAHASA SAAT DIBUKA) -->
     <div id="welcomeOverlay" class="welcome-overlay">
         <div class="welcome-card">
             <div class="welcome-logo">MODORA</div>
             <h2 class="welcome-title">Select Language</h2>
             <p class="welcome-desc">Pilih bahasa tutorial yang ingin Anda tonton / Choose your tutorial language.</p>
-            
             <button class="welcome-btn" onclick="chooseInitialLang('id')">
                 <span class="flag">🇮🇩</span> Versi Indonesia
             </button>
@@ -286,13 +190,11 @@
         </div>
     </div>
     
-    <!-- BACKGROUND ANIMATIONS -->
     <div id="bg-animation">
         <div class="ambient-orb orb-1"></div>
         <div class="ambient-orb orb-2"></div>
     </div>
 
-    <!-- HEADER + TOMBOL SETTING -->
     <header>
         <div class="logo" onclick="window.location.href='/'">MODORA</div>
         <div class="header-title" id="t-headerCenter">Tutorials Center</div>
@@ -303,27 +205,19 @@
     </header>
 
     <main id="mainView">
-        
         <div class="tutorial-header">
             <h1 class="tutorial-title" id="t-pageTitle">Tutorial Download</h1>
             <p class="tutorial-desc" id="t-pageDesc">Ikuti langkah-langkah di dalam video ini agar game/aplikasi dapat berjalan dengan sempurna.</p>
         </div>
 
-        <!-- TOGGLE BAHASA (Bisa diubah kapan saja) -->
         <div class="lang-selector">
-            <button id="btnLangID" class="lang-btn" onclick="setTutorialLang('id')">
-                <span class="flag">🇮🇩</span> Indonesia
-            </button>
-            <button id="btnLangEN" class="lang-btn" onclick="setTutorialLang('en')">
-                <span class="flag">🇬🇧</span> English
-            </button>
+            <button id="btnLangID" class="lang-btn" onclick="setTutorialLang('id')"><span class="flag">🇮🇩</span> Indonesia</button>
+            <button id="btnLangEN" class="lang-btn" onclick="setTutorialLang('en')"><span class="flag">🇬🇧</span> English</button>
         </div>
 
-        <!-- VIDEO CONTAINER -->
-        <div class="video-box">
+        <div class="video-box" id="videoWrapperBox">
             <div class="video-container-glow"></div>
             <div class="video-wrapper">
-                <!-- Atribut video telah diupgrade: preload="auto" dan tag playsinline ditambahkan untuk stabilitas -->
                 <video 
                     id="modoraVideo"
                     class="modora-video" 
@@ -332,15 +226,13 @@
                     webkit-playsinline="true"
                     x5-playsinline="true"
                     x-webkit-airplay="allow"
-                    preload="auto"
+                    preload="metadata"
                     poster="https://modorazone.com/thumb.png">
-                    <!-- Source video di-inject lewat JavaScript berdasarkan bahasa -->
                     Browser Anda tidak mendukung tag video.
                 </video>
             </div>
         </div>
 
-        <!-- INFO TAMBAHAN -->
         <div class="info-card">
             <h4><i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> <span id="t-noteTitle">Catatan Penting</span></h4>
             <p id="t-noteDesc">Pastikan Anda telah mengizinkan instalasi dari <b>"Sumber Tidak Dikenal" (Unknown Sources)</b> di pengaturan ponsel Android Anda sebelum melakukan instalasi MOD APK.</p>
@@ -350,16 +242,13 @@
             <h4><i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> <span id="t-safeTitle">100% Aman & Teruji</span></h4>
             <p id="t-safeDesc">Semua file di MODORA telah melewati uji keamanan dan dipastikan terbebas dari virus/malware. Jika Anda mengalami masalah, silakan hubungi kami via Telegram.</p>
         </div>
-
     </main>
 
-    <!-- FOOTER -->
     <footer class="modora-footer">
         <div class="footer-line"></div>
         © <span id="currentYear"></span> MODORA | All Rights Reserved
     </footer>
 
-    <!-- SETTINGS MODAL -->
     <div class="modal" id="modalSet" onclick="if(event.target === this) toggleSet()">
         <div class="modal-box">
             <div style="text-align:center; margin-bottom:25px;">
@@ -402,47 +291,15 @@
     </div>
 
     <script>
-        /* --- UPDATE TAHUN COPYRIGHT OTOMATIS --- */
         document.getElementById('currentYear').innerText = new Date().getFullYear();
 
-        /* --- SISTEM MULTI-BAHASA (i18n) OTOMATIS --- */
-        let userLang = 'en'; // Default sebelum dipilih
+        let userLang = 'en';
         const videoID = "https://modorazone.it.com/idn.mp4";
         const videoEN = "https://modorazone.it.com/eng.mp4";
 
         const i18n = {
-            en: { 
-                header: "Tutorials Center", pageTitle: "Tutorial Download", 
-                pageDesc: "Follow the steps in this video so the game/app runs perfectly.",
-                noteTitle: "Important Note", 
-                noteDesc: "Make sure you have allowed installation from <b>\"Unknown Sources\"</b> in your Android phone settings before installing the MOD APK.",
-                safeTitle: "100% Safe & Tested", 
-                safeDesc: "All files on MODORA have passed security tests and are guaranteed free of viruses/malware. If you encounter any issues, please contact us via Telegram.",
-                settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)",
-                fontStyle: "Font Style", reset: "Reset", close: "Close"
-            },
-            id: { 
-                header: "Pusat Tutorial", pageTitle: "Tutorial Download", 
-                pageDesc: "Ikuti langkah-langkah di dalam video ini agar game/aplikasi dapat berjalan dengan sempurna.",
-                noteTitle: "Catatan Penting", 
-                noteDesc: "Pastikan Anda telah mengizinkan instalasi dari <b>\"Sumber Tidak Dikenal\" (Unknown Sources)</b> di pengaturan ponsel Android Anda sebelum melakukan instalasi MOD APK.",
-                safeTitle: "100% Aman & Teruji", 
-                safeDesc: "Semua file di MODORA telah melewati uji keamanan dan dipastikan terbebas dari virus/malware. Jika Anda mengalami masalah, silakan hubungi kami via Telegram.",
-                settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai",
-                fontStyle: "Gaya Huruf", reset: "Atur Ulang", close: "Tutup"
-            },
-            es: { 
-                header: "Centro de Tutoriales", pageTitle: "Tutorial de Descarga", pageDesc: "Sigue los pasos en este video para que el juego/aplicación funcione perfectamente.", noteTitle: "Nota Importante", noteDesc: "Asegúrate de haber permitido la instalación desde <b>\"Fuentes Desconocidas\"</b> antes de instalar.", safeTitle: "100% Seguro y Probado", safeDesc: "Archivos sin virus.", settings: "Ajustes", colorTheme: "Tema de Color", batterySaver: "Ahorro de Batería", fontStyle: "Estilo de Fuente", reset: "Reiniciar", close: "Cerrar"
-            },
-            pt: { 
-                header: "Centro de Tutoriais", pageTitle: "Tutorial de Download", pageDesc: "Siga os passos neste vídeo.", noteTitle: "Nota Importante", noteDesc: "Permita <b>\"Fontes Desconhecidas\"</b>.", safeTitle: "100% Seguro e Testado", safeDesc: "Livre de vírus.", settings: "Configurações", colorTheme: "Tema", batterySaver: "Economia", fontStyle: "Fonte", reset: "Redefinir", close: "Fechar"
-            },
-            ru: { 
-                header: "Центр Обучения", pageTitle: "Руководство по скачиванию", pageDesc: "Следуйте инструкциям в этом видео.", noteTitle: "Важное примечание", noteDesc: "Разрешите установку из <b>«Неизвестных источников»</b>.", safeTitle: "100% Безопасно", safeDesc: "Проверено на вирусы.", settings: "Настройки", colorTheme: "Цветовая тема", batterySaver: "Экономия", fontStyle: "Шрифт", reset: "Сброс", close: "Закрыть"
-            },
-            hi: { 
-                header: "ट्यूटोरियल केंद्र", pageTitle: "डाउनलोड ट्यूटोरियल", pageDesc: "वीडियो में दिए गए चरणों का पालन करें।", noteTitle: "महत्वपूर्ण नोट", noteDesc: "<b>\"अज्ञात स्रोत\"</b> अनुमति दें।", safeTitle: "100% सुरक्षित", safeDesc: "सभी फाइलें सुरक्षित हैं।", settings: "सेटिंग्स", colorTheme: "रंग", batterySaver: "बैटरी सेवर", fontStyle: "फ़ॉन्ट", reset: "रीसेट", close: "बंद करें"
-            }
+            en: { header: "Tutorials Center", pageTitle: "Tutorial Download", pageDesc: "Follow the steps in this video so the game/app runs perfectly.", noteTitle: "Important Note", noteDesc: "Make sure you have allowed installation from <b>\"Unknown Sources\"</b> in your Android phone settings before installing the MOD APK.", safeTitle: "100% Safe & Tested", safeDesc: "All files on MODORA have passed security tests and are guaranteed free of viruses/malware. If you encounter any issues, please contact us via Telegram.", settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)", fontStyle: "Font Style", reset: "Reset", close: "Close" },
+            id: { header: "Pusat Tutorial", pageTitle: "Tutorial Download", pageDesc: "Ikuti langkah-langkah di dalam video ini agar game/aplikasi dapat berjalan dengan sempurna.", noteTitle: "Catatan Penting", noteDesc: "Pastikan Anda telah mengizinkan instalasi dari <b>\"Sumber Tidak Dikenal\" (Unknown Sources)</b> di pengaturan ponsel Android Anda sebelum melakukan instalasi MOD APK.", safeTitle: "100% Aman & Teruji", safeDesc: "Semua file di MODORA telah melewati uji keamanan dan dipastikan terbebas dari virus/malware. Jika Anda mengalami masalah, silakan hubungi kami via Telegram.", settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai", fontStyle: "Gaya Huruf", reset: "Atur Ulang", close: "Tutup" }
         };
 
         function applyLanguage() {
@@ -454,7 +311,6 @@
             document.getElementById('t-noteDesc').innerHTML = i18n[userLang].noteDesc;
             document.getElementById('t-safeTitle').innerText = i18n[userLang].safeTitle;
             document.getElementById('t-safeDesc').innerText = i18n[userLang].safeDesc;
-            
             document.getElementById('t-settingsTitle').innerText = i18n[userLang].settings;
             document.getElementById('t-colorTheme').innerText = i18n[userLang].colorTheme;
             document.getElementById('t-batterySaver').innerText = i18n[userLang].batterySaver;
@@ -463,7 +319,6 @@
             document.getElementById('t-btnClose').innerText = i18n[userLang].close;
         }
 
-        /* --- FUNGSI PILIH BAHASA & PAKSA BUFFER VIDEO --- */
         function chooseInitialLang(lang) {
             document.getElementById('welcomeOverlay').classList.add('hidden');
             setTutorialLang(lang);
@@ -471,8 +326,6 @@
 
         function setTutorialLang(lang) {
             userLang = lang;
-            
-            // Atur UI Button Toggle
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             const videoEl = document.getElementById('modoraVideo');
 
@@ -481,26 +334,30 @@
                 videoEl.src = videoID;
             } else {
                 document.getElementById('btnLangEN').classList.add('active');
-                userLang = 'en'; // Force English fallback for the layout
+                userLang = 'en'; 
                 videoEl.src = videoEN;
             }
-            
-            // Load resource dan instruksikan browser untuk fetch (mencegah loading/buffering di tengah)
             videoEl.load(); 
             applyLanguage();
         }
 
-        /* --- FITUR AUTO-FULLSCREEN SAAT KLIK PLAY DIHAPUS --- */
-        // Kode event listener 'play' yang merubah ke fullscreen secara otomatis
-        // telah dihilangkan agar video dapat diputar di halaman tanpa berhenti.
-        
-        // Memastikan video tidak memaksa fullscreen di perangkat mobile tertentu
+        /* --- SCRIPT ANTI LAG: MATIKAN ANIMASI SAAT PLAY --- */
         document.addEventListener('DOMContentLoaded', () => {
             const video = document.getElementById('modoraVideo');
-            if (video) {
-                // Preload trigger agar video lebih responsif
-                video.addEventListener('loadeddata', () => {
-                    // Video siap dijalankan dengan mulus
+            const videoBox = document.getElementById('videoWrapperBox');
+
+            if (video && videoBox) {
+                // Saat video diputar, beri class 'is-playing' (CSS akan mem-pause animasi)
+                video.addEventListener('play', () => {
+                    videoBox.classList.add('is-playing');
+                });
+
+                // Saat video dijeda/selesai, cabut class 'is-playing' (Animasi jalan lagi)
+                video.addEventListener('pause', () => {
+                    videoBox.classList.remove('is-playing');
+                });
+                video.addEventListener('ended', () => {
+                    videoBox.classList.remove('is-playing');
                 });
             }
         });
@@ -523,61 +380,19 @@
 
         /* --- Settings Logic --- */
         function toggleSet() { document.getElementById('modalSet').classList.toggle('active'); }
-
         function loadSettings() {
-            if(localStorage.getItem('modora_eco') === 'true') {
-                document.documentElement.classList.add('eco-mode');
-                document.getElementById('ecoToggle').classList.add('active');
-            }
-            const savedColor = localStorage.getItem('modora_color');
-            const savedSec = localStorage.getItem('modora_color_sec');
-            if(savedColor) {
-                document.documentElement.style.setProperty('--primary', savedColor);
-                document.documentElement.style.setProperty('--secondary', savedSec);
-                document.querySelectorAll('.color-item').forEach(c => {
-                    c.classList.remove('active');
-                    if(c.getAttribute('data-color') === savedColor) c.classList.add('active');
-                });
-            } else {
-                document.querySelector('.color-item[data-color="#2563eb"]').classList.add('active');
-            }
-            
+            if(localStorage.getItem('modora_eco') === 'true') { document.documentElement.classList.add('eco-mode'); document.getElementById('ecoToggle').classList.add('active'); }
+            const savedColor = localStorage.getItem('modora_color'); const savedSec = localStorage.getItem('modora_color_sec');
+            if(savedColor) { document.documentElement.style.setProperty('--primary', savedColor); document.documentElement.style.setProperty('--secondary', savedSec); document.querySelectorAll('.color-item').forEach(c => { c.classList.remove('active'); if(c.getAttribute('data-color') === savedColor) c.classList.add('active'); }); } 
+            else { document.querySelector('.color-item[data-color="#2563eb"]').classList.add('active'); }
             const currFont = localStorage.getItem('modora_font') || 'Plus Jakarta Sans';
             document.querySelectorAll('.seg-btn[onclick*="chFont"]').forEach(b => b.classList.remove('active'));
-            if(currFont.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active');
-            else if(currFont.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active');
-            else document.getElementById('btnFontTech').classList.add('active');
+            if(currFont.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active'); else if(currFont.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active'); else document.getElementById('btnFontTech').classList.add('active');
         }
-
-        function toggleEco() {
-            const isEco = document.documentElement.classList.toggle('eco-mode');
-            document.getElementById('ecoToggle').classList.toggle('active');
-            localStorage.setItem('modora_eco', isEco ? 'true' : 'false');
-        }
-
-        function setThemeColor(prim, sec, el) {
-            document.documentElement.style.setProperty('--primary', prim);
-            document.documentElement.style.setProperty('--secondary', sec);
-            localStorage.setItem('modora_color', prim);
-            localStorage.setItem('modora_color_sec', sec);
-            document.querySelectorAll('.color-item').forEach(c => c.classList.remove('active'));
-            el.classList.add('active');
-        }
-
-        function chFont(fontName) {
-            document.documentElement.style.setProperty('--font-main', fontName);
-            localStorage.setItem('modora_font', fontName);
-            document.querySelectorAll('.seg-btn[onclick*="chFont"]').forEach(b => b.classList.remove('active'));
-            if(fontName.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active');
-            else if(fontName.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active');
-            else document.getElementById('btnFontTech').classList.add('active');
-        }
-
-        function resetSettings() {
-            localStorage.clear();
-            window.location.reload();
-        }
-
+        function toggleEco() { const isEco = document.documentElement.classList.toggle('eco-mode'); document.getElementById('ecoToggle').classList.toggle('active'); localStorage.setItem('modora_eco', isEco ? 'true' : 'false'); }
+        function setThemeColor(prim, sec, el) { document.documentElement.style.setProperty('--primary', prim); document.documentElement.style.setProperty('--secondary', sec); localStorage.setItem('modora_color', prim); localStorage.setItem('modora_color_sec', sec); document.querySelectorAll('.color-item').forEach(c => c.classList.remove('active')); el.classList.add('active'); }
+        function chFont(fontName) { document.documentElement.style.setProperty('--font-main', fontName); localStorage.setItem('modora_font', fontName); document.querySelectorAll('.seg-btn[onclick*="chFont"]').forEach(b => b.classList.remove('active')); if(fontName.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active'); else if(fontName.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active'); else document.getElementById('btnFontTech').classList.add('active'); }
+        function resetSettings() { localStorage.clear(); window.location.reload(); }
         loadSettings();
     </script>
 </body>
