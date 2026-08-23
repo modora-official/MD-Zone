@@ -46,7 +46,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
         html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); position: relative; }
         body { color: var(--text-main); padding-top: calc(var(--header-h) + 15px); padding-bottom: env(safe-area-inset-bottom, 20px); min-height: 100vh; display: flex; flex-direction: column; }
-        .logo, .btn-tele, .btn-setting, .seg-btn, .color-item, .toggle-switch, .lang-btn, .welcome-btn { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
+        .logo, .btn-tele, .btn-setting, .seg-btn, .color-item, .toggle-switch, .play-link-btn { -webkit-user-select: none; user-select: none; -webkit-user-drag: none; }
 
         /* --- BACKGROUND ANIMATION --- */
         #bg-animation { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; overflow: hidden; pointer-events: none; }
@@ -63,72 +63,60 @@
         /* --- HEADER --- */
         header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.03); z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .logo { font-size: 24px; font-weight: 800; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; cursor: pointer; letter-spacing: -0.5px;}
-        .header-title { font-size: 16px; font-weight: 700; color: var(--text-muted); flex: 1; text-align: center; }
+        .header-title { font-size: 15px; font-weight: 700; color: var(--text-muted); flex: 1; text-align: center; }
         .header-actions { display: flex; gap: 12px; align-items: center; }
         .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; box-shadow: 0 4px 15px rgba(41, 182, 246, 0.3); }
         .btn-setting { width: 40px; height: 40px; background: rgba(255,255,255,0.05); color: var(--text-main); border: 1px solid rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; transition: transform 0.2s; }
         .btn-tele:active, .btn-setting:active { transform: scale(0.9); }
 
         /* --- TEKS HEADER --- */
-        .tutorial-header { text-align: center; margin-top: 35px; margin-bottom: 25px; }
+        .tutorial-header { text-align: center; margin-top: 35px; margin-bottom: 30px; }
         .tutorial-title { font-size: 28px; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.5px; background: linear-gradient(90deg, #fff, #94a3b8, #fff); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: textShine 4s linear infinite; }
         @keyframes textShine { to { background-position: 200% center; } }
         .tutorial-desc { font-size: 14px; color: var(--text-muted); font-weight: 500; line-height: 1.5; }
 
-        /* --- LANGUAGE SELECTOR --- */
-        .lang-selector { display: flex; gap: 10px; margin-bottom: 25px; background: var(--bg-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); padding: 6px; border-radius: 16px; border: 1px solid var(--card-border); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        .lang-btn { flex: 1; padding: 12px; border-radius: 12px; border: none; background: transparent; color: var(--text-muted); font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .lang-btn.active { background: var(--bg-card); color: var(--text-main); box-shadow: 0 4px 15px rgba(0,0,0,0.2); border: 1px solid var(--primary); }
-        .lang-btn:active { transform: scale(0.97); }
-
-        /* --- WELCOME OVERLAY --- */
-        .welcome-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); z-index: 9999; display: flex; align-items: center; justify-content: center; opacity: 1; transition: opacity 0.5s ease, visibility 0.5s; }
-        .welcome-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-        .welcome-card { background: var(--bg-card); padding: 40px 25px; border-radius: 28px; text-align: center; max-width: 90%; width: 380px; border: 1px solid var(--card-border); box-shadow: var(--shadow); transform: translateY(0); transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .welcome-overlay.hidden .welcome-card { transform: translateY(40px); }
-        .welcome-logo { font-size: 28px; font-weight: 800; margin-bottom: 15px; letter-spacing: -0.5px; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .welcome-title { font-size: 20px; font-weight: 800; margin-bottom: 8px; color: var(--text-main); }
-        .welcome-desc { font-size: 14px; color: var(--text-muted); margin-bottom: 25px; line-height: 1.6; }
-        .welcome-btn { width: 100%; padding: 15px; margin-bottom: 12px; border-radius: 16px; border: 1px solid var(--card-border); background: var(--search-bg); color: var(--text-main); font-size: 15px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px; transition: all 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .welcome-btn:hover { background: var(--bg-body); border-color: var(--primary); }
-
-        /* --- OPTIMASI VIDEO BORDER ANIMATION --- */
+        /* --- MENU LINK VIDEO --- */
         .video-box { position: relative; width: 100%; max-width: 450px; margin: 0 auto 40px auto; }
-        
         .video-container-glow {
             position: absolute; top: 50%; left: 50%; width: 100%; height: 100%;
             transform: translate(-50%, -50%) translateZ(0); background: var(--primary);
             filter: blur(40px); z-index: -1; border-radius: 30px;
             animation: pulseGlow 4s alternate infinite ease-in-out; pointer-events: none;
-            transition: opacity 0.5s;
         }
         @keyframes pulseGlow { 0% { opacity: 0.15; } 100% { opacity: 0.35; } } 
 
         .video-wrapper {
-            position: relative; width: 100%; aspect-ratio: 3 / 4; 
-            border-radius: 20px; padding: 4px; 
-            display: flex; justify-content: center; align-items: center;
+            position: relative; width: 100%; 
+            border-radius: 20px; padding: 35px 24px; 
+            display: flex; flex-direction: column; align-items: center; gap: 15px;
             overflow: hidden; z-index: 1; box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-            transform: translateZ(0); /* Hardware Acceleration Hardware */
+            background: var(--bg-body); transform: translateZ(0);
         }
 
         .video-wrapper::before {
-            content: ''; position: absolute; width: 200%; height: 200%;
+            content: ''; position: absolute; width: 200%; height: 200%; top: -50%; left: -50%;
             background: conic-gradient( transparent 10%, var(--primary) 30%, var(--secondary) 50%, var(--accent) 70%, transparent 90% );
             animation: spinBorder 4s linear infinite; z-index: -2;
-            transition: opacity 0.5s;
         }
         @keyframes spinBorder { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .video-wrapper::after { content: ''; position: absolute; inset: 4px; background: var(--bg-body); border-radius: 16px; z-index: -1; }
+        .video-wrapper::after { content: ''; position: absolute; inset: 3px; background: var(--bg-body); border-radius: 18px; z-index: -1; }
 
-        /* ANTI-LAG SYSTEM: PAUSE ANIMASI SAAT VIDEO DIPLAY */
-        .video-box.is-playing .video-container-glow,
-        .video-box.is-playing .video-wrapper::before {
-            animation-play-state: paused !important; /* Hentikan animasi agar GPU fokus memutar video */
-            opacity: 0.1 !important; /* Redupkan efek berat */
+        .play-icon-header { font-size: 45px; margin-bottom: 5px; color: var(--primary); filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3)); }
+        
+        .play-link-btn {
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            width: 100%; padding: 18px; border-radius: 14px;
+            font-size: 15px; font-weight: 800; text-decoration: none;
+            color: var(--text-main); background: var(--search-bg);
+            border: 1px solid var(--card-border); position: relative; overflow: hidden;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-
-        .modora-video { width: 100%; height: 100%; border-radius: 16px; object-fit: contain; outline: none; background-color: #000; position: relative; z-index: 2; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); }
+        .play-link-btn::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent); transition: left 0.4s; z-index: 1; pointer-events: none; }
+        .play-link-btn:hover { border-color: var(--primary); background: var(--bg-card); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.3); }
+        .play-link-btn:hover::before { left: 100%; }
+        .play-link-btn:active { transform: scale(0.96); }
+        .play-link-btn i { font-size: 20px; background: linear-gradient(90deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; position: relative; z-index: 2; }
+        .play-link-btn span { position: relative; z-index: 2; }
 
         /* --- INFO CARDS --- */
         .info-card { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); padding: 22px; border-radius: 20px; border: 1px solid var(--card-border); margin-bottom: 20px; box-shadow: 0 8px 25px rgba(0,0,0,0.2); border-left: 5px solid var(--primary); position: relative; overflow: hidden; animation: cardEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(20px); will-change: transform, opacity; }
@@ -154,7 +142,7 @@
         .modal.active .modal-box { transform: translateY(0); }
         .modal-handle { width: 50px; height: 5px; background: var(--text-muted); opacity: 0.3; border-radius: 10px; margin: 0 auto 20px auto; }
         .set-group { margin-bottom: 25px; }
-        .set-title { font-weight: 800; font-size: 15px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+        .set-title { font-weight: 800; font-size: 14px; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
         .segmented-control { display: flex; background: var(--search-bg); border-radius: 12px; padding: 3px; }
         .seg-btn { flex: 1; padding: 10px; border-radius: 10px; font-size: 13px; font-weight: 700; color: var(--text-main); background: transparent; border: none; cursor: pointer; transition: background 0.2s; }
         .seg-btn.active { background: var(--bg-card); box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
@@ -176,20 +164,6 @@
 </head>
 <body>
 
-    <div id="welcomeOverlay" class="welcome-overlay">
-        <div class="welcome-card">
-            <div class="welcome-logo">MODORA</div>
-            <h2 class="welcome-title">Select Language</h2>
-            <p class="welcome-desc">Pilih bahasa tutorial yang ingin Anda tonton / Choose your tutorial language.</p>
-            <button class="welcome-btn" onclick="chooseInitialLang('id')">
-                <span class="flag">🇮🇩</span> Versi Indonesia
-            </button>
-            <button class="welcome-btn" onclick="chooseInitialLang('en')">
-                <span class="flag">🇬🇧</span> English Version
-            </button>
-        </div>
-    </div>
-    
     <div id="bg-animation">
         <div class="ambient-orb orb-1"></div>
         <div class="ambient-orb orb-2"></div>
@@ -197,7 +171,7 @@
 
     <header>
         <div class="logo" onclick="window.location.href='/'">MODORA</div>
-        <div class="header-title" id="t-headerCenter">Tutorials Center</div>
+        <div class="header-title">Pusat Tutorial | Tutorials Center</div>
         <div class="header-actions">
             <button onclick="toggleSet()" aria-label="Settings" class="btn-setting"><i class="fa-solid fa-gear"></i></button>
             <a href="../../../../telegram" aria-label="Telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
@@ -206,41 +180,38 @@
 
     <main id="mainView">
         <div class="tutorial-header">
-            <h1 class="tutorial-title" id="t-pageTitle">Tutorial Download</h1>
-            <p class="tutorial-desc" id="t-pageDesc">Ikuti langkah-langkah di dalam video ini agar game/aplikasi dapat berjalan dengan sempurna.</p>
+            <h1 class="tutorial-title">Tutorial Download</h1>
+            <p class="tutorial-desc">Pilih bahasa di bawah ini untuk memutar video. | Select a language below to play the video.</p>
         </div>
 
-        <div class="lang-selector">
-            <button id="btnLangID" class="lang-btn" onclick="setTutorialLang('id')"><span class="flag">🇮🇩</span> Indonesia</button>
-            <button id="btnLangEN" class="lang-btn" onclick="setTutorialLang('en')"><span class="flag">🇬🇧</span> English</button>
-        </div>
-
-        <div class="video-box" id="videoWrapperBox">
+        <div class="video-box">
             <div class="video-container-glow"></div>
             <div class="video-wrapper">
-                <video 
-                    id="modoraVideo"
-                    class="modora-video" 
-                    controls 
-                    playsinline 
-                    webkit-playsinline="true"
-                    x5-playsinline="true"
-                    x-webkit-airplay="allow"
-                    preload="metadata"
-                    poster="https://modorazone.com/thumb.png">
-                    Browser Anda tidak mendukung tag video.
-                </video>
+                
+                <div style="text-align: center; margin-bottom: 5px;">
+                    <i class="fa-solid fa-circle-play play-icon-header"></i>
+                    <h2 style="font-size: 17px; font-weight: 800; color: var(--text-main);">Pilih Bahasa | Select Language</h2>
+                </div>
+                
+                <a href="https://modorazone.it.com/idn.mp4" class="play-link-btn">
+                    <i class="fa-solid fa-play"></i> <span>🇮🇩 Versi Indonesia</span>
+                </a>
+                
+                <a href="https://modorazone.it.com/eng.mp4" class="play-link-btn">
+                    <i class="fa-solid fa-play"></i> <span>🇬🇧 English Version</span>
+                </a>
+
             </div>
         </div>
 
         <div class="info-card">
-            <h4><i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> <span id="t-noteTitle">Catatan Penting</span></h4>
-            <p id="t-noteDesc">Pastikan Anda telah mengizinkan instalasi dari <b>"Sumber Tidak Dikenal" (Unknown Sources)</b> di pengaturan ponsel Android Anda sebelum melakukan instalasi MOD APK.</p>
+            <h4><i class="fa-solid fa-circle-info" style="color: var(--primary);"></i> Catatan Penting | Important Note</h4>
+            <p>Pastikan Anda telah mengizinkan instalasi dari <b>"Sumber Tidak Dikenal" (Unknown Sources)</b> di pengaturan ponsel Android Anda sebelum melakukan instalasi MOD APK. <br><br> <i>Make sure you have allowed installation from <b>"Unknown Sources"</b> in your Android phone settings before installing the MOD APK.</i></p>
         </div>
 
         <div class="info-card">
-            <h4><i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> <span id="t-safeTitle">100% Aman & Teruji</span></h4>
-            <p id="t-safeDesc">Semua file di MODORA telah melewati uji keamanan dan dipastikan terbebas dari virus/malware. Jika Anda mengalami masalah, silakan hubungi kami via Telegram.</p>
+            <h4><i class="fa-solid fa-shield-halved" style="color: var(--accent);"></i> 100% Aman & Teruji | 100% Safe & Tested</h4>
+            <p>Semua file di MODORA telah melewati uji keamanan dan dipastikan terbebas dari virus/malware. Jika Anda mengalami masalah, silakan hubungi kami via Telegram. <br><br> <i>All files on MODORA have passed security tests and are guaranteed free of viruses/malware. If you encounter any issues, please contact us via Telegram.</i></p>
         </div>
     </main>
 
@@ -253,11 +224,11 @@
         <div class="modal-box">
             <div style="text-align:center; margin-bottom:25px;">
                 <div class="modal-handle"></div>
-                <h3 style="font-size:18px; font-weight: 800; letter-spacing: -0.3px;" id="t-settingsTitle">Settings</h3>
+                <h3 style="font-size:18px; font-weight: 800; letter-spacing: -0.3px;">Pengaturan | Settings</h3>
             </div>
             
             <div class="set-group">
-                <div class="set-title" id="t-colorTheme">Color Theme</div>
+                <div class="set-title">Tema Warna | Color Theme</div>
                 <div class="color-grid">
                     <div class="color-item" style="background:#2563eb;" onclick="setThemeColor('#2563eb', '#4f46e5', this)" data-color="#2563eb"></div>
                     <div class="color-item" style="background:#ef4444;" onclick="setThemeColor('#ef4444', '#b91c1c', this)" data-color="#ef4444"></div>
@@ -269,13 +240,13 @@
 
             <div class="set-group">
                 <div class="set-title">
-                    <span id="t-batterySaver">Battery Saver (No Blur)</span>
+                    <span>Hemat Baterai | Battery Saver (No Blur)</span>
                     <div class="toggle-switch" id="ecoToggle" onclick="toggleEco()"></div>
                 </div>
             </div>
 
             <div class="set-group">
-                <div class="set-title" id="t-fontStyle">Font Style</div>
+                <div class="set-title">Gaya Huruf | Font Style</div>
                 <div class="segmented-control">
                     <button onclick="chFont('Plus Jakarta Sans')" id="btnFontModern" class="seg-btn active">Modern</button>
                     <button onclick="chFont('Merriweather')" id="btnFontClassic" class="seg-btn" style="font-family:serif;">Classic</button>
@@ -284,83 +255,14 @@
             </div>
 
             <div class="modal-actions">
-                <button class="btn-reset" id="t-btnReset" onclick="resetSettings()">Reset</button>
-                <button class="btn-close" id="t-btnClose" onclick="toggleSet()">Close</button>
+                <button class="btn-reset" onclick="resetSettings()">Atur Ulang | Reset</button>
+                <button class="btn-close" onclick="toggleSet()">Tutup | Close</button>
             </div>
         </div>
     </div>
 
     <script>
         document.getElementById('currentYear').innerText = new Date().getFullYear();
-
-        let userLang = 'en';
-        const videoID = "https://modorazone.it.com/idn.mp4";
-        const videoEN = "https://modorazone.it.com/eng.mp4";
-
-        const i18n = {
-            en: { header: "Tutorials Center", pageTitle: "Tutorial Download", pageDesc: "Follow the steps in this video so the game/app runs perfectly.", noteTitle: "Important Note", noteDesc: "Make sure you have allowed installation from <b>\"Unknown Sources\"</b> in your Android phone settings before installing the MOD APK.", safeTitle: "100% Safe & Tested", safeDesc: "All files on MODORA have passed security tests and are guaranteed free of viruses/malware. If you encounter any issues, please contact us via Telegram.", settings: "Settings", colorTheme: "Color Theme", batterySaver: "Battery Saver (No Blur)", fontStyle: "Font Style", reset: "Reset", close: "Close" },
-            id: { header: "Pusat Tutorial", pageTitle: "Tutorial Download", pageDesc: "Ikuti langkah-langkah di dalam video ini agar game/aplikasi dapat berjalan dengan sempurna.", noteTitle: "Catatan Penting", noteDesc: "Pastikan Anda telah mengizinkan instalasi dari <b>\"Sumber Tidak Dikenal\" (Unknown Sources)</b> di pengaturan ponsel Android Anda sebelum melakukan instalasi MOD APK.", safeTitle: "100% Aman & Teruji", safeDesc: "Semua file di MODORA telah melewati uji keamanan dan dipastikan terbebas dari virus/malware. Jika Anda mengalami masalah, silakan hubungi kami via Telegram.", settings: "Pengaturan", colorTheme: "Tema Warna", batterySaver: "Hemat Baterai", fontStyle: "Gaya Huruf", reset: "Atur Ulang", close: "Tutup" }
-        };
-
-        function applyLanguage() {
-            if (!i18n[userLang]) userLang = 'en'; 
-            document.getElementById('t-headerCenter').innerText = i18n[userLang].header;
-            document.getElementById('t-pageTitle').innerText = i18n[userLang].pageTitle;
-            document.getElementById('t-pageDesc').innerText = i18n[userLang].pageDesc;
-            document.getElementById('t-noteTitle').innerText = i18n[userLang].noteTitle;
-            document.getElementById('t-noteDesc').innerHTML = i18n[userLang].noteDesc;
-            document.getElementById('t-safeTitle').innerText = i18n[userLang].safeTitle;
-            document.getElementById('t-safeDesc').innerText = i18n[userLang].safeDesc;
-            document.getElementById('t-settingsTitle').innerText = i18n[userLang].settings;
-            document.getElementById('t-colorTheme').innerText = i18n[userLang].colorTheme;
-            document.getElementById('t-batterySaver').innerText = i18n[userLang].batterySaver;
-            document.getElementById('t-fontStyle').innerText = i18n[userLang].fontStyle;
-            document.getElementById('t-btnReset').innerText = i18n[userLang].reset;
-            document.getElementById('t-btnClose').innerText = i18n[userLang].close;
-        }
-
-        function chooseInitialLang(lang) {
-            document.getElementById('welcomeOverlay').classList.add('hidden');
-            setTutorialLang(lang);
-        }
-
-        function setTutorialLang(lang) {
-            userLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            const videoEl = document.getElementById('modoraVideo');
-
-            if(lang === 'id') {
-                document.getElementById('btnLangID').classList.add('active');
-                videoEl.src = videoID;
-            } else {
-                document.getElementById('btnLangEN').classList.add('active');
-                userLang = 'en'; 
-                videoEl.src = videoEN;
-            }
-            videoEl.load(); 
-            applyLanguage();
-        }
-
-        /* --- SCRIPT ANTI LAG: MATIKAN ANIMASI SAAT PLAY --- */
-        document.addEventListener('DOMContentLoaded', () => {
-            const video = document.getElementById('modoraVideo');
-            const videoBox = document.getElementById('videoWrapperBox');
-
-            if (video && videoBox) {
-                // Saat video diputar, beri class 'is-playing' (CSS akan mem-pause animasi)
-                video.addEventListener('play', () => {
-                    videoBox.classList.add('is-playing');
-                });
-
-                // Saat video dijeda/selesai, cabut class 'is-playing' (Animasi jalan lagi)
-                video.addEventListener('pause', () => {
-                    videoBox.classList.remove('is-playing');
-                });
-                video.addEventListener('ended', () => {
-                    videoBox.classList.remove('is-playing');
-                });
-            }
-        });
 
         /* --- Background Floating Icons --- */
         function createBgIcons() {
@@ -393,6 +295,7 @@
         function setThemeColor(prim, sec, el) { document.documentElement.style.setProperty('--primary', prim); document.documentElement.style.setProperty('--secondary', sec); localStorage.setItem('modora_color', prim); localStorage.setItem('modora_color_sec', sec); document.querySelectorAll('.color-item').forEach(c => c.classList.remove('active')); el.classList.add('active'); }
         function chFont(fontName) { document.documentElement.style.setProperty('--font-main', fontName); localStorage.setItem('modora_font', fontName); document.querySelectorAll('.seg-btn[onclick*="chFont"]').forEach(b => b.classList.remove('active')); if(fontName.includes('Jakarta')) document.getElementById('btnFontModern').classList.add('active'); else if(fontName.includes('Merriweather')) document.getElementById('btnFontClassic').classList.add('active'); else document.getElementById('btnFontTech').classList.add('active'); }
         function resetSettings() { localStorage.clear(); window.location.reload(); }
+        
         loadSettings();
     </script>
 </body>
