@@ -1,32 +1,13 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <script>
-        (function() {
-            var userLang = navigator.language || navigator.userLanguage;
-            var targetLang = userLang.split('-')[0];
-            var currentLang = 'id';
-            if (targetLang !== currentLang) {
-                var cookieStr = "googtrans=/" + currentLang + "/" + targetLang;
-                document.cookie = cookieStr + "; path=/; domain=" + window.location.hostname;
-                document.cookie = cookieStr + "; path=/";
-            }
-        })();
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'id',
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-    </script>
-    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
     <script src="../../../../../mdads.js"></script>
     <script>if(typeof renderModoraAd === 'function') renderModoraAd(1);</script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Super Bear Adventure MOD APK V13.0.4 - MODORA Official</title>
+    <link rel="icon" type="image/png" href="https://modorazone.com/modorazone.png">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -40,14 +21,25 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
         html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
         body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
-        
-        .skiptranslate, #goog-gt-tt, .goog-te-banner-frame { display: none !important; }
-        body { top: 0px !important; }
-        #google_translate_element { display: none !important; }
 
         #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
         
+        /* Loading Custom Animation */
+        @keyframes scanline { 0% { left: -100%; } 100% { left: 200%; } }
+        @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        
+        /* Utility class to completely block native link behaviors/previews */
+        .no-select-dl {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
         .ad-box { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 25px 0; overflow-x: auto; scrollbar-width: none; background: rgba(0,0,0,0.15); border-radius: 12px; padding: 10px 0; border: 1px dashed var(--border); }
         .ad-box::-webkit-scrollbar { display: none; }
 
@@ -108,12 +100,11 @@
     </style>
 </head>
 <body>
-    <div id="google_translate_element"></div>
 
     <header>
         <a href="../../../../../" class="btn-back"><i class="fa-solid fa-angle-left"></i></a>
         <div class="header-title">App Detail</div>
-        <a href="https://modorazone.com/telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+        <a href="../../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
     </header>
 
     <div id="mainView">
@@ -134,15 +125,15 @@
         <div class="mini-actions">
             <a href="javascript:void(0)" onclick="scrollToDownload(event)" class="btn-mini"><i class="fa-solid fa-download"></i><span>Download</span></a>
             <a href="https://play.google.com/store/apps/details?id=com.Earthkwak.Platformer" target="_blank" class="btn-mini"><i class="fa-brands fa-google-play"></i><span>Play Store</span></a>
-            <div class="btn-mini" onclick="shareApp()"><i class="fa-solid fa-share-nodes"></i><span>Bagikan</span></div>
+            <div class="btn-mini" onclick="shareApp()"><i class="fa-solid fa-share-nodes"></i><span>Share</span></div>
         </div>
         
-        <div class="section-title"><i class="fa-solid fa-star"></i> Fitur MOD</div>
+        <div class="section-title"><i class="fa-solid fa-star"></i> MOD Features</div>
         <div class="mod-feature-grid">
             <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Coin</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Bear</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Skins</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock Premium</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock Level</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Free Shopping</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>100% Work</span></div>
         </div>
         
-        <div class="section-title"><i class="fa-solid fa-images"></i> Screenshot</div>
+        <div class="section-title"><i class="fa-solid fa-images"></i> Screenshots</div>
         <div class="ss-scroll">
             <img src="https://play-lh.googleusercontent.com/vCaKZVSzWlC1Lw8j4nmSc2MwyS3BsrP09N3qpqz5ZNHtWc_CiwQJt0p_Ot3ugtaDB903trQjnwUkHSS_dEk46A" class="ss-img" alt="MODORA Official" loading="lazy">
                             <img src="https://play-lh.googleusercontent.com/Yqf_evt8mJisJf-IOpJGtRWibg2LmOa_tA5r1A1s_xuZfgCE6S8bfQhxMFjpKf9SHR3PMUKC49gT5pd0zIigcw" class="ss-img" alt="MODORA Official" loading="lazy">
@@ -159,7 +150,7 @@
             <script>if(typeof renderModoraAd === 'function') renderModoraAd(3);</script>
         </div>        
 
-        <div class="section-title"><i class="fa-solid fa-circle-info"></i> Deskripsi</div>
+        <div class="section-title"><i class="fa-solid fa-circle-info"></i> Description</div>
         <div class="desc-box">
             <p>Jelajahi kerajaan dan berbagai wilayahnya dalam petualangan 3D yang terinspirasi dari game-game tahun akhir 90-an. Eksplor setiap wilayah dengan bebas, temukan rahasia mereka, dan selamatkan teman-teman beruangmu! Dunia ini dulunya tempat yang damai, sampai lebah mulai menghasilkan madu ungu, zat aneh yang membuat siapa pun yang memakannya menjadi musuh tanpa pikiran. Kamu akan bermain sebagai Baaren, seekor beruang pemberani yang memulai pencarian untuk membebaskan kerajaan dari ancaman asal-usul yang tidak diketahui.</p>
                         
@@ -171,7 +162,7 @@
         </div>
 
         <div class="social-notice">
-            <p>Tombol Request</p>
+            <p>Request Button</p>
             <div class="social-links">
                 <a href="../../../../../requests" class="btn-tg" style="background: var(--primary);"><i class="fa-solid fa-code-pull-request"></i> Request App/Game</a>
             </div>
@@ -181,21 +172,24 @@
             <script>if(typeof renderModoraAd === 'function') renderModoraAd(5);</script>
         </div>
 
-        <div class="section-title" id="download-section" style="margin-top: 15px;"><i class="fa-solid fa-cloud-arrow-down"></i> Area Download</div>
+        <div class="section-title" id="download-section" style="margin-top: 15px;"><i class="fa-solid fa-cloud-arrow-down"></i> Download Area</div>
         
         
-                <div id="dl-wrap-0" style="margin-bottom: 12px;">
-                    <div id="dl-loading-0" style="background: var(--bg-card, #1e293b); border: 1px solid var(--card-border, #334155); border-radius: 16px; padding: 25px 20px; text-align: center; color: var(--text-main, #f8fafc); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-                        <i class="fa-solid fa-circle-notch fa-spin" style="font-size: 28px; color: var(--primary, #2563eb);"></i>
-                        <span style="font-size: 14px; font-weight: 700;">Mempersiapkan Link... <span id="dl-count-0" style="color: var(--primary, #2563eb); font-size: 18px; font-weight: 800;">10</span>s</span>
-                        <div style="width: 100%; height: 6px; background: rgba(0,0,0,0.5); border-radius: 10px; overflow: hidden; box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);">
-                            <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary, #2563eb), var(--accent, #10b981)); transition: width 1s linear; border-radius: 10px;"></div>
+                <div id="dl-wrap-0" style="margin-bottom: 12px; position: relative;" class="no-select-dl">
+                    <div id="dl-loading-0" class="no-select-dl" style="background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(59,130,246,0.4); border-radius: 16px; padding: 30px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 0 30px rgba(59,130,246,0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; overflow: hidden; z-index: 1;" oncontextmenu="return false;">
+                        <div style="position: absolute; top: 0; left: -100%; width: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); animation: scanline 2s linear infinite;"></div>
+                        <i class="fa-solid fa-cloud-arrow-down" style="font-size: 36px; color: var(--primary); filter: drop-shadow(0 0 10px rgba(59,130,246,0.6));"></i>
+                        <div style="font-size: 14px; font-weight: 800; color: #f8fafc; letter-spacing: 1px; text-transform: uppercase; animation: pulseText 1.5s infinite;">Preparing Link... <span id="dl-count-0" style="color: var(--accent); font-size: 18px; text-shadow: 0 0 8px rgba(16,185,129,0.5);">10</span>s</div>
+                        <div style="width: 90%; height: 6px; background: rgba(0,0,0,0.6); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                            <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 1s linear; border-radius: 10px; box-shadow: 0 0 10px rgba(16,185,129,0.8);"></div>
                         </div>
                     </div>
-                    <a href="https://safefileku.com/download/u2qHBVsP6w8rjO8v" class="btn-download-huge" id="dl-btn-0" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;">
-                        <div><span>DOWNLOAD (226 MB)</span></div>
-                        <div class="btn-date">Update: 10 Agustus 2026</div>
-                    </a>
+                    
+                    <div class="btn-download-huge no-select-dl" id="dl-btn-0" onclick="window.open('https://safefileku.com/download/WNEuLDtubkkwtxyy', '_blank')" oncontextmenu="return false;" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; position: relative; z-index: 2;">
+                        <div><span>DOWNLOAD (226.85 MB)</span></div>
+                        <div class="btn-date">Update: August 25, 2026</div>
+                    </div>
+                    
                     <script>
                         setTimeout(() => {
                             let timeLeft = 10;
@@ -223,7 +217,7 @@
                 </div>
         
         <div class="social-notice">
-            <p>Join on komunitas</p>
+            <p>Join the Community</p>
             <div class="social-links">
                 <a href="../../../../../whatsapp" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
                 <a href="../../../../../telegram" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
@@ -281,21 +275,22 @@
                 lbImg.src = images[currentIndex].src;
             };
             
-            lb.onclick = (e) => { 
-                if(e.target === lb) lb.classList.remove('show'); 
-            };
+            // Dihapus agar lightbox HANYA BISA ditutup melalui tombol 'X'
+            // lb.onclick = (e) => { 
+            //     if(e.target === lb) lb.classList.remove('show'); 
+            // };
         });
 
         function shareApp() {
             if (navigator.share) {
                 navigator.share({
                     title: 'Super Bear Adventure MOD APK V13.0.4',
-                    text: 'Download Super Bear Adventure MOD APK V13.0.4 MOD APK terbaru dari MODORA Official!',
+                    text: 'Download Super Bear Adventure MOD APK V13.0.4 MOD APK latest version from MODORA Official!',
                     url: window.location.href
                 });
             } else {
                 navigator.clipboard.writeText(window.location.href);
-                alert('Link disalin ke clipboard!');
+                alert('Link copied to clipboard!');
             }
         }
 
@@ -306,7 +301,7 @@
 
             var overlay = document.createElement('div');
             overlay.id = 'modoraAdblockOverlay';
-            overlay.innerHTML = '<div class="modora-premium-card"><div class="modora-icon-header"><i class="fa-solid fa-shield-virus"></i></div><h2 class="modora-title">Pemblokir Iklan Aktif</h2><p class="modora-desc">Situs ini berjalan berkat dukungan iklan. Mohon <span class="modora-highlight">matikan Adblock</span> Anda untuk melanjutkan download.</p><button class="modora-action-card" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> Saya sudah mematikan Adblock</button></div>';
+            overlay.innerHTML = '<div class="modora-premium-card"><div class="modora-icon-header"><i class="fa-solid fa-shield-virus"></i></div><h2 class="modora-title">Adblocker Detected</h2><p class="modora-desc">This site relies on ads. Please <span class="modora-highlight">disable your Adblock</span> to continue downloading.</p><button class="modora-action-card" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> I have disabled Adblock</button></div>';
             document.body.appendChild(overlay);
             document.body.style.overflow = 'hidden';
         }
