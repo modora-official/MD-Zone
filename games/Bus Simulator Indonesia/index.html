@@ -204,9 +204,9 @@
                         </div>
                     </div>
                     
-                    <div class="btn-download-huge no-select-dl" id="dl-btn-0" onclick="window.open('https://safefileku.com/download/ZI3tf0a7UO4gJXPq', '_blank')" oncontextmenu="return false;" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; position: relative; z-index: 2;">
-                        <div><span>DOWNLOAD (1.36 GB)</span></div>
-                        <div class="btn-date">Update: August 22, 2026</div>
+                    <div class="btn-download-huge no-select-dl" id="dl-btn-0" onclick="window.open('https://safefileku.com/download/eSQCtbw9Nqdelv2l', '_blank')" oncontextmenu="return false;" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; position: relative; z-index: 2;">
+                        <div><span>DOWNLOAD (408 MB)</span></div>
+                        <div class="btn-date">Update: August 26, 2026</div>
                     </div>
                     
                     <script>
@@ -216,6 +216,86 @@
                             let btnEl = document.getElementById('dl-btn-0');
                             let countEl = document.getElementById('dl-count-0');
                             let progressEl = document.getElementById('dl-progress-0');
+                            
+                            let dlTimer = setInterval(() => {
+                                timeLeft--;
+                                let pct = ((10 - timeLeft) / 10) * 100;
+                                if(progressEl) progressEl.style.width = pct + '%';
+                                
+                                if(timeLeft > 0) {
+                                    if(countEl) countEl.innerText = timeLeft;
+                                } else {
+                                    clearInterval(dlTimer);
+                                    if(loadingEl) loadingEl.style.display = 'none';
+                                    if(btnEl) btnEl.style.display = 'flex';
+                                }
+                            }, 1000);
+                            setTimeout(() => { if(progressEl) progressEl.style.width = '10%'; }, 50);
+                        }, 100);
+                    </script>
+                </div>
+                <div id="dl-wrap-1" style="margin-bottom: 12px; position: relative;" class="no-select-dl">
+                    <div id="dl-loading-1" class="no-select-dl" style="background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(59,130,246,0.4); border-radius: 16px; padding: 30px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 0 30px rgba(59,130,246,0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; overflow: hidden; z-index: 1;" oncontextmenu="return false;">
+                        <div style="position: absolute; top: 0; left: -100%; width: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); animation: scanline 2s linear infinite;"></div>
+                        <i class="fa-solid fa-cloud-arrow-down" style="font-size: 36px; color: var(--primary); filter: drop-shadow(0 0 10px rgba(59,130,246,0.6));"></i>
+                        <div style="font-size: 14px; font-weight: 800; color: #f8fafc; letter-spacing: 1px; text-transform: uppercase; animation: pulseText 1.5s infinite;">Preparing Link... <span id="dl-count-1" style="color: var(--accent); font-size: 18px; text-shadow: 0 0 8px rgba(16,185,129,0.5);">10</span>s</div>
+                        <div style="width: 90%; height: 6px; background: rgba(0,0,0,0.6); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                            <div id="dl-progress-1" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 1s linear; border-radius: 10px; box-shadow: 0 0 10px rgba(16,185,129,0.8);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-download-huge no-select-dl" id="dl-btn-1" onclick="window.open('https://safefileku.com/download/PUoL2Nh44XkRkeYq', '_blank')" oncontextmenu="return false;" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; position: relative; z-index: 2;">
+                        <div><span>DOWNLOAD OBB (131 MB)</span></div>
+                        <div class="btn-date">Update: August 26, 2026</div>
+                    </div>
+                    
+                    <script>
+                        setTimeout(() => {
+                            let timeLeft = 10;
+                            let loadingEl = document.getElementById('dl-loading-1');
+                            let btnEl = document.getElementById('dl-btn-1');
+                            let countEl = document.getElementById('dl-count-1');
+                            let progressEl = document.getElementById('dl-progress-1');
+                            
+                            let dlTimer = setInterval(() => {
+                                timeLeft--;
+                                let pct = ((10 - timeLeft) / 10) * 100;
+                                if(progressEl) progressEl.style.width = pct + '%';
+                                
+                                if(timeLeft > 0) {
+                                    if(countEl) countEl.innerText = timeLeft;
+                                } else {
+                                    clearInterval(dlTimer);
+                                    if(loadingEl) loadingEl.style.display = 'none';
+                                    if(btnEl) btnEl.style.display = 'flex';
+                                }
+                            }, 1000);
+                            setTimeout(() => { if(progressEl) progressEl.style.width = '10%'; }, 50);
+                        }, 100);
+                    </script>
+                </div>
+                <div id="dl-wrap-2" style="margin-bottom: 12px; position: relative;" class="no-select-dl">
+                    <div id="dl-loading-2" class="no-select-dl" style="background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(59,130,246,0.4); border-radius: 16px; padding: 30px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 0 30px rgba(59,130,246,0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; overflow: hidden; z-index: 1;" oncontextmenu="return false;">
+                        <div style="position: absolute; top: 0; left: -100%; width: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); animation: scanline 2s linear infinite;"></div>
+                        <i class="fa-solid fa-cloud-arrow-down" style="font-size: 36px; color: var(--primary); filter: drop-shadow(0 0 10px rgba(59,130,246,0.6));"></i>
+                        <div style="font-size: 14px; font-weight: 800; color: #f8fafc; letter-spacing: 1px; text-transform: uppercase; animation: pulseText 1.5s infinite;">Preparing Link... <span id="dl-count-2" style="color: var(--accent); font-size: 18px; text-shadow: 0 0 8px rgba(16,185,129,0.5);">10</span>s</div>
+                        <div style="width: 90%; height: 6px; background: rgba(0,0,0,0.6); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                            <div id="dl-progress-2" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 1s linear; border-radius: 10px; box-shadow: 0 0 10px rgba(16,185,129,0.8);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-download-huge no-select-dl" id="dl-btn-2" onclick="window.open('https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver', '_blank')" oncontextmenu="return false;" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; position: relative; z-index: 2;">
+                        <div><span>ZArchiver</span></div>
+                        <div class="btn-date">Update: August 26, 2026</div>
+                    </div>
+                    
+                    <script>
+                        setTimeout(() => {
+                            let timeLeft = 10;
+                            let loadingEl = document.getElementById('dl-loading-2');
+                            let btnEl = document.getElementById('dl-btn-2');
+                            let countEl = document.getElementById('dl-count-2');
+                            let progressEl = document.getElementById('dl-progress-2');
                             
                             let dlTimer = setInterval(() => {
                                 timeLeft--;
