@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
@@ -7,9 +7,47 @@
     <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#0f172a" id="metaThemeColor">
     
-    <title>All Apps - MODORA</title>
-    <meta name="description" content="Kumpulan semua aplikasi MOD APK gratis untuk Android.">
+    <!-- FULL SEO OPTIMIZATION -->
+    <title>Download Kumpulan Aplikasi MOD APK Premium & Pro Terbaru - MODORA</title>
+    <meta name="description" content="Temukan dan download kumpulan aplikasi MOD APK Android premium, pro, full unlocked, dan gratis terlengkap dengan pembaruan otomatis setiap hari di MODORA Zone.">
+    <meta name="keywords" content="modora, modora apps, download mod apk, aplikasi mod android, apk premium gratis, mod apk terupdate, aplikasi pro unlocked">
     <meta name="author" content="MODORA Official Inc.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://modorazone.com/apps/index.html">
+
+    <!-- Open Graph / Facebook / Telegram SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://modorazone.com/apps/index.html">
+    <meta property="og:title" content="Download Kumpulan Aplikasi MOD APK Premium & Pro Terbaru - MODORA">
+    <meta property="og:description" content="Temukan dan download kumpulan aplikasi MOD APK Android premium, pro, full unlocked, dan gratis terlengkap dengan pembaruan otomatis setiap hari.">
+    <meta property="og:image" content="https://modorazone.com/modora.png">
+
+    <!-- Twitter Card SEO -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://modorazone.com/apps/index.html">
+    <meta name="twitter:title" content="Download Kumpulan Aplikasi MOD APK Premium & Pro Terbaru - MODORA">
+    <meta name="twitter:description" content="Temukan dan download kumpulan aplikasi MOD APK Android premium, pro, full unlocked, dan gratis terlengkap.">
+    <meta name="twitter:image" content="https://modorazone.com/modora.png">
+
+    <!-- JSON-LD Structured Data for Google Search -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "MODORA Apps Collection",
+      "url": "https://modorazone.com/apps/index.html",
+      "description": "Kumpulan aplikasi MOD APK Android premium, pro, dan full unlocked terlengkap secara gratis.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "MODORA",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://modorazone.com/modora.png"
+        }
+      }
+    }
+    </script>
+
     <link rel="icon" href="/modora.png" type="image/png">
 
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Merriweather:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -142,7 +180,6 @@
         .list-container.view-list { grid-template-columns: 1fr; }
         .list-container.view-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
 
-        /* NATIVE IOS STYLE SCROLL ANIMATION */
         .clean-card {
             background: var(--bg-card); padding: 16px; border-radius: 22px;
             border: 1px solid var(--card-border); display: flex; align-items: center; gap: 16px;
@@ -240,7 +277,7 @@
         @keyframes vibrate { 0% { transform: translate(0, 0) rotate(0deg); } 25% { transform: translate(-2px, 2px) rotate(-2deg); } 50% { transform: translate(2px, -2px) rotate(2deg); } 75% { transform: translate(-2px, -2px) rotate(-2deg); } 100% { transform: translate(0, 0) rotate(0deg); } }
         @keyframes rocketFly { 0% { transform: translateY(0) scale(1); } 20% { transform: translateY(20px) scale(0.9); } 100% { transform: translateY(-120vh) scale(1.2); opacity: 0; } }
 
-        /* --- BOTTOM NAV & BADGE (FIXED IN ORDER: HOME -> GAMES -> APPS -> SETTINGS) --- */
+        /* --- BOTTOM NAV & BADGE (ORDER: HOME -> GAMES -> APPS -> SETTINGS) --- */
         .bottom-nav {
             position: fixed; bottom: 0; left: 0; width: 100%; 
             height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
@@ -338,7 +375,7 @@
             <input type="text" id="search" class="search-input" placeholder="Search Apps..." onkeyup="doSearch()">
             <i class="fa-solid fa-magnifying-glass search-icon"></i>
         </div>
-        <a href="../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+        <a href="https://t.me/modorazone" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
     </header>
 
     <div id="mainView">
@@ -412,10 +449,10 @@
     </div>
 
     <div class="bottom-nav">
-        <div class="nav-item" onclick="window.location.href='../../../../../'">
+        <div class="nav-item" onclick="window.location.href='https://modorazone.com/'">
             <div class="icon-wrapper"><i class="fa-solid fa-house"></i></div><span id="txt-nav-home">Home</span>
         </div>
-        <div class="nav-item" onclick="window.location.href='../../games'">
+        <div class="nav-item" onclick="window.location.href='https://modorazone.com/games/index.html'">
             <div class="icon-wrapper">
                 <i class="fa-solid fa-gamepad"></i>
                 <div class="nav-badge" id="badge-game" style="display:none;">0</div>
@@ -454,7 +491,6 @@
             threshold: 0.05
         });
 
-        // --- KAMUS MULTI-BAHASA GLOBAL KHUSUS APPS (AMBIL -> DOWNLOAD) ---
         const LANG_DICT = {
             id: { secTitle: "Semua Aplikasi", searchPlaceholder: "Cari Aplikasi...", modalTitle: "Pengaturan", themeTitle: "Tema Warna", ecoTitle: "Penghemat Baterai", viewTitle: "Mode Tampilan", fontTitle: "Gaya Font", btnList: "Daftar", btnGrid: "Grid", btnReset: "Atur Ulang", btnClose: "Tutup", navHome: "Beranda", navGames: "Game", navApps: "Aplikasi", navSettings: "Pengaturan", noApps: "Tidak ada aplikasi di repositori ini.", noMatch: "Tidak ada aplikasi yang cocok", toastOffline: "Internet terputus!", toastOnline: "Kembali online!", btnGet: "Download" },
             en: { secTitle: "All Apps", searchPlaceholder: "Search Apps...", modalTitle: "Settings", themeTitle: "Color Theme", ecoTitle: "Battery Saver", viewTitle: "View Mode", fontTitle: "Font Style", btnList: "List", btnGrid: "Grid", btnReset: "Reset", btnClose: "Close", navHome: "Home", navGames: "Games", navApps: "Apps", navSettings: "Settings", noApps: "No apps found.", noMatch: "No matches found", toastOffline: "Connection lost!", toastOnline: "Back online!", btnGet: "Download" },
@@ -466,7 +502,7 @@
             ar: { secTitle: "كل التطبيقات", searchPlaceholder: "ابحث عن التطبيقات...", modalTitle: "الإعدادات", themeTitle: "سمة اللون", ecoTitle: "موفر البطارية", viewTitle: "وضع العرض", fontTitle: "نمط الخط", btnList: "قائمة", btnGrid: "شبكة", btnReset: "إعادة ضبط", btnClose: "إغلاق", navHome: "الرئيسية", navGames: "ألعاب", navApps: "تطبيقات", navSettings: "إعدادات", noApps: "لم يتم العثور على تطبيقات.", noMatch: "لا توجد تطابقات", toastOffline: "لا يوجد اتصال!", toastOnline: "متصل الآن!", btnGet: "تحميل" },
             zh: { secTitle: "所有应用", searchPlaceholder: "搜索应用...", modalTitle: "设置", themeTitle: "颜色主题", ecoTitle: "省电模式", viewTitle: "视图模式", fontTitle: "字体", btnList: "列表", btnGrid: "网格", btnReset: "重置", btnClose: "关闭", navHome: "首页", navGames: "游戏", navApps: "应用", navSettings: "设置", noApps: "未找到应用。", noMatch: "没有匹配项", toastOffline: "断网了！", toastOnline: "已恢复网络！", btnGet: "下载" },
             ja: { secTitle: "すべてのアプリ", searchPlaceholder: "アプリを検索...", modalTitle: "設定", themeTitle: "カラー", ecoTitle: "バッテリー節約", viewTitle: "表示モード", fontTitle: "フォント", btnList: "リスト", btnGrid: "グリッド", btnReset: "リセット", btnClose: "閉じる", navHome: "ホーム", navGames: "ゲーム", navApps: "アプリ", navSettings: "設定", noApps: "アプリが見つかりません。", noMatch: "一致しません", toastOffline: "オフライン！", toastOnline: "オンライン！", btnGet: "ダウンロード" },
-            ko: { secTitle: "모든 앱", searchPlaceholder: "앱 검색...", modalTitle: "설정", themeTitle: "색상 테마", ecoTitle: "배터리 절약", viewTitle: "보기 모드", fontTitle: "글꼴", btnList: "목록", btnGrid: "그리드", btnReset: "초기화", 초Close: "닫기", navHome: "홈", navGames: "게임", navApps: "앱", navSettings: "설정", noApps: "앱을 찾을 수 없음.", noMatch: "결과 없음", toastOffline: "연결 끊김!", toastOnline: "온라인!", btnGet: "다운로드" },
+            ko: { secTitle: "모든 앱", searchPlaceholder: "앱 검색...", modalTitle: "설정", themeTitle: "색상 테마", ecoTitle: "배터리 절약", viewTitle: "보기 모드", fontTitle: "글꼴", btnList: "목록", btnGrid: "그리드", btnReset: "초기화", btnClose: "닫기", navHome: "홈", navGames: "게임", navApps: "앱", navSettings: "설정", noApps: "앱을 찾을 수 없음.", noMatch: "결과 없음", toastOffline: "연결 끊김!", toastOnline: "온라인!", btnGet: "다운로드" },
             hi: { secTitle: "सभी ऐप्स", searchPlaceholder: "ऐप्स खोजें...", modalTitle: "सेटिंग्स", themeTitle: "रंग विषय", ecoTitle: "बैटरी सेवर", viewTitle: "दृश्य", fontTitle: "फ़ॉन्ट", btnList: "सूची", btnGrid: "ग्रिड", btnReset: "रीसेट", btnClose: "बंद करें", navHome: "होम", navGames: "खेल", navApps: "ऐप्स", navSettings: "सेटिंग्स", noApps: "कोई ऐप नहीं मिला।", noMatch: "कोई मेल नहीं", toastOffline: "ऑफ़लाइन!", toastOnline: "ऑनलाइन!", btnGet: "डाउनलोड" },
             vi: { secTitle: "Mọi Ứng Dụng", searchPlaceholder: "Tìm Ứng Dụng...", modalTitle: "Cài đặt", themeTitle: "Màu sắc", ecoTitle: "Tiết kiệm Pin", viewTitle: "Chế độ Xem", fontTitle: "Phông chữ", btnList: "Danh sách", btnGrid: "Lưới", btnReset: "Đặt lại", btnClose: "Đóng", navHome: "Trang chủ", navGames: "Trò chơi", navApps: "Ứng dụng", navSettings: "Cài đặt", noApps: "Không có ứng dụng.", noMatch: "Không có kết quả", toastOffline: "Mất mạng!", toastOnline: "Đã có mạng!", btnGet: "Tải về" },
             th: { secTitle: "แอพทั้งหมด", searchPlaceholder: "ค้นหาแอพ...", modalTitle: "การตั้งค่า", themeTitle: "ธีมสี", ecoTitle: "ประหยัดแบต", viewTitle: "มุมมอง", fontTitle: "ฟอนต์", btnList: "รายการ", btnGrid: "กริด", btnReset: "รีเซ็ต", btnClose: "ปิด", navHome: "หน้าแรก", navGames: "เกม", navApps: "แอพ", navSettings: "ตั้งค่า", noApps: "ไม่พบแอพ", noMatch: "ไม่พบข้อมูล", toastOffline: "ออฟไลน์!", toastOnline: "ออนไลน์!", btnGet: "ดาวน์โหลด" },
@@ -565,7 +601,7 @@
                         items.push({
                             name: item.name.replace(/[-_]/g, ' '),
                             baseName: getBaseName(item.name), 
-                            link: `/${folderPath}/${item.name}/`, 
+                            link: `https://modorazone.com/${folderPath}/${item.name}/`, 
                             img: `https://cdn.jsdelivr.net/gh/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}@${GITHUB_CONFIG.branch}/${folderPath}/${item.name}/MODORA-Images.jpg`,
                             type: type,
                             time: Date.now() - (index * 1000) 
@@ -607,7 +643,6 @@
             if (dbGames.length > 0) { badgeGame.innerText = dbGames.length; badgeGame.style.display = 'block'; }
         }
 
-        // --- RENDER DENGAN LOADING SPINNER (SINKRON DENGAN GAMES.HTML) ---
         function createCardHtml(item) {
             let badgeText = 'MOD';
             
