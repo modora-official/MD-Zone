@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../../../../../mdads.js"></script>
+    <script>if(typeof renderModoraAd === 'function') renderModoraAd(1);</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robbery Bob - King of Sneak MOD APK V1.36.2 - MODORA Official</title>
+    <link rel="icon" type="image/png" href="https://modorazone.com/modorazone.png">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-body: #0f172a; --bg-card: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8;
+            --primary: #2563eb; --accent: #10b981; --border: #334155; --card-border: #334155;
+            --bg-glass: rgba(30, 41, 59, 0.85); --glass-blur: blur(12px);
+            --font-main: 'Plus Jakarta Sans', sans-serif; --header-h: 60px;
+            --search-bg: rgba(255, 255, 255, 0.05); --shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: var(--font-main); outline: none; -webkit-tap-highlight-color: transparent; }
+        html, body { width: 100%; overflow-x: hidden; scroll-behavior: smooth; background-color: var(--bg-body); color: var(--text-main); }
+        body { padding-top: calc(var(--header-h) + 15px); padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px); }
+
+        #mainView { width: 100%; padding: 0 24px; margin: 0 auto; max-width: 600px; animation: appEntry 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes appEntry { 0% { opacity: 0; transform: translateY(15px); } 100% { opacity: 1; transform: translateY(0); } }
+        
+        /* Loading Custom Animation */
+        @keyframes scanline { 0% { left: -100%; } 100% { left: 200%; } }
+        @keyframes pulseText { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        
+        /* Utility class to completely block native link behaviors/previews */
+        .no-select-dl {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .ad-box { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 25px 0; overflow-x: auto; scrollbar-width: none; background: rgba(0,0,0,0.15); border-radius: 12px; padding: 10px 0; border: 1px dashed var(--border); }
+        .ad-box::-webkit-scrollbar { display: none; }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; height: var(--header-h); padding: 0 24px; background: var(--bg-glass); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); z-index: 1000; }
+        .btn-back { width: 40px; height: 40px; background: var(--search-bg); color: var(--text-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; cursor: pointer; }
+        .btn-back:active { transform: scale(0.9); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: -0.5px; }
+        .btn-tele { width: 40px; height: 40px; background: #29b6f6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; text-decoration: none; transition: transform 0.2s; }
+        .btn-tele:active { transform: scale(0.9); }
+
+        .app-header-detail { display: flex; gap: 15px; margin-bottom: 20px; align-items: center; }
+        .app-icon-detail { width: 90px; height: 90px; border-radius: 20px; object-fit: cover; box-shadow: var(--shadow); }
+        .app-meta-detail { flex: 1; }
+        .app-meta-detail h1 { font-size: 20px; font-weight: 800; line-height: 1.3; margin-bottom: 5px; color: var(--text-main); }
+        .app-dev-detail { font-size: 13px; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; }
+        .badge-mod { display: inline-flex; align-items: center; background: rgba(16, 185, 129, 0.15); color: var(--accent); padding: 2px 5px; border-radius: 8px; font-size: 11px; font-weight: 800; gap: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .ss-scroll { display: flex; gap: 15px; overflow-x: auto; scroll-snap-type: x mandatory; margin-bottom: 25px; padding-bottom: 10px; scrollbar-width: none; }
+        .ss-scroll::-webkit-scrollbar { display: none; }
+        .ss-img { height: 150px; border-radius: 16px; scroll-snap-align: center; object-fit: cover; box-shadow: var(--shadow); border: 1px solid var(--card-border); cursor: pointer; }
+
+        .section-title { font-size: 16px; font-weight: 800; margin-bottom: 15px; display: flex; align-items: center; gap: 8px; color: var(--text-main); }
+        .section-title i { color: var(--primary); }
+
+        .desc-box { font-size: 14px; line-height: 1.6; color: var(--text-muted); margin-bottom: 25px; background: var(--bg-card); padding: 20px; border-radius: 16px; border: 1px solid var(--card-border); }
+        .desc-box p { margin-bottom: 10px; }
+        .desc-box p:last-child { margin-bottom: 0; }
+
+        .btn-download-huge { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; background: linear-gradient(135deg, var(--primary), #1d4ed8); padding: 18px; border-radius: 16px; color: white; text-decoration: none; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4); transition: transform 0.2s, box-shadow 0.2s; gap: 4px; }
+        .btn-download-huge:active { transform: scale(0.96); box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3); }
+        .btn-date { font-size: 11px; font-weight: 600; opacity: 0.85; margin-top: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        .social-notice { background: var(--bg-card); border: 1px solid var(--card-border); border-radius: 16px; padding: 15px; margin-bottom: 25px; text-align: center; box-shadow: var(--shadow); }
+        .social-notice p { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--text-main); }
+        .social-links { display: flex; gap: 10px; justify-content: center; }
+        .btn-wa, .btn-tg { flex: 1; padding: 10px; border-radius: 12px; text-decoration: none; font-weight: 700; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; transition: transform 0.2s; }
+        .btn-wa { background: #25D366; } .btn-tg { background: #2AABEE; }
+        .btn-wa:active, .btn-tg:active { transform: scale(0.95); }
+
+        .mini-actions { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 25px; }
+        .btn-mini { background: var(--bg-card); color: var(--text-main); border: 1px solid var(--card-border); padding: 12px 5px; border-radius: 16px; font-size: 11px; font-weight: 700; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s; box-shadow: var(--shadow); text-decoration: none; }
+        .btn-mini:active { transform: scale(0.95); background: var(--search-bg); }
+        .btn-mini i { font-size: 18px; color: var(--primary); }
+
+        .mod-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 25px; }
+        .mod-feat-card { background: var(--bg-card); padding: 12px 15px; border-radius: 16px; border: 1px solid var(--card-border); display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700; color: var(--text-main); }
+        .mod-feat-card i { color: var(--accent); font-size: 16px; }
+
+        .lightbox { position: fixed; top: 0; left: 0; z-index: 10000; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); align-items: center; justify-content: center; flex-direction: column; opacity: 0; transition: opacity 0.3s; display: none; }
+        .lightbox.show { display: flex; opacity: 1; }
+        .lightbox-content { max-width: 85vw; max-height: 80vh; object-fit: contain; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transform: scale(0.9); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .lightbox.show .lightbox-content { transform: scale(1); }
+        .close-lb { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 24px; cursor: pointer; width: 40px; height: 40px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background 0.2s; z-index: 10001; }
+        .close-lb:active { background: rgba(255,255,255,0.3); }
+        .prev-lb, .next-lb { cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); width: 45px; height: 45px; color: white; font-size: 20px; background: rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; z-index: 10001; transition: background 0.2s; }
+        .prev-lb { left: 10px; } .next-lb { right: 10px; }
+        .prev-lb:active, .next-lb:active { background: rgba(255,255,255,0.3); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="../../../../../" class="btn-back"><i class="fa-solid fa-angle-left"></i></a>
+        <div class="header-title">App Detail</div>
+        <a href="../../../../../telegram" class="btn-tele"><i class="fa-brands fa-telegram"></i></a>
+    </header>
+
+    <div id="mainView">
+        
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(2);</script>
+        </div>
+
+        <div class="app-header-detail">
+            <img src="https://play-lh.googleusercontent.com/ktv0h5IqltNNj0lls3G7GP2HpClkUJSoZDhN23_DfRKBYFSb76cuUvb94ikaxfvCxNUVoKZNu4BeJgL7Ww2z" class="app-icon-detail" alt="Icon">
+            <div class="app-meta-detail">
+                <h1>Robbery Bob - King of Sneak MOD APK V1.36.2</h1>
+                <div class="app-dev-detail">Deca_Games</div>
+                <div class="badge-mod"><i class="fa-solid fa-screwdriver-wrench"></i> 100% MOD</div>
+            </div>
+        </div>        
+        
+        <div class="mini-actions">
+            <a href="javascript:void(0)" onclick="scrollToDownload(event)" class="btn-mini"><i class="fa-solid fa-download"></i><span>Download</span></a>
+            <a href="https://play.google.com/store/apps/details?id=com.chillingo.robberybobfree.android.row" target="_blank" class="btn-mini"><i class="fa-brands fa-google-play"></i><span>Play Store</span></a>
+            <div class="btn-mini" onclick="shareApp()"><i class="fa-solid fa-share-nodes"></i><span>Share</span></div>
+        </div>
+        
+        <div class="section-title"><i class="fa-solid fa-star"></i> MOD Features</div>
+        <div class="mod-feature-grid">
+            <div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>New Update</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlimited Money</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Unlock All Character</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>No Ads</span></div><div class="mod-feat-card"><i class="fa-solid fa-circle-check"></i> <span>Anti-Ban</span></div>
+        </div>
+        
+        <div class="section-title"><i class="fa-solid fa-images"></i> Screenshots</div>
+        <div class="ss-scroll">
+            <img src="https://play-lh.googleusercontent.com/wM0K0S5c6bZrCLfSKlsjIWx39XBrdaGM8GqdM1zGGleitXX6kwwOaExAn3FxjC0ccgr1bVD_aERK493tfDVLow" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/GiNJv7fcFJS_4Y-CSQJSxbjc3uG661mZAy2tOmuNOH6OD9ZZsHF3CtY6JjEQYQBP6tv0gKHJmOPPZ4toJHOhjA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/OvKYqHhco2SKx0GerVLlvICTMlzqlKXeC5YRXjlYHFqQWqOKQsptgovtqJG3ujO74ChJepV-3I0gZTKTJEcX" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/5jUJKWJR0dKGgkbWdKiciZRgOiSBPUPIE_Bf6YFrdVuB2ae6F2HnN0QK8LpWXpuTyYBDseNKcdhvpnT83zHbjNc" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/JpyhX1ZZZGDpS_X-CYhJmhTf0rEaadgmX1Ewk5TCtsIS5S8kQJ1kiHKO-MIjwdYM_q-imA0I426yiwdJZuEl" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/6xTY-Fzlk8BJTSdFV8RbZss54E6b0lYRFNnkyC8rmt8LaNZvyoW8HKwQDg6Za-2ScsfPEF4SSyo2udg6y8_zRw" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/D0eC9DsV0e-w9PjKtZn0ChsU4TMNR8fuXZB6QuwG5KZXBl3etWUI65jWnB_LZyKzIPFUn9ajGqCf3KUcOxmF0bM" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/pDneEdnlPeove2vzOGjke6ZTEja5-oqPTLK7H1dHOh60UgFp2g7O4W1VvSuNuNj_TKIkHwjjMRlsTHWzbmDM_Q" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/aRt0_qODZzkCp3BbHb0tKZaIzkfnNmVJ6LPOz26Qys4kbWVW1Eff4X4LppfjvHBfTFN9ANc2uoD7Ns25o7rrGCk" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/G9buewmFv_eqKTsWJ5CbvqNuZ4QafSGVQK-ue53vy_41Z1tlzkyYWMXuKtCG1957dSA5V3DFlNRgiRoLzrax" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/IDc2zv1t-qyLc8xhSPRuIGWjuCiIgxa6BgJFNXGSzSsxS3zfGPU_QL3RZH6ra3S2FYEumVbWQ4ND1KbiknOIXaE" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/vVhxmJp9WJf3_3rEZ8_XX8D88Ibtvnb02Po-EVwK3JZ4VCDQ_oq8tC4HHiEOde3kP2bcHTT9CNXGvEUQAaIKLA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/fppeFQ4aIiTjH54EWH9KOPuv_51KaCk-U8bgL8MIqVkk8qNa83hq7J-w3hgUeDzZ90ytSHnGydaX073OhMGE9w" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/xdhkSJ96GelS8mAuPbMOvoSsJeopRjGOfJZI-5nqPCRfBbDGKmcavdxfvwC75694TaTWiJRm3d0ZathQ-SRLig" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/mTgn1-A-i5xQTVP8ii1RnEFkQdNrBT5gOVusYCrUM62KSbaQNxckWxMgv1D5ToSpz61yKIRz0qO0zUEOUWaqVgU" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/1IO_F6EL-mRpoxCWocXrkrRdc45-16zeIX6kiPn6ogR-r_4HQt1V8D0TLNZDADbPqvShczAiVJLxia_cAhkQVA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/W3PxiM3sg4fGmJ3Tp-l7hWk786mZ8Dip609Ys6-Xf79tXttJanDeaAxtbStNaQzMiNV9Cs2Pevp0I_OYzd-q" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/IR2EFNiZCeuHBdEyAtI5bW0--dH_ZFG8gJFi58MlBFwXmjcFKWbTv1FJuTPVCOY0rfbATyrUx2okQNiXLH0_PA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/xXn9-OWeYRkt-DLL2mDK1KkekjcNY6v2AYE3u73d41nszPQaypB1Q0ol6ZSeOJWgtw1y3Hn5RQTvYEU95tsYUQ" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/X8RWju9rYDx-YbaNfz68W4goXKn8SYUdZXfKQI0G2fPaxrqzV1LgVw9o6P-fL_3jcTJXWhwOD9x48OLmHgPYgA" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/4WJn_fGQwSJw_1JAUfgHo43ZhN8yj4s0WAjana5La4l8vnaYisG7UvSyEROa0ALNkZX8bAunAvyDZ-KiPNGBfg" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/Z9CaO7AghfkuItm2VBo4ZJSikX_rY3FSatx6UOryBidvoqRqqaKj1s7iDMuw0MR2iZWZQf5SyrdugGXDJhZLX8Q" class="ss-img" alt="MODORA Official" loading="lazy">
+                            <img src="https://play-lh.googleusercontent.com/5HKtzxshgWZrjibj8KBu3M2127Y-dEoSWAPggl-ya-IhsYK-PAjK1iefbFz62NS7wnlNKFJnYXEi5Rj4zuDhA_A" class="ss-img" alt="MODORA Official" loading="lazy">
+                            
+        </div>        
+
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(3);</script>
+        </div>        
+
+        <div class="section-title"><i class="fa-solid fa-circle-info"></i> Description</div>
+        <div class="desc-box">
+            <p>Memperkenalkan Robbery Bob, pencuri legendaris yang baik hati.</p>
+                        
+                        <p>Bermainlah sebagai Bob si pencuri dalam game petualangan yang menyenangkan dan penuh humor ini, karena dia harus menyelesaikan beberapa pekerjaan terakhir sebelum pensiun dari kehidupan kriminal. Misimu sebagai Bob si pencuri adalah menyelinap melewati petugas keamanan, penduduk, dan anjing tidur untuk merampok jarahan di setiap tahapnya. Gunakan keterampilan ninja dan memecahkan teka-tekimu untuk bersembunyi dalam keadaan yang pelik dan jangan sampai tertangkap. Jelajahi peta dan lingkungan yang berbeda saat kamu menyelesaikan misi sulit yang melibatkan aksi sembunyi-sembunyi dan teka-teki. Curi semuanya mulai dari dokumen rahasia, pakaian lama hingga remot TV. Nikmati alur cerita yang jenaka, animasi yang lucu, naskah yang menyenangkan, dan teka-teki berhadiah. Hal terbaiknya, game ini gratis untuk dimainkan. </p>
+                        
+                        <p>Unduh dan mainkan Robbery Bob sekarang dan jangan lupa menjadi Pencuri penyelinap yang licik!</p>
+                        
+                        <p>Bob si pencuri licik dengan langkah kaki yang sangat senyap. Sayangnya, dia dipaksa melakukan beberapa pekerjaan terakhir sebelum dia diizinkan keluar dari kehidupan kriminalnya.</p>
+                        
+                        <p>Robbery Bob adalah game petualangan menyelinap yang menyenangkan dan penuh humor yang akan membawamu ke vila-vila mewah dan melewati teka-teki yang dipenuhi penjaga, anjing, dan musuh lain agar dapat kabur dengan karung penuh jarahan! Dan game ini Gratis untuk Dimainkan!</p>
+                        
+                        <p>FITUR</p>
+                        
+                        <p>Berikut adalah beberapa hal yang membuat Robbery Bob menjadi game teka-teki sembunyi-sembunyi yang menyenangkan untuk dimainkan:</p>
+                        
+                        <p>• Pencuri SUPERLICIK</p>
+                        <p>Gunakan kemampuan bersembunyi dan kemampuan memecahkan masalahmu sebagai pencuri untuk menghindari penjaga keamanan, pemilik, dan anjing penjaga saat kamu mencuri barang berharga di setiap level. Gunakan keahlianmu sebagai seorang ninja untuk menyelinap di tempat yang sempit dan cegah dirimu tertangkap sebagai pencuri yang lihai.</p>
+                        
+                        <p>• JELAJAHI PETA-PETA YANG BERBEDA</p>
+                        <p>Dalam operasi rahasia yang menggabungkan tantangan diam-diam dan logika, kamu akan menyusup ke daerah pemukiman, pusat kota yang ramai, dan fasilitas penelitian rahasia. Bisakah kamu mencapai skor sempurna di setiap level? Bisakah pencuri terkenal, Bob, mencuri setiap barang di level ini?</p>
+                        
+                        <p>• JADILAH PENCURI &amp; CURI LOOT</p>
+                        <p>Bob harus mencuri berbagai macam barang, termasuk surat-surat rahasia, pakaian bekas, dan bahkan remot TV yang sulit dipahami!</p>
+                        <p>• KEJAHATAN ADALAH PERMAINAN LAMA YANG LUCU</p>
+                        <p>Nikmati alur cerita yang lucu dan menghibur, lengkap dengan humor animasi, dialog jenaka, teka-teki yang membangkitkan bersemangat, plot yang mengejutkan, dan banyak pencuri</p>
+                        <p>Unduh dan mainkan secara gratis! Jangan lupa untuk melakukannya diam-diam!</p>
+        </div>
+
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(4);</script>
+        </div>
+
+        <div class="social-notice">
+            <p>Request Button</p>
+            <div class="social-links">
+                <a href="../../../../../requests" class="btn-tg" style="background: var(--primary);"><i class="fa-solid fa-code-pull-request"></i> Request App/Game</a>
+            </div>
+        </div>
+
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(5);</script>
+        </div>
+
+        <div class="section-title" id="download-section" style="margin-top: 15px;"><i class="fa-solid fa-cloud-arrow-down"></i> Download Area</div>
+        
+        
+                <div id="dl-wrap-0" style="margin-bottom: 12px; position: relative;" class="no-select-dl">
+                    <div id="dl-loading-0" class="no-select-dl" style="background: rgba(30, 41, 59, 0.85); border: 1px solid rgba(59,130,246,0.4); border-radius: 16px; padding: 30px 20px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 15px; box-shadow: 0 0 30px rgba(59,130,246,0.15); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); position: relative; overflow: hidden; z-index: 1;" oncontextmenu="return false;">
+                        <div style="position: absolute; top: 0; left: -100%; width: 50%; height: 2px; background: linear-gradient(90deg, transparent, var(--primary), transparent); animation: scanline 2s linear infinite;"></div>
+                        <i class="fa-solid fa-cloud-arrow-down" style="font-size: 36px; color: var(--primary); filter: drop-shadow(0 0 10px rgba(59,130,246,0.6));"></i>
+                        <div style="font-size: 14px; font-weight: 800; color: #f8fafc; letter-spacing: 1px; text-transform: uppercase; animation: pulseText 1.5s infinite;">Preparing Link... <span id="dl-count-0" style="color: var(--accent); font-size: 18px; text-shadow: 0 0 8px rgba(16,185,129,0.5);">10</span>s</div>
+                        <div style="width: 90%; height: 6px; background: rgba(0,0,0,0.6); border-radius: 10px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                            <div id="dl-progress-0" style="width: 0%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 1s linear; border-radius: 10px; box-shadow: 0 0 10px rgba(16,185,129,0.8);"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="btn-download-huge no-select-dl" id="dl-btn-0" onclick="window.open('https://safefileku.com/download/HVHj3IdiMSn1tGmA', '_blank')" oncontextmenu="return false;" style="display: none; animation: appEntry 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; cursor: pointer; position: relative; z-index: 2;">
+                        <div><span>DOWNLOAD (87 MB)</span></div>
+                        <div class="btn-date">Update: August 31, 2026</div>
+                    </div>
+                    
+                    <script>
+                        setTimeout(() => {
+                            let timeLeft = 10;
+                            let loadingEl = document.getElementById('dl-loading-0');
+                            let btnEl = document.getElementById('dl-btn-0');
+                            let countEl = document.getElementById('dl-count-0');
+                            let progressEl = document.getElementById('dl-progress-0');
+                            
+                            let dlTimer = setInterval(() => {
+                                timeLeft--;
+                                let pct = ((10 - timeLeft) / 10) * 100;
+                                if(progressEl) progressEl.style.width = pct + '%';
+                                
+                                if(timeLeft > 0) {
+                                    if(countEl) countEl.innerText = timeLeft;
+                                } else {
+                                    clearInterval(dlTimer);
+                                    if(loadingEl) loadingEl.style.display = 'none';
+                                    if(btnEl) btnEl.style.display = 'flex';
+                                }
+                            }, 1000);
+                            setTimeout(() => { if(progressEl) progressEl.style.width = '10%'; }, 50);
+                        }, 100);
+                    </script>
+                </div>
+        
+        <div class="social-notice">
+            <p>Join the Community</p>
+            <div class="social-links">
+                <a href="../../../../../whatsapp" class="btn-wa"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                <a href="../../../../../telegram" class="btn-tg"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            </div>
+        </div>
+        
+        <div class="ad-box">
+            <script>if(typeof renderModoraAd === 'function') renderModoraAd(6);</script>
+        </div>
+
+        <div style="height: 60px;"></div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <div class="close-lb"><i class="fa-solid fa-xmark"></i></div>
+        <div class="prev-lb"><i class="fa-solid fa-angle-left"></i></div>
+        <img class="lightbox-content" id="img-lb" src="">
+        <div class="next-lb"><i class="fa-solid fa-angle-right"></i></div>
+    </div>
+
+    <script>
+        function scrollToDownload(e) {
+            if(e) e.preventDefault();
+            const section = document.getElementById('download-section');
+            if(section) {
+                section.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const lb = document.getElementById('lightbox');
+            const lbImg = document.getElementById('img-lb');
+            const images = document.querySelectorAll('.ss-img');
+            let currentIndex = 0;
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    lb.classList.add('show');
+                    lbImg.src = img.src;
+                    currentIndex = index;
+                });
+            });
+
+            document.querySelector('.close-lb').onclick = () => lb.classList.remove('show');
+            
+            document.querySelector('.prev-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            document.querySelector('.next-lb').onclick = (e) => {
+                e.stopPropagation();
+                currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
+                lbImg.src = images[currentIndex].src;
+            };
+            
+            // Dihapus agar lightbox HANYA BISA ditutup melalui tombol 'X'
+            // lb.onclick = (e) => { 
+            //     if(e.target === lb) lb.classList.remove('show'); 
+            // };
+        });
+
+        function shareApp() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Robbery Bob - King of Sneak MOD APK V1.36.2',
+                    text: 'Download Robbery Bob - King of Sneak MOD APK V1.36.2 MOD APK latest version from MODORA Official!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied to clipboard!');
+            }
+        }
+
+        function showAdblockWarning() {
+            var style = document.createElement('style');
+            style.innerHTML = "#modoraAdblockOverlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 999999; font-family: 'Plus Jakarta Sans', sans-serif; text-align: center; color: #f8fafc; animation: modoraFadeIn 0.3s ease-out; } @keyframes modoraFadeIn { from { opacity: 0; } to { opacity: 1; } } .modora-premium-card { background: #1e293b; border-radius: 24px; width: 100%; max-width: 400px; padding: 40px 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.5); border: 1px solid #334155; transform: scale(0.9); animation: modoraCardScale 0.4s 0.1s forwards cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; } @keyframes modoraCardScale { to { transform: scale(1); opacity: 1; } } .modora-icon-header { width: 64px; height: 64px; background: rgba(239, 68, 68, 0.15); color: #ef4444; font-size: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; box-shadow: 0 8px 20px rgba(239, 68, 68, 0.2); } .modora-title { font-size: 22px; font-weight: 800; margin-bottom: 10px; } .modora-desc { font-size: 14px; color: #94a3b8; line-height: 1.5; margin-bottom: 25px; } .modora-highlight { color: #ef4444; font-weight: 700; } .modora-action-card { background: #ef4444; color: white; border: none; border-radius: 16px; padding: 16px; font-weight: 700; font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; width: 100%; transition: transform 0.2s, background 0.2s; } .modora-action-card:hover { background: #dc2626; } .modora-action-card:active { transform: scale(0.95); }";
+            document.head.appendChild(style);
+
+            var overlay = document.createElement('div');
+            overlay.id = 'modoraAdblockOverlay';
+            overlay.innerHTML = '<div class="modora-premium-card"><div class="modora-icon-header"><i class="fa-solid fa-shield-virus"></i></div><h2 class="modora-title">Adblocker Detected</h2><p class="modora-desc">This site relies on ads. Please <span class="modora-highlight">disable your Adblock</span> to continue downloading.</p><button class="modora-action-card" onclick="location.reload()"><i class="fa-solid fa-rotate-right"></i> I have disabled Adblock</button></div>';
+            document.body.appendChild(overlay);
+            document.body.style.overflow = 'hidden';
+        }
+
+        function checkAdBlock() {
+            var script = document.createElement('script');
+            script.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+            script.onerror = function() { showAdblockWarning(); };
+            script.onload = function() {
+                var ad = document.createElement('div');
+                ad.innerHTML = '&nbsp;';
+                ad.className = 'adsbox ad-placement doubleclick ad-banner banner-ads sponsor-ad';
+                ad.style.cssText = 'display:block; position:absolute; top:-9999px; left:-9999px; height:10px; width:10px;';
+                document.body.appendChild(ad);
+                setTimeout(function() {
+                    var styles = window.getComputedStyle(ad);
+                    if (ad.offsetHeight === 0 || styles.display === 'none' || styles.visibility === 'hidden') {
+                        showAdblockWarning();
+                    }
+                    ad.remove();
+                }, 250);
+            };
+            document.head.appendChild(script);
+        }
+        
+        setTimeout(checkAdBlock, 1500);
+    </script>
+    <script>if(typeof renderModoraAd === 'function') renderModoraAd(7);</script>
+</body>
+</html>
