@@ -67,23 +67,20 @@ function injectTutorialSection() {
         const tutorialDiv = document.createElement('div');
         tutorialDiv.id = "modora-tutorial-section";
         tutorialDiv.innerHTML = `
-            <div class="section-title" style="margin-top: 35px; margin-bottom: 15px;">
+            <div class="section-title" style="margin-top: 35px; margin-bottom: 15px; font-weight: bold;">
                 <i class="fa-solid fa-circle-play"></i> TUTORIALS DOWNLOAD
             </div>
             
             <!-- Tambahan z-index: 99 biar bisa diklik nembus iklan, tapi tetep ngetrigger iklannya -->
-            <div id="tutorial-video-container" style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; border: 1px solid var(--card-border, #334155); box-shadow: 0 10px 30px rgba(0,0,0,0.5); background: #000; cursor: pointer; margin-bottom: 25px; z-index: 99;">
+            <div id="tutorial-video-container" style="position: relative; width: 100%; aspect-ratio: 16/9; border-radius: 16px; overflow: hidden; border: 1px solid var(--card-border, #334155); box-shadow: 0 10px 30px rgba(0,0,0,0.5); background: #000; cursor: pointer; margin-bottom: 25px; z-index: 99; -webkit-tap-highlight-color: transparent; outline: none;">
                 
-                <!-- Thumbnail Cover (Link Absolut) -->
+                <!-- Thumbnail Cover -->
                 <img id="tutorial-thumb" src="https://modorazone.com/thumb.png" alt="Tutorial Thumbnail" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
                 
                 <!-- Play Button Overlay -->
-                <div id="tutorial-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 2;">
-                    <i class="fa-solid fa-play" style="font-size: 65px; color: white; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8));"></i>
+                <div id="tutorial-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; z-index: 2; transition: background 0.3s ease;">
+                    <i class="fa-solid fa-play" style="font-size: 65px; color: white; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.8)); transition: transform 0.2s ease;"></i>
                 </div>
-                
-                <!-- HTML5 Native Video -->
-                <video id="tutorial-vid" src="https://github.com/modora-official/modora/raw/refs/heads/main/tutorials.mp4" playsinline controls style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 3; display: none;"></video>
             </div>
         `;
         
@@ -91,62 +88,21 @@ function injectTutorialSection() {
         targetElement.parentNode.insertBefore(tutorialDiv, targetElement.nextSibling);
 
         const container = document.getElementById('tutorial-video-container');
-        const video = document.getElementById('tutorial-vid');
-        const thumb = document.getElementById('tutorial-thumb');
         const overlay = document.getElementById('tutorial-overlay');
 
-        // Fungsi klik: Hilangkan cover, jalankan video, dan paksa Full Screen
+        // FUNGSI KLIK: Langsung arahkan (redirect/navigate) ke link tujuan
         container.addEventListener('click', function() {
-            // Sembunyikan cover & ikon play
-            thumb.style.display = 'none';
-            overlay.style.display = 'none';
-            
-            // Tampilkan native player
-            video.style.display = 'block';
-            
-            // Putar Video dengan penanganan error biar browser nggak nge-block
-            let playPromise = video.play();
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log("Auto-play ditahan browser. User harus tap tombol play manual.", error);
-                });
-            }
-            
-            // Eksekusi Full Screen (Disesuaikan untuk berbagai browser HP/Desktop)
-            if (video.requestFullscreen) {
-                video.requestFullscreen();
-            } else if (video.webkitEnterFullscreen) {
-                video.webkitEnterFullscreen(); // Khusus iPhone/iOS Safari
-            } else if (video.webkitRequestFullscreen) {
-                video.webkitRequestFullscreen(); // Standar browser webkit lama
-            } else if (video.msRequestFullscreen) {
-                video.msRequestFullscreen(); // Edge lama
-            }
+            window.location.href = "../../../../../tutorials";
         });
-
-        // Event saat user keluar dari mode Full Screen
-        const exitFullscreenHandler = () => {
-            const isFullScreen = document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement;
-            
-            // Kalau layarnya udah nggak full screen, kembalikan posisi seperti semula
-            if (!isFullScreen && !video.webkitDisplayingFullscreen) {
-                video.pause();
-                video.style.display = 'none';
-                thumb.style.display = 'block';
-                overlay.style.display = 'flex';
-            }
-        };
-
-        // Pasang sensor untuk mendeteksi kapan user keluar dari layar penuh
-        document.addEventListener('fullscreenchange', exitFullscreenHandler);
-        document.addEventListener('webkitfullscreenchange', exitFullscreenHandler);
         
-        // Khusus sensor layar penuh milik iOS
-        video.addEventListener('webkitendfullscreen', function() {
-            video.pause();
-            video.style.display = 'none';
-            thumb.style.display = 'block';
-            overlay.style.display = 'flex';
+        // Efek hover untuk ikon play (biar terasa interaktif di PC)
+        container.addEventListener('mouseenter', () => {
+            const playIcon = overlay.querySelector('i');
+            if(playIcon) playIcon.style.transform = 'scale(1.1)';
+        });
+        container.addEventListener('mouseleave', () => {
+            const playIcon = overlay.querySelector('i');
+            if(playIcon) playIcon.style.transform = 'scale(1)';
         });
     }
 }
@@ -154,7 +110,6 @@ function injectTutorialSection() {
 // ==========================================
 // AUTO INITIALIZER
 // ==========================================
-// Kita pakai 3 lapis perlindungan untuk memastikan fitur ini selalu muncul
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectTutorialSection);
 } else {
