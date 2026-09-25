@@ -5,8 +5,8 @@
 function renderModoraAd(adId) {
     switch(adId) {
         case 1:
-            // --- Iklan 1 - Script Head ---
-            document.write('<script src="https://divorceabetpiano.com/67/b1/9b/67b19bcda13dcfd3eea3c1a2a8f3920a.js"></script>');
+            // --- Iklan 1 - Script Head (Updated) ---
+            document.write('<script data-cfasync="false" src="https://accountut.com/1/67b19bcda13dcfd3eea3c1a2a8f3920a"></script>');
             break;
             
         case 2:
@@ -40,8 +40,8 @@ function renderModoraAd(adId) {
             break;
             
         case 7:
-            // --- Iklan 7 - Script Body ---
-            document.write('<script src="https://divorceabetpiano.com/45/ec/72/45ec7202b42e61ef7004f766c7305b5f.js"></script>');
+            // --- Iklan 7 - Script Body (Updated) ---
+            document.write('<script data-cfasync="false" src="https://bellnewyork.org/14/45ec7202b42e61ef7004f766c7305b5f"></script>');
             break;
     }
 }
@@ -53,17 +53,14 @@ function injectTutorialSection() {
     // Cek agar tidak ter-inject dua kali
     if (document.getElementById('modora-tutorial-section')) return;
     
-    // Cari elemen tombol download terakhir untuk patokan penempatan
+    // Cari elemen tombol download terakhir untuk patokan penempatan (Logika di-upgrade agar lebih ringkas)
     const dlWrappers = document.querySelectorAll('div[id^="dl-wrap-"]');
-    let targetElement = null;
+    const targetElement = dlWrappers.length > 0 
+        ? dlWrappers[dlWrappers.length - 1] 
+        : document.getElementById('download-section');
     
-    if (dlWrappers.length > 0) {
-        targetElement = dlWrappers[dlWrappers.length - 1];
-    } else {
-        targetElement = document.getElementById('download-section');
-    }
-    
-    if (targetElement) {
+    // Pastikan elemen target dan parentNode-nya ada sebelum melakukan injeksi
+    if (targetElement && targetElement.parentNode) {
         const tutorialDiv = document.createElement('div');
         tutorialDiv.id = "modora-tutorial-section";
         tutorialDiv.innerHTML = `
@@ -90,20 +87,22 @@ function injectTutorialSection() {
         const container = document.getElementById('tutorial-video-container');
         const overlay = document.getElementById('tutorial-overlay');
 
-        // FUNGSI KLIK: Langsung arahkan (redirect/navigate) ke link tujuan
-        container.addEventListener('click', function() {
-            window.location.href = "../../../../../tutorials";
-        });
-        
-        // Efek hover untuk ikon play (biar terasa interaktif di PC)
-        container.addEventListener('mouseenter', () => {
-            const playIcon = overlay.querySelector('i');
-            if(playIcon) playIcon.style.transform = 'scale(1.1)';
-        });
-        container.addEventListener('mouseleave', () => {
-            const playIcon = overlay.querySelector('i');
-            if(playIcon) playIcon.style.transform = 'scale(1)';
-        });
+        // Validasi keamanan tambahan untuk memastikan elemen berhasil di-render
+        if (container) {
+            // FUNGSI KLIK: Langsung arahkan (redirect/navigate) ke link tujuan
+            container.addEventListener('click', function() {
+                window.location.href = "../../../../../tutorials";
+            });
+            
+            // Efek hover untuk ikon play (biar terasa interaktif di PC)
+            if (overlay) {
+                const playIcon = overlay.querySelector('i');
+                if (playIcon) {
+                    container.addEventListener('mouseenter', () => playIcon.style.transform = 'scale(1.1)');
+                    container.addEventListener('mouseleave', () => playIcon.style.transform = 'scale(1)');
+                }
+            }
+        }
     }
 }
 
