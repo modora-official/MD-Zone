@@ -12,31 +12,31 @@ function renderModoraAd(adId) {
         case 2:
             // --- Iklan 2 - ukuran 320x50 ---
             document.write('<script> atOptions = { "key" : "2139bb0bcc42a03b2434aed0b391acf3", "format" : "iframe", "height" : 50, "width" : 320, "params" : {} }; </script>');
-            document.write('<script src="https://divorceabetpiano.com/2139bb0bcc42a03b2434aed0b391acf3/invoke.js"></script>');
+            document.write('<script src="https://bellnewyork.org/22/2139bb0bcc42a03b2434aed0b391acf3"></script>');
             break;
             
         case 3:
             // --- Iklan 3 - ukuran 468x60 ---
             document.write('<script> atOptions = { "key" : "3a395b6a167706907857cb4846d01b10", "format" : "iframe", "height" : 60, "width" : 468, "params" : {} }; </script>');
-            document.write('<script src="https://divorceabetpiano.com/3a395b6a167706907857cb4846d01b10/invoke.js"></script>');
+            document.write('<script src="https://bellnewyork.org/22/3a395b6a167706907857cb4846d01b10"></script>');
             break;
             
         case 4:
             // --- Iklan 4 - ukuran 728x90 ---
             document.write('<script> atOptions = { "key" : "57933ea88c2fb6be24407e7918624e2d", "format" : "iframe", "height" : 90, "width" : 728, "params" : {} }; </script>');
-            document.write('<script src="https://divorceabetpiano.com/57933ea88c2fb6be24407e7918624e2d/invoke.js"></script>');
+            document.write('<script src="https://bellnewyork.org/22/57933ea88c2fb6be24407e7918624e2d"></script>');
             break;
             
         case 5:
             // --- Iklan 5 - Native Async ---
-            document.write('<script async="async" data-cfasync="false" src="https://divorceabetpiano.com/53773056cf29c22519d850bfd8f749f4/invoke.js"></script>');
+            document.write('<script async="async" data-cfasync="false" src="https://bellnewyork.org/21/53773056cf29c22519d850bfd8f749f4"></script>');
             document.write('<div id="container-53773056cf29c22519d850bfd8f749f4"></div>');
             break;
             
         case 6:
             // --- Iklan 6 - ukuran 300x250 ---
             document.write('<script> atOptions = { "key" : "a6e2777fb180c83683a51931383325df", "format" : "iframe", "height" : 250, "width" : 300, "params" : {} }; </script>');
-            document.write('<script src="https://divorceabetpiano.com/a6e2777fb180c83683a51931383325df/invoke.js"></script>');
+            document.write('<script src="https://bellnewyork.org/22/a6e2777fb180c83683a51931383325df"></script>');
             break;
             
         case 7:
